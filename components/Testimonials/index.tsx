@@ -42,7 +42,7 @@ const Testimonials = () => {
             <div
               className={`${
                 index !== testimonialData.length - 1
-                  ? 'border-b border-r-0 border-black md:border-r md:border-b-0'
+                  ? 'border-b border-r-0 border-[#1E1E1E] md:border-r md:border-b-0'
                   : 'border-b-0 md:border-r-0'
               }`}
               key={testimonial.id}

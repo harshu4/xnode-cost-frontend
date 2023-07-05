@@ -5,7 +5,7 @@ interface SingleTestimonialProps {
 
 const SingleTestimonial = ({ title, description }: SingleTestimonialProps) => {
   return (
-    <div className="flex w-full items-center justify-center text-center text-black">
+    <div className="flex w-full items-center justify-center text-center text-[#1E1E1E]">
       <div
         className="wow fadeInUp mx-auto rounded-md p-8 lg:px-5 xl:px-8"
         data-wow-delay=".1s"
