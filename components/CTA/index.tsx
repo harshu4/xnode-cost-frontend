@@ -6,7 +6,7 @@ const CTA = ({ scrollIntoView }) => {
     <>
       <section
         id="cta"
-        className="relative z-10 overflow-hidden bg-white pt-[120px] pb-16 text-black md:pt-[150px] md:pb-[120px] xl:pt-[180px] xl:pb-[160px] 2xl:pt-[100px] 2xl:pb-[50px]"
+        className="relative z-10 overflow-hidden bg-white pt-[70px] pb-10 text-[#1E1E1E] md:pb-0 md:pt-[10px] xl:pb-20"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">

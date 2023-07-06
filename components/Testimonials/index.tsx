@@ -35,7 +35,7 @@ const testimonialData = [
 
 const Testimonials = () => {
   return (
-    <section className="relative z-10 bg-white py-16 md:py-20 lg:py-28">
+    <section className="relative z-10 bg-white pt-6 pb-0 md:pb-24">
       <div className="px-10">
         <div className="grid grid-cols-1 bg-white md:grid-cols-6">
           {testimonialData.map((testimonial, index) => (

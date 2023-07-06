@@ -3,7 +3,7 @@ const AboutL3A = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pt-[120px] pb-16 text-black md:pt-[150px] md:pb-[120px] xl:pt-[180px] xl:pb-[160px] 2xl:pt-[200px] 2xl:pb-[50px]"
+        className="relative z-10 overflow-hidden bg-white pt-[120px] pb-4 text-[#1E1E1E] md:pt-[150px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -15,7 +15,7 @@ const AboutL3A = () => {
                 <h1 className="mb-5 text-2xl font-semibold leading-tight sm:text-4xl sm:leading-tight md:text-6xl md:leading-tight">
                   About L3A
                 </h1>
-                <p className="text-body-black mb-12 text-base font-medium  !leading-relaxed dark:opacity-90 sm:text-lg md:text-4xl">
+                <p className="text-body-black mb-6 text-base font-medium !leading-relaxed  dark:opacity-90 sm:text-lg md:mb-12 md:text-4xl">
                   The forefront of developing open data infrastructure,
                   technology, and standards
                 </p>

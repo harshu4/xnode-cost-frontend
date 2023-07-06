@@ -14,6 +14,8 @@ import Contribute from '@/components/Contribute'
 import Features from '@/components/Features'
 import Hero from '@/components/Hero'
 import Pricing from '@/components/Pricing'
+import SocialMedia from '@/components/SocialMedia'
+import TallyForms from '@/components/TallyForms'
 import Testimonials from '@/components/Testimonials'
 import Video from '@/components/Video'
 import { Inter } from '@next/font/google'
@@ -37,16 +39,8 @@ export default function Home() {
         <L3AContributors />
       </div>
       <Contribute />
-      <Features />
-      <Video />
-      <Brands />
-      <AboutSectionOne />
-      <AboutSectionTwo />
-      <div ref={pricingRef}>
-        <Pricing />
-      </div>
-      <Blog />
-      <Contact />
+      <TallyForms />
+      <SocialMedia />
     </>
   )
 }

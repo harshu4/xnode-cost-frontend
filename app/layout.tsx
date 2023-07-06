@@ -1,6 +1,6 @@
 'use client'
 
-import Footer from '@/components/Footer'
+// import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
 import 'node_modules/react-modal-video/css/modal-video.css'
 import '../styles/index.css'
@@ -24,7 +24,6 @@ export default function RootLayout({
         <Providers>
           {/* <Header /> */}
           {children}
-          <Footer />
           <ScrollToTop />
         </Providers>
       </body>
