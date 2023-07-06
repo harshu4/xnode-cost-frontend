@@ -38,12 +38,8 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <RevealWrapper>
-        <Hero />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Hero2 />
-      </RevealWrapper>
+      <Hero />
+      <Hero2 />
       <RevealWrapper>
         <Hero3 />
       </RevealWrapper>
