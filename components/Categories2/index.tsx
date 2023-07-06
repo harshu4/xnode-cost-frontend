@@ -6,9 +6,9 @@ const Categories2 = () => {
   return (
     <section
       id="categories"
-      className="relative z-10 mt-0 overflow-hidden bg-white pb-16 text-[#1E1E1E] md:pb-0 md:pt-[0px] xl:pb-16"
+      className="relative z-10 mt-0 bg-white pb-16 text-[#1E1E1E] md:pb-0 md:pt-[0px] xl:pb-16"
     >
-      <div className="ml-52 mr-52">
+      <div className="mx-5 md:mx-20 xl:mx-52">
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
           <Image
             src="/images/categories/l3aCore.svg"
@@ -18,7 +18,7 @@ const Categories2 = () => {
             className="w-1/2 rounded-md md:w-2/5"
           />
           <div className="md:ml-10 md:mr-2">
-            <div className="max-h-[280px] overflow-hidden ">
+            <div className="max-h-[280px]">
               <p
                 title="Meu teste"
                 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
@@ -49,7 +49,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="ml-[170px] w-10 md:w-1"
+            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -61,7 +61,7 @@ const Categories2 = () => {
             className="w-1/2 rounded-md md:w-2/5"
           />
           <div className="md:ml-10 md:mr-2">
-            <div className="max-h-[280px] overflow-hidden ">
+            <div className="max-h-[280px]">
               <p
                 title="Meu teste"
                 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
@@ -92,7 +92,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="ml-[170px] w-10 md:w-1"
+            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -104,7 +104,7 @@ const Categories2 = () => {
             className="w-1/2 rounded-md md:w-2/5"
           />
           <div className="md:ml-10 md:mr-2">
-            <div className="max-h-[280px] overflow-hidden ">
+            <div className="max-h-[280px]">
               <p
                 title="Meu teste"
                 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
@@ -135,7 +135,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="ml-[170px] w-10 md:w-1"
+            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -147,7 +147,7 @@ const Categories2 = () => {
             className="w-1/2 rounded-md md:w-2/5"
           />
           <div className="md:ml-10 md:mr-2">
-            <div className="max-h-[280px] overflow-hidden ">
+            <div className="max-h-[280px]">
               <p
                 title="Meu teste"
                 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
@@ -178,7 +178,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="ml-[170px] w-10 md:w-1"
+            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -190,7 +190,7 @@ const Categories2 = () => {
             className="w-1/2 rounded-md md:w-2/5"
           />
           <div className="md:ml-10 md:mr-2">
-            <div className="max-h-[280px] overflow-hidden ">
+            <div className="max-h-[280px]">
               <p
                 title="Meu teste"
                 className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"

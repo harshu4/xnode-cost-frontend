@@ -7,7 +7,7 @@ const SingleTestimonial = ({ title, description }: SingleTestimonialProps) => {
   return (
     <div className="flex w-full items-center justify-center text-center text-[#1E1E1E]">
       <div
-        className="wow fadeInUp mx-auto rounded-md p-8 md:px-2 xl:px-8"
+        className="wow fadeInUp mx-auto rounded-md p-8 md:px-0 xl:px-8"
         data-wow-delay=".1s"
       >
         <p className="mx-auto text-2xl font-bold   leading-relaxed md:text-xl xl:text-4xl">

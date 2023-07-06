@@ -45,7 +45,7 @@ const testimonialData = [
   },
 ]
 
-const Contribute = ({ onTestimonialClick }) => {
+const Contribute = ({ scrollIntoView }) => {
   return (
     <section className="relative z-10 bg-white pb-32 pt-8 md:pt-0 md:pb-40 lg:pt-0 xl:pb-56">
       <div className="container px-10">
@@ -57,7 +57,7 @@ const Contribute = ({ onTestimonialClick }) => {
                 title={testimonial.title}
                 tally={testimonial.tally}
                 description={testimonial.description}
-                onTestimonialClick={onTestimonialClick}
+                scrollIntoView={scrollIntoView}
               />
             </div>
           ))}

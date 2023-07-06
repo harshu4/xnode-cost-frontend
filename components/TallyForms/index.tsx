@@ -1,17 +1,11 @@
+/* eslint-disable no-unused-vars */
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-const TallyForms = ({ tally }) => {
+const TallyForms = () => {
   const [iframeSrc, setIframeSrc] = useState(
     'https://tally.so/embed/wMDl0E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1',
   )
-
-  useEffect(() => {
-    console.log('fui chamado')
-    setIframeSrc(
-      `https://tally.so/embed/wMDl0E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&role=${tally}`,
-    )
-  }, [tally])
 
   return (
     <>
@@ -24,7 +18,9 @@ const TallyForms = ({ tally }) => {
             {' '}
             {/* Adicionado esta linha */}
             <iframe
-              data-tally-src={iframeSrc}
+              data-tally-src={
+                'https://tally.so/embed/wMDl0E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
+              }
               className="w-full md:w-1/2"
               height="284"
               title="Contact form"

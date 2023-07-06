@@ -44,11 +44,11 @@ const Header = () => {
             : 'absolute'
         }`}
       >
-        <div className="container flex justify-center">
+        <div className="container flex">
           {' '}
           {/* Adicionado flex e justify-center aqui */}
-          <div className="items-center">
-            <div className="w-96 max-w-full">
+          <div className="">
+            <div className="w-32 max-w-full md:w-48">
               <Link
                 href="/"
                 className={`header-logo block w-full ${
@@ -60,7 +60,7 @@ const Header = () => {
                   alt="logo"
                   width={200}
                   height={50}
-                  className="w-full"
+                  className="w-1/2 md:w-full"
                 />
               </Link>
             </div>
