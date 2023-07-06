@@ -1,14 +1,37 @@
 interface SingleTestimonialProps {
   title: string
   description: string
+  tally: string
+  onTestimonialClick: (tally: string) => void
 }
 
-const SingleTestimonial = ({ title, description }: SingleTestimonialProps) => {
+const SingleTestimonial = ({
+  title,
+  description,
+  tally,
+  onTestimonialClick,
+}: SingleTestimonialProps) => {
   const isCareers = title === 'Careers ->'
+
+  // const updateUrl = (param: string, value: string | null) => {
+  //   if (typeof window !== 'undefined') {
+  //     const url = new URL(window.location.href)
+
+  //     if (value) {
+  //       url.searchParams.set(param, value)
+  //     } else {
+  //       url.searchParams.delete(param)
+  //     }
+
+  //     window.history.pushState({}, '', url.toString())
+  //   }
+  // }
 
   const handleClick = () => {
     if (isCareers) {
       window.open('https://www.career.l3a.xyz/active', '_blank')
+    } else {
+      onTestimonialClick(tally)
     }
   }
 

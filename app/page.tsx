@@ -19,13 +19,20 @@ import TallyForms from '@/components/TallyForms'
 import Testimonials from '@/components/Testimonials'
 import Video from '@/components/Video'
 import { Inter } from '@next/font/google'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const pricingRef = useRef(null)
   const contributorsRef = useRef(null)
+  const tallyForms = useRef(null)
+
+  const [tally, setTally] = useState(null)
+
+  const handleTestimonialClick = (testimonialTally) => {
+    setTally(testimonialTally)
+  }
 
   return (
     <>
@@ -38,8 +45,10 @@ export default function Home() {
       <div ref={contributorsRef}>
         <L3AContributors />
       </div>
-      <Contribute />
-      <TallyForms />
+      <Contribute onTestimonialClick={tallyForms} />
+      <div ref={tallyForms}>
+        <TallyForms tally={tally} />
+      </div>
       <SocialMedia />
     </>
   )

@@ -1,6 +1,18 @@
 import Script from 'next/script'
+import { useEffect, useState } from 'react'
 
-const TallyForms = () => {
+const TallyForms = ({ tally }) => {
+  const [iframeSrc, setIframeSrc] = useState(
+    'https://tally.so/embed/wMDl0E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1',
+  )
+
+  useEffect(() => {
+    console.log('fui chamado')
+    setIframeSrc(
+      `https://tally.so/embed/wMDl0E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&role=${tally}`,
+    )
+  }, [tally])
+
   return (
     <>
       <section id="talyforms" className=" bg-white">
@@ -12,7 +24,7 @@ const TallyForms = () => {
             {' '}
             {/* Adicionado esta linha */}
             <iframe
-              data-tally-src="https://tally.so/embed/w8zYdx?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              data-tally-src={iframeSrc}
               className="w-full md:w-1/2"
               height="284"
               title="Contact form"
