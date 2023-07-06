@@ -24,7 +24,7 @@ const Hero = () => {
                 <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-7xl md:leading-tight">
                   Join the ecosystem
                 </h1>
-                <p className="text-body-black mb-12 xl:mb-12 md:mb-3 text-base font-medium  !leading-relaxed dark:opacity-90 sm:text-lg md:text-4xl">
+                <p className="text-body-black mb-12 text-base font-medium !leading-relaxed dark:opacity-90  sm:text-lg md:mb-3 md:text-4xl xl:mb-12">
                   Help build the decentralized data infrastructure and standards
                   across Web3
                 </p>
