@@ -9,7 +9,7 @@ const Categories = () => {
       className="relative z-10 overflow-hidden bg-white pb-16 text-[#1E1E1E] md:pb-0 md:pt-[10px] xl:pb-16"
     >
       <div className="container">
-        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24 xl:px-40">
+        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24">
           <Image
             src="/images/blockchainLogo.svg"
             alt="logo"
@@ -43,7 +43,7 @@ const Categories = () => {
             </div>
           </div>
         </div>
-        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24 xl:px-40">
+        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24">
           <Image
             src="/images/blockchainLogo.svg"
             alt="logo"
@@ -78,7 +78,7 @@ const Categories = () => {
             </div>
           </div>
         </div>
-        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24 xl:px-40">
+        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24">
           <Image
             src="/images/blockchainLogo.svg"
             alt="logo"
@@ -112,7 +112,7 @@ const Categories = () => {
             </div>
           </div>
         </div>
-        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24 xl:px-40">
+        <div className="relative mb-5 items-start rounded-md bg-white p-4 text-xs md:mb-10 md:flex md:px-20 lg:text-sm xl:mb-24">
           <Image
             src="/images/blockchainLogo.svg"
             alt="logo"
