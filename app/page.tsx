@@ -26,6 +26,7 @@ import Testimonials from '@/components/Testimonials'
 import Video from '@/components/Video'
 import { Inter } from '@next/font/google'
 import { useRef, useState } from 'react'
+import { RevealWrapper } from 'next-reveal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,19 +38,33 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <Hero />
-      <Hero2 />
-      <Hero3 />
-      <Hero4 />
-      <Techs />
-      <Categories2 />
+      <RevealWrapper>
+        <Hero />
+      </RevealWrapper>
+      <RevealWrapper>
+        <Hero2 />
+      </RevealWrapper>
+      <RevealWrapper>
+        <Hero3 />
+      </RevealWrapper>
+      <RevealWrapper>
+        <Hero4 />
+      </RevealWrapper>
+      <RevealWrapper>
+        <Techs />
+      </RevealWrapper>
+      <RevealWrapper>
+        <Categories2 />
+      </RevealWrapper>
       {/* <Testimonials /> */}
       {/* <CTA scrollIntoView={contributorsRef} /> */}
       {/* <AboutL3A />
       <Categories /> */}
-      <div ref={contributorsRef}>
-        <L3AContributors />
-      </div>
+      <RevealWrapper>
+        <div ref={contributorsRef}>
+          <L3AContributors />
+        </div>
+      </RevealWrapper>
       <Contribute2 scrollIntoView={tallyFormsRef} />
       <div ref={tallyFormsRef}>
         <TallyForms />
