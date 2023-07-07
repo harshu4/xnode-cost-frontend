@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Hero3 = () => {
   return (
-    <section className="relative z-10 mt-8 bg-white pb-0 text-[#1E1E1E] md:px-44 md:pb-1 lg:mt-4 xl:px-96">
+    <section className="lg:mt-4mx-auto relative z-10 mt-8 bg-white pb-0 text-[#1E1E1E]">
       <div
         className="wow fadeInUp mx-auto flex flex-col items-center justify-center rounded-md text-center"
         data-wow-delay=".1s"
@@ -12,7 +12,7 @@ const Hero3 = () => {
             3
           </span>
         </div>
-        <p className="mx-auto mb-12 mt-4 w-[323px] text-xl font-bold leading-tight tracking-tight md:mb-2 lg:w-[800px] lg:text-[1.85rem]">
+        <p className="mx-auto mb-12 mt-4 w-[323px] text-xl font-bold leading-tight tracking-tight md:mb-2 lg:w-[800px] 2xl:text-[1.85rem]">
           <span className="text-[#6B6B6B]">
             Information asymmetry, a result of this control, has given rise to
             social inequality, scandals, polarization, and corruption. In

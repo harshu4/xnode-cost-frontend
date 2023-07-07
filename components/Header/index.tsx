@@ -5,6 +5,8 @@ import { useState } from 'react'
 import ThemeToggler from './ThemeToggler'
 import menuData from './menuData'
 import { List } from 'phosphor-react'
+import * as Dialog from '@radix-ui/react-dialog'
+import { HeaderModal } from '../Modals/HeaderModal'
 
 const Header = () => {
   // Navbar toggle
@@ -45,8 +47,8 @@ const Header = () => {
         </div>
       </Link>
       <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[80px] w-full items-center border-b border-[#dddd] bg-transparent bg-white bg-opacity-80">
-        <div className="mx-auto flex w-full max-w-[1440px] pr-8 lg:px-0">
-          <div className="flex w-full items-center justify-between lg:gap-24">
+        <div className="mx-auto flex w-full max-w-[1280px] pr-8 2xl:max-w-[1440px] 2xl:px-0">
+          <div className="flex w-full items-center justify-between lg:gap-12 2xl:gap-24">
             <Link href="/">
               <Image
                 src="/images/logo/l3a-logo.svg"
@@ -71,7 +73,14 @@ const Header = () => {
                 </li>
               </Link>
             </ul>
-            <List className="text-black lg:hidden" size={24} weight="bold" />
+            <div className="lg:hidden">
+              <Dialog.Root>
+                <Dialog.Trigger>
+                  <List className="text-black" size={24} weight="bold" />
+                </Dialog.Trigger>
+                <HeaderModal navigationItems={navigationItems} />
+              </Dialog.Root>
+            </div>
           </div>
         </div>
       </header>
