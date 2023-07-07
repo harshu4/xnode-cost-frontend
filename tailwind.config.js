@@ -29,8 +29,7 @@ module.exports = {
         sticky: 'inset 0 -1px 0 0 rgba(0, 0, 0, 0.1)',
       },
       scale: {
-        70: '0.7',
-        80: '0.8',
+        115: '1.15',
       },
     },
   },
