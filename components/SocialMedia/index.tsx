@@ -17,10 +17,10 @@ const SocialMedia = () => {
                 className="wow fadeInUp mx-auto max-w-[800px] text-center"
                 data-wow-delay=".2s"
               >
-                <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-7xl md:leading-tight">
+                <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-7xl md:leading-tight xl:text-4xl">
                   Curious for more?
                 </h1>
-                <p className="text-body-black mb-1 text-base font-medium !leading-relaxed  dark:opacity-90 sm:text-lg md:mb-6 md:text-4xl">
+                <p className="text-body-black mb-1 text-base font-medium !leading-relaxed  dark:opacity-90 sm:text-lg md:mb-6 md:text-4xl xl:text-2xl">
                   Follow our socials
                 </p>
                 <Image

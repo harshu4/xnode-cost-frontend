@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 const Hero2 = () => {
   return (
-    <section className="relative z-10 bg-white pt-6 pb-1 md:pb-1 xl:px-52">
-      <div className="px-2 md:px-10">
+    <section className="relative z-10  pt-6 pb-1 md:pb-1 xl:px-10">
+      <div className="px-2 md:px-1">
         <div className="grid grid-cols-1 bg-white md:grid-cols-3">
           <div className="flex w-full items-center justify-center text-center text-[#1E1E1E]">
             <div
@@ -15,12 +15,12 @@ const Hero2 = () => {
                 alt="logo"
                 width={100}
                 height={20}
-                className="mx-auto mb-2 w-1/5 transition-all duration-200 hover:z-20 hover:scale-110"
+                className="mx-auto mb-2 w-1/6 transition-all duration-200 hover:z-20 hover:scale-110"
               />
-              <p className="mx-auto mb-2 text-xl font-extrabold  leading-relaxed md:text-xl xl:text-4xl">
+              <p className="mx-auto mb-2 text-xl font-bold  leading-relaxed md:text-[40px]">
                 Today Data & internet infrastructures are centralized.
               </p>
-              <p className="mx-auto text-xs  leading-relaxed  md:text-sm xl:text-base">
+              <p className="mx-auto text-xs font-light  leading-relaxed  md:text-[18px]">
                 Large data players such as Amazon, Google, Facebook, and
                 Microsoft control over 85% of Internet data and infrastructure,
                 effectively becoming data monopolies. They control more than 100
@@ -35,19 +35,19 @@ const Hero2 = () => {
               data-wow-delay=".1s"
             >
               <Image
-                src="/images/lines/DoupleLines.svg"
+                src="/images/lines/ForkLines.svg"
                 alt="logo"
                 width={100}
                 height={20}
-                className="mx-auto mt-20 mb-10 hidden w-72 md:mb-20 md:block"
+                className="mx-auto mt-20 mb-10 hidden h-[309px] w-[190.44px] md:mb-20 md:block"
               />
-              <Image
+              {/* <Image
                 src="/images/lines/Line3.svg"
                 alt="logo"
                 width={100}
                 height={20}
                 className="mx-auto -mt-32 mb-10 w-1 transition-all duration-200 hover:z-20 hover:scale-110 md:mb-1 md:hidden"
-              />
+              /> */}
             </div>
           </div>
           <div className="flex w-full items-center justify-center px-10 text-center text-[#1E1E1E] md:px-0">
@@ -60,13 +60,13 @@ const Hero2 = () => {
                 alt="logo"
                 width={100}
                 height={20}
-                className="mx-auto mb-2 w-1/5 transition-all duration-200 hover:z-20 hover:scale-110"
+                className="mx-auto mb-2 w-1/6 transition-all duration-200 hover:z-20 hover:scale-110"
               />
-              <p className="mx-auto mb-2 text-xl font-extrabold  leading-relaxed md:text-xl xl:text-4xl">
+              <p className="mx-auto mb-2 text-xl font-bold  leading-relaxed md:text-[40px]">
                 Without reliable, affordable data and infrastructures, the web3
                 industry cannot scale.
               </p>
-              <p className="mx-auto mb-20 text-xs leading-relaxed  md:mb-0  md:text-sm xl:text-base">
+              <p className="mx-auto text-xs font-light  leading-relaxed  md:text-[18px]">
                 The scalability and staggering growth of major internet
                 industries such as social media, e-commerce, and sharing
                 economies like Uber can be attributed to affordable IT data

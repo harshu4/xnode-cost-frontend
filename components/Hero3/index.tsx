@@ -14,12 +14,12 @@ const Hero3 = () => {
           height={20}
           className="mx-auto mb-2 w-1/5 transition-all duration-200 hover:z-20 hover:scale-110 md:w-1/12"
         />
-        <p className="mx-auto mb-12 text-xl font-bold leading-relaxed  md:mb-2 md:text-xl xl:text-4xl">
+        <p className="mx-auto mb-12 text-xl font-bold leading-relaxed  md:mb-2 md:text-[30px]">
           <span className="text-[#6B6B6B]">
             Information asymmetry, a result of this control, has given rise to
             social inequality, scandals, polarization, and corruption. In
             extreme cases, it has even triggered wars. With such a
-          </span>
+          </span>{' '}
           massive concentration of data and information, surveillance capitalism
           has begun to influence politics and culture profoundly
         </p>

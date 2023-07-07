@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ThemeToggler from './ThemeToggler'
 import menuData from './menuData'
 
@@ -11,19 +11,6 @@ const Header = () => {
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
   }
-
-  // Sticky Navbar
-  const [sticky, setSticky] = useState(false)
-  const handleStickyNavbar = () => {
-    if (window.scrollY >= 80) {
-      setSticky(true)
-    } else {
-      setSticky(false)
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleStickyNavbar)
-  })
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1)
@@ -38,22 +25,14 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header top-0 left-0 z-40 flex w-full items-center bg-transparent ${
-          sticky
-            ? '!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition'
-            : 'absolute'
-        }`}
+        className="header top-0 left-0 z-40 flex w-full items-center bg-transparent bg-white bg-opacity-80 border-b border-[#dddd]"
       >
         <div className="container flex">
-          {' '}
-          {/* Adicionado flex e justify-center aqui */}
           <div className="">
             <div className="w-32 max-w-full md:w-48">
               <Link
                 href="/"
-                className={`header-logo block w-full ${
-                  sticky ? 'py-5 lg:py-2' : 'py-8'
-                } `}
+                className="header-logo block w-full py-5 lg:py-2"
               >
                 <Image
                   src="/images/logo/l3a-logo.svg"

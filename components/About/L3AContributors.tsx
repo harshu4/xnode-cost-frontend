@@ -12,7 +12,7 @@ const L3AContributors = () => {
                 className="wow fadeInUp mx-auto max-w-[800px] text-center"
                 data-wow-delay=".2s"
               >
-                <h1 className="mb-5 text-2xl font-semibold leading-tight sm:text-4xl sm:leading-tight md:text-6xl md:leading-tight">
+                <h1 className="mb-5 text-2xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-[36px] md:leading-tight">
                   Engage With Our Diverse Ecosystem
                 </h1>
                 {/* <p className="text-body-black text-base font-medium  !leading-relaxed dark:opacity-90 sm:text-lg md:text-4xl">

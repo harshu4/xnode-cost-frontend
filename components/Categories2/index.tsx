@@ -19,16 +19,10 @@ const Categories2 = () => {
           />
           <div className="md:ml-10 md:mr-2">
             <div className="max-h-[280px]">
-              <p
-                title="Meu teste"
-                className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
-              >
+              <p className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                 L3A Core
               </p>
-              <p
-                className="mt-2 text-xs  md:mt-3 md:text-sm xl:mt-5 xl:text-lg "
-                title="Meu teste"
-              >
+              <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
                 Join us as we expand our goal of Deeplink to advance the smart
                 contract ecosystems. The Deeplink developer toolkit will allow
                 developers and data scientists to build, train, and deploy data
@@ -62,16 +56,10 @@ const Categories2 = () => {
           />
           <div className="md:ml-10 md:mr-2">
             <div className="max-h-[280px]">
-              <p
-                title="Meu teste"
-                className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
-              >
+              <p className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                 Transparency & governence{' '}
               </p>
-              <p
-                className="mt-2 text-xs  md:mt-3 md:text-sm xl:mt-5 xl:text-lg "
-                title="Meu teste"
-              >
+              <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
                 Join us as we expand our goal of Deeplink to advance the smart
                 contract ecosystems. The Deeplink developer toolkit will allow
                 developers and data scientists to build, train, and deploy data
@@ -105,16 +93,10 @@ const Categories2 = () => {
           />
           <div className="md:ml-10 md:mr-2">
             <div className="max-h-[280px]">
-              <p
-                title="Meu teste"
-                className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
-              >
+              <p className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                 Transparency & governence
               </p>
-              <p
-                className="mt-2 text-xs  md:mt-3 md:text-sm xl:mt-5 xl:text-lg "
-                title="Meu teste"
-              >
+              <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
                 Join us as we expand our goal of Deeplink to advance the smart
                 contract ecosystems. The Deeplink developer toolkit will allow
                 developers and data scientists to build, train, and deploy data
@@ -148,16 +130,10 @@ const Categories2 = () => {
           />
           <div className="md:ml-10 md:mr-2">
             <div className="max-h-[280px]">
-              <p
-                title="Meu teste"
-                className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
-              >
+              <p className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                 Transparency & governence
               </p>
-              <p
-                className="mt-2 text-xs  md:mt-3 md:text-sm xl:mt-5 xl:text-lg "
-                title="Meu teste"
-              >
+              <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
                 Join us as we expand our goal of Deeplink to advance the smart
                 contract ecosystems. The Deeplink developer toolkit will allow
                 developers and data scientists to build, train, and deploy data
@@ -191,16 +167,10 @@ const Categories2 = () => {
           />
           <div className="md:ml-10 md:mr-2">
             <div className="max-h-[280px]">
-              <p
-                title="Meu teste"
-                className="mt-2 text-2xl font-semibold md:mt-0 md:text-3xl xl:text-4xl"
-              >
+              <p className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                 Transparency & governence
               </p>
-              <p
-                className="mt-2 text-xs  md:mt-3 md:text-sm xl:mt-5 xl:text-lg "
-                title="Meu teste"
-              >
+              <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
                 Join us as we expand our goal of Deeplink to advance the smart
                 contract ecosystems. The Deeplink developer toolkit will allow
                 developers and data scientists to build, train, and deploy data
