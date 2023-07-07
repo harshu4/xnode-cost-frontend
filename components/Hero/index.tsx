@@ -5,7 +5,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white pt-[10px] text-[#1E1E1E] lg:pt-[100px]"
+        className="relative z-10 overflow-hidden bg-white pt-[10px] text-[#1E1E1E]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
