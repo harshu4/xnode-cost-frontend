@@ -43,7 +43,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
+            className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -80,7 +80,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
+            className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -117,7 +117,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
+            className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">
@@ -154,7 +154,7 @@ const Categories2 = () => {
             alt="logo"
             width={200}
             height={50}
-            className="mb:mb-0 mt-2 mb-2 ml-32 w-1 md:mt-0 md:ml-[170px] md:w-1"
+            className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[170px] md:w-1"
           />
         </div>
         <div className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm">

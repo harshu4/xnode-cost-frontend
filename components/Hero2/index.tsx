@@ -5,9 +5,9 @@ const Hero2 = () => {
     <section className="relative z-10  pt-6 pb-1 md:pb-1 xl:px-10">
       <div className="px-2 md:px-1">
         <div className="grid grid-cols-1 bg-white md:grid-cols-3">
-          <div className="flex w-full items-center justify-center text-center text-[#1E1E1E]">
+          <div className="flex w-full items-center justify-center text-center text-[#000000]">
             <div
-              className="wow fadeInUp mx-auto rounded-md p-8 md:px-2 xl:px-8"
+              className="wow fadeInUp mx-auto rounded-md p-8 md:px-2 lg:ml-7 xl:ml-0 xl:px-8"
               data-wow-delay=".1s"
             >
               <Image
@@ -17,10 +17,10 @@ const Hero2 = () => {
                 height={20}
                 className="mx-auto mb-2 w-1/6 transition-all duration-200 hover:z-20 hover:scale-110"
               />
-              <p className="mx-auto mb-2 text-xl font-bold  leading-relaxed md:text-[40px]">
+              <p className="mx-auto mb-2 text-xl font-bold leading-relaxed lg:ml-2 lg:text-[30px] xl:text-[40px]">
                 Today Data & internet infrastructures are centralized.
               </p>
-              <p className="mx-auto text-xs font-light  leading-relaxed  md:text-[18px]">
+              <p className="mx-auto text-xs font-light  leading-relaxed  lg:text-[10px] xl:text-[18px]">
                 Large data players such as Amazon, Google, Facebook, and
                 Microsoft control over 85% of Internet data and infrastructure,
                 effectively becoming data monopolies. They control more than 100
@@ -29,7 +29,7 @@ const Hero2 = () => {
               </p>
             </div>
           </div>
-          <div className="flex w-full items-center justify-center text-center text-[#1E1E1E] ">
+          <div className="flex w-full items-center justify-center text-center text-[#000000]">
             <div
               className="wow fadeInUp mx-auto mt-32 flex w-full rounded-md p-8 md:px-2 xl:px-1"
               data-wow-delay=".1s"
@@ -39,7 +39,7 @@ const Hero2 = () => {
                 alt="logo"
                 width={100}
                 height={20}
-                className="mx-auto mt-20 mb-10 hidden h-[309px] w-[190.44px] md:mb-20 md:block"
+                className="mx-auto mt-12  mb-10 hidden h-[409px] md:mb-20 md:block lg:w-[190.44px] xl:w-[290.44px]"
               />
               {/* <Image
                 src="/images/lines/Line3.svg"
@@ -50,7 +50,7 @@ const Hero2 = () => {
               /> */}
             </div>
           </div>
-          <div className="flex w-full items-center justify-center px-10 text-center text-[#1E1E1E] md:px-0">
+          <div className="flex w-full items-center justify-center px-10 text-center text-[#000000] md:px-0 lg:mr-7 xl:mr-0 ">
             <div
               className="wow fadeInUp mx-auto rounded-md pt-2 md:pt-14"
               data-wow-delay=".1s"
@@ -62,11 +62,11 @@ const Hero2 = () => {
                 height={20}
                 className="mx-auto mb-2 w-1/6 transition-all duration-200 hover:z-20 hover:scale-110"
               />
-              <p className="mx-auto mb-2 text-xl font-bold  leading-relaxed md:text-[40px]">
+              <p className="mx-auto mb-2 text-xl font-bold  leading-relaxed text-[#000000] lg:text-[30px] xl:text-[40px]">
                 Without reliable, affordable data and infrastructures, the web3
                 industry cannot scale.
               </p>
-              <p className="mx-auto text-xs font-light  leading-relaxed  md:text-[18px]">
+              <p className="mx-auto text-xs font-light  leading-relaxed  text-[#000000] lg:text-[10px] xl:text-[18px]">
                 The scalability and staggering growth of major internet
                 industries such as social media, e-commerce, and sharing
                 economies like Uber can be attributed to affordable IT data
@@ -79,13 +79,6 @@ const Hero2 = () => {
             </div>
           </div>
         </div>
-        <Image
-          src="/images/lines/Line3.svg"
-          alt="logo"
-          width={100}
-          height={20}
-          className="mx-auto mb-10 w-1 transition-all duration-200 hover:z-20 hover:scale-110 md:-mt-32 md:mb-1"
-        />
       </div>
     </section>
   )

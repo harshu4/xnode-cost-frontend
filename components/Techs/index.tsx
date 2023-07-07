@@ -64,7 +64,7 @@ const Techs = () => {
             </div>
           </div>
           <Image
-            src="/images/lines/CurvedLine.svg"
+            src="/images/lines/CurvedLineFixed.svg"
             alt="logo"
             width={100}
             height={20}
