@@ -24,16 +24,11 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className="header top-0 left-0 z-40 flex w-full items-center bg-transparent bg-white bg-opacity-80 border-b border-[#dddd]"
-      >
+      <header className="header top-0 left-0 z-40 flex w-full items-center border-b border-[#dddd] bg-transparent bg-white bg-opacity-80">
         <div className="container flex">
           <div className="">
             <div className="w-32 max-w-full md:w-48">
-              <Link
-                href="/"
-                className="header-logo block w-full py-5 lg:py-2"
-              >
+              <Link href="/" className="header-logo block w-full py-5 lg:py-2">
                 <Image
                   src="/images/logo/l3a-logo.svg"
                   alt="logo"
