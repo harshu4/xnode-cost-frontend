@@ -68,7 +68,7 @@ const Techs = () => {
             alt="logo"
             width={100}
             height={20}
-            className="mx-auto -mt-24 max-w-xl transition-all duration-200 hover:z-20 hover:scale-110 md:ml-0 md:w-1/2 xl:-mt-24 xl:ml-32 xl:w-full"
+            className="-mt-24 ml-64 flex  w-full max-w-xl justify-center transition-all duration-200 hover:z-20 hover:scale-110"
           />
         </div>
       </>

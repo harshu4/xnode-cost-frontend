@@ -2,19 +2,17 @@ import Image from 'next/image'
 
 const Hero3 = () => {
   return (
-    <section className="relative z-10 bg-white pb-0 text-[#1E1E1E] md:px-44 md:pb-1 xl:px-96">
+    <section className="relative z-10 mt-8 bg-white pb-0 text-[#1E1E1E] md:px-44 md:pb-1 lg:mt-4 xl:px-96">
       <div
-        className="wow fadeInUp mx-auto items-center justify-center rounded-md p-8 text-center md:px-2 xl:px-8"
+        className="wow fadeInUp mx-auto flex flex-col items-center justify-center rounded-md text-center"
         data-wow-delay=".1s"
       >
-        <Image
-          src="/images/numbers/3.svg"
-          alt="logo"
-          width={100}
-          height={20}
-          className="mx-auto mb-2 w-1/5 transition-all duration-200 hover:z-20 hover:scale-110 md:w-1/12"
-        />
-        <p className="mx-auto mb-12 text-xl font-bold leading-relaxed  md:mb-2 md:text-[30px]">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#000000] lg:h-20 lg:w-20">
+          <span className="text-[2rem] font-bold text-white lg:text-[2.5rem]">
+            3
+          </span>
+        </div>
+        <p className="mx-auto mb-12 mt-4 w-[323px] text-xl font-bold leading-tight tracking-tight md:mb-2 lg:w-[800px] lg:text-[1.85rem]">
           <span className="text-[#6B6B6B]">
             Information asymmetry, a result of this control, has given rise to
             social inequality, scandals, polarization, and corruption. In

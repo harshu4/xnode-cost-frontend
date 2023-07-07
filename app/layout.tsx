@@ -21,7 +21,7 @@ export default function RootLayout({
       */}
       <head />
 
-      <body className="bg-white">
+      <body className="max-w-screen w-full bg-white">
         <Providers>
           <Header />
           {children}
