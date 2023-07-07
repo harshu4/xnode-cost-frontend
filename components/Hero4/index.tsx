@@ -6,22 +6,24 @@ const Hero4 = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white text-[#000000] md:pt-[10px]"
+        className="relative z-10 mx-auto w-full max-w-[393px] overflow-hidden bg-white px-8 text-[#000000] lg:max-w-[1000px] lg:px-0"
       >
-        <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4">
+        <div className="w-full">
+          <div className="flex w-full flex-wrap">
+            <div className="w-full">
               <div
-                className="wow fadeInUp mx-auto max-w-[1900px] text-center"
+                className="wow fadeInUp mx-auto w-full text-center"
                 data-wow-delay=".2s"
               >
-                <h1 className="mb-5 text-2xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-[60px] md:leading-tight">
-                  <span className="font-normal">
-                    Join our ecosystem to build{' '}
-                  </span>{' '}
-                  open data infrastructure for web3 without a middleman.
-                </h1>
-                <p className="text-body-black mb-12 px-12 text-sm font-medium !leading-relaxed dark:opacity-90 sm:text-lg  md:mb-3 md:px-28 md:text-[30px] xl:mb-12">
+                <div className="flex w-full flex-col text-center">
+                  <h1 className="font-regular text-2xl leading-none tracking-tight lg:text-[3.75rem]">
+                    Join our ecosystem to build
+                  </h1>
+                  <h1 className="text-2xl font-bold leading-none tracking-tighter lg:text-[3.75rem] ">
+                    open data infrastructure for web3 without a middleman.
+                  </h1>
+                </div>
+                <p className="text-body-black mb-12 mt-2 text-sm font-medium leading-snug tracking-tight text-[#000000] dark:opacity-90 sm:text-lg  md:mb-3 md:px-28 md:text-[30px] lg:mt-8 xl:mb-12">
                   No matter your role - developer, user, academic, partner - you
                   have a part to play in L3A's mission. Get involved and help
                   shape the future of Web 3.0.
