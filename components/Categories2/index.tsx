@@ -39,7 +39,7 @@ const Categories2 = () => {
   return (
     <section
       id="categories"
-      className="relative z-10 mx-auto mt-0 w-full max-w-[393px] bg-white px-8 pb-16 text-[#1E1E1E] lg:max-w-[1440px] lg:px-4"
+      className="relative z-10 mx-auto w-full max-w-[393px] bg-white px-8 pb-16 text-[#1E1E1E] lg:max-w-[1440px] lg:px-4"
     >
       <div className="w-full">
         {categories.map((category, index) => {
