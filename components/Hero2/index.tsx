@@ -15,10 +15,10 @@ const Hero2 = () => {
               </span>
             </div>
 
-            <h1 className="mx-auto mt-2 w-[423px] text-xl font-bold leading-none tracking-tight lg:text-4xl 2xl:w-[538px] 2xl:text-[2.5rem]">
+            <h1 className="mx-auto mt-2 w-[200px] text-xl font-bold leading-none tracking-tight lg:w-[423px] lg:text-4xl 2xl:w-[538px] 2xl:text-[2.5rem]">
               Today Data & internet infrastructures are centralized.
             </h1>
-            <p className="mx-auto mt-2 w-[423px] text-xs font-light !leading-tight tracking-tight lg:mt-4 lg:text-[10px] xl:text-lg 2xl:w-[502px]">
+            <p className="mx-auto mt-2 w-[200px] text-xs font-light !leading-tight tracking-tight lg:mt-4 lg:w-[423px] lg:text-[10px] xl:text-lg 2xl:w-[502px]">
               Large data players such as Amazon, Google, Facebook, and Microsoft
               control over 85% of Internet data and infrastructure, effectively
               becoming data monopolies. They control more than 100 zettabytes of
@@ -31,7 +31,7 @@ const Hero2 = () => {
           alt="logo"
           width={100}
           height={20}
-          className="wow fadeInUp mx-auto mt-32  hidden h-[409px] lg:block lg:w-[190.44px] xl:w-[250.44px]"
+          className="wow fadeInUp mx-auto mt-20  hidden h-[409px] lg:block lg:w-[190.44px] xl:w-[200.44px]"
           data-wow-delay=".1s"
         />
         <div className="flex w-full items-center justify-center text-center text-[#000000]">
@@ -45,11 +45,11 @@ const Hero2 = () => {
               </span>
             </div>
 
-            <h1 className="mx-auto mt-2 w-[523px] text-xl font-bold leading-none tracking-tight lg:text-4xl 2xl:w-[538px] 2xl:text-[2.5rem]">
+            <h1 className="mx-auto mt-2 w-[250px] text-xl font-bold leading-none tracking-tight lg:w-[523px] lg:text-4xl 2xl:w-[538px] 2xl:text-[2.5rem]">
               Without reliable, affordable data and infrastructures, the web3
               industry cannot scale.
             </h1>
-            <p className="mx-auto mt-2 w-[463px] text-xs font-light !leading-tight tracking-tight lg:mt-4 lg:text-lg 2xl:w-[502px] 2xl:text-lg">
+            <p className="mx-auto mt-2 w-[200px] text-xs font-light !leading-tight tracking-tight lg:mt-4 lg:w-[463px] lg:text-lg 2xl:w-[502px] 2xl:text-lg">
               The scalability and staggering growth of major internet industries
               such as social media, e-commerce, and sharing economies like Uber
               can be attributed to affordable IT data infrastructure and

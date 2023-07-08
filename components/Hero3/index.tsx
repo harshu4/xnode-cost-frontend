@@ -12,7 +12,7 @@ const Hero3 = () => {
             3
           </span>
         </div>
-        <p className="mx-auto mb-12 mt-4 w-[323px] text-3xl font-bold leading-tight tracking-tight md:mb-2 lg:w-[850px] 2xl:text-[1.85rem]">
+        <p className="mx-auto mb-12 mt-4 w-[223px] text-lg font-bold leading-tight tracking-tight md:mb-2 lg:w-[850px] lg:text-3xl 2xl:text-[1.85rem]">
           <span className="font-medium text-[#6B6B6B]">
             Information asymmetry, a result of this control, has given rise to
             social inequality, scandals, polarization, and corruption. In

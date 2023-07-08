@@ -37,17 +37,17 @@ const SingleTestimonial = ({
   return (
     <div
       role="button"
-      className={`h-[420px] w-[342px] rounded-md bg-gradient-to-tr ${borderColor} p-[1px]`}
+      className={`h-[420px] w-[262px] rounded-md bg-gradient-to-tr lg:w-[342px] ${borderColor} p-[1px]`}
     >
       <div
-        className={`flex h-[418px] w-[340px] transform cursor-pointer flex-col items-center rounded-[5px] bg-white px-8 pt-10 pb-7 text-center text-[#1E1E1E] transition-all duration-200 hover:z-20 hover:scale-110 lg:px-5`}
+        className={`flex h-[418px] w-[260] transform cursor-pointer flex-col items-center rounded-[5px] bg-white px-8 pt-10 pb-7 text-center text-[#1E1E1E] transition-all duration-200 hover:z-20 hover:scale-110 lg:w-[340px] lg:px-5`}
         onClick={handleClick}
       >
         <div className="wow fadeInUp rounded-md" data-wow-delay=".1s">
           <h3 className=" mx-2 mb-2 text-[1.25rem] text-base font-bold leading-none lg:text-2xl">
             {title}
           </h3>
-          <p className="mx-auto mt-4 text-base font-normal leading-tight text-[#262626]">
+          <p className="mx-auto mt-4 text-xs font-normal leading-tight text-[#262626] lg:text-base">
             {description}
           </p>
         </div>

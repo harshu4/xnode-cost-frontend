@@ -14,7 +14,7 @@ const Categories2 = () => {
       image: '/images/categories/dojoSystems.svg',
       title: 'Transparency & governence',
       description:
-        'Join us as we expand our goal of Deeplink to advance the smart contract ecosystems. The Deeplink developer toolkit will allow developers and data scientists to build, train, and deploy data models. Join us as we expand our goal of Deeplink to advance the smart contract ecosystems. The Deeplink developer toolkit will allow developers and data scientists to build, train, and deploy data models. Join us as we expand our goal of Deeplink to advance the smart',
+        'toolkit will allow developers and data scientists to build, train, and deploy data models. Join us as we expand our goal of Deeplink to advance the smart contract ecosystems. The Deeplink developer toolkit will allow developers and data scientists to build, train, and deploy data models. Join us as we expand our goal of Deeplink to advance the smart',
     },
     {
       image: '/images/categories/infrastructure.svg',
