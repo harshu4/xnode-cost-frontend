@@ -15,14 +15,14 @@ const Hero4 = () => {
               data-wow-delay=".2s"
             >
               <div className="flex w-full flex-col text-center">
-                <h1 className="font-regular text-2xl leading-none tracking-tight lg:text-[2rem] 2xl:text-[3.75rem]">
+                <h1 className="font-regular text-2xl leading-none tracking-tight lg:text-[3.5rem] 2xl:text-[4.2rem]">
                   Join our ecosystem to build
                 </h1>
-                <h1 className="text-2xl font-bold leading-none tracking-tighter lg:text-[2rem] 2xl:text-[3.75rem] ">
+                <h1 className="text-2xl font-bold leading-none tracking-tighter lg:text-[4.7rem] 2xl:text-[4.9rem] ">
                   open data infrastructure for web3 without a middleman.
                 </h1>
               </div>
-              <p className="text-body-black mb-12 mt-8 text-sm font-medium leading-snug tracking-tight text-[#000000] dark:opacity-90 lg:text-2xl 2xl:text-[2rem]">
+              <p className="text-body-black mx-auto mb-12 mt-8 w-[323px] text-sm font-medium leading-snug tracking-tight text-[#000000] dark:opacity-90 lg:w-[850px] lg:text-3xl 2xl:text-[2rem]">
                 No matter your role - developer, user, academic, partner - you
                 have a part to play in L3A's mission. Get involved and help
                 shape the future of Web 3.0.

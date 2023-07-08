@@ -49,7 +49,7 @@ const Categories2 = () => {
             <>
               <div
                 key={category.image}
-                className="relative items-start rounded-md bg-white text-xs md:flex lg:text-sm"
+                className="relative ml-16 items-start rounded-md bg-white text-xs md:flex lg:text-sm"
               >
                 <Image
                   src={category.image}
@@ -63,7 +63,7 @@ const Categories2 = () => {
                     <h3 className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
                       {category.title}
                     </h3>
-                    <p className="mt-2 text-xs  leading-snug md:mt-3 md:text-[18px] xl:mt-5">
+                    <p className="mt-2 text-xs  !leading-tight md:mt-3 md:text-[18px] xl:mt-5">
                       {category.description}
                     </p>
                   </div>
@@ -76,7 +76,7 @@ const Categories2 = () => {
                     alt="logo"
                     width={200}
                     height={50}
-                    className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[170px] md:w-1"
+                    className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[240px] md:w-1"
                   />
                 </div>
               ) : null}

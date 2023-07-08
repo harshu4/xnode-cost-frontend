@@ -44,7 +44,7 @@ const SingleTestimonial = ({
         onClick={handleClick}
       >
         <div className="wow fadeInUp rounded-md" data-wow-delay=".1s">
-          <h3 className="mx-auto mb-2 text-[1.25rem] text-base font-bold leading-none lg:text-2xl">
+          <h3 className=" mx-2 mb-2 text-[1.25rem] text-base font-bold leading-none lg:text-2xl">
             {title}
           </h3>
           <p className="mx-auto mt-4 text-base font-normal leading-tight text-[#262626]">
@@ -57,7 +57,7 @@ const SingleTestimonial = ({
             alt="logo"
             width={200}
             height={50}
-            className="w-1/6 rounded-md md:w-1/5"
+            className="w-1/6 rounded-md md:w-1/6"
           />
         </div>
       </div>
