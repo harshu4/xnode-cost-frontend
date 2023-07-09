@@ -14,14 +14,14 @@ const Techs = () => {
               alt="logo"
               width={100}
               height={20}
-              className="mx-auto mb-2 w-64 transition-all duration-200 hover:z-20  hover:scale-110"
+              className="mx-auto mb-2 ml-64 w-48 transition-all duration-200 hover:z-20  hover:scale-110"
             />
             <Image
               src="/images/techs/superNode.svg"
               alt="logo"
               width={100}
               height={20}
-              className="mx-auto mb-2 mt-60 mr-7 w-64 transition-all duration-200 hover:z-20 hover:scale-110"
+              className="mx-auto mb-2 mt-60 mr-7 ml-64 w-48 transition-all duration-200 hover:z-20 hover:scale-110"
             />
           </div>
         </div>
@@ -49,23 +49,23 @@ const Techs = () => {
               alt="logo"
               width={100}
               height={20}
-              className="mx-auto mb-2 w-28 transition-all duration-200 hover:z-20 hover:scale-110"
+              className="mx-auto mb-40 mr-96 w-40 transition-all duration-200 hover:z-20 hover:scale-110"
             />
             <Image
               src="/images/techs/api.svg"
               alt="logo"
               width={100}
               height={20}
-              className="mx-auto mt-60 mr-7 w-28 transition-all duration-200 hover:z-20 hover:scale-110"
+              className="mx-auto mt-32 mr-96 w-40 transition-all duration-200 hover:z-20 hover:scale-110"
             />
           </div>
         </div>
       </div>
-      <div className="-ml-40 flex w-full justify-center lg:scale-x-75 lg:scale-y-110 xl:-ml-56 xl:scale-100 2xl:-ml-[272px] 2xl:scale-115">
+      <div className="-ml-40 flex w-full justify-center lg:scale-x-75 lg:scale-y-110 xl:-ml-[230px] xl:scale-115 2xl:-ml-[229px] 2xl:scale-115">
         <Image
           src="/images/lines/CurvedLineFixed.svg"
           alt="Curved line vector"
-          width={475}
+          width={405}
           height={644}
           // className="-mt-24 -ml-20 flex w-full max-w-xl justify-center transition-all duration-200 lg:-ml-40 lg:scale-x-70 xl:-ml-32 xl:scale-x-80 2xl:ml-64 2xl:scale-100"
         />
