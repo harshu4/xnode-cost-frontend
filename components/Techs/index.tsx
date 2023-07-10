@@ -31,7 +31,7 @@ const Techs = () => {
             data-wow-delay=".1s"
           >
             <Image
-              src="/images/techs/l3a.svg"
+              src="/images/techs/l3a-logo-variation.svg"
               alt="logo"
               width={100}
               height={20}
