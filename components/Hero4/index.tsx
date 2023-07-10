@@ -15,10 +15,10 @@ const Hero4 = () => {
               data-wow-delay=".2s"
             >
               <div className="flex w-full flex-col text-center">
-                <h1 className="font-regular text-[1.4rem] leading-none tracking-tight lg:text-[3.5rem] 2xl:text-[4.2rem]">
+                <h1 className="font-regular text-[1.5rem] leading-none tracking-tight lg:text-[3.5rem] 2xl:text-[4.2rem]">
                   Join our ecosystem to build
                 </h1>
-                <h1 className="text-4xl font-bold leading-none tracking-tighter lg:text-[4.7rem] 2xl:text-[4.9rem] ">
+                <h1 className="text-5xl font-bold leading-none tracking-tighter lg:text-[4.7rem] 2xl:text-[4.9rem] ">
                   open data infrastructure for web3 without a middleman.
                 </h1>
               </div>

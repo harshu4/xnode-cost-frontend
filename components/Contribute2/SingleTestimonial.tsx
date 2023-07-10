@@ -37,10 +37,10 @@ const SingleTestimonial = ({
   return (
     <div
       role="button"
-      className={`h-[360px] w-[262px] rounded-md bg-gradient-to-tr lg:h-[420px] lg:w-[342px] ${borderColor} p-[1px]`}
+      className={`mx-auto h-[360px] w-[262px] rounded-md bg-gradient-to-tr lg:h-[420px] lg:w-[342px] ${borderColor} p-[1px]`}
     >
       <div
-        className={`flex h-[358px] w-[260] transform cursor-pointer flex-col items-center rounded-[5px] bg-white px-8 pt-10 pb-7 text-center text-[#1E1E1E] transition-all duration-200 hover:z-20 hover:scale-110 lg:h-[418px] lg:w-[340px] lg:px-5`}
+        className={`flex h-[358px] w-[260px] transform cursor-pointer flex-col items-center rounded-[5px] bg-white px-8 pt-10 pb-7 text-center text-[#1E1E1E] transition-all duration-200 hover:z-20 hover:scale-110 lg:h-[418px] lg:w-[340px] lg:px-5`}
         onClick={handleClick}
       >
         <div className="wow fadeInUp rounded-md" data-wow-delay=".1s">

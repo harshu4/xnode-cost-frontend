@@ -15,10 +15,10 @@ const Hero2 = () => {
               </span>
             </div>
 
-            <h1 className="mx-auto mt-2 w-[270px] text-xl font-bold leading-none tracking-tight lg:w-[453px] lg:text-[2.7rem]">
-              Today Data & internet infrastructures are centralized.
+            <h1 className="mx-auto mt-2 w-[310px] text-2xl font-bold leading-none tracking-tight lg:w-[453px] lg:text-[2.7rem]">
+              Data & internet infrastructures are centralized.
             </h1>
-            <p className="mx-auto mt-2 w-[270px] text-xs font-light !leading-[18px] tracking-tight lg:mt-4 lg:w-[453px] lg:text-[10px] xl:text-lg">
+            <p className="mx-auto mt-2 w-[310px] text-sm font-light !leading-[18px] tracking-tight lg:mt-4 lg:w-[453px] lg:text-[10px] xl:text-lg">
               Large data players such as Amazon, Google, Facebook, and Microsoft
               control over 85% of Internet data and infrastructure, effectively
               becoming data monopolies. They control more than 100 zettabytes of
@@ -45,11 +45,11 @@ const Hero2 = () => {
               </span>
             </div>
 
-            <h1 className="mx-auto mt-2 w-[270px] text-xl font-bold leading-none tracking-tight lg:w-[575px] lg:text-[2.6rem]">
+            <h1 className="mx-auto mt-2 w-[310px] text-2xl font-bold leading-none tracking-tight lg:w-[575px] lg:text-[2.6rem]">
               Without reliable, affordable data and infrastructures, the web3
               industry cannot scale.
             </h1>
-            <p className="mx-auto mt-2 w-[270px] text-xs font-light !leading-[18px] tracking-tight lg:mt-4 lg:w-[525px] lg:text-lg">
+            <p className="mx-auto mt-2 w-[310px] text-sm font-light !leading-[18px] tracking-tight lg:mt-4 lg:w-[525px] lg:text-lg">
               The scalability and staggering growth of major internet industries
               such as social media, e-commerce, and sharing economies like Uber
               can be attributed to affordable IT data infrastructure and

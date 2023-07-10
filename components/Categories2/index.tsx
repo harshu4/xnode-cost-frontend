@@ -60,10 +60,10 @@ const Categories2 = () => {
                 />
                 <div className="md:ml-10 md:mr-2">
                   <div className="max-h-[280px]">
-                    <h3 className="mt-2 text-2xl font-bold md:mt-0 md:text-[28px]">
+                    <h3 className="mt-3 text-2xl font-bold md:mt-0 md:text-[28px]">
                       {category.title}
                     </h3>
-                    <p className="mt-2 text-xs  !leading-tight md:mt-3 md:text-[18px] xl:mt-5">
+                    <p className="mt-2 text-sm  !leading-tight md:mt-3 md:text-[18px] xl:mt-5">
                       {category.description}
                     </p>
                   </div>
@@ -76,7 +76,7 @@ const Categories2 = () => {
                     alt="logo"
                     width={200}
                     height={50}
-                    className="mt-2 mb-2 ml-32 hidden w-1 md:mb-0 md:mt-0 md:ml-[240px] md:w-1 lg:block"
+                    className="mt-2 mb-5 ml-32 hidden w-1 md:mb-0 md:mt-0 md:ml-[240px] md:w-1 lg:block"
                   />
                 </div>
               ) : null}
