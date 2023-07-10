@@ -15,14 +15,14 @@ const Hero4 = () => {
               data-wow-delay=".2s"
             >
               <div className="flex w-full flex-col text-center">
-                <h1 className="font-regular text-xl leading-none tracking-tight lg:text-[3.5rem] 2xl:text-[4.2rem]">
+                <h1 className="font-regular text-[1.4rem] leading-none tracking-tight lg:text-[3.5rem] 2xl:text-[4.2rem]">
                   Join our ecosystem to build
                 </h1>
-                <h1 className="text-2xl font-bold leading-none tracking-tighter lg:text-[4.7rem] 2xl:text-[4.9rem] ">
+                <h1 className="text-4xl font-bold leading-none tracking-tighter lg:text-[4.7rem] 2xl:text-[4.9rem] ">
                   open data infrastructure for web3 without a middleman.
                 </h1>
               </div>
-              <p className="text-body-black mx-auto mb-12 mt-8 w-[223px] text-sm font-medium leading-snug tracking-tight text-[#000000] dark:opacity-90 lg:w-[850px] lg:text-3xl 2xl:text-[2rem]">
+              <p className="text-body-black mx-auto mb-4 mt-4 w-[273px] text-sm font-medium leading-snug tracking-tight text-[#000000] dark:opacity-90 lg:mb-12 lg:mt-8 lg:w-[850px] lg:text-3xl 2xl:text-[2rem]">
                 No matter your role - developer, user, academic, partner - you
                 have a part to play in L3A's mission. Get involved and help
                 shape the future of Web 3.0.
@@ -35,7 +35,7 @@ const Hero4 = () => {
           alt="logo"
           width={100}
           height={20}
-          className="mx-auto mt-5 mb-10 w-1 md:mb-1"
+          className="mx-auto mb-4 h-20 w-1 lg:mt-5 lg:mb-1 lg:h-52"
         />
         <Image
           src="/images/lines/Line3.svg"

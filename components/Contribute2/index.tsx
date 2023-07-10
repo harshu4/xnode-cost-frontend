@@ -53,7 +53,7 @@ const testimonialData = [
 
 const Contribute = ({ scrollIntoView }) => {
   return (
-    <section className="relative z-10 mx-auto w-full max-w-[393px] bg-white pb-32 pt-8 md:pt-0 md:pb-40 lg:max-w-[1280px] lg:pt-0 xl:pb-56">
+    <section className="relative z-10 mx-auto w-full max-w-[393px] bg-white pb-12 pt-8 lg:max-w-[1280px] lg:pb-40 lg:pt-0 xl:pb-56">
       <div className="grid  grid-cols-1 bg-white lg:grid-cols-3">
         {testimonialData.map((testimonial, index) => (
           <div key={testimonial.id} className="m-6">

@@ -39,7 +39,7 @@ const Categories2 = () => {
   return (
     <section
       id="categories"
-      className="relative z-10 mx-auto w-full max-w-[393px] bg-white px-8 pb-16 text-[#1E1E1E] lg:max-w-[1440px] lg:px-4"
+      className="relative z-10 mx-auto w-full max-w-[393px] bg-white px-8 pb-4 text-[#1E1E1E] lg:max-w-[1440px] lg:px-4 lg:pb-16"
     >
       <div className="w-full">
         {categories.map((category, index) => {
@@ -49,14 +49,14 @@ const Categories2 = () => {
             <>
               <div
                 key={category.image}
-                className="relative ml-16 items-start rounded-md bg-white text-xs md:flex lg:text-sm"
+                className="relative mb-12 items-start rounded-md bg-white text-xs lg:mb-0 lg:ml-16 lg:flex lg:text-sm"
               >
                 <Image
                   src={category.image}
                   alt="logo"
                   width={200}
                   height={50}
-                  className="w-1/2 rounded-md md:w-2/5"
+                  className="w-full rounded-md md:w-2/5"
                 />
                 <div className="md:ml-10 md:mr-2">
                   <div className="max-h-[280px]">
@@ -76,7 +76,7 @@ const Categories2 = () => {
                     alt="logo"
                     width={200}
                     height={50}
-                    className="mt-2 mb-2 ml-32 w-1 md:mb-0 md:mt-0 md:ml-[240px] md:w-1"
+                    className="mt-2 mb-2 ml-32 hidden w-1 md:mb-0 md:mt-0 md:ml-[240px] md:w-1 lg:block"
                   />
                 </div>
               ) : null}
