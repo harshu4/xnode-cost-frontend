@@ -15,6 +15,7 @@ import Techs from '@/components/Techs'
 import { Inter } from '@next/font/google'
 import { useRef } from 'react'
 import { RevealWrapper } from 'next-reveal'
+import Hero5 from '@/components/Hero5'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,9 +32,13 @@ export default function Home() {
       <RevealWrapper>
         <Hero3 />
       </RevealWrapper>
-      {/* <RevealWrapper>
+      <RevealWrapper>
         <Hero4 />
       </RevealWrapper>
+      <RevealWrapper>
+        <Hero5 />
+      </RevealWrapper>
+      {/*
       <RevealWrapper>
         <Techs />
       </RevealWrapper>
