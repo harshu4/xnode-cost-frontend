@@ -50,6 +50,7 @@ const Hero2 = () => {
           </div>
         </div>
       </section>
+      <div className="mt-[89px] h-[1px] bg-[#D4D4D4]"></div>
     </>
   )
 }

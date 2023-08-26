@@ -28,10 +28,10 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Hero2 />
-      {/* <RevealWrapper>
+      <RevealWrapper>
         <Hero3 />
       </RevealWrapper>
-      <RevealWrapper>
+      {/* <RevealWrapper>
         <Hero4 />
       </RevealWrapper>
       <RevealWrapper>

@@ -1,42 +1,27 @@
-import Image from 'next/image'
-
 const Hero3 = () => {
   return (
-    <section className="lg:mt-4mx-auto relative z-10 mt-8 bg-white pb-0 text-[#1E1E1E]">
-      <div
-        className="wow fadeInUp mx-auto flex flex-col items-center justify-center rounded-md text-center"
-        data-wow-delay=".1s"
+    <>
+        <div className="h-10 pt-[111px]">
+
+</div>
+      <section
+        id="home"
+        className="relative z-10 overflow-hidden bg-white px-[20px] text-[#000000] lg:pt-[195px]"
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#000000] lg:h-20 lg:w-20">
-          <span className="text-[2rem] font-bold text-white lg:text-[2.5rem]">
-            3
-          </span>
+        <div className="mx-auto">
+          <img
+            src="/images/hero3/man.svg"
+            alt="image"
+            className={`absolute top-0 left-0 right-0 z-[-1] m-auto w-[720px]`}
+          />
+          <div className="flex justify-center text-[64px] font-bold tracking-[2.2%]">
+            Becomin<span className="text-white">g an OpenMesh Expert</span>
+            Network
+          </div>
         </div>
-        <p className="mx-auto mb-4 mt-2 w-[310px] text-xl font-bold leading-tight tracking-tight md:mb-2 lg:mt-4 lg:w-[850px] lg:text-3xl 2xl:text-[1.85rem]">
-          <span className="font-medium text-[#6B6B6B]">
-            Information asymmetry, a result of this control, has given rise to
-            social inequality, scandals, polarization, and corruption. In
-            extreme cases, it has even triggered wars. With such a
-          </span>{' '}
-          massive concentration of data and information, surveillance capitalism
-          has begun to influence politics and culture profoundly
-        </p>
-        <Image
-          src="/images/lines/Line3.svg"
-          alt="logo"
-          width={100}
-          height={20}
-          className="mx-auto mt-0 mb-4 h-20 w-1 lg:mb-1 lg:mt-5 lg:h-52"
-        />
-        <Image
-          src="/images/lines/Line3.svg"
-          alt="logo"
-          width={100}
-          height={20}
-          className="mx-auto -mt-7 mb-0 hidden w-1 lg:mb-1 xl:block"
-        />
-      </div>
-    </section>
+      </section>
+      <div className="mt-[89px] h-[1px] bg-[#D4D4D4]"></div>
+    </>
   )
 }
 
