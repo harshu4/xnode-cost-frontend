@@ -46,42 +46,35 @@ const Header = () => {
           </span>
         </div>
       </Link> */}
-      <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[80px] w-full items-center border-b border-[#dddd] bg-transparent bg-white bg-opacity-80">
-        <div className="mx-auto flex w-full max-w-[1280px] pr-8 2xl:max-w-[1440px] 2xl:px-0">
-          <div className="flex w-full items-center justify-between lg:gap-12 2xl:gap-24">
-            <Link href="/" className="ml-12">
-              <Image
-                src="/images/logo/l3a-logo.svg"
-                alt="logo"
-                width={200}
-                height={45}
-              />
-            </Link>
-            {/* <ul className="hidden flex-1 items-center gap-16 lg:flex">
-              {navigationItems.map((navItem) => {
-                return (
-                  <Link key={navItem.href} href={navItem.href}>
-                    <li className="text-base text-black">{navItem.label}</li>
-                  </Link>
-                )
-              })}
-              <Link href="#" className="border border-[#5485FF] py-1 px-3">
-                <li>
-                  <span className="text-base text-[#5485FF]">
-                    Start Building
-                  </span>
-                </li>
-              </Link>
-            </ul> */}
-            <div className="lg:hidden">
+      <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[95px] w-full items-center bg-[#F9F9F9]  bg-opacity-80 text-[#000000]">
+        <div className="flex w-full justify-between px-[90px]">
+          <div className="flex">
+            <a className="text-[28px] font-bold !leading-[34px]">/OpenMesh</a>
+            <div className="ml-[60px] flex items-center text-[16px] font-medium !leading-[19px]">
+              <a>Certification</a>
+              <a className="ml-[60px]">Learning</a>
+              <a className="ml-[60px]">Success Stories</a>
+              <a className="ml-[60px]">FAQs</a>
+            </div>
+          </div>
+          <div className="">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://calendly.com/`}
+              className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[11.5px] px-[35px] text-[16px] font-bold !leading-[19px] text-white hover:bg-[#0447c5]"
+            >
+              Schedule a Call
+            </a>
+          </div>
+          {/* <div className="lg:hidden">
               <Dialog.Root>
                 <Dialog.Trigger>
                   <List className="text-black" size={24} weight="bold" />
                 </Dialog.Trigger>
                 <HeaderModal navigationItems={navigationItems} />
               </Dialog.Root>
-            </div>
-          </div>
+            </div> */}
         </div>
       </header>
     </>

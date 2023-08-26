@@ -28,7 +28,7 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Hero2 />
-      <RevealWrapper>
+      {/* <RevealWrapper>
         <Hero3 />
       </RevealWrapper>
       <RevealWrapper>
@@ -39,12 +39,12 @@ export default function Home() {
       </RevealWrapper>
       <RevealWrapper>
         <Categories2 />
-      </RevealWrapper>
+      </RevealWrapper> */}
       {/* <Testimonials /> */}
       {/* <CTA scrollIntoView={contributorsRef} /> */}
       {/* <AboutL3A />
       <Categories /> */}
-      <RevealWrapper>
+      {/* <RevealWrapper>
         <div ref={contributorsRef}>
           <L3AContributors />
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
       <Contribute2 scrollIntoView={tallyFormsRef} />
       <div ref={tallyFormsRef}>
         <TallyForms />
-      </div>
+      </div> */}
       <SocialMedia />
     </>
   )
