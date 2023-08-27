@@ -66,7 +66,7 @@ export default function Home() {
       <div ref={tallyFormsRef}>
         <TallyForms />
       </div> */}
-      <SocialMedia />
+      {/* <SocialMedia /> */}
     </>
   )
 }

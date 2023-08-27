@@ -77,7 +77,7 @@ const Hero4 = () => {
           </div>
         </div>
       </section>
-      <section className="flex w-full items-center justify-between bg-[#0354EC] pt-[83px] pb-[78px] pl-[137px] pr-[115px] text-white">
+      <section className="mt-[135px] flex w-full items-center justify-between bg-[#0354EC] pt-[83px] pb-[78px] pl-[137px] pr-[115px] text-white">
         <div className="">
           <div className="text-[32px] font-bold !leading-[120%]">
             You'll also get a slot in our{' '}

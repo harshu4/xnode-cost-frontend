@@ -11,7 +11,7 @@ const Hero3 = () => {
             <img
               src="/images/hero3/man.svg"
               alt="image"
-              className={`absolute top-0 left-0 right-0 z-[-1] m-auto w-[720px]`}
+              className={`absolute top-0 left-0 right-0 z-[-1] m-auto w-[699px]`}
             />
             <div className="flex justify-center text-[64px] font-bold tracking-[2.2%]">
               Becomin<span className="text-white">g an OpenMesh Expert</span>
@@ -30,47 +30,45 @@ const Hero3 = () => {
             </div>
             <div className="w-[294px]">
               <div className="text-[24px] font-bold !leading-[150%] tracking-[2.2%]">
-                Cost, speed, and scale
+                One-stop for all your needs
               </div>
               <div className="mt-[15px] text-[20px] font-medium text-[#959595]">
-                Deploy, and manage data infrastructure and data applications in
-                minutes instead of months
+                Infrastructure deployment and management tools, APIs, data
+                connectivity, analytics, access to data all in one place
               </div>
             </div>
             <div className="w-[294px]">
               <div className="text-[24px] font-bold !leading-[150%] tracking-[2.2%]">
-                Cost, speed, and scale
+                Extreme flexibility and customization
               </div>
               <div className="mt-[15px] text-[20px] font-medium text-[#959595]">
-                Deploy, and manage data infrastructure and data applications in
-                minutes instead of months
+                All Openmesh stack is open source. You’ll have full freedom for
+                customization with the Openmesh Open License (OOL)
               </div>
             </div>
             <div className="w-[294px]">
               <div className="text-[24px] font-bold !leading-[150%] tracking-[2.2%]">
-                Cost, speed, and scale
+                Fast-growing ecosystem
               </div>
               <div className="mt-[15px] text-[20px] font-medium text-[#959595]">
-                Deploy, and manage data infrastructure and data applications in
-                minutes instead of months
+                Fueled by active community contribution, Openmesh ecosystem is
+                growing at unprecedented pace
               </div>
             </div>
             <div className="w-[294px]">
               <div className="text-[24px] font-bold !leading-[150%] tracking-[2.2%]">
-                Cost, speed, and scale
+                Growth-centric
               </div>
               <div className="mt-[15px] text-[20px] font-medium text-[#959595]">
-                Deploy, and manage data infrastructure and data applications in
-                minutes instead of months
+                Openmesh is committed to democratize access to data
               </div>
             </div>
             <div className="w-[294px]">
               <div className="text-[24px] font-bold !leading-[150%] tracking-[2.2%]">
-                Cost, speed, and scale
+                Badge staking opportunity
               </div>
               <div className="mt-[15px] text-[20px] font-medium text-[#959595]">
-                Deploy, and manage data infrastructure and data applications in
-                minutes instead of months
+                Openmesh is committed to democratize access to data
               </div>
             </div>
           </div>
