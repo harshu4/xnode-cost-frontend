@@ -6,15 +6,18 @@ const Hero3 = () => {
         id="home"
         className="relative z-10 overflow-hidden bg-white px-[20px] text-[#000000] lg:pt-[195px]"
       >
-        <div className="mx-auto">
-          <div className="mx-auto">
+        <div className="mx-auto min-w-[720px]">
+          <div className="mx-auto min-w-[720px]">
             <img
-              src="/images/hero3/man.svg"
+              src="/images/hero3/manTwo.png"
               alt="image"
-              className={`absolute top-0 left-0 right-0 z-[-1] m-auto w-[699px]`}
+              className={`absolute top-0 left-[2px] right-0 z-[-1] m-auto min-w-[730px]`}
             />
             <div className="flex justify-center text-[64px] font-bold tracking-[2.2%]">
-              Becomin<span className="text-white">g an OpenMesh Expert</span>
+              Becomin
+              <span className="mr-[14px] text-white">
+                g an Openmesh Expert
+              </span>{' '}
               Network
             </div>
           </div>
