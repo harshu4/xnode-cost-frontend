@@ -32,8 +32,8 @@ const Hero2 = () => {
                 <span className="font-medium text-[#959595]">(PaaS)</span>
               </div>
               <div className="mt-[20px] text-[20px] font-medium">
-                Tool to create a fully functional full-stack data infrastructure
-                from scratch on bare metal servers
+                A single endpoint for all crypto and Web3 data, along with REST
+                APIs for historical data as a service
               </div>
             </div>
             <div className=" w-[294px]">
@@ -43,8 +43,8 @@ const Hero2 = () => {
                 <span className="font-medium text-[#959595]">(SaaS)</span>
               </div>
               <div className="mt-[20px] text-[20px] font-medium">
-                Tool to create a fully functional full-stack data infrastructure
-                from scratch on bare metal servers
+                Allows users to search, design, build, and store their own
+                crypto and Web3 data products directly within their wallet
               </div>
             </div>
           </div>

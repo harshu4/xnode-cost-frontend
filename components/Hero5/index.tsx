@@ -4,7 +4,7 @@ const Hero5 = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[700px] text-[#000000] lg:pt-[107px]"
+        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[210px] text-[#000000] lg:pt-[107px]"
       >
         <div className="mx-auto">
           <div className="flex justify-center text-[48px] font-bold -tracking-[2%] text-[#000000]">
@@ -105,19 +105,68 @@ const Hero5 = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-[2585px] left-0 right-0 z-[50] mx-auto">
-            <img
-              src="/images/hero4/license.png"
-              alt="image"
-              className={`mx-auto w-[254px]`}
-            />
+        </div>
+      </section>
+      <div className="absolute top-[2585px] left-0 right-0 z-50 mx-auto">
+        <img
+          src="/images/hero4/license.png"
+          alt="image"
+          className={`mx-auto w-[254px]`}
+        />
+      </div>
+      <section
+        id="home"
+        className="relative z-10 overflow-hidden bg-[#F3F3F3] px-[20px] pt-[103px] pb-[143px] text-[#000000]"
+      >
+        <div className="mx-auto w-[1200px]">
+          <div className="flex justify-center text-[64px] font-bold">
+            Success Stories
+          </div>
+          <div className="flex justify-center text-center text-[28px] font-medium -tracking-[2%] text-[#505050]">
+            Find out how OpenMesh Core Services have impacted organizations by
+            making data infrastructure accessible
+          </div>
+          <div className="mx-auto mt-[91px] grid grid-cols-3  justify-center gap-x-[60px]">
+            <div className="w-[360px]">
+              <div className="h-[342px] rounded-[10px] bg-[#E6E6E6]"></div>
+              <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+                10Clouds{' '}
+                <span className="font-medium text-[#959595]">using xNode</span>
+              </div>
+              <div className="mt-[20px] text-[20px] font-medium">
+                Hedge funds and algo-trading companies - Building a dynamic
+                Knowledge Graph of DeFi data to facilitate real-time financial
+                decisions
+              </div>
+            </div>
+            <div className="w-[360px]">
+              <div className="h-[342px] rounded-[10px] bg-[#E6E6E6]"></div>
+              <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+                Cast.ai{' '}
+                <span className="font-medium text-[#959595]">
+                  using UnifiedAPI
+                </span>
+              </div>
+              <div className="mt-[20px] text-[20px] font-medium">
+                dApps - integrate APIs directly to the functionality of
+                decentralized applications
+              </div>
+            </div>
+            <div className="w-[360px]">
+              <div className="h-[342px] rounded-[10px] bg-[#E6E6E6]"></div>
+              <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+                Mikhal{' '}
+                <span className="font-medium text-[#959595]">using Pythia</span>
+              </div>
+              <div className="mt-[20px] text-[20px] font-medium">
+                A blockchain journalist or researcher can build a customized
+                data product to keep track of specific events or trends in the
+                crypto space
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <section
-        id="home"
-        className="relative z-10 overflow-hidden bg-[#F3F3F3] px-[20px] pb-[700px] text-[#000000] lg:pt-[107px]"
-      ></section>
     </>
   )
 }
