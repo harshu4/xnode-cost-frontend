@@ -24,7 +24,65 @@ const Hero = () => {
             </a>
           </div>
         </div>
+        <div className="mx-auto mt-[400px] flex w-[1177px] justify-between bg-yellow">
+          <div className="w-[489px] text-[48px] font-medium !leading-[58px] -tracking-[2%]">
+            Openmesh Vision and Values
+          </div>
+          <div className="w-[638px] text-[20px] font-medium !leading-[150%] -tracking-[2%]">
+            <div>
+              Openmesh is building a decentralized data infrastructure aimed at
+              storing important global data without a middleman, starting with
+              Web3 data.
+            </div>
+            <div className="mt-[37px]">
+              Openmesh tools and stack are designed for developers to plan,
+              design, deploy, and manage data infrastructure and data
+              applications in minutes instead of weeks, and pay only for
+              computing and storage, nothing else.
+            </div>
+            <div className="mt-[37px] font-bold">
+              No license fees, no setup fees.
+            </div>
+            <div className="mt-[60px] flex">
+              <div className="mr-[50px]">
+                <div className="text-[24px] font-bold tracking-[2.2%]">
+                  Open
+                </div>
+                <div className="mt-[15px] !leading-[24px] text-[#959595]">
+                  Openmesh is committed to democratize access to data
+                </div>
+              </div>
+              <div>
+                <div className="text-[24px] font-bold tracking-[2.2%]">
+                  Transparent
+                </div>
+                <div className="mt-[15px] !leading-[24px] text-[#959595]">
+                  Openmesh is committed to democratize access to data
+                </div>
+              </div>
+            </div>
+            <div className="mt-[70px] flex">
+              <div className="mr-[50px]">
+                <div className="text-[24px] font-bold tracking-[2.2%]">
+                  Decentralized
+                </div>
+                <div className="mt-[15px] !leading-[24px] text-[#959595]">
+                  Openmesh is committed to democratize access to data
+                </div>
+              </div>
+              <div>
+                <div className="text-[24px] font-bold tracking-[2.2%]">
+                  Growth-centric
+                </div>
+                <div className="mt-[15px] !leading-[24px] text-[#959595]">
+                  Openmesh is committed to democratize access to data
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+      <div className="mt-[116px] h-[1px] bg-[#D4D4D4]"></div>
     </>
   )
 }
