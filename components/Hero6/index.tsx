@@ -19,7 +19,7 @@ const Hero6 = () => {
               <img
                 src="/images/hero3/man.svg"
                 alt="image"
-                className={`w-[300px] lg:mr-[60px] lg:w-[529px]`}
+                className={`w-[400px] justify-center lg:mr-[60px] lg:w-[529px]`}
               />
               <div className="mt-[16px] flex justify-center text-[14px] font-bold lg:mt-[33px] lg:text-[28px] lg:!leading-[150%]">
                 Individual Expert
@@ -30,7 +30,7 @@ const Hero6 = () => {
               <img
                 src="/images/hero6/people.png"
                 alt="image"
-                className={`mt-[30px] w-[300px] lg:mt-0 lg:w-[529px]`}
+                className={`mt-[30px] w-[400px] justify-center lg:mt-0 lg:w-[529px]`}
               />
               <div className="mt-[16px] flex justify-center text-[14px] font-bold lg:mt-[33px] lg:text-[28px] lg:!leading-[150%]">
                 Blockchain Consulting Team

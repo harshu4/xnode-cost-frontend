@@ -4,7 +4,7 @@ const Hero5 = () => {
     <>
       <section
         id="learning"
-        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[120px] pt-[45px] text-[#000000] lg:pb-[200px] lg:pt-[90px]"
+        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[180px] pt-[45px] text-[#000000] lg:pb-[200px] lg:pt-[90px]"
       >
         <div className="mx-auto">
           <div className="flex justify-center text-center text-[24px] font-bold -tracking-[2%] text-[#000000] lg:text-[48px]">
@@ -40,7 +40,7 @@ const Hero5 = () => {
                   </li>
                 </ul>
               </div>
-              <div className="mt-[40px] lg:mt-[802px] lg:w-[400px]">
+              <div className="mt-[60px] lg:mt-[802px] lg:w-[400px]">
                 <div className="h-[100px] w-[200px] rounded-[10px] bg-[#F3F3F3] lg:h-[200px] lg:w-[375px]"></div>
                 <div className="mt-[10px] text-[18px] font-bold !leading-[150%] lg:mt-[20px] lg:text-[32px]">
                   Assessment
@@ -61,7 +61,7 @@ const Hero5 = () => {
               </div>
             </div>
             <div className="lg:px-[72px] lg:pt-[743px]">
-              <div className="mt-[40px] lg:mt-0 lg:w-[400px]">
+              <div className="mt-[60px] lg:mt-0 lg:w-[400px]">
                 <div className="h-[100px] w-[200px] rounded-[10px] bg-[#F3F3F3] lg:h-[200px] lg:w-[375px]"></div>
                 <div className="mt-[10px] text-[18px] font-bold !leading-[150%] lg:mt-[20px] lg:text-[32px]">
                   Learning Path
@@ -107,7 +107,7 @@ const Hero5 = () => {
           </div>
         </div>
       </section>
-      <div className="absolute top-[1380px] left-0 right-0 z-50 mx-auto lg:top-[2561px]">
+      <div className="absolute top-[1440px] left-0 right-0 z-50 mx-auto lg:top-[2561px]">
         <img
           src="/images/hero4/license.png"
           alt="image"
@@ -116,7 +116,7 @@ const Hero5 = () => {
       </div>
       <section
         id="stories"
-        className="relative z-10 overflow-hidden bg-[#F3F3F3] px-[20px] pt-[103px] pb-[143px] text-[#000000]"
+        className="relative z-10 overflow-hidden bg-[#F3F3F3] px-[20px] pt-[103px] pb-[75px] text-[#000000] lg:pb-[143px]"
       >
         <div className="mx-auto lg:w-[1200px]">
           <div className="flex justify-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">

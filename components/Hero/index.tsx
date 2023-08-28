@@ -3,7 +3,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-white px-[20px] pt-[50px] text-[#000000] lg:pt-[217px]"
+        className="relative z-10 overflow-hidden bg-white px-[20px] pt-[100px] text-[#000000] lg:pt-[217px]"
       >
         <div className="mx-auto lg:w-[1194px]">
           <div className="flex justify-center text-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">
@@ -24,7 +24,7 @@ const Hero = () => {
             </a>
           </div>
         </div>
-        <div className="mx-auto mt-[120px] lg:mt-[400px] lg:flex lg:w-[1177px] lg:justify-between">
+        <div className="mx-auto mt-[200px] lg:mt-[400px] lg:flex lg:w-[1177px] lg:justify-between">
           <div className="text-center text-[24px] font-medium -tracking-[2%] lg:w-[489px] lg:text-start lg:text-[48px] lg:!leading-[58px]">
             Openmesh Vision and Values
           </div>
