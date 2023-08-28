@@ -52,7 +52,85 @@ const Header = () => {
         </div>
       </Link> */}
       <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[95px] w-full items-center bg-[#F9F9F9]  bg-opacity-80 text-[#000000]">
-        <div className="flex w-full justify-between px-[90px]">
+        <div className="w-full justify-between px-[10px] lg:hidden">
+          <div>
+            <a className="text-[21px] font-bold !leading-[34px]">/OpenMesh</a>
+          </div>
+          <button
+            onClick={navbarToggleHandler}
+            id="navbarToggler"
+            aria-label="Mobile Menu"
+            className="absolute right-0 top-7 block  rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
+          >
+            <span
+              className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300  ${
+                navbarOpen ? ' top-[7px] rotate-45' : ' '
+              }`}
+            />
+            <span
+              className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 ${
+                navbarOpen ? 'opacity-0 ' : ' '
+              }`}
+            />
+            <span
+              className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300  ${
+                navbarOpen ? ' top-[-8px] -rotate-45' : ' '
+              }`}
+            />
+          </button>
+          <nav
+            id="navbarCollapse"
+            className={`navbar absolute right-0 z-50 w-[250px] rounded border-[.5px] border-body-color/50 bg-dark py-6  px-6 text-[13px] text-[#fff] duration-300 dark:border-body-color/20 lg:visible lg:static lg:mr-[95px] lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+              navbarOpen
+                ? 'visibility top-20 opacity-100'
+                : 'invisible top-20 opacity-0'
+            }`}
+          >
+            <div
+              onClick={() => {
+                onClickTrans('certification')
+              }}
+              className="mt-[10px] cursor-pointer"
+            >
+              Certification
+            </div>
+            <div
+              onClick={() => {
+                onClickTrans('learning')
+              }}
+              className="mt-[10px] cursor-pointer"
+            >
+              Learning
+            </div>
+            <div
+              onClick={() => {
+                onClickTrans('stories')
+              }}
+              className="mt-[10px] cursor-pointer"
+            >
+              Success Stories
+            </div>
+            <div
+              onClick={() => {
+                onClickTrans('faqs')
+              }}
+              className="mt-[10px] cursor-pointer"
+            >
+              FAQs
+            </div>
+            <div className="mt-[20px]">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://calendly.com/`}
+                className=" cursor-pointer rounded-[5px] bg-[#0354EC] py-[9.5px] px-[18px] text-[13px] font-bold !leading-[19px] text-white hover:bg-[#0447c5]"
+              >
+                Schedule a Call
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div className="hidden w-full justify-between px-[90px] lg:flex">
           <div className="flex">
             <a className="text-[28px] font-bold !leading-[34px]">/OpenMesh</a>
             <div className="ml-[60px] flex items-center text-[16px] font-medium !leading-[19px]">

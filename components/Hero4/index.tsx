@@ -4,10 +4,10 @@ const Hero4 = () => {
     <>
       <section
         id="certification"
-        className="relative z-10 overflow-hidden bg-white px-[20px] text-[#000000] lg:pt-[107px]"
+        className="relative z-10 overflow-hidden bg-white px-[20px] pt-[55px] text-[#000000] lg:pt-[107px]"
       >
         <div className="mx-auto">
-          <div className=" mx-auto w-[1074px] text-center  text-[28px] font-medium -tracking-[2%] text-[#959595]">
+          <div className=" mx-auto text-center text-[14px]  font-medium -tracking-[2%] text-[#959595] lg:w-[1074px] lg:text-[28px]">
             As a Openmesh Expert, you will become a
             <span className="!important font-bold text-[#000000]">
               {' '}
@@ -16,19 +16,19 @@ const Hero4 = () => {
             for implementing blockchain data solutions for Web2 and Web3
             companies
           </div>
-          <div className="mx-auto mt-[75px] w-[956px]">
-            <div className="flex">
+          <div className="mx-auto mt-[37px] lg:mt-[75px] lg:w-[956px]">
+            <div className="lg:flex">
               <img
                 src="/images/hero4/license.png"
                 alt="image"
-                className={`mr-[60px] w-[254px]`}
+                className={`w-[100px] lg:mr-[60px] lg:w-[254px]`}
               />
-              <div className="flex items-center">
+              <div className="mt-[10px] flex items-center lg:mt-0">
                 <div>
-                  <div className="text-[28px] font-bold !leading-[150%] -tracking-[2.2%]">
+                  <div className="text-[14px] font-bold -tracking-[2.2%] lg:text-[28px] lg:!leading-[150%]">
                     Open License from Openmesh
                   </div>
-                  <div className="text-[20px] font-medium text-[#959595]">
+                  <div className="text-[10px] font-medium text-[#959595] lg:text-[20px]">
                     The Openmesh Expert badge will help companies to identify
                     you as being an expert not only in Openmesh Core services,
                     but also data and blockchain infrastructure services
@@ -36,13 +36,18 @@ const Hero4 = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[70px] flex">
-              <div className="flex items-center">
+            <div className="mt-[35px] lg:mt-[70px] lg:flex">
+              <img
+                src="/images/hero4/group.png"
+                alt="image"
+                className={`w-[100px] lg:hidden`}
+              />
+              <div className="mt-[10px] flex items-center lg:mt-0">
                 <div>
-                  <div className="mr-[60px] text-[28px] font-bold !leading-[150%]  -tracking-[2.2%]">
+                  <div className="-tracking-[2.2%]] text-[14px] font-bold lg:mr-[60px] lg:text-[28px] lg:!leading-[150%]">
                     Clients & Network
                   </div>
-                  <div className="text-[20px] font-medium text-[#959595]">
+                  <div className="text-[10px] font-medium text-[#959595] lg:text-[20px]">
                     As the global economy requires more and more data to ingest,
                     you can leverage the Openmesh network to get more clients
                     and partnerships
@@ -52,21 +57,21 @@ const Hero4 = () => {
               <img
                 src="/images/hero4/group.png"
                 alt="image"
-                className={`w-[254px]`}
+                className={`hidden w-[254px] lg:block`}
               />
             </div>
-            <div className="mt-[70px] flex">
+            <div className="mt-[35px] lg:mt-[70px] lg:flex">
               <img
                 src="/images/hero4/computer.png"
                 alt="image"
-                className={`mr-[60px] w-[254px]`}
+                className={`w-[100px] lg:mr-[60px] lg:w-[254px]`}
               />
-              <div className="flex items-center">
+              <div className="mt-[10px] flex items-center lg:mt-0">
                 <div>
-                  <div className="text-[28px] font-bold !leading-[150%] -tracking-[2.2%]">
+                  <div className="text-[14px] font-bold -tracking-[2.2%] lg:text-[28px] lg:!leading-[150%]">
                     Growth
                   </div>
-                  <div className="text-[20px] font-medium text-[#959595]">
+                  <div className="text-[10px] font-medium text-[#959595] lg:text-[20px]">
                     Be a part of the growing Openmesh network and be the first
                     to get product updates and offerings through our expanding
                     collaborators and contributors
@@ -77,9 +82,9 @@ const Hero4 = () => {
           </div>
         </div>
       </section>
-      <section className="mt-[135px] flex w-full items-center justify-between bg-[#0354EC] pt-[83px] pb-[78px] pl-[137px] pr-[115px] text-white">
+      <section className="mt-[70px] w-full items-center justify-between bg-[#0354EC] pt-[42px] pb-[40px] pl-[20px] pr-[20px] text-white lg:mt-[135px] lg:flex lg:pt-[83px] lg:pb-[78px] lg:pl-[137px] lg:pr-[115px]">
         <div className="">
-          <div className="text-[32px] font-bold !leading-[120%]">
+          <div className="text-[16px] font-bold lg:text-[32px] lg:!leading-[120%]">
             You'll also get a slot in our{' '}
             <span className="border-b-[2px] border-[#fff]">
               Open Data and Infrastructure Conference
@@ -91,16 +96,16 @@ const Hero4 = () => {
             how you would integrate Openmesh in your consulting and development
             services
           </div>
-          <div className="mt-[20px] text-[20px] font-normal">
+          <div className="mt-[10px] text-[10px] font-normal lg:mt-[20px] lg:text-[20px]">
             Limited spaces available
           </div>
         </div>
-        <div className="min-w-[231px]">
+        <div className="mt-[25px] lg:mt-0 lg:min-w-[231px]">
           <a
             target="_blank"
             rel="noopener noreferrer"
             href={`https://calendly.com/`}
-            className="min-w-[231px] cursor-pointer rounded-[5px] bg-[#fff] py-[16px] px-[16.5px] text-[16px] font-bold !leading-[19px] text-[#000] hover:bg-[#d8d7d7]"
+            className="cursor-pointer rounded-[5px] bg-[#fff] py-[12px] px-[12px] text-[12px] font-bold !leading-[19px] text-[#000] hover:bg-[#d8d7d7] lg:min-w-[231px] lg:py-[16px] lg:px-[16.5px] lg:text-[16px]"
           >
             Go to Conference Page
           </a>

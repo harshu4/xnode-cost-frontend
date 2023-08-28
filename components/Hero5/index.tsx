@@ -4,27 +4,27 @@ const Hero5 = () => {
     <>
       <section
         id="learning"
-        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[200px] text-[#000000] lg:pt-[90px]"
+        className="relative z-10 overflow-hidden bg-white px-[20px] pb-[120px] pt-[45px] text-[#000000] lg:pb-[200px] lg:pt-[90px]"
       >
         <div className="mx-auto">
-          <div className="flex justify-center text-[48px] font-bold -tracking-[2%] text-[#000000]">
+          <div className="flex justify-center text-center text-[24px] font-bold -tracking-[2%] text-[#000000] lg:text-[48px]">
             Journey to become an OpenMesh Expert
           </div>
-          <div className="mt-[42px] flex justify-center text-[20px] font-bold -tracking-[2%] text-[#000000]">
+          <div className="mt-[21px] flex justify-center text-[14px] font-bold -tracking-[2%] text-[#000000] lg:mt-[42px] lg:text-[20px]">
             Start here
           </div>
-          <div className="mt-[9px] flex justify-center">
-            <div className="border-r-[1px] border-[#D4D4D4] px-[72px] py-[64px]">
-              <div className=" w-[400px]">
-                <div className="h-[200px] w-[375px] rounded-[10px] bg-[#F3F3F3]"></div>
-                <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+          <div className="mt-[40px] justify-center lg:mt-[9px] lg:flex">
+            <div className="border-[#D4D4D4] lg:border-r-[1px] lg:px-[72px] lg:py-[64px]">
+              <div className="lg:w-[400px]">
+                <div className="h-[100px] w-[200px] rounded-[10px] bg-[#F3F3F3] lg:h-[200px] lg:w-[375px]"></div>
+                <div className="mt-[10px] text-[18px] font-bold !leading-[150%] lg:mt-[20px] lg:text-[32px]">
                   Requirement
                 </div>
-                <div className="mt-[20px] text-[20px] font-medium">
+                <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:text-[20px]">
                   To expedite the process of becoming certified, you will need a
                   track record and fundamental understandings of:
                 </div>
-                <ul className="mt-[20px] list-inside list-disc pl-[5px] text-[20px] font-medium text-[#959595]">
+                <ul className="mt-[10px] list-inside list-disc pl-[5px] text-[10px] font-medium text-[#959595] lg:mt-[20px] lg:text-[20px]">
                   <li>Decentralized systems and data infrastructures</li>
                   <li>
                     Proficiency in Apache Kafka, PostgreSQL, Kubernetes, and
@@ -40,57 +40,57 @@ const Hero5 = () => {
                   </li>
                 </ul>
               </div>
-              <div className="mt-[802px] w-[400px]">
-                <div className="h-[200px] w-[375px] rounded-[10px] bg-[#F3F3F3]"></div>
-                <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+              <div className="mt-[40px] lg:mt-[802px] lg:w-[400px]">
+                <div className="h-[100px] w-[200px] rounded-[10px] bg-[#F3F3F3] lg:h-[200px] lg:w-[375px]"></div>
+                <div className="mt-[10px] text-[18px] font-bold !leading-[150%] lg:mt-[20px] lg:text-[32px]">
                   Assessment
                 </div>
-                <div className="mt-[20px] text-[20px] font-medium">
+                <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:text-[20px]">
                   To earn the official certification badge, you will be assessed
                   for OpenMesh proficiencies.
                 </div>
-                <div className="mt-[20px] text-[20px] font-bold">
+                <div className="mt-[10px] text-[10px] font-bold lg:mt-[20px] lg:text-[20px]">
                   Once passed, you will receive a certification badge, recorded
                   publicly on-chain and be placed in our landing page as an
                   official member of the OpenMesh Expert Network.
                 </div>
-                <div className="mt-[20px] text-[20px] font-medium">
+                <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:text-[20px]">
                   You can display this badge for marketing purposes and
                   approaching potential clients.
                 </div>
               </div>
             </div>
-            <div className="px-[72px] pt-[743px]">
-              <div className=" w-[400px]">
-                <div className="h-[200px] w-[375px] rounded-[10px] bg-[#F3F3F3]"></div>
-                <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+            <div className="lg:px-[72px] lg:pt-[743px]">
+              <div className="mt-[40px] lg:mt-0 lg:w-[400px]">
+                <div className="h-[100px] w-[200px] rounded-[10px] bg-[#F3F3F3] lg:h-[200px] lg:w-[375px]"></div>
+                <div className="mt-[10px] text-[18px] font-bold !leading-[150%] lg:mt-[20px] lg:text-[32px]">
                   Learning Path
                 </div>
-                <div className="mt-[20px] text-[20px] font-medium">
+                <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:text-[20px]">
                   Once the requirements are met, we will provide you with an
                   extensive library of learning materials - categorized into two
                   paths:
                 </div>
-                <ul className="mt-[20px] list-inside list-disc pl-[5px] text-[20px] font-medium text-[#959595]">
+                <ul className="mt-[10px] list-inside list-disc pl-[5px] text-[10px] font-medium text-[#959595] lg:mt-[20px] lg:text-[20px]">
                   <li>
                     Principles of on-chain and off-chain data implementation
                   </li>
                   <li>Core OpenMesh Services: xNode, UnifiedAPI, and Pythia</li>
                 </ul>
-                <div className="mt-[20px] text-[20px] font-medium">
+                <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:text-[20px]">
                   We also provide virtual sessions with our engineers to dive
                   deeper into the technical implementation plans
                 </div>
-                <div className="mt-[20px] w-[270px] rounded-[10px] bg-[#F3F3F3] px-[10px] pt-[10px] pb-[20px]">
+                <div className="mt-[10px] w-[170px] rounded-[10px] bg-[#F3F3F3] px-[10px] pt-[10px] pb-[20px] lg:mt-[20px] lg:w-[270px]">
                   <img
                     src="/images/hero5/woman.png"
                     alt="image"
-                    className={`w-[254px]`}
+                    className={`w-[100px] lg:w-[254px]`}
                   />
                   <div className="mt-[10px] flex items-start">
-                    <div className="text-[16px] font-bold">
+                    <div className="text-[11px] font-bold lg:text-[16px]">
                       What is SuperNode?
-                      <div className="text-[16px] font-medium text-[#959595]">
+                      <div className="text-[11px] font-medium text-[#959595] lg:text-[16px]">
                         Setup your node with just a few clicks instead of a few
                         months
                       </div>
@@ -107,58 +107,58 @@ const Hero5 = () => {
           </div>
         </div>
       </section>
-      <div className="absolute top-[2561px] left-0 right-0 z-50 mx-auto">
+      <div className="absolute top-[1380px] left-0 right-0 z-50 mx-auto lg:top-[2561px]">
         <img
           src="/images/hero4/license.png"
           alt="image"
-          className={`mx-auto w-[254px]`}
+          className={`mx-auto w-[160px] lg:w-[254px]`}
         />
       </div>
       <section
         id="stories"
         className="relative z-10 overflow-hidden bg-[#F3F3F3] px-[20px] pt-[103px] pb-[143px] text-[#000000]"
       >
-        <div className="mx-auto w-[1200px]">
-          <div className="flex justify-center text-[64px] font-bold !leading-[77px]">
+        <div className="mx-auto lg:w-[1200px]">
+          <div className="flex justify-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">
             Success Stories
           </div>
-          <div className="mt-[56px] flex justify-center text-center text-[28px] font-medium !leading-[34px] -tracking-[2%] text-[#505050]">
+          <div className="mt-[30px] flex justify-center text-center text-[14px] font-medium -tracking-[2%] text-[#505050] lg:mt-[56px] lg:text-[28px] lg:!leading-[34px]">
             Find out how OpenMesh Core Services have impacted organizations by
             making data infrastructure accessible
           </div>
-          <div className="mx-auto mt-[84px] grid grid-cols-3  justify-center gap-x-[60px]">
-            <div className="w-[360px]">
-              <div className="h-[342px] w-[294px] rounded-[10px] bg-[#E6E6E6]"></div>
-              <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+          <div className="mx-auto mt-[42px] justify-center lg:mt-[84px] lg:grid  lg:grid-cols-3 lg:gap-x-[60px]">
+            <div className="lg:w-[360px]">
+              <div className="h-[170px] w-[145px] rounded-[10px] bg-[#E6E6E6] lg:h-[342px] lg:w-[294px]"></div>
+              <div className="mt-[10px] text-[16px] font-bold lg:mt-[20px] lg:text-[32px] lg:!leading-[150%]">
                 10Clouds{' '}
                 <span className="font-medium text-[#959595]">using xNode</span>
               </div>
-              <div className="mt-[20px] w-[294px] text-[20px] font-medium">
+              <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:w-[294px] lg:text-[20px]">
                 Hedge funds and algo-trading companies - Building a dynamic
                 Knowledge Graph of DeFi data to facilitate real-time financial
                 decisions
               </div>
             </div>
-            <div className="w-[370px]">
-              <div className="h-[342px] w-[294px] rounded-[10px] bg-[#E6E6E6]"></div>
-              <div className="mt-[20px] w-[370px] text-[32px] font-bold !leading-[150%] -tracking-[2.2%]">
+            <div className="mt-[45px] lg:mt-0 lg:w-[370px]">
+              <div className="h-[170px] w-[145px] rounded-[10px] bg-[#E6E6E6] lg:h-[342px] lg:w-[294px]"></div>
+              <div className="mt-[10px] text-[16px] font-bold -tracking-[2.2%] lg:mt-[20px] lg:w-[370px] lg:text-[32px] lg:!leading-[150%]">
                 Cast.ai{' '}
                 <span className="font-medium text-[#959595]">
                   using UnifiedAPI
                 </span>
               </div>
-              <div className="mt-[20px] w-[294px]  text-[20px] font-medium">
+              <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:w-[294px] lg:text-[20px]">
                 dApps - integrate APIs directly to the functionality of
                 decentralized applications
               </div>
             </div>
-            <div className="w-[360px]">
-              <div className="h-[342px] w-[294px] rounded-[10px] bg-[#E6E6E6]"></div>
-              <div className="mt-[20px] text-[32px] font-bold !leading-[150%]">
+            <div className="mt-[45px] lg:mt-0 lg:w-[360px]">
+              <div className="h-[170px] w-[145px] rounded-[10px] bg-[#E6E6E6] lg:h-[342px] lg:w-[294px]"></div>
+              <div className="mt-[10px] text-[16px] font-bold lg:mt-[20px] lg:text-[32px] lg:!leading-[150%]">
                 Mikhal{' '}
                 <span className="font-medium text-[#959595]">using Pythia</span>
               </div>
-              <div className="mt-[20px] w-[294px] text-[20px] font-medium">
+              <div className="mt-[10px] text-[10px] font-medium lg:mt-[20px] lg:w-[294px]  lg:text-[20px]">
                 A blockchain journalist or researcher can build a customized
                 data product to keep track of specific events or trends in the
                 crypto space

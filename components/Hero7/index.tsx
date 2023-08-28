@@ -34,30 +34,30 @@ const Hero7 = () => {
     <>
       <section
         id="faqs"
-        className="relative z-10 overflow-hidden border-b-[1px] border-[#D4D4D4] bg-white px-[20px] pb-[129px] text-[#000000] lg:pt-[98px]"
+        className="relative z-10 overflow-hidden border-b-[1px] border-[#D4D4D4] bg-white px-[20px] pb-[60px] pt-[50px] text-[#000000] lg:pb-[129px] lg:pt-[98px]"
       >
-        <div className="mx-auto w-[1359px]">
-          <div className="text-[32px] font-bold">
+        <div className="mx-auto lg:w-[1359px]">
+          <div className="text-[16px] font-bold lg:text-[32px]">
             FAQs.{''}{' '}
             <span className="font-semibold text-[#959595]">
               Frequenty Asked Questions
             </span>
           </div>
-          <div className="mt-[47px] text-[16px] font-bold">
-            <div className="border-b-[1px] border-[#D4D4D4] pb-[20px]">
+          <div className="mt-[23px] text-[11px] font-bold lg:mt-[47px] lg:text-[16px]">
+            <div className="border-b-[1px] border-[#D4D4D4] pb-[15px] lg:pb-[20px]">
               <div className="flex justify-between">
                 <div>What is Openmesh's main goal?</div>
                 <img
                   onClick={handleFaq1}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq1Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq1Open ? '' : 'hidden'
                 }`}
               >
@@ -77,13 +77,13 @@ const Hero7 = () => {
                   onClick={handleFaq2}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq2Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq2Open ? '' : 'hidden'
                 }`}
               >
@@ -102,13 +102,13 @@ const Hero7 = () => {
                   onClick={handleFaq3}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq3Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq3Open ? '' : 'hidden'
                 }`}
               >
@@ -126,13 +126,13 @@ const Hero7 = () => {
                   onClick={handleFaq4}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq4Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq4Open ? '' : 'hidden'
                 }`}
               >
@@ -152,13 +152,13 @@ const Hero7 = () => {
                   onClick={handleFaq5}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq5Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq5Open ? '' : 'hidden'
                 }`}
               >
@@ -178,13 +178,13 @@ const Hero7 = () => {
                   onClick={handleFaq6}
                   src="/images/hero7/arrow.svg"
                   alt="image"
-                  className={`  cursor-pointer ${
+                  className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq6Open ? 'rotate-180 transform' : ''
                   }`}
                 />
               </div>
               <div
-                className={` mt-[15px] text-[14px] font-medium text-[#505050] ${
+                className={`mt-[10px] text-[10px] font-medium text-[#505050] lg:mt-[15px] lg:text-[14px] ${
                   isFaq6Open ? '' : 'hidden'
                 }`}
               >
