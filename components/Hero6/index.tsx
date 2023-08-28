@@ -21,7 +21,7 @@ const Hero6 = () => {
                 alt="image"
                 className={`w-[400px] justify-center lg:mr-[60px] lg:w-[529px]`}
               />
-              <div className="mt-[16px] flex justify-center text-[14px] font-bold lg:mt-[33px] lg:text-[28px] lg:!leading-[150%]">
+              <div className="mx-auto mt-[16px] flex w-[240px] justify-center text-[14px] font-bold lg:mt-[33px] lg:w-fit lg:text-[28px] lg:!leading-[150%]">
                 Individual Expert
               </div>
             </div>
@@ -32,7 +32,7 @@ const Hero6 = () => {
                 alt="image"
                 className={`mt-[30px] w-[400px] justify-center lg:mt-0 lg:w-[529px]`}
               />
-              <div className="mt-[16px] flex justify-center text-[14px] font-bold lg:mt-[33px] lg:text-[28px] lg:!leading-[150%]">
+              <div className="mx-auto mt-[16px] flex w-[240px] justify-center text-[14px] font-bold lg:mt-[33px] lg:w-fit lg:text-[28px] lg:!leading-[150%]">
                 Blockchain Consulting Team
               </div>
             </div>

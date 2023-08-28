@@ -13,12 +13,12 @@ const Hero = () => {
             Become a certified OpenMesh Expert to help businesses in
             implementing blockchain data solutions
           </div>
-          <div className="mt-[31px] flex justify-center text-center lg:mt-[62px]">
+          <div className="mt-[31px] flex justify-center lg:mt-[62px]">
             <a
               target="_blank"
               rel="noopener noreferrer"
               href={`https://calendly.com/`}
-              className="cursor-pointer rounded-[5px] bg-[#0354EC] px-[18px] py-[9.5px] text-[11px] font-bold text-white hover:bg-[#0447c5] lg:py-[11.5px] lg:px-[35px] lg:text-[16px] lg:!leading-[19px]"
+              className="w-[140px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[18px] py-[9.5px] text-center text-[11px] font-bold text-white hover:bg-[#0447c5] lg:w-fit lg:py-[11.5px] lg:px-[35px] lg:text-[16px] lg:!leading-[19px]"
             >
               Schedule a Call
             </a>

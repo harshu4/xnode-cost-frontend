@@ -10,7 +10,7 @@ const Hero5 = () => {
           <div className="flex justify-center text-center text-[24px] font-bold -tracking-[2%] text-[#000000] lg:text-[48px]">
             Journey to become an OpenMesh Expert
           </div>
-          <div className="mt-[21px] flex justify-center text-[14px] font-bold -tracking-[2%] text-[#000000] lg:mt-[42px] lg:text-[20px]">
+          <div className="mx-auto mt-[21px] flex w-[140px] justify-center text-center text-[14px] font-bold -tracking-[2%] text-[#000000] lg:mt-[42px] lg:text-[20px]">
             Start here
           </div>
           <div className="mt-[40px] justify-center lg:mt-[9px] lg:flex">

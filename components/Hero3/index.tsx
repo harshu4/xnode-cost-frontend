@@ -11,7 +11,7 @@ const Hero3 = () => {
             <img
               src="/images/hero3/manTwo.png"
               alt="image"
-              className={`absolute top-0 left-[2px] right-0 z-[-1] m-auto w-[400px] lg:min-w-[730px]`}
+              className={`absolute top-0 left-[2px] right-0 z-[-1] m-auto w-[380px] lg:min-w-[730px]`}
             />
             <div className="hidden justify-center text-[32px] font-bold tracking-[2.2%] lg:flex lg:text-[64px]">
               Becomin
