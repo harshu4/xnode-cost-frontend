@@ -3,7 +3,7 @@ const Hero4 = () => {
   return (
     <>
       <section
-        id="home"
+        id="certification"
         className="relative z-10 overflow-hidden bg-white px-[20px] text-[#000000] lg:pt-[107px]"
       >
         <div className="mx-auto">
@@ -84,8 +84,12 @@ const Hero4 = () => {
             <span className="border-b-[2px] border-[#fff]">
               Open Data and Infrastructure Conference
             </span>{' '}
-            to share to <span>hundreds of businesses</span> how you would
-            integrate Openmesh in your consulting and development services
+            to share to{' '}
+            <span className="font-serif font-medium italic">
+              hundreds of businesses
+            </span>{' '}
+            how you would integrate Openmesh in your consulting and development
+            services
           </div>
           <div className="mt-[20px] text-[20px] font-normal">
             Limited spaces available

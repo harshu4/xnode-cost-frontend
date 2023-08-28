@@ -25,6 +25,11 @@ const Header = () => {
     }
   }
 
+  function onClickTrans(element: string) {
+    const taskStartElement = document.getElementById(element)
+    taskStartElement.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const navigationItems = [
     { label: 'About', href: '/about' },
     { label: 'Products', href: '/products' },
@@ -51,10 +56,38 @@ const Header = () => {
           <div className="flex">
             <a className="text-[28px] font-bold !leading-[34px]">/OpenMesh</a>
             <div className="ml-[60px] flex items-center text-[16px] font-medium !leading-[19px]">
-              <a>Certification</a>
-              <a className="ml-[60px]">Learning</a>
-              <a className="ml-[60px]">Success Stories</a>
-              <a className="ml-[60px]">FAQs</a>
+              <a
+                onClick={() => {
+                  onClickTrans('certification')
+                }}
+                className="cursor-pointer"
+              >
+                Certification
+              </a>
+              <a
+                onClick={() => {
+                  onClickTrans('learning')
+                }}
+                className="ml-[60px] cursor-pointer"
+              >
+                Learning
+              </a>
+              <a
+                onClick={() => {
+                  onClickTrans('stories')
+                }}
+                className="ml-[60px] cursor-pointer"
+              >
+                Success Stories
+              </a>
+              <a
+                onClick={() => {
+                  onClickTrans('faqs')
+                }}
+                className="ml-[60px] cursor-pointer"
+              >
+                FAQs
+              </a>
             </div>
           </div>
           <div className="">

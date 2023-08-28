@@ -24,7 +24,7 @@ const Hero = () => {
             </a>
           </div>
         </div>
-        <div className="mx-auto mt-[400px] flex w-[1177px] justify-between bg-yellow">
+        <div className="mx-auto mt-[400px] flex w-[1177px] justify-between">
           <div className="w-[489px] text-[48px] font-medium !leading-[58px] -tracking-[2%]">
             Openmesh Vision and Values
           </div>
