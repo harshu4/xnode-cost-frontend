@@ -10,7 +10,7 @@ const Hero2 = () => {
             Why choose OpenMesh?
           </div>
           <div className="mt-[15px] flex justify-center text-[14px] font-medium -tracking-[2%] lg:mt-[30px] lg:text-center lg:text-[28px] lg:!leading-[44px]">
-            OpenMesh is the leading open-source data protocol that helps
+            Openmesh is the leading open-source data protocol that helps
             individuals and businesses to access on-chain and off-chain data
             seamlessly through our 3 core services:
           </div>

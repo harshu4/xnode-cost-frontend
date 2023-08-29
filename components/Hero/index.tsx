@@ -54,15 +54,17 @@ const Hero = () => {
                   Open
                 </div>
                 <div className="mt-[8px] text-[#959595] lg:mt-[15px] lg:!leading-[24px]">
-                  Openmesh is committed to democratize access to data
+                  Openmesh is committed to democratize access to data for
+                  everyone{' '}
                 </div>
               </div>
-              <div className="flex:mt-0 mt-[30px]">
+              <div className="mt-[30px] lg:mt-0">
                 <div className="text-[12px] font-bold tracking-[2.2%] lg:text-[24px]">
                   Transparent
                 </div>
                 <div className="mt-[8px] text-[#959595] lg:mt-[15px] lg:!leading-[24px]">
-                  Openmesh is committed to democratize access to data
+                  Development of Openmesh will always be open-source and
+                  transparent
                 </div>
               </div>
             </div>
@@ -71,16 +73,18 @@ const Hero = () => {
                 <div className="text-[12px] font-bold tracking-[2.2%] lg:text-[24px]">
                   Decentralized
                 </div>
-                <div className="mt-[8px] text-[#959595] lg:mt-[15px] lg:!leading-[24px]">
-                  Openmesh is committed to democratize access to data
+                <div className="mt-[8px] text-[#959595] lg:mt-[15px] lg:w-[294px] lg:!leading-[24px]">
+                  Decentralized designs limit single-entity dominance and reduce
+                  single failure points
                 </div>
               </div>
-              <div className="flex:mt-0 mt-[30px]">
+              <div className="mt-[30px] lg:mt-0">
                 <div className="text-[12px] font-bold tracking-[2.2%] lg:text-[24px]">
-                  Growth-centric
+                  Secure
                 </div>
                 <div className="mt-[8px] text-[#959595] lg:mt-[15px] lg:!leading-[24px]">
-                  Openmesh is committed to democratize access to data
+                  Openmesh emphasizes on privacy, trust, and transparency by
+                  design
                 </div>
               </div>
             </div>

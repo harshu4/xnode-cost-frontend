@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 const Hero3 = () => {
   return (
     <>
@@ -63,18 +64,51 @@ const Hero3 = () => {
             </div>
             <div className="mt-[20px] lg:mt-0 lg:w-[320px]">
               <div className="text-[14px] font-bold tracking-[2.2%] lg:text-[24px] lg:!leading-[150%]">
-                Growth-centric
+                Rapid deployment
               </div>
               <div className="mt-[10px] text-[12px] font-medium text-[#959595] lg:mt-[15px] lg:w-[294px] lg:text-[20px]">
-                Openmesh is committed to democratize access to data
+                Openmesh empowers developers to build, deploy and manage their
+                own decentralized data infrastructure in mere minutes, instead
+                of months
               </div>
             </div>
-            <div className="mt-[20px] lg:mt-0 lg:w-[320px]">
+            <div className="mt-[20px] lg:mt-0 lg:w-[330px]">
               <div className="text-[14px] font-bold tracking-[2.2%] lg:text-[24px] lg:!leading-[150%]">
-                Badge staking opportunity
+                OEN NFT Badge and Tokens
               </div>
               <div className="mt-[10px] text-[12px] font-medium text-[#959595] lg:mt-[15px] lg:w-[294px] lg:text-[20px]">
-                Openmesh is committed to democratize access to data
+                Certified Openmesh Experts receive an OEN NFT badge as a
+                recognition of your expertise
+              </div>
+            </div>
+            <div className="mt-[20px] lg:mt-0 lg:w-[330px]">
+              <div className="text-[14px] font-bold tracking-[2.2%] lg:text-[24px] lg:!leading-[150%]">
+                Pioneering expertise
+              </div>
+              <div className="mt-[10px] text-[12px] font-medium text-[#959595] lg:mt-[15px] lg:w-[294px] lg:text-[20px]">
+                By becoming an OE, you'll be at the forefront of decentralized
+                data technology, positioning yourself as an expert in a field
+                that's shaping the future of the internet
+              </div>
+            </div>
+            <div className="mt-[20px] lg:mt-0 lg:w-[330px]">
+              <div className="text-[14px] font-bold tracking-[2.2%] lg:text-[24px] lg:!leading-[150%]">
+                Networking Opportunities
+              </div>
+              <div className="mt-[10px] text-[12px] font-medium text-[#959595] lg:mt-[15px] lg:w-[294px] lg:text-[20px]">
+                Being an OE means joining a network of like-minded
+                professionals, fostering collaboration, partnerships, and
+                business opportunities
+              </div>
+            </div>
+            <div className="mt-[20px] lg:mt-0 lg:w-[330px]">
+              <div className="text-[14px] font-bold tracking-[2.2%] lg:text-[24px] lg:!leading-[150%]">
+                Visibility to get external clients
+              </div>
+              <div className="mt-[10px] text-[12px] font-medium text-[#959595] lg:mt-[15px] lg:w-[294px] lg:text-[20px]">
+                Openmesh will develop a dedicated website where Openmesh Experts
+                will be listed based on their expertise, specialization, and
+                region
               </div>
             </div>
           </div>

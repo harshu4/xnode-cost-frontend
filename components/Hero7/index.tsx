@@ -45,7 +45,10 @@ const Hero7 = () => {
           </div>
           <div className="mt-[23px] text-[11px] font-bold lg:mt-[47px] lg:text-[16px]">
             <div className="border-b-[1px] border-[#D4D4D4] pb-[15px] lg:pb-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq1}
+              >
                 <div>What is Openmesh's main goal?</div>
                 <img
                   onClick={handleFaq1}
@@ -69,7 +72,10 @@ const Hero7 = () => {
               </div>
             </div>
             <div className="border-b-[1px] border-[#D4D4D4] py-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq2}
+              >
                 <div>
                   What tools and services does Openmesh offer to developers?
                 </div>
@@ -96,7 +102,10 @@ const Hero7 = () => {
               </div>
             </div>
             <div className="border-b-[1px] border-[#D4D4D4] py-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq3}
+              >
                 <div>Are there any fees associated with using Openmesh?</div>
                 <img
                   onClick={handleFaq3}
@@ -118,7 +127,10 @@ const Hero7 = () => {
               </div>
             </div>
             <div className="border-b-[1px] border-[#D4D4D4] py-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq4}
+              >
                 <div>
                   What is the significance of the Openmesh Expert badge?
                 </div>
@@ -144,7 +156,10 @@ const Hero7 = () => {
               </div>
             </div>
             <div className="border-b-[1px] border-[#D4D4D4] py-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq5}
+              >
                 <div>
                   How can leveraging the Openmesh network benefit my business?
                 </div>
@@ -170,7 +185,10 @@ const Hero7 = () => {
               </div>
             </div>
             <div className="border-b-[1px] border-[#D4D4D4] py-[20px]">
-              <div className="flex justify-between">
+              <div
+                className="flex cursor-pointer justify-between"
+                onClick={handleFaq6}
+              >
                 <div>
                   How can I stay updated on Openmesh's products and offerings?
                 </div>

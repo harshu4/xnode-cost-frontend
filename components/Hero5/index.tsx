@@ -89,7 +89,7 @@ const Hero5 = () => {
                   />
                   <div className="mt-[10px] flex items-start">
                     <div className="text-[11px] font-bold lg:text-[16px]">
-                      What is SuperNode?
+                      What is xNode?
                       <div className="text-[11px] font-medium text-[#959595] lg:text-[16px]">
                         Setup your node with just a few clicks instead of a few
                         months
