@@ -83,7 +83,7 @@ const Hero4 = () => {
         </div>
       </section>
       <section className="mt-[70px] w-full items-center justify-between bg-[#0354EC] pt-[42px] pb-[40px] pl-[20px] pr-[20px] text-white lg:mt-[135px] lg:flex lg:pt-[83px] lg:pb-[78px] lg:pl-[137px] lg:pr-[115px]">
-        <div className="">
+        <div className="lg:w-[1150px]">
           <div className="text-[16px] font-bold lg:text-[32px] lg:!leading-[120%]">
             You'll also get a slot in our{' '}
             <span className="border-b-[2px] border-[#fff]">
