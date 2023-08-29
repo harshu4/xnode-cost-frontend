@@ -6,6 +6,11 @@ const Hero = () => {
         className="relative z-10 overflow-hidden bg-white px-[20px] pt-[100px] text-[#000000] lg:pt-[217px]"
       >
         <div className="mx-auto lg:w-[1194px]">
+          <img
+            src="/images/hero/pattern.svg"
+            alt="image"
+            className={`absolute -top-[100px]  z-[-1] lg:-top-[1000px] lg:right-[200px] `}
+          />
           <div className="flex justify-center text-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">
             OpenMesh Expert Network
           </div>
