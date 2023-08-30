@@ -9,7 +9,7 @@ const Hero = () => {
           <img
             src="/images/hero/pattern.svg"
             alt="image"
-            className={`absolute -top-[100px]  z-[-1] lg:-top-[1000px] lg:right-[200px] `}
+            className={`absolute top-0 lg-0 `}
           />
           <div className="flex justify-center text-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">
             OpenMesh Expert Network
