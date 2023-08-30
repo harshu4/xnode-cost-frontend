@@ -9,14 +9,14 @@ const Hero = () => {
           <img
             src="/images/hero/curvedLines.svg"
             alt="image"
-            className={`lg-0 absolute top-0 `}
+            className={`absolute -top-[100px]  z-[-1] lg:-top-[1000px] lg:right-[200px] `}
           />
           <div className="flex justify-center text-center text-[32px] font-bold lg:text-[64px] lg:!leading-[77px]">
             OpenMesh Expert Network
           </div>
           <div className="mt-[15px] flex justify-center text-center text-[18px] font-medium lg:mt-[30px] lg:text-[36px] lg:!leading-[44px]">
             Become a certified OpenMesh Expert to help businesses in
-            implementing blockchain data solutions1
+            implementing blockchain data solutions
           </div>
           <div className="mt-[31px] flex justify-center lg:mt-[62px]">
             <a
