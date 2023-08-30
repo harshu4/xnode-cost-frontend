@@ -19,7 +19,11 @@ const Hero4 = () => {
           <div className="mx-auto mt-[37px] lg:mt-[75px] lg:w-[956px]">
             <div className="lg:flex">
               <img
-                src="/images/hero4/license.png"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero4/license.png`}
                 alt="image"
                 className={`w-[100px] lg:mr-[60px] lg:w-[254px]`}
               />
@@ -38,7 +42,11 @@ const Hero4 = () => {
             </div>
             <div className="mt-[35px] lg:mt-[70px] lg:flex">
               <img
-                src="/images/hero4/group.png"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero4/group.png`}
                 alt="image"
                 className={`w-[100px] lg:hidden`}
               />
@@ -55,14 +63,22 @@ const Hero4 = () => {
                 </div>
               </div>
               <img
-                src="/images/hero4/group.png"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero4/group.png`}
                 alt="image"
                 className={`hidden w-[254px] lg:block`}
               />
             </div>
             <div className="mt-[35px] lg:mt-[70px] lg:flex">
               <img
-                src="/images/hero4/computer.png"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero4/computer.png`}
                 alt="image"
                 className={`w-[100px] lg:mr-[60px] lg:w-[254px]`}
               />

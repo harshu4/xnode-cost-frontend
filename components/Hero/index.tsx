@@ -7,7 +7,11 @@ const Hero = () => {
       >
         <div className="mx-auto lg:w-[1194px]">
           <img
-            src="https://openmesh-expert-frontend.vercel.app/images/hero/curvedLines.svg"
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/hero/curvedLines.svg`}
             alt="image"
             className={`absolute -top-[150px] right-[20px]  z-[-1] lg:-top-[1000px] lg:right-[200px] `}
           />

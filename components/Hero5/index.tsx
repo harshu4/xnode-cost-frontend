@@ -84,7 +84,11 @@ const Hero5 = () => {
                 </div>
                 <div className="mt-[10px] w-[170px] rounded-[10px] bg-[#F3F3F3] px-[10px] pt-[10px] pb-[20px] lg:mt-[20px] lg:w-[270px]">
                   <img
-                    src="/images/hero5/woman.png"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/hero5/woman.png`}
                     alt="image"
                     className={`w-[100px] lg:w-[254px]`}
                   />
@@ -97,7 +101,11 @@ const Hero5 = () => {
                       </div>
                     </div>
                     <img
-                      src="/images/hero5/plus.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/hero5/plus.svg`}
                       alt="image"
                       className="mt-0 flex items-start  justify-start text-start"
                     />
@@ -110,7 +118,11 @@ const Hero5 = () => {
       </section>
       <div className="absolute top-[1440px] left-0 right-0 z-50 mx-auto lg:top-[2561px]">
         <img
-          src="/images/hero4/license.png"
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/hero4/license.png`}
           alt="image"
           className={`mx-auto w-[160px] lg:w-[254px]`}
         />

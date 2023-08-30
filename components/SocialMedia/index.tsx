@@ -24,7 +24,11 @@ const SocialMedia = () => {
                   Follow our socials
                 </p>
                 <Image
-                  src="/images/socialMedia/twitterLogo.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/socialMedia/twitterLogo.svg`}
                   alt="logo"
                   onClick={handleClickTwitter}
                   width={100}
@@ -32,7 +36,11 @@ const SocialMedia = () => {
                   className="mx-auto mb-20 w-1/2 cursor-pointer transition-all duration-200 hover:z-20 hover:scale-110 md:w-1/3"
                 />
                 <Image
-                  src="/images/logo/l3a-logo.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/logo/l3a-logo.svg`}
                   alt="logo"
                   width={100}
                   height={20}

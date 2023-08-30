@@ -52,7 +52,11 @@ const Hero7 = () => {
                 <div>What is Openmesh's main goal?</div>
                 <img
                   onClick={handleFaq1}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq1Open ? 'rotate-180 transform' : ''
@@ -81,7 +85,11 @@ const Hero7 = () => {
                 </div>
                 <img
                   onClick={handleFaq2}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq2Open ? 'rotate-180 transform' : ''
@@ -109,7 +117,11 @@ const Hero7 = () => {
                 <div>Are there any fees associated with using Openmesh?</div>
                 <img
                   onClick={handleFaq3}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq3Open ? 'rotate-180 transform' : ''
@@ -136,7 +148,11 @@ const Hero7 = () => {
                 </div>
                 <img
                   onClick={handleFaq4}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq4Open ? 'rotate-180 transform' : ''
@@ -165,7 +181,11 @@ const Hero7 = () => {
                 </div>
                 <img
                   onClick={handleFaq5}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq5Open ? 'rotate-180 transform' : ''
@@ -194,7 +214,11 @@ const Hero7 = () => {
                 </div>
                 <img
                   onClick={handleFaq6}
-                  src="/images/hero7/arrow.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/hero7/arrow.svg`}
                   alt="image"
                   className={`cursor-pointer pl-2  lg:pl-0 ${
                     isFaq6Open ? 'rotate-180 transform' : ''

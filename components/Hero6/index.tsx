@@ -17,7 +17,11 @@ const Hero6 = () => {
           <div className="mt-[52px] lg:mt-[104px] lg:flex">
             <div>
               <img
-                src="/images/hero3/man.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero3/man.svg`}
                 alt="image"
                 className={`w-[400px] justify-center lg:mr-[60px] lg:w-[529px]`}
               />
@@ -28,7 +32,11 @@ const Hero6 = () => {
 
             <div>
               <img
-                src="/images/hero6/people.png"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/hero6/people.png`}
                 alt="image"
                 className={`mt-[30px] w-[400px] justify-center lg:mt-0 lg:w-[529px]`}
               />

@@ -10,7 +10,11 @@ const Hero3 = () => {
         <div className="mx-auto lg:min-w-[720px]">
           <div className="mx-auto lg:min-w-[720px]">
             <img
-              src="/images/hero3/manTwo.png"
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/hero3/manTwo.png`}
               alt="image"
               className={`absolute top-0 left-[2px] right-0 z-[-1] m-auto w-[380px] lg:min-w-[730px]`}
             />
