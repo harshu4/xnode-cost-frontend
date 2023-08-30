@@ -7,7 +7,7 @@ const Hero = () => {
       >
         <div className="mx-auto lg:w-[1194px]">
           <img
-            src="/images/hero/pattern.svg"
+            src="/images/hero/curvedLines.svg"
             alt="image"
             className={`lg-0 absolute top-0 `}
           />
