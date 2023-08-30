@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+// how to return abs
 const Hero5 = () => {
   return (
     <>
