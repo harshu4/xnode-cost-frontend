@@ -28,11 +28,11 @@ const ExpertsList = () => {
     console.log(data[0].logo)
   }
 
-//   async function getData2() {
-//     const data = await fetch('http://localhost:3333/api/posts')
-//     console.log('fetche')
-//     console.log(data)
-//   }
+  //   async function getData2() {
+  //     const data = await fetch('http://localhost:3333/api/posts')
+  //     console.log('fetche')
+  //     console.log(data)
+  //   }
 
   useEffect(() => {
     console.log('useEffect chamado')
