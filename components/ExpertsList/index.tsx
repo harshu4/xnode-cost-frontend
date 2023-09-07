@@ -28,16 +28,16 @@ const ExpertsList = () => {
     console.log(data[0].logo)
   }
 
-  async function getData2() {
-    const data = await fetch('/api/posts')
-    console.log('fetche')
-    console.log(data)
-  }
+//   async function getData2() {
+//     const data = await fetch('http://localhost:3333/api/posts')
+//     console.log('fetche')
+//     console.log(data)
+//   }
 
   useEffect(() => {
     console.log('useEffect chamado')
     getData()
-    getData2()
+    // getData2()
   }, [])
   return (
     <section className="bg-white pl-[90px] pr-[64px] pt-[97px] pb-[131px] text-[#000]">
