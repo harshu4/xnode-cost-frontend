@@ -6,7 +6,6 @@ import ThemeToggler from './ThemeToggler'
 import menuData from './menuData'
 import { List } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { HeaderModal } from '../Modals/HeaderModal'
 
 const Header = () => {
   // Navbar toggle
