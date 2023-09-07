@@ -173,9 +173,9 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               href={`https://calendly.com/`}
-              className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[11.5px] px-[35px] text-[16px] font-bold !leading-[19px] text-white hover:bg-[#0447c5]"
+              className="flex cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[11.5px] px-[24px] text-[16px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
             >
-              Schedule a Call
+              Become an expert
             </a>
           </div>
           {/* <div className="lg:hidden">

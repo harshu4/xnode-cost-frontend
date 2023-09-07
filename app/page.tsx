@@ -6,7 +6,8 @@ import Categories2 from '@/components/Categories2'
 import ScrollUp from '@/components/Common/ScrollUp'
 import Contribute2 from '@/components/Contribute2'
 import Hero from '@/components/Hero'
-import Hero2 from '@/components/Hero2'
+import SuccessStories from '@/components/SuccessStories'
+import ExpertsList from '@/components/ExpertsList'
 import Hero3 from '@/components/Hero3'
 import Hero4 from '@/components/Hero4'
 import SocialMedia from '@/components/SocialMedia'
@@ -30,43 +31,8 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
-      <Hero2 />
-      <RevealWrapper>
-        <Hero3 />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Hero4 />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Hero5 />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Hero6 />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Hero7 />
-      </RevealWrapper>
-      {/*
-      <RevealWrapper>
-        <Techs />
-      </RevealWrapper>
-      <RevealWrapper>
-        <Categories2 />
-      </RevealWrapper> */}
-      {/* <Testimonials /> */}
-      {/* <CTA scrollIntoView={contributorsRef} /> */}
-      {/* <AboutL3A />
-      <Categories /> */}
-      {/* <RevealWrapper>
-        <div ref={contributorsRef}>
-          <L3AContributors />
-        </div>
-      </RevealWrapper>
-      <Contribute2 scrollIntoView={tallyFormsRef} />
-      <div ref={tallyFormsRef}>
-        <TallyForms />
-      </div> */}
-      {/* <SocialMedia /> */}
+      <SuccessStories />
+      <ExpertsList />
     </>
   )
 }
