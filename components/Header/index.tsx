@@ -41,6 +41,30 @@ const Header = () => {
     { label: 'Community', href: '/community' },
   ]
 
+  const features = [
+    { label: 'About', isCurrentlyPage: false, href: '/' },
+    {
+      label: 'Expert community',
+      isCurrentlyPage: false,
+      href: 'https://openmesh-expert-community.vercel.app/',
+    },
+    {
+      label: 'Academy',
+      isCurrentlyPage: true,
+      href: 'https://openmesh-expert-academy.vercel.app/',
+    },
+    {
+      label: 'Success Stories',
+      isCurrentlyPage: false,
+      href: '/',
+    },
+    {
+      label: 'FAQs',
+      isCurrentlyPage: false,
+      href: '/',
+    },
+  ]
+
   return (
     <>
       {/* <Link href="#">
@@ -50,10 +74,18 @@ const Header = () => {
           </span>
         </div>
       </Link> */}
-      <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[95px] w-full items-center bg-[#F9F9F9]  bg-opacity-80 text-[#000000]">
-        <div className="w-full justify-between px-[10px] xl:hidden">
-          <div>
-            <a className="text-[21px] font-bold !leading-[34px]">/OpenMesh</a>
+      <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[95px] w-full  items-center bg-[#F9F9F9]  bg-opacity-80 text-[#000000]">
+        <div className="w-full justify-between px-[20px] xl:hidden">
+          <div className="">
+            <img
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/header/openmesh-logo.png`}
+              alt="image"
+              className={`w-[150px]`}
+            />
           </div>
           <button
             onClick={navbarToggleHandler}
@@ -79,95 +111,76 @@ const Header = () => {
           </button>
           <nav
             id="navbarCollapse"
-            className={`navbar absolute right-0 z-50 w-[250px] rounded border-[.5px] border-body-color/50 bg-dark py-6  px-6 text-[13px] text-[#fff] duration-300 dark:border-body-color/20  ${
+            className={`navbar absolute right-0 z-50 w-[250px] rounded border-[.5px] bg-[#e6e4e4] py-6  px-6 text-[13px] text-[#fff] duration-300  ${
               navbarOpen
                 ? 'visibility top-20 opacity-100'
                 : 'invisible top-20 opacity-0'
             }`}
           >
-            <div
-              onClick={() => {
-                onClickTrans('certification')
-              }}
-              className="mt-[10px] cursor-pointer"
-            >
-              Certification
+            <div className=" grid gap-y-[15px] text-[12px]  font-medium !leading-[19px]">
+              {features.map((feature, index) => (
+                <div className="flex h-full items-center" key={index}>
+                  <a
+                    className={`flex h-full cursor-pointer items-center text-[#000]  hover:bg-[#ececec] ${
+                      feature.isCurrentlyPage
+                        ? 'border-b  text-[14px] font-bold '
+                        : ''
+                    }`}
+                  >
+                    {feature.label}
+                  </a>
+                </div>
+              ))}
             </div>
-            <div
-              onClick={() => {
-                onClickTrans('learning')
-              }}
-              className="mt-[10px] cursor-pointer"
-            >
-              Learning
-            </div>
-            <div
-              onClick={() => {
-                onClickTrans('stories')
-              }}
-              className="mt-[10px] cursor-pointer"
-            >
-              Success Stories
-            </div>
-            <div
-              onClick={() => {
-                onClickTrans('faqs')
-              }}
-              className="mt-[10px] cursor-pointer"
-            >
-              FAQs
-            </div>
-            <div className="mt-[20px]">
+            <div className="mt-[35px]">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://calendly.com/`}
-                className=" cursor-pointer rounded-[5px] bg-[#0354EC] py-[9.5px] px-[18px] text-[13px] font-bold !leading-[19px] text-white hover:bg-[#0447c5]"
+                className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[11.5px] px-[18px] text-[13px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
               >
-                Schedule a Call
+                Become an expert
               </a>
+              <div className="mt-[25px]">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`/`}
+                  className=" cursor-pointer items-center bg-transparent text-[13px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
+                >
+                  Login
+                </a>
+              </div>
             </div>
           </nav>
         </div>
-        <div className="hidden w-full justify-between px-[90px] xl:flex">
-          <div className="flex">
-            <a className="text-[28px] font-bold !leading-[34px]">/OpenMesh</a>
-            <div className="ml-[60px] flex items-center text-[16px] font-medium !leading-[19px]">
-              <a
-                onClick={() => {
-                  onClickTrans('certification')
-                }}
-                className="cursor-pointer"
-              >
-                Certification
-              </a>
-              <a
-                onClick={() => {
-                  onClickTrans('learning')
-                }}
-                className="ml-[60px] cursor-pointer"
-              >
-                Learning
-              </a>
-              <a
-                onClick={() => {
-                  onClickTrans('stories')
-                }}
-                className="ml-[60px] cursor-pointer"
-              >
-                Success Stories
-              </a>
-              <a
-                onClick={() => {
-                  onClickTrans('faqs')
-                }}
-                className="ml-[60px] cursor-pointer"
-              >
-                FAQs
-              </a>
+        <div className="hidden h-full w-full items-center justify-between px-[90px] xl:flex">
+          <div className="flex  h-full items-center">
+            <img
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/header/openmesh-logo.png`}
+              alt="image"
+              className={`mr-[60px]`}
+            />
+            <div className="flex h-full items-center gap-x-[20px] text-[16px] font-medium !leading-[19px]">
+              {features.map((feature, index) => (
+                <div className="flex h-full items-center" key={index}>
+                  <a
+                    className={`flex h-full cursor-pointer  items-center px-[30px] hover:bg-[#ececec] ${
+                      feature.isCurrentlyPage ? 'bg-[#ececec] font-bold' : ''
+                    }`}
+                    href={feature.href}
+                  >
+                    {feature.label}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="">
+          <div className=" flex justify-between gap-x-[80px]">
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -175,6 +188,14 @@ const Header = () => {
               className="flex cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[11.5px] px-[24px] text-[16px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
             >
               Become an expert
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`/`}
+              className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
+            >
+              Login
             </a>
           </div>
           {/* <div className="lg:hidden">
