@@ -113,7 +113,9 @@ const Register = () => {
 
   const validSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    email: Yup.string().required('Email is required'),
+    email: Yup.string()
+      .required('Email is required')
+      .email('Must be a valid email address'),
     companyName: Yup.string().required('Company name is required'),
     foundingYear: Yup.number().required('Founding year is required'),
     website: Yup.string().required('Website is required'),
@@ -282,12 +284,19 @@ const Register = () => {
       console.log('setting the cookies')
       setCookie(null, 'userSessionToken', res.sessionToken)
       nookies.set(null, 'userSessionToken', res.sessionToken)
-      toast.success('Account created succesfully')
+      toast.success('Account set up succesfully')
       setIsLoading(false)
       setAccountCreated(true)
     } catch (err) {
-      toast.error('something ocurred')
       console.log(err)
+      if (err.response.data.message === 'Email already in use') {
+        toast.error('Email already in use')
+        const element = document.getElementById('emailId')
+        element.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        toast.error('something ocurred')
+      }
+      console.log(err.response.data.message)
       setIsLoading(false)
     }
   }
@@ -342,7 +351,7 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div>
-                <div className="">
+                <div id="emailId" className="">
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Name
@@ -420,7 +429,7 @@ const Register = () => {
                               sx={{
                                 width: isSmallScreen ? '280px' : '500px',
                                 fieldset: {
-                                  height: '45px',
+                                  height: '50px',
                                   borderColor: '#D4D4D4',
                                   borderRadius: '10px',
                                   marginTop: '7px',
@@ -445,7 +454,7 @@ const Register = () => {
                       className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
-                      placeholder=""
+                      placeholder="new york, us"
                       {...register('location')}
                     />
                   </div>
@@ -651,7 +660,7 @@ const Register = () => {
                   disabled={!isRecaptchaValidated}
                   className={`h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px] ${
                     !isRecaptchaValidated
-                      ? 'bg-[#64728a] hover:bg-[#64728a]'
+                      ? 'bg-[#abacaf] hover:bg-[#abacaf]'
                       : ''
                   }`}
                   onClick={handleSubmit(onSubmit)}

@@ -19,6 +19,7 @@ import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import nookies, { parseCookies, setCookie } from 'nookies'
 
 import { TextField, Autocomplete } from '@mui/material'
 
@@ -55,7 +56,54 @@ const Login = () => {
     resolver: yupResolver<any>(validSchema),
   })
 
-  async function onSubmit(data: LoginForm) {}
+  async function loginUser(data: any) {
+    const config = {
+      method: 'post' as 'post',
+      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-experts/functions/login`,
+      headers: {
+        'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+      },
+      data,
+    }
+
+    let dado
+
+    await axios(config).then(function (response) {
+      if (response.data) {
+        dado = response.data
+        console.log(dado)
+      }
+    })
+
+    return dado
+  }
+
+  async function onSubmit(data: LoginForm) {
+    setIsLoading(true)
+
+    const finalData = {
+      ...data,
+    }
+    try {
+      const res = await loginUser(finalData)
+      console.log(res)
+      console.log('setting the cookies')
+      setCookie(null, 'userSessionToken', res.sessionToken)
+      nookies.set(null, 'userSessionToken', res.sessionToken)
+      setIsLoading(false)
+    } catch (err) {
+      console.log(err)
+      if (err.response.data.message === 'Unconfirmed Email') {
+        toast.error('Unconfirmed email')
+      } else {
+        toast.error('Incorrect credentials')
+      }
+      const element = document.getElementById('emailId')
+      element.scrollIntoView({ behavior: 'smooth' })
+      console.log(err.response.data.message)
+      setIsLoading(false)
+    }
+  }
 
   return (
     <>
@@ -64,7 +112,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div>
-                <div className="">
+                <div id="emailId" className="">
                   <div className="">
                     <span className="flex flex-row">
                       Email
