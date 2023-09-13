@@ -423,6 +423,7 @@ const Register = () => {
                                   height: '45px',
                                   borderColor: '#D4D4D4',
                                   borderRadius: '10px',
+                                  marginTop: '7px',
                                 },
                                 input: { color: 'black' },
                               }}
@@ -650,7 +651,7 @@ const Register = () => {
                   disabled={!isRecaptchaValidated}
                   className={`h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px] ${
                     !isRecaptchaValidated
-                      ? 'bg-[#2a6be4] hover:bg-[#2a6be4]'
+                      ? 'bg-[#64728a] hover:bg-[#64728a]'
                       : ''
                   }`}
                   onClick={handleSubmit(onSubmit)}

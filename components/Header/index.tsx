@@ -143,9 +143,11 @@ const Header = () => {
               </a>
               <div className="mt-[25px]">
                 <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={`/`}
+                  href={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? 'https://openmesh-expert-community.vercel.app/login'
+                      : '/login'
+                  }`}
                   className=" cursor-pointer items-center bg-transparent text-[13px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
                 >
                   Login
@@ -190,9 +192,11 @@ const Header = () => {
               Become an expert
             </a>
             <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`/`}
+              href={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? 'https://openmesh-expert-community.vercel.app/login'
+                  : '/login'
+              }`}
               className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
             >
               Login
