@@ -115,6 +115,7 @@ const Register = () => {
     location: Yup.string().required('Location is required'),
     password: Yup.string().required('Password is required'),
     confirmPassword: Yup.string().required('Name is required'),
+    scheduleCalendlyLink: Yup.string().notRequired(),
     tags: Yup.array()
       .of(Yup.string())
       .min(2, 'At least two tags are required')
@@ -129,7 +130,7 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm<RegisterForm>({
-    resolver: yupResolver(validSchema),
+    resolver: yupResolver<any>(validSchema),
   })
 
   const FileList: FC<FileListProps> = ({ files, onRemove }) => {

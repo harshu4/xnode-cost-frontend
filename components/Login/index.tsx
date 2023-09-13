@@ -52,7 +52,7 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm<LoginForm>({
-    resolver: yupResolver(validSchema),
+    resolver: yupResolver<any>(validSchema),
   })
 
   async function onSubmit(data: LoginForm) {}
