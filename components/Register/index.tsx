@@ -69,10 +69,13 @@ const Register = () => {
   const [departamentOptions, setDepartamentOptions] = useState([])
   const [editorHtml, setEditorHtml] = useState('')
   const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
+  const [googleRecaptchaToken, setGoogleRecaptchaToken] = useState('')
+  const [foundingYear, setFoundingYear] = useState<number | null>(null)
 
   function onChange(value) {
     console.log('Captcha value:', value)
     setIsRecaptchaValidated(true)
+    setGoogleRecaptchaToken(value)
   }
 
   const projectLengthOptions = [
@@ -96,6 +99,9 @@ const Register = () => {
     useState<String>('')
 
   const [ipfsHashTaskData, setIpfsHashTaskData] = useState<String>('')
+
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: 133 }, (_, index) => currentYear - index)
 
   const skillOptions = [
     'IoT',
@@ -266,6 +272,7 @@ const Register = () => {
     const { confirmPassword, ...rest } = data
     const finalData = {
       ...rest,
+      googleRecaptchaToken,
       profilePictureHash: fileIPFSHash,
     }
     try {
@@ -275,7 +282,7 @@ const Register = () => {
       console.log('setting the cookies')
       setCookie(null, 'userSessionToken', res.sessionToken)
       nookies.set(null, 'userSessionToken', res.sessionToken)
-      toast.error('Account created succesfully')
+      toast.success('Account created succesfully')
       setIsLoading(false)
       setAccountCreated(true)
     } catch (err) {
@@ -387,17 +394,42 @@ const Register = () => {
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Founding year
-                      <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
+                      <p className="ml-[8px] text-[10px] font-normal text-[#ff0000]">
                         {errors.foundingYear?.message}
                       </p>
                     </span>
-                    <input
-                      disabled={isLoading}
-                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-                      type="text"
-                      maxLength={100}
-                      placeholder=""
-                      {...register('foundingYear')}
+                    <Controller
+                      name="foundingYear"
+                      control={control}
+                      defaultValue={null}
+                      rules={{ required: 'Founding year is required' }}
+                      render={({ field }) => (
+                        <Autocomplete
+                          {...field}
+                          options={years}
+                          disableClearable
+                          getOptionLabel={(option) => option.toString()}
+                          onChange={(e, newValue) => field.onChange(newValue)}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              variant="outlined"
+                              placeholder="Select a year"
+                              error={Boolean(errors.foundingYear)}
+                              helperText={errors.foundingYear?.message}
+                              sx={{
+                                width: isSmallScreen ? '280px' : '500px',
+                                fieldset: {
+                                  height: '45px',
+                                  borderColor: '#D4D4D4',
+                                  borderRadius: '10px',
+                                },
+                                input: { color: 'black' },
+                              }}
+                            />
+                          )}
+                        />
+                      )}
                     />
                   </div>
                   <div className="mt-[20px]">
@@ -532,7 +564,7 @@ const Register = () => {
                       {...register('description')}
                     />
                   </div>
-                  <div id="passwordId" className="mt-[60px]">
+                  <div id="passwordId" className="mt-[30px] lg:mt-[60px]">
                     <span className="flex flex-row">
                       Password
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
@@ -581,9 +613,9 @@ const Register = () => {
                       {...register('confirmPassword')}
                     />
                   </div>
-                  <div>
+                  <div className="mt-[30px] lg:mt-[60px]">
                     <ReCAPTCHA
-                      sitekey="6LffdR8oAAAAAESTHSx3DAcVcAcZeNALckZB82RY"
+                      sitekey="6Lchix8oAAAAAAdqTFECXq6w_Buuv_18FYgkHMiQ"
                       onChange={onChange}
                     />
                   </div>
@@ -615,7 +647,12 @@ const Register = () => {
               <div className="mt-[60px] pb-60">
                 <button
                   type="submit"
-                  className=" h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px]"
+                  disabled={!isRecaptchaValidated}
+                  className={`h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px] ${
+                    !isRecaptchaValidated
+                      ? 'bg-[#2a6be4] hover:bg-[#2a6be4]'
+                      : ''
+                  }`}
                   onClick={handleSubmit(onSubmit)}
                 >
                   <span className="">Create account</span>
