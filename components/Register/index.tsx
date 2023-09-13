@@ -11,6 +11,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import Checkbox from '@material-ui/core/Checkbox'
 import { toast } from 'react-toastify'
+import nookies, { parseCookies, setCookie } from 'nookies'
 import 'react-toastify/dist/ReactToastify.css'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css' // import styles
@@ -18,24 +19,26 @@ import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 import { TextField, Autocomplete } from '@mui/material'
 
 import Hero from './Hero'
 import { createHash } from 'crypto'
+import { EyeSlash, Eye } from 'phosphor-react'
 
-type TaskSubmitForm = {
-  title: string
-  deadline: Date
-  departament: string
-  skills: string[]
-  type: string
-  projectLength: string
-  numberOfApplicants: string
-  githubLink: string
-  calendarLink: string
-  reachOutLink: string
-  taskDraftDeadline: Date
+type RegisterForm = {
+  name: string
+  email: string
+  companyName: string
+  foundingYear: number
+  location: string
+  website: string
+  tags: string[]
+  description: string
+  password: string
+  confirmPassword: string
+  scheduleCalendlyLink: string
 }
 
 type Payment = {
@@ -48,23 +51,14 @@ type FileListProps = {
   onRemove(index: number): void
 }
 
-type IPFSSubmition = {
-  title: string
-  description: string
-  deadline: Date
-  departament: string
-  skills: string[]
-  type: string
-  projectLength: string
-  numberOfApplicants: string | null
-  payments: Payment[]
-  file: string | null
-}
-
-const NewTask = () => {
+const Register = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
   const [departament, setDepartament] = useState('')
+  const [accountCreated, setAccountCreated] = useState<boolean>(false)
+  const [isRecaptchaValidated, setIsRecaptchaValidated] =
+    useState<boolean>(false)
   const [projectLength, setProjectLength] = useState('')
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [numberOfApplicants, setNumberOfApplicants] = useState('')
   const [type, setType] = useState('Individual')
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -74,6 +68,12 @@ const NewTask = () => {
     useState({})
   const [departamentOptions, setDepartamentOptions] = useState([])
   const [editorHtml, setEditorHtml] = useState('')
+  const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
+
+  function onChange(value) {
+    console.log('Captcha value:', value)
+    setIsRecaptchaValidated(true)
+  }
 
   const projectLengthOptions = [
     'Less than 1 week',
@@ -87,6 +87,8 @@ const NewTask = () => {
 
   const taskAddress = process.env.NEXT_PUBLIC_TASK_ADDRESS
 
+  const [name, setName] = useState('')
+
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -96,41 +98,27 @@ const NewTask = () => {
   const [ipfsHashTaskData, setIpfsHashTaskData] = useState<String>('')
 
   const skillOptions = [
-    'Backend',
-    'Frontend',
+    'IoT',
     'Web development',
-    'Solidity',
-    'UI',
-    'UX',
-    'HR',
+    'Consultancy',
+    'UI / UX',
+    'Marketing',
   ]
 
   const validSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
-    deadline: Yup.date()
-      .transform((value, originalValue) => {
-        return originalValue ? new Date(originalValue) : null
-      })
-      .typeError('Deadline is required')
-      .required('Deadline is required'),
-    taskDraftDeadline: Yup.date()
-      .transform((value, originalValue) => {
-        return originalValue ? new Date(originalValue) : null
-      })
-      .optional(),
-    departament: Yup.string().required('Department is required'),
-    skills: Yup.array()
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().required('Email is required'),
+    companyName: Yup.string().required('Company name is required'),
+    foundingYear: Yup.number().required('Founding year is required'),
+    website: Yup.string().required('Website is required'),
+    description: Yup.string().required('Description is required'),
+    location: Yup.string().required('Location is required'),
+    password: Yup.string().required('Password is required'),
+    confirmPassword: Yup.string().required('Name is required'),
+    tags: Yup.array()
       .of(Yup.string())
       .min(2, 'At least two tags are required')
       .max(3, 'You can select up to 3 skills'),
-    projectLength: Yup.string().required('Project length is required'),
-    numberOfApplicants: Yup.string().required(
-      'Number of applicants is required',
-    ),
-    githubLink: Yup.string().notRequired(),
-    calendarLink: Yup.string().notRequired(),
-    reachOutLink: Yup.string().notRequired(),
-    type: Yup.string().notRequired(),
   })
   const {
     register,
@@ -140,91 +128,25 @@ const NewTask = () => {
     // eslint-disable-next-line no-unused-vars
     reset,
     formState: { errors },
-  } = useForm<TaskSubmitForm>({
+  } = useForm<RegisterForm>({
     resolver: yupResolver(validSchema),
   })
-
-  const addPayments = () => {
-    if (payments.length > 4) {
-      toast.error('Only 5 payments per task', {
-        position: toast.POSITION.TOP_RIGHT,
-      })
-      return
-    }
-    setPayments([
-      ...payments,
-      {
-        tokenContract: '',
-        amount: '',
-      },
-    ])
-  }
-
-  const handleDeletePayment = (index: number) => {
-    setPayments(payments.filter((_, i) => i !== index))
-  }
-
-  const handleAmountPayment = (
-    index: number,
-    field: keyof Payment,
-    valueReceived: string,
-  ) => {
-    const newPayment = [...payments]
-
-    if (
-      newPayment[index][field].length > 10000000000000000000000000000000000000
-    ) {
-      return
-    }
-
-    const value = valueReceived.replace(/[^0-9]/g, '')
-
-    newPayment[index][field] = value
-    setPayments(newPayment)
-  }
-
-  const handleERC20AddressPayment = (
-    index: number,
-    field: keyof Payment,
-    valueReceived: string,
-  ) => {
-    const newPagamentos = [...payments]
-
-    if (newPagamentos[index][field].length > 100) {
-      return
-    }
-
-    const value = valueReceived
-
-    newPagamentos[index][field] = value
-    setPayments(newPagamentos)
-  }
-
-  function handleChange(value) {
-    if (editorHtml.length < 5000) {
-      setEditorHtml(value)
-    }
-
-    console.log('the value markdown')
-    console.log(value)
-  }
 
   const FileList: FC<FileListProps> = ({ files, onRemove }) => {
     return (
       <ul className="mt-4 max-h-[190px] max-w-[300px] overflow-y-auto text-[#000000]">
         {files.map((file, index) => (
-          <li
-            key={`selected-${index}`}
-            className="mb-2 mr-2 ml-4 flex items-center"
-          >
-            <span title={file.name} className="ml-auto block w-full truncate">
-              {file.name}
-            </span>
+          <li key={`selected-${index}`} className="mb-2 mr-2 ml-4 flex">
+            <img
+              src={imagePreview}
+              alt="Preview"
+              className={`h-[150px] w-[150px] cursor-pointer rounded-[100%] `}
+            />
             <button
               type="button"
               onClick={() => onRemove(index)}
               disabled={isLoading}
-              className="ml-2 rounded px-1 py-0.5 text-sm  text-[#ff0000]"
+              className="ml-2 flex h-fit items-start rounded px-1 py-0.5 text-sm  font-extrabold text-[#ff0000]  hover:text-[#6b0101] lg:text-[16px]"
             >
               X
             </button>
@@ -260,6 +182,10 @@ const NewTask = () => {
         }
         const combinedFiles = [...selectedFiles, ...newFiles].slice(0, 15)
         setSelectedFiles(combinedFiles)
+        const imageURL = URL.createObjectURL(event.target.files[0])
+        console.log('here the url')
+        console.log(imageURL)
+        setImagePreview(imageURL)
       })
     }
   }
@@ -292,10 +218,10 @@ const NewTask = () => {
     return ipfsHash
   }
 
-  async function formsUploadIPFS(data: any) {
+  async function createUser(data: any) {
     const config = {
       method: 'post' as 'post',
-      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/functions/uploadIPFSMetadataTaskCreation`,
+      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-experts/functions/createUser`,
       headers: {
         'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
       },
@@ -314,101 +240,43 @@ const NewTask = () => {
     return dado
   }
 
-  async function formsUploadIPFSTaskDraft(data: any) {
-    const config = {
-      method: 'post' as 'post',
-      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/functions/uploadIPFSMetadataTaskDraftCreation`,
-      headers: {
-        'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
-      },
-      data,
-    }
-
-    let dado
-
-    await axios(config).then(function (response) {
-      if (response.data) {
-        dado = response.data
-        console.log(dado)
-      }
-    })
-
-    return dado
-  }
-
-  const handleDateChange = (onChange) => (date) => {
-    const minDate = new Date()
-    minDate.setDate(minDate.getDate() + 2)
-
-    if (date < minDate) {
-      toast.error(
-        'The end voting date needs to be at least 2 days from today',
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        },
-      )
-    } else {
-      onChange(date)
-    }
-  }
-
-  async function onSubmit(data: TaskSubmitForm) {
-    if (!editorHtml || editorHtml.length === 0) {
-      toast.error('Please set a description.')
-      const element = document.getElementById('descId')
+  async function onSubmit(data: RegisterForm) {
+    if (data.password !== data.confirmPassword) {
+      toast.error('Passwords do not match.')
+      console.log('not right password')
+      const element = document.getElementById('passwordId')
       element.scrollIntoView({ behavior: 'smooth' })
       return
     }
-    if (payments.length === 0) {
-      toast.error('Please set a payment.')
-      const element = document.getElementById('budgetId')
-      element.scrollIntoView({ behavior: 'smooth' })
-      return
-    }
-    const preApprovedApplications = []
-    if (fundingView && !data.taskDraftDeadline) {
-      toast.error("Please set a date for the end of the task's draft voting")
-      return
-    }
-    if (fundingView && data.taskDraftDeadline.getTime() < Date.now()) {
-      toast.error(
-        "Please set a date for the end of the task's draft voting greater than now",
-      )
-      return
-    }
-
     setIsLoading(true)
-
-    // verifying if all the ERC20 tokens are valid:
 
     let fileIPFSHash = ''
     if (selectedFiles.length > 0) {
       try {
         fileIPFSHash = await handleFileUploadIPFS()
       } catch (err) {
-        toast.error('Something ocurred')
+        toast.error('Something ocurred on the image upload')
         console.log(err)
         setIsLoading(false)
         return
       }
     }
 
+    const { confirmPassword, ...rest } = data
     const finalData = {
-      ...data,
-      projectLength,
-      numberOfApplicants,
-      description: editorHtml,
-      payments,
-      file: fileIPFSHash,
+      ...rest,
+      profilePictureHash: fileIPFSHash,
     }
-
-    let ipfsHashData
     try {
-      const res = await formsUploadIPFS(finalData)
+      const res = await createUser(finalData)
       console.log('a resposta:')
       console.log(res)
-      ipfsHashData = res
-      setIpfsHashTaskData(res)
+      console.log('setting the cookies')
+      setCookie(null, 'userSessionToken', res.sessionToken)
+      nookies.set(null, 'userSessionToken', res.sessionToken)
+      toast.error('Account created succesfully')
+      setIsLoading(false)
+      setAccountCreated(true)
     } catch (err) {
       toast.error('something ocurred')
       console.log(err)
@@ -416,43 +284,53 @@ const NewTask = () => {
     }
   }
 
-  async function getDepartaments() {
-    setIsLoading(true)
-    const config = {
-      method: 'post' as 'post',
-      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/functions/getDepartaments`,
-      headers: {
-        'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
-      },
-    }
-
-    try {
-      // [		{			"id": "1b71121d-be7c-4331-89e9-5a6e6312852b",			"name": "Blockchain",			"addressTaskDrafts": "0x8c10bC4673d4f0B46cb565Bb565A5054368BC0E4",			"addressDAO": "0x11dF7E88E2FE64c5f7656c1311609Cc838D544DF",			"addressTokenListGovernance": "0x2cda520aAD302836b3110F20B48163f96869383B",			"createdAt": "2023-08-07T06:10:39.000Z",			"updatedAt": "2023-08-07T06:09:55.000Z"		},		{			"id": "1b71122d-be8c-4331-89e9-5a6e6312852b",			"name": "Cloud",			"addressTaskDrafts": "0x68Aaa9f0b989214C4a20831234A2b65F89e6846f",			"addressDAO": "0x7b92f0E65cCAeF6F8e259ABcFD5C87E3f0969Ddc",			"addressTokenListGovernance": "0xE80bC76b61C39f9DD012541d972A39AaC9CBCFAe",			"createdAt": "2023-08-08T11:43:06.000Z",			"updatedAt": null		},		{			"id": "9addf5fb-5ab8-4d80-b0bf-e26247920bd4",			"name": "Frontend",			"addressTaskDrafts": "0xbD6CdE02D09f0a59e9E83f38EbA47c60Fa402921",			"addressDAO": "0x8c8C9331c0550C3Dc492f6A11fC9b891F3AbFe62",			"addressTokenListGovernance": "0x8248db7F95ec6CA2818A73E7CA95de1c0CC77310",			"createdAt": "2023-08-10T14:15:06.000Z",			"updatedAt": null		},		{			"id": "f069bf45-f8b7-4e57-97d1-14bdcaf4bc17",			"name": "Data",			"addressTaskDrafts": "0x104D58217F1184548fEeC388640e9a6aD38C35c1",			"addressDAO": "0x10C93ee6962edfCE77f1ad1f04E86235e2bf96d2",			"addressTokenListGovernance": "0xdbf68eF0876A96A9A13D6D82279aAF2228E1fF9E",			"createdAt": "2023-08-10T14:12:57.000Z",			"updatedAt": null		}	]
-      await axios(config).then(function (response) {
-        if (response.data && response.data.departaments.length > 0) {
-          const departamentsNameList = []
-          const departamentsToAddress = {}
-
-          response.data.departaments.forEach((departament) => {
-            departamentsNameList.push(departament.name)
-            departamentsToAddress[departament.name] =
-              departament.addressTaskDrafts
-          })
-
-          setDepartamentOptionsToAddress(departamentsToAddress)
-          setDepartamentOptions(departamentsNameList)
-        }
-      })
-    } catch (err) {
-      toast.error('Error getting the departaments options!')
-      console.log(err)
-    }
-    setIsLoading(false)
+  if (accountCreated) {
+    return (
+      <>
+        <section className="border-b border-[#CFCFCF] px-32 pb-[53px] pt-[50px]">
+          <div className="container">
+            <div className="-mx-4 flex flex-wrap items-start">
+              <div className="w-full px-4 lg:w-2/3">
+                <div className="mb-1">
+                  <h3 className="text-[15px] font-bold !leading-[150%] text-[#000000] lg:text-[24px]">
+                    Create account
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="mt-12 mb-[0px] flex justify-center px-[20px] pt-[15px] text-center text-[11px]  font-medium !leading-[17px] text-[#000000] lg:mb-24 lg:px-[100px] lg:pt-[30px]  lg:text-[14px]">
+          <div>
+            <div className="text-[15px] font-bold !leading-[150%] text-[#000000] lg:text-[24px]">
+              Account set up succesfully!
+            </div>
+            <div className="text-[12px] font-normal !leading-[150%] text-[#000000] lg:mt-[25px] lg:text-[16px]">
+              A link was sent to your email to confirm the account creation.
+            </div>
+          </div>
+        </section>
+      </>
+    )
   }
+
   return (
     <>
-      <section className="mt-12 mb-[0px] px-[20px] pt-[50px]  text-[11px] font-medium !leading-[17px] text-[#000000] lg:mb-24 lg:px-[100px]  lg:text-[14px]">
-        <div className="container px-[0px]">
+      <section className="border-b border-[#CFCFCF] px-32 pb-[53px] pt-[50px]">
+        <div className="container">
+          <div className="-mx-4 flex flex-wrap items-start">
+            <div className="w-full px-4 lg:w-2/3">
+              <div className="mb-1">
+                <h3 className="text-[15px] font-bold !leading-[150%] text-[#000000] lg:text-[24px]">
+                  Create account
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="mt-12 mb-[0px] px-[20px] pt-[15px] text-[11px]  font-medium !leading-[17px] text-[#000000] lg:mb-24 lg:px-[100px] lg:pt-[30px]  lg:text-[14px]">
+        <div className="flex gap-x-[70px] lg:gap-x-[200px] lg:px-[150px]">
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div>
@@ -461,107 +339,128 @@ const NewTask = () => {
                     <span className="flex flex-row">
                       Name
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.name?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('name')}
                     />
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Email
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.email?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('email')}
                     />
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Company name
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.companyName?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('companyName')}
                     />
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Founding year
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.foundingYear?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('foundingYear')}
                     />
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Location
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.location?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('location')}
                     />
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Website
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.website?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('website')}
                     />
+                  </div>
+                  <div className="mt-[20px]">
+                    <span className="flex flex-row">
+                      Calendly link
+                      <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
+                        {errors.scheduleCalendlyLink?.message}
+                      </p>
+                    </span>
+                    <div className="relative flex items-center">
+                      <span className="absolute left-3 top-[25px] self-center text-[17px] font-normal">
+                        calendly.com/
+                      </span>
+                      <input
+                        disabled={isLoading}
+                        className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white pl-[123px] pr-[10px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                        type="text"
+                        maxLength={100}
+                        placeholder=""
+                        {...register('scheduleCalendlyLink')}
+                      />
+                    </div>
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Service tags
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.skills?.message}
+                        {errors.tags?.message}
                       </p>
                     </span>
                     <Controller
-                      name="skills"
+                      name="tags"
                       control={control}
                       defaultValue={[]}
                       rules={{
@@ -573,21 +472,6 @@ const NewTask = () => {
                         <Autocomplete
                           {...field}
                           multiple
-                          popupIcon={
-                            <svg
-                              width="16"
-                              height="10"
-                              viewBox="0 0 16 10"
-                              className="mr-[15px] mt-[13px]"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M7.15474 9.65876L0.35261 3.07599C-0.117537 2.62101 -0.117537 1.88529 0.35261 1.43514L1.48296 0.341239C1.95311 -0.113746 2.71335 -0.113746 3.17849 0.341239L8 5.00726L12.8215 0.341239C13.2917 -0.113746 14.0519 -0.113746 14.517 0.341239L15.6474 1.43514C16.1175 1.89013 16.1175 2.62585 15.6474 3.07599L8.84527 9.65876C8.38512 10.1137 7.62488 10.1137 7.15474 9.65876Z"
-                                fill="#959595"
-                              />
-                            </svg>
-                          }
                           disabled={isLoading}
                           className="mt-[10px]"
                           options={skillOptions}
@@ -605,7 +489,7 @@ const NewTask = () => {
                               field.onChange(newValue)
                             } else {
                               console.log('not aloweed')
-                              toast.error('Only 8 tags per task', {
+                              toast.error('Only 8 tags', {
                                 position: toast.POSITION.TOP_RIGHT,
                               })
                             }
@@ -618,7 +502,9 @@ const NewTask = () => {
                               sx={{
                                 width: isSmallScreen ? '280px' : '500px',
                                 fieldset: {
-                                  height: '55px',
+                                  height: `${
+                                    field.value.length >= 4 ? '100px' : '45px'
+                                  }`,
                                   borderColor: '#D4D4D4',
                                   borderRadius: '10px',
                                 },
@@ -634,61 +520,83 @@ const NewTask = () => {
                     <span className="flex flex-row">
                       Description
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.description?.message}
                       </p>
                     </span>
-                    <input
+                    <textarea
                       disabled={isLoading}
-                      className="mt-[10px] h-[500px] w-[380px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-                      type="text"
+                      className="mt-[10px] h-[200px] w-[380px] rounded-[10px] border border-[#D4D4D4] bg-white py-[25px] px-[20px] text-[17px] font-normal outline-0 lg:w-[500px]"
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('description')}
                     />
                   </div>
-                  <div className="mt-[60px]">
+                  <div id="passwordId" className="mt-[60px]">
                     <span className="flex flex-row">
                       Password
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.password?.message}
                       </p>
                     </span>
-                    <input
-                      disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-                      type="text"
-                      maxLength={100}
-                      placeholder=""
-                      {...register('title')}
-                    />
+                    <div className="flex gap-x-[20px]">
+                      <input
+                        disabled={isLoading}
+                        className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                        type={passwordVisibility ? 'password' : 'text'}
+                        maxLength={100}
+                        placeholder=""
+                        {...register('password')}
+                      />
+                      {passwordVisibility ? (
+                        <div
+                          onClick={() => setPasswordVisibility(false)}
+                          className="flex cursor-pointer items-center text-center"
+                        >
+                          <EyeSlash className="cursor-pointer" />
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => setPasswordVisibility(true)}
+                          className="flex cursor-pointer items-center text-center"
+                        >
+                          <Eye className="cursor-pointer" />
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
                       Confirm password
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.title?.message}
+                        {errors.confirmPassword?.message}
                       </p>
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-                      type="text"
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      type={passwordVisibility ? 'password' : 'text'}
                       maxLength={100}
                       placeholder=""
-                      {...register('title')}
+                      {...register('confirmPassword')}
+                    />
+                  </div>
+                  <div>
+                    <ReCAPTCHA
+                      sitekey="6LffdR8oAAAAAESTHSx3DAcVcAcZeNALckZB82RY"
+                      onChange={onChange}
                     />
                   </div>
                 </div>
               </div>
             </div>
             {isLoading ? (
-              <div className="mt-[30px] flex pb-[10px] lg:pb-60">
+              <div className="mt-[60px] flex pb-[10px] lg:pb-60">
                 <button
                   disabled={true}
-                  className=" mr-[15px] h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#0354EC] lg:text-[16px]"
+                  className=" mr-[15px] h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px]"
                   onClick={handleSubmit(onSubmit)}
                 >
-                  <span className="">Register</span>
+                  <span className="">Create account</span>
                 </button>
                 <svg
                   className="mt-1 animate-spin"
@@ -703,21 +611,53 @@ const NewTask = () => {
                 </svg>
               </div>
             ) : (
-              <div className="mt-[30px] pb-60">
+              <div className="mt-[60px] pb-60">
                 <button
                   type="submit"
-                  className=" h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#0354EC] lg:text-[16px]"
+                  className=" h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px]"
                   onClick={handleSubmit(onSubmit)}
                 >
-                  <span className="">Register</span>
+                  <span className="">Create account</span>
                 </button>
               </div>
             )}
           </form>
+          <div className="flex h-fit">
+            {selectedFiles.length === 0 ? (
+              <label className="">
+                <div className="">
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/register/user-logo.svg`}
+                    alt="image"
+                    className={`mr-[25px] w-[107px] cursor-pointer`}
+                  />
+
+                  <input
+                    type="file"
+                    disabled={isLoading}
+                    multiple
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </div>
+              </label>
+            ) : (
+              <FileList files={selectedFiles} onRemove={removeFile} />
+            )}
+            {selectedFiles.length === 0 ? (
+              <p className="flex items-center">Upload Picture</p>
+            ) : (
+              <div> </div>
+            )}
+          </div>
         </div>
       </section>
     </>
   )
 }
 
-export default NewTask
+export default Register
