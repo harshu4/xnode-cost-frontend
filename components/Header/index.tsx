@@ -1,18 +1,28 @@
 /* eslint-disable no-unused-vars */
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import ThemeToggler from './ThemeToggler'
 import menuData from './menuData'
-import { List } from 'phosphor-react'
+import { UserCircle } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { parseCookies, destroyCookie } from 'nookies'
+import axios from 'axios'
+import { AccountContext } from '../../contexts/AccountContext'
 
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false)
+  const [userNavbarOpen, setUserNavbarOpen] = useState(false)
+  const [userConnected, setUserConnected] = useState()
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
   }
+
+  const cookies = parseCookies()
+  const userHasAnyCookie = cookies.userSessionToken
+
+  const { user, setUser } = useContext(AccountContext)
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1)
@@ -27,6 +37,11 @@ const Header = () => {
   function onClickTrans(element: string) {
     const taskStartElement = document.getElementById(element)
     taskStartElement.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  function signOutUser() {
+    destroyCookie(undefined, 'userSessionToken')
+    setUser(null)
   }
 
   const navigationItems = [
@@ -64,6 +79,50 @@ const Header = () => {
       href: '/',
     },
   ]
+
+  async function getUserData() {
+    const { userSessionToken } = parseCookies()
+    console.log('no user data')
+    console.log(userSessionToken)
+    if (userSessionToken) {
+      const config = {
+        method: 'post' as 'post',
+        url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-experts/functions/getCurrentUser`,
+        headers: {
+          'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+          'X-Parse-Session-Token': userSessionToken,
+          'Content-Type': 'application/json',
+        },
+      }
+      let dado
+
+      await axios(config).then(function (response) {
+        if (response.data) {
+          dado = response.data
+          console.log(dado)
+          setUser(dado)
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (userHasAnyCookie) {
+      console.log('user has cookis')
+      console.log(userHasAnyCookie)
+      console.log(cookies.userSessionToken)
+      try {
+        getUserData()
+      } catch (err) {
+        destroyCookie(undefined, 'userSessionToken')
+        setUser(null)
+      }
+    } else {
+      localStorage.removeItem('@scalable: user-state-1.0.0')
+      destroyCookie(undefined, 'userSessionToken')
+      setUser(null)
+    }
+  }, [])
 
   return (
     <>
@@ -191,16 +250,89 @@ const Header = () => {
             >
               Become an expert
             </a>
-            <a
-              href={`${
-                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                  ? 'https://openmesh-expert-community.vercel.app/login'
-                  : '/login'
-              }`}
-              className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
-            >
-              Login
-            </a>
+            {user?.sessionToken ? (
+              <div>
+                <img
+                  src={
+                    !user.profilePictureHash
+                      ? `${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/user-circle.svg`
+                      : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
+                  }
+                  alt="image"
+                  onClick={() => {
+                    setUserNavbarOpen(!userNavbarOpen)
+                  }}
+                  className={`mr-[25px] h-[50px] w-[50px] cursor-pointer rounded-[100%]`}
+                />
+                <nav
+                  className={`navbar absolute right-[100px] z-50 flex w-[220px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-6 pl-[35px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
+                    userNavbarOpen
+                      ? 'visibility top-20 opacity-100'
+                      : 'invisible top-20 opacity-0'
+                  }`}
+                >
+                  <div className="mt-[10px]">
+                    <div className=" grid gap-y-[15px] text-[15px]  font-medium !leading-[19px]">
+                      <div className="flex h-full items-center">
+                        <a
+                          href={`${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? 'https://openmesh-expert-community.vercel.app/my-account'
+                              : '/my-account'
+                          }`}
+                          className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
+                        >
+                          My account
+                        </a>
+                      </div>
+                      <div className="flex h-full items-center">
+                        <a
+                          href={`${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? 'https://openmesh-expert-community.vercel.app/change-password'
+                              : '/change-password'
+                          }`}
+                          className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
+                        >
+                          Change password
+                        </a>
+                      </div>
+                    </div>
+                    <div className="mt-[25px]">
+                      <a
+                        onClick={signOutUser}
+                        className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[6px] px-[18px] text-[12px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
+                      >
+                        Sign out
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setUserNavbarOpen(false)
+                    }}
+                    className="ml-[20px]  flex cursor-pointer justify-end text-[16px] font-bold text-[#000] hover:text-[#313131]"
+                  >
+                    x
+                  </div>
+                </nav>
+              </div>
+            ) : (
+              <a
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? 'https://openmesh-expert-community.vercel.app/login'
+                    : '/login'
+                }`}
+                className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
+              >
+                Login
+              </a>
+            )}
           </div>
           {/* <div className="lg:hidden">
               <Dialog.Root>

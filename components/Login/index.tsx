@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 'use client'
 // import { useState } from 'react'
-import { useEffect, useState, ChangeEvent, FC } from 'react'
+import { useEffect, useState, ChangeEvent, FC, useContext } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -20,6 +20,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import nookies, { parseCookies, setCookie } from 'nookies'
+import { AccountContext } from '../../contexts/AccountContext'
 
 import { TextField, Autocomplete } from '@mui/material'
 
@@ -34,8 +35,12 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
 
+  const { push } = useRouter()
+
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const { user, setUser } = useContext(AccountContext)
 
   const validSchema = Yup.object().shape({
     email: Yup.string().max(500).required('Email is required'),
@@ -71,6 +76,7 @@ const Login = () => {
     await axios(config).then(function (response) {
       if (response.data) {
         dado = response.data
+        console.log('api response')
         console.log(dado)
       }
     })
@@ -80,7 +86,7 @@ const Login = () => {
 
   async function onSubmit(data: LoginForm) {
     setIsLoading(true)
-
+    console.log('called login')
     const finalData = {
       ...data,
     }
@@ -90,7 +96,11 @@ const Login = () => {
       console.log('setting the cookies')
       setCookie(null, 'userSessionToken', res.sessionToken)
       nookies.set(null, 'userSessionToken', res.sessionToken)
+      console.log('setting user')
+      setUser(res)
+      console.log('setting false')
       setIsLoading(false)
+      push('/')
     } catch (err) {
       console.log(err)
       if (err.response.data.message === 'Unconfirmed Email') {
