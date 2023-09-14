@@ -216,6 +216,15 @@ const Login = () => {
                 Create account
               </a>
             </div>
+            <div className="lg:mt-[20px]">
+              Forgot your password?{' '}
+              <a
+                href="/recover-password"
+                className="border-b-1 cursor-pointer border-b text-[#3253FE]"
+              >
+                Recover password
+              </a>
+            </div>
           </form>
         </div>
       </section>
