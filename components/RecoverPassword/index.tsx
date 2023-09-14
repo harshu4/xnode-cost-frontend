@@ -30,6 +30,7 @@ const RecoverPassword = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isPageLoading, setIsPageLoading] = useState<boolean>(false)
   const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
+  const [wasSent, setWasSent] = useState<boolean>(false)
 
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
@@ -56,16 +57,13 @@ const RecoverPassword = () => {
     resolver: yupResolver<any>(validSchema),
   })
 
-  async function updatePassword(data: any) {
+  async function recoverPassword(data: any) {
     console.log('chegou a password')
-    console.log(data)
-    const { userSessionToken } = parseCookies()
     const config = {
       method: 'post' as 'post',
-      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-experts/functions/changePassword`,
+      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-experts/functions/emailRecoverPassword`,
       headers: {
         'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
-        'X-Parse-Session-Token': userSessionToken,
         'Content-Type': 'application/json',
       },
       data,
@@ -73,12 +71,18 @@ const RecoverPassword = () => {
 
     let dado
 
-    await axios(config).then(function (response) {
-      if (response.data) {
-        dado = response.data
-        console.log(dado)
-      }
-    })
+    try {
+      await axios(config).then(function (response) {
+        if (response.data) {
+          dado = response.data
+          console.log(dado)
+        }
+        setWasSent(true)
+      })
+    } catch (err) {
+      toast.error(`An error occurred`)
+    }
+    setIsLoading(false)
 
     return dado
   }
@@ -87,37 +91,41 @@ const RecoverPassword = () => {
     console.log('submitt update called')
     setIsLoading(true)
 
-    const finalData = { oldPassword: data.email }
+    const finalData = { email: data.email }
 
     try {
-      const res = await updatePassword(finalData)
-      toast.success('Password changed succesfully')
-      await new Promise((resolve) => setTimeout(resolve, 2500))
-      setIsLoading(false)
-      push('/')
+      await recoverPassword(finalData)
     } catch (err) {
       console.log(err)
-      if (err.response.data.message === 'Email already in use') {
-        toast.error('Email already in use')
-        const element = document.getElementById('emailId')
-        element.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        toast.error('Incorrect password')
-      }
-      console.log(err.response.data.message)
       setIsLoading(false)
     }
   }
 
-  if (isPageLoading) {
+  if (wasSent) {
     return (
-      <section className="py-16 px-32 text-black md:py-20 lg:pt-40">
-        <div className="container flex h-60 animate-pulse px-0 pb-12">
-          <div className="mr-10 w-3/4 animate-pulse bg-[#dfdfdf]"></div>
-          <div className="w-1/4 animate-pulse bg-[#dfdfdf]"></div>
-        </div>
-        <div className="container h-96 animate-pulse bg-[#dfdfdf] pb-12"></div>
-      </section>
+      <>
+        <section className="border-b border-[#CFCFCF] px-32 pb-[53px] pt-[50px]">
+          <div className="container">
+            <div className="-mx-4 flex flex-wrap items-start">
+              <div className="w-full px-4 lg:w-2/3">
+                <div className="mb-1">
+                  <h3 className="text-[15px] font-bold !leading-[150%] text-[#000000] lg:text-[24px]">
+                    Recover password
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="mt-12 mb-[0px] flex justify-center px-[20px] pt-[15px] text-center text-[11px]  font-medium !leading-[17px] text-[#000000] lg:mb-24 lg:px-[100px] lg:pt-[30px]  lg:text-[14px]">
+          <div>
+            <div className="text-[12px] font-normal !leading-[150%] text-[#000000] lg:mt-[25px] lg:text-[16px]">
+              If this email is valid, a password recovery link has been sent to
+              it.
+            </div>
+          </div>
+        </section>
+      </>
     )
   }
 
@@ -158,26 +166,11 @@ const RecoverPassword = () => {
                         <input
                           disabled={isLoading}
                           className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-                          type={passwordVisibility ? 'password' : 'text'}
+                          type={'text'}
                           maxLength={100}
                           placeholder=""
                           {...register('email')}
                         />
-                        {passwordVisibility ? (
-                          <div
-                            onClick={() => setPasswordVisibility(false)}
-                            className="flex cursor-pointer items-center text-center"
-                          >
-                            <EyeSlash className="cursor-pointer" />
-                          </div>
-                        ) : (
-                          <div
-                            onClick={() => setPasswordVisibility(true)}
-                            className="flex cursor-pointer items-center text-center"
-                          >
-                            <Eye className="cursor-pointer" />
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -187,10 +180,9 @@ const RecoverPassword = () => {
                 <div className="mt-[60px] flex pb-[10px] lg:pb-60">
                   <button
                     disabled={true}
-                    className={`h-[50px] w-[250px] rounded-[10px] border border-[#0354EC] bg-[#0354EC] bg-transparent py-[12px] px-[25px] text-[12px]  font-bold text-[#0354EC] lg:text-[16px]`}
-                    onClick={handleSubmit(onSubmit)}
+                    className={`h-[40px] w-[180px] rounded-[10px] border border-[#0354EC] bg-[#0354EC] bg-transparent py-[9px] px-[25px] text-[11px]  font-bold text-[#0354EC]  hover:bg-[#0354EC] hover:text-[#fff] lg:text-[14px]`}
                   >
-                    <span className="">Change password</span>
+                    <span className="">Recover password</span>
                   </button>
                   <svg
                     className="mt-1 animate-spin"
@@ -209,7 +201,7 @@ const RecoverPassword = () => {
                   <button
                     type="submit"
                     onClick={handleSubmit(onSubmit)}
-                    className={`h-[50px] w-[210px] rounded-[10px] border border-[#0354EC] bg-[#0354EC] bg-transparent py-[12px] px-[25px] text-[12px]  font-bold text-[#0354EC]  hover:bg-[#0354EC] hover:text-[#fff] lg:text-[16px]`}
+                    className={`h-[40px] w-[180px] rounded-[10px] border border-[#0354EC] bg-[#0354EC] bg-transparent py-[9px] px-[25px] text-[11px]  font-bold text-[#0354EC]  hover:bg-[#0354EC] hover:text-[#fff] lg:text-[14px]`}
                   >
                     <span className="">Recover password</span>
                   </button>
