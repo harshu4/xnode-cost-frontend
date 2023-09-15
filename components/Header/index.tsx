@@ -189,7 +189,7 @@ const Header = () => {
               <div>
                 {' '}
                 <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/change-password`}
+                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
                   className=" cursor-pointer items-center rounded-[5px] border border-[#0354EC] bg-transparent py-[9px] px-[18px] text-[13px] font-bold !leading-[19px] text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff]"
                 >
                   Become an expert
