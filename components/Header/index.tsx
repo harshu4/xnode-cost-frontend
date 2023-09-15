@@ -189,7 +189,7 @@ const Header = () => {
               <div>
                 {' '}
                 <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+                  href={`/community/register`}
                   className=" cursor-pointer items-center rounded-[5px] border border-[#0354EC] bg-transparent py-[9px] px-[18px] text-[13px] font-bold !leading-[19px] text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff]"
                 >
                   Become an expert
@@ -261,7 +261,7 @@ const Header = () => {
                   <a
                     href={`${
                       process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/login`
+                        ? `/community/login`
                         : '/login'
                     }`}
                     className=" cursor-pointer items-center bg-transparent text-[13px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
@@ -307,7 +307,7 @@ const Header = () => {
             }`}
           >
             <a
-              href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+              href={`/community/register`}
               className="flex cursor-pointer items-center rounded-[5px] border border-[#0354EC] bg-transparent  py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff] 2xl:py-[11.5px] 2xl:px-[24px] 2xl:text-[16px]"
             >
               Become an expert
@@ -343,7 +343,7 @@ const Header = () => {
                         <a
                           href={`${
                             process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/my-account`
+                              ? `/community/my-account`
                               : '/my-account'
                           }`}
                           className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
@@ -355,7 +355,7 @@ const Header = () => {
                         <a
                           href={`${
                             process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/change-password`
+                              ? `/community/change-password`
                               : '/change-password'
                           }`}
                           className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
@@ -387,7 +387,7 @@ const Header = () => {
               <a
                 href={`${
                   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/login`
+                    ? `/community/login`
                     : '/login'
                 }`}
                 className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"

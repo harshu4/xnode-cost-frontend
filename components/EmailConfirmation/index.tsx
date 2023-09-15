@@ -49,7 +49,7 @@ const EmailConfirmation = (id: any) => {
       })
     } catch (err) {
       toast.error(`An error occurred`)
-      push('/')
+      push('/community')
     }
 
     return dado
@@ -67,7 +67,7 @@ const EmailConfirmation = (id: any) => {
       console.log(id.id)
       confirmEmail(id.id)
     } else {
-      push('/')
+      push('/community')
     }
   }, [id])
 

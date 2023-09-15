@@ -100,7 +100,7 @@ const Login = () => {
       setUser(res)
       console.log('setting false')
       setIsLoading(false)
-      push('/')
+      push('/community')
     } catch (err) {
       console.log(err)
       if (err.response.data.message === 'Unconfirmed Email') {
