@@ -9,7 +9,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { parseCookies, destroyCookie } from 'nookies'
 import axios from 'axios'
 import { AccountContext } from '../../contexts/AccountContext'
-
+import { usePathname } from 'next/navigation'
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false)
@@ -18,6 +18,8 @@ const Header = () => {
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
   }
+  const pathname = usePathname()
+  const isFAQPage = pathname.includes('/faqs')
 
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
@@ -60,7 +62,7 @@ const Header = () => {
     { label: 'About', isCurrentlyPage: false, href: '/' },
     {
       label: 'Expert community',
-      isCurrentlyPage: true,
+      isCurrentlyPage: !isFAQPage,
       href: 'https://openmesh-expert-community.vercel.app/',
     },
     {
@@ -75,8 +77,8 @@ const Header = () => {
     },
     {
       label: 'FAQs',
-      isCurrentlyPage: false,
-      href: '/',
+      isCurrentlyPage: isFAQPage,
+      href: 'https://openmesh-expert-community.vercel.app/faqs',
     },
   ]
 
