@@ -210,7 +210,11 @@ const Login = () => {
             <div className="lg:mt-[50px]">
               Does not have an account yet?{' '}
               <a
-                href="/register"
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/register`
+                    : '/register'
+                }`}
                 className="border-b-1 cursor-pointer border-b text-[#3253FE]"
               >
                 Create account
@@ -219,7 +223,11 @@ const Login = () => {
             <div className="lg:mt-[20px]">
               Forgot your password?{' '}
               <a
-                href="/recover-password"
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/recover-password`
+                    : '/recover-password'
+                }`}
                 className="border-b-1 cursor-pointer border-b text-[#3253FE]"
               >
                 Recover password

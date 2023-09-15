@@ -18,7 +18,7 @@ const Hero = () => {
           </div>
           <div className="mt-[21px]">
             <a
-              href={`https://openmesh-expert-frontend.vercel.app/`}
+              href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
               className=" cursor-pointer text-[10px] font-bold -tracking-[2%] text-[#0354EC] hover:text-[#2d5092] md:text-[14px] lg:!leading-[150%] xl:text-[16px] 2xl:text-[20px]"
             >
               Join as an Openmesh Expert {'-->'}
