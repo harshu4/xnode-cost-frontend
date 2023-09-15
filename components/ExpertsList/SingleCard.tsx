@@ -19,11 +19,11 @@ const SingleCard = ({
 }: SingleCardProps) => {
   return (
     <div className="justify-start rounded-[8px] border border-[#E4E4E4] p-[15px] text-start text-[#000000] xl:p-[25px]">
-      <div className=" flex text-[7px] font-normal md:text-[10px] xl:text-[14px]">
+      <div className=" flex text-[7px] font-normal md:text-[10px] xl:text-[11px] 2xl:text-[14px]">
         <img
           src={`${logo}`}
           alt="image"
-          className={`h-[70px] w-[70px] rounded-[8px] border  border-[#D9D9D9] md:h-[100px] md:w-[100px]`}
+          className={`2xlmd:h-[100px] 2xlmd:w-[100px] h-[70px] w-[70px] rounded-[8px] border  border-[#D9D9D9] md:h-[70px] md:w-[70px]`}
         />
         <div className="ml-auto ">
           <div className="flex">
@@ -53,16 +53,16 @@ const SingleCard = ({
         </div>
       </div>
       <div>
-        <div className="mt-[15px] text-[10px] font-bold md:mt-[25px] md:text-[12px] lg:text-[14px] lg:!leading-[150%] xl:text-[20px]">
+        <div className="mt-[15px] text-[10px] font-bold md:mt-[25px] md:text-[12px] lg:text-[14px] lg:!leading-[150%] xl:text-[16px] 2xl:text-[20px]">
           {title}
         </div>
-        <div className="mt-[15px] flex  md:mt-[25px]">
+        <div className="mt-[15px] flex  2xl:mt-[25px]">
           {tags &&
             tags.map((tag, index) => (
               <div
                 className={`${
                   index !== 0 ? 'ml-1' : ''
-                } border-b border-[#000000] pb-0 text-[8px] font-normal -tracking-[2%] md:text-[12px] lg:!leading-[19px] xl:text-[16px]`}
+                } border-b border-[#000000] pb-0 text-[8px] font-normal -tracking-[2%] md:text-[12px] lg:!leading-[19px] xl:text-[13px] 2xl:text-[16px]`}
                 key={index}
               >
                 {tag}
@@ -72,17 +72,17 @@ const SingleCard = ({
         </div>
         <div
           title={description}
-          className="mt-[15px] h-[60px] overflow-hidden text-[8px] font-normal -tracking-[2%]  text-[#959595] line-clamp-6 md:mt-[25px] md:text-[10px] lg:h-[144px]  lg:text-[12px] lg:!leading-[150%]  xl:text-[16px]"
+          className="mt-[15px] h-[60px] overflow-hidden text-[8px] font-normal -tracking-[2%]  text-[#959595] line-clamp-5 md:text-[10px] lg:h-[117px] lg:text-[12px] lg:!leading-[150%] xl:text-[13px] 2xl:mt-[25px] 2xl:text-[16px]"
         >
           {description}
         </div>
       </div>
-      <div className="mt-[25px] flex justify-start text-center">
+      <div className="mt-[15px] flex justify-start text-center 2xl:mt-[25px]">
         <a
           target="_blank"
           rel="noopener noreferrer"
           href={`https://calendly.com/`}
-          className="cursor-pointer rounded-[5px] border border-[#D5D8DB] bg-[#F5F8FA] px-[21px] py-[12.5px] text-[7px] font-bold text-[#505050] hover:bg-[#d3d5d6] md:text-[10px]  lg:!leading-[19px] xl:text-[12px]"
+          className="cursor-pointer rounded-[5px] border border-[#D5D8DB] bg-[#F5F8FA] px-[16px] py-[8px] text-[7px] font-bold text-[#505050] hover:bg-[#d3d5d6] md:text-[10px] lg:!leading-[19px] xl:text-[11px]  2xl:px-[21px] 2xl:py-[12.5px] 2xl:text-[12px]"
         >
           Schedule a Call
         </a>

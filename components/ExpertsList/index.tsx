@@ -70,14 +70,14 @@ const ExpertsList = () => {
         <input
           type="text"
           placeholder="Search here"
-          className="  w-full bg-white text-[10px] font-medium text-[#000000] placeholder-[#575757] outline-none md:text-[14px] lg:text-[16px]"
+          className=" w-full bg-white text-[10px] font-medium text-[#000000] placeholder-[#575757] outline-none md:text-[14px] 2xl:text-[16px]"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
       <div
         id="experts"
-        className="text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] xl:text-[20px]"
+        className="text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
       >
         Openmesh Experts
       </div>
@@ -104,7 +104,7 @@ const ExpertsList = () => {
           }
           setViewAll(!viewAll)
         }}
-        className="mt-[31px] flex  cursor-pointer justify-end text-[10px] font-bold -tracking-[2%] text-[#0354EC] hover:text-[#2d5092] md:text-[14px] lg:!leading-[150%] xl:text-[20px]"
+        className="mt-[31px] flex  cursor-pointer justify-end text-[10px] font-bold -tracking-[2%] text-[#0354EC] hover:text-[#2d5092] md:text-[14px] lg:!leading-[150%] xl:text-[16px] 2xl:text-[20px]"
       >
         {viewAll ? 'View Less' : 'View All'} {'-->'}
       </div>

@@ -201,7 +201,7 @@ const RecoverPassword = () => {
                   <button
                     type="submit"
                     onClick={handleSubmit(onSubmit)}
-                    className={`h-[40px] w-[180px] rounded-[10px] border border-[#0354EC] bg-[#0354EC] bg-transparent py-[9px] px-[25px] text-[11px]  font-bold text-[#0354EC]  hover:bg-[#0354EC] hover:text-[#fff] lg:text-[14px]`}
+                    className={`h-[40px] w-[180px] rounded-[10px] border border-[#0354EC] bg-transparent py-[9px] px-[25px] text-[11px]  font-bold text-[#0354EC]  hover:bg-[#0354EC] hover:text-[#fff] lg:text-[14px]`}
                   >
                     <span className="">Recover password</span>
                   </button>

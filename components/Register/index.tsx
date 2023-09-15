@@ -636,7 +636,9 @@ const Register = () => {
               <div className="mt-[60px] flex pb-[10px] lg:pb-60">
                 <button
                   disabled={true}
-                  className=" mr-[15px] h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px]"
+                  className={`h-[50px] w-[250px] rounded-[10px] border border-[#0354EC] bg-transparent py-[12px] px-[25px] text-[12px] font-bold text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff] lg:text-[16px] ${
+                    !isRecaptchaValidated ? '' : ''
+                  }`}
                   onClick={handleSubmit(onSubmit)}
                 >
                   <span className="">Create account</span>
@@ -658,10 +660,8 @@ const Register = () => {
                 <button
                   type="submit"
                   disabled={!isRecaptchaValidated}
-                  className={`h-[50px] w-[250px] rounded-[10px] bg-[#0354EC] py-[12px] px-[25px] text-[12px] font-bold text-white  hover:bg-[#103881] lg:text-[16px] ${
-                    !isRecaptchaValidated
-                      ? 'bg-[#abacaf] hover:bg-[#abacaf]'
-                      : ''
+                  className={`h-[50px] w-[250px] rounded-[10px] border border-[#0354EC] bg-transparent py-[12px] px-[25px] text-[12px] font-bold text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff] lg:text-[16px] ${
+                    !isRecaptchaValidated ? '' : ''
                   }`}
                   onClick={handleSubmit(onSubmit)}
                 >
