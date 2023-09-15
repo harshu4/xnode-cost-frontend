@@ -273,7 +273,7 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="hidden h-full w-full items-center justify-between px-[90px] xl:flex">
+        <div className="hidden h-full w-full items-center justify-between px-[70px] xl:flex">
           <div className="flex  h-full items-center">
             <img
               src={`${
