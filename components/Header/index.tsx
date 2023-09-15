@@ -59,7 +59,11 @@ const Header = () => {
   ]
 
   const features = [
-    { label: 'About', isCurrentlyPage: false, href: '/' },
+    {
+      label: 'About',
+      isCurrentlyPage: false,
+      href: 'https://openmesh-expert-landing-page.vercel.app/',
+    },
     {
       label: 'Expert community',
       isCurrentlyPage: !isFAQPage,
