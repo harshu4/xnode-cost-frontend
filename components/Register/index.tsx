@@ -53,24 +53,14 @@ type FileListProps = {
 
 const Register = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
-  const [departament, setDepartament] = useState('')
   const [accountCreated, setAccountCreated] = useState<boolean>(false)
   const [isRecaptchaValidated, setIsRecaptchaValidated] =
     useState<boolean>(false)
-  const [projectLength, setProjectLength] = useState('')
   const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [numberOfApplicants, setNumberOfApplicants] = useState('')
-  const [type, setType] = useState('Individual')
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [fundingView, setFundingView] = useState<boolean>(false)
-  const [payments, setPayments] = useState<Payment[]>([])
-  const [departamentOptionsToAddress, setDepartamentOptionsToAddress] =
-    useState({})
-  const [departamentOptions, setDepartamentOptions] = useState([])
-  const [editorHtml, setEditorHtml] = useState('')
   const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
   const [googleRecaptchaToken, setGoogleRecaptchaToken] = useState('')
-  const [foundingYear, setFoundingYear] = useState<number | null>(null)
+  const [fundingView, setFundingView] = useState<boolean>(false)
 
   function onChange(value) {
     console.log('Captcha value:', value)
@@ -78,19 +68,9 @@ const Register = () => {
     setGoogleRecaptchaToken(value)
   }
 
-  const projectLengthOptions = [
-    'Less than 1 week',
-    '1 to 2 weeks',
-    '2 to 4 weeks',
-    'More than 4 weeks',
-  ]
-  const numberOfApplicantsOptions = ['1', '2', '3', '4', '5']
-  const typeOptions = ['Individual', 'Group']
-  const { push } = useRouter()
-
-  const taskAddress = process.env.NEXT_PUBLIC_TASK_ADDRESS
-
-  const [name, setName] = useState('')
+  const toggleFundingView = () => {
+    setFundingView(!fundingView)
+  }
 
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -276,6 +256,7 @@ const Register = () => {
       ...rest,
       googleRecaptchaToken,
       profilePictureHash: fileIPFSHash,
+      scheduleCall: fundingView,
     }
     try {
       const res = await createUser(finalData)
@@ -573,6 +554,20 @@ const Register = () => {
                       placeholder=""
                       {...register('description')}
                     />
+                  </div>
+                  <div className="mt-[20px]">
+                    <p className="flex flex-row">Schedule a call</p>
+                    <div className="mt-[10px]">
+                      <label className="text-[11px] text-[#919090] lg:text-[14px]">
+                        <Checkbox
+                          checked={fundingView}
+                          onChange={toggleFundingView}
+                          color="default"
+                          inputProps={{ 'aria-label': '' }}
+                        />
+                        I’d like to schedule a call with the Openmesh team
+                      </label>
+                    </div>
                   </div>
                   <div id="passwordId" className="mt-[30px] lg:mt-[60px]">
                     <span className="flex flex-row">
