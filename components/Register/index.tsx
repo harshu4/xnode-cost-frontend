@@ -28,7 +28,8 @@ import { createHash } from 'crypto'
 import { EyeSlash, Eye } from 'phosphor-react'
 
 type RegisterForm = {
-  name: string
+  firstName: string
+  lastName: string
   email: string
   companyName: string
   foundingYear: number
@@ -92,7 +93,8 @@ const Register = () => {
   ]
 
   const validSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
     email: Yup.string()
       .required('Email is required')
       .email('Must be a valid email address'),
@@ -335,9 +337,9 @@ const Register = () => {
                 <div id="emailId" className="">
                   <div className="mt-[20px]">
                     <span className="flex flex-row">
-                      Name
+                      First Name
                       <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
-                        {errors.name?.message}
+                        {errors.firstName?.message}
                       </p>
                     </span>
                     <input
@@ -346,7 +348,23 @@ const Register = () => {
                       type="text"
                       maxLength={100}
                       placeholder=""
-                      {...register('name')}
+                      {...register('firstName')}
+                    />
+                  </div>
+                  <div className="mt-[20px]">
+                    <span className="flex flex-row">
+                      Last Name
+                      <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
+                        {errors.lastName?.message}
+                      </p>
+                    </span>
+                    <input
+                      disabled={isLoading}
+                      className="mt-[10px] h-[45px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      type="text"
+                      maxLength={100}
+                      placeholder=""
+                      {...register('lastName')}
                     />
                   </div>
                   <div className="mt-[20px]">
