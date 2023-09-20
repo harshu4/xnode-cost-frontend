@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import SingleCard from './SingleCard'
 import { getDatasets } from '@/utils/data'
@@ -5,12 +6,23 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { DataProvider } from '@/types/dataProvider'
 import { SmileySad } from 'phosphor-react'
+import { TextField, Autocomplete } from '@mui/material'
 
 const ExpertsList = () => {
   const [testimonial, setTestimonial] = useState<DataProvider[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [viewAll, setViewAll] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedTags, setTagsCategories] = useState<string[]>([])
+
+  const categoriesOptions = [
+    'Crypto Exchanges',
+    'Public Blockchains',
+    'Decentralized Finance (DeFi)',
+  ]
+
+  const tagsOptions = ['Free', 'Paid']
 
   async function getData() {
     setIsLoading(true)
@@ -69,9 +81,80 @@ const ExpertsList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+      <div className="mt-[20px] flex gap-x-[20px]">
+        <div className="">
+          <Autocomplete
+            multiple
+            disabled={isLoading}
+            className="mt-[10px]"
+            options={categoriesOptions}
+            size="small"
+            getOptionLabel={(option) => `${option}`}
+            filterOptions={(options, state) =>
+              options.filter((option) =>
+                option.toLowerCase().includes(state.inputValue.toLowerCase()),
+              )
+            }
+            onChange={(e, newValue) => {
+              setTagsCategories([...newValue])
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                id="margin-none"
+                placeholder="Categories"
+                sx={{
+                  width: '250px',
+                  fieldset: {
+                    borderColor: '#D4D4D4',
+                    borderRadius: '10px',
+                  },
+                  input: { color: 'black' },
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="">
+          <Autocomplete
+            multiple
+            disabled={isLoading}
+            className="mt-[10px]"
+            options={tagsOptions}
+            size="small"
+            getOptionLabel={(option) => `${option}`}
+            filterOptions={(options, state) =>
+              options.filter((option) =>
+                option.toLowerCase().includes(state.inputValue.toLowerCase()),
+              )
+            }
+            onChange={(e, newValue) => {
+              setSelectedCategories([...newValue])
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                id="margin-none"
+                placeholder="Tags"
+                sx={{
+                  width: '250px',
+                  fieldset: {
+                    borderColor: '#D4D4D4',
+                    borderRadius: '10px',
+                  },
+                  input: { color: 'black' },
+                }}
+              />
+            )}
+          />
+        </div>
+      </div>
+
       <div
         id="experts"
-        className="text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
+        className="mt-[40px] text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
       >
         Openmesh Datasets
       </div>

@@ -48,29 +48,19 @@ const Header = () => {
 
   const features = [
     {
-      label: 'About',
+      label: 'Browse',
       isCurrentlyPage: false,
-      href: `${process.env.NEXT_PUBLIC_BASE_URL}/about`,
+      href: `/`,
     },
     {
-      label: 'Expert community',
+      label: 'Become a data provider',
       isCurrentlyPage: false,
-      href: `${process.env.NEXT_PUBLIC_BASE_URL}/community`,
-    },
-    {
-      label: 'Academy',
-      isCurrentlyPage: false,
-      href: `${process.env.NEXT_PUBLIC_BASE_URL}/academy`,
-    },
-    {
-      label: 'Success Stories',
-      isCurrentlyPage: false,
-      href: `${process.env.NEXT_PUBLIC_BASE_URL}/community`,
+      href: `/become`,
     },
     {
       label: 'FAQs',
       isCurrentlyPage: false,
-      href: `${process.env.NEXT_PUBLIC_BASE_URL}/community/faqs`,
+      href: `/faqs`,
     },
   ]
 
@@ -135,7 +125,7 @@ const Header = () => {
                 process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                   ? process.env.NEXT_PUBLIC_BASE_PATH
                   : ''
-              }/images/header/openmesh-logo.png`}
+              }/images/header/openmesh-data-logo.png`}
               alt="image"
               className={`w-[150px]`}
             />
@@ -185,92 +175,6 @@ const Header = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-[35px]">
-              <div>
-                {' '}
-                <a
-                  href={`/community/register`}
-                  className=" cursor-pointer items-center rounded-[5px] border border-[#0354EC] bg-transparent py-[9px] px-[18px] text-[13px] font-bold !leading-[19px] text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff]"
-                >
-                  Become an expert
-                </a>
-              </div>
-
-              {user?.sessionToken ? (
-                <div className="mt-[30px]">
-                  <div className="mx-auto flex w-3/4 justify-center border-b border-[#000]">
-                    {' '}
-                  </div>
-                  <div className="flex">
-                    {' '}
-                    <img
-                      src={
-                        !user.profilePictureHash
-                          ? `${
-                              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                                ? process.env.NEXT_PUBLIC_BASE_PATH
-                                : ''
-                            }/images/header/user-circle.svg`
-                          : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
-                      }
-                      alt="image"
-                      onClick={() => {
-                        setUserNavbarOpen(!userNavbarOpen)
-                      }}
-                      className={`mr-[15px] mt-[25px] h-[50px] w-[50px] cursor-pointer rounded-[100%] 2xl:mr-[15px]`}
-                    />
-                    <div className="mt-[30px] h-fit py-0 text-[12px] font-medium !leading-[19px]">
-                      <div className=" flex items-center">
-                        <a
-                          href={`${
-                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/my-account`
-                              : '/my-account'
-                          }`}
-                          className={`flex cursor-pointer items-center text-[#000]   hover:text-[#313131]`}
-                        >
-                          My account
-                        </a>
-                      </div>
-                      <div className="mt-[5px] flex items-center">
-                        <a
-                          href={`${
-                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `${process.env.NEXT_PUBLIC_BASE_URL}/community/change-password`
-                              : '/change-password'
-                          }`}
-                          className={`flex cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
-                        >
-                          Change password
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-[25px]">
-                    <a
-                      onClick={signOutUser}
-                      className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[6px] px-[18px] text-[12px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
-                    >
-                      Sign out
-                    </a>
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-[25px]">
-                  <a
-                    href={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `/community/login`
-                        : '/login'
-                    }`}
-                    className=" cursor-pointer items-center bg-transparent text-[13px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
-                  >
-                    Login
-                  </a>
-                </div>
-              )}
-            </div>
           </nav>
         </div>
         <div className="hidden h-full w-full items-center justify-between px-[70px] xl:flex">
@@ -281,7 +185,7 @@ const Header = () => {
                   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                     ? process.env.NEXT_PUBLIC_BASE_PATH
                     : ''
-                }/images/header/openmesh-logo.png`}
+                }/images/header/openmesh-data-logo.png`}
                 alt="image"
                 className={`mr-[60px]`}
               />
@@ -300,103 +204,6 @@ const Header = () => {
                 </div>
               ))}
             </div>
-          </div>
-          <div
-            className={` flex justify-between  ${
-              user?.sessionToken
-                ? 'gap-x-[20px]'
-                : 'gap-x-[40px] 2xl:gap-x-[80px]'
-            }`}
-          >
-            <a
-              href={`/community/register`}
-              className="flex cursor-pointer items-center rounded-[5px] border border-[#0354EC] bg-transparent  py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#0354EC] hover:bg-[#0354EC] hover:text-[#fff] 2xl:py-[11.5px] 2xl:px-[24px] 2xl:text-[16px]"
-            >
-              Become an expert
-            </a>
-            {user?.sessionToken ? (
-              <div>
-                <img
-                  src={
-                    !user.profilePictureHash
-                      ? `${
-                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                            ? process.env.NEXT_PUBLIC_BASE_PATH
-                            : ''
-                        }/images/header/user-circle.svg`
-                      : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
-                  }
-                  alt="image"
-                  onClick={() => {
-                    setUserNavbarOpen(!userNavbarOpen)
-                  }}
-                  className={`mr-[15px] h-[50px] w-[50px] cursor-pointer rounded-[100%] 2xl:mr-[15px]`}
-                />
-                <nav
-                  className={`navbar absolute right-[100px] z-50 flex w-[220px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-6 pl-[35px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
-                    userNavbarOpen
-                      ? 'visibility top-20 opacity-100'
-                      : 'invisible top-20 opacity-0'
-                  }`}
-                >
-                  <div className="mt-[10px]">
-                    <div className=" grid gap-y-[15px] text-[15px]  font-medium !leading-[19px]">
-                      <div className="flex h-full items-center">
-                        <a
-                          href={`${
-                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `/community/my-account`
-                              : '/my-account'
-                          }`}
-                          className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
-                        >
-                          My account
-                        </a>
-                      </div>
-                      <div className="flex h-full items-center">
-                        <a
-                          href={`${
-                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                              ? `/community/change-password`
-                              : '/change-password'
-                          }`}
-                          className={`flex h-full cursor-pointer items-center text-[#000]  hover:text-[#313131]`}
-                        >
-                          Change password
-                        </a>
-                      </div>
-                    </div>
-                    <div className="mt-[25px]">
-                      <a
-                        onClick={signOutUser}
-                        className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[6px] px-[18px] text-[12px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
-                      >
-                        Sign out
-                      </a>
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setUserNavbarOpen(false)
-                    }}
-                    className="ml-[20px]  flex cursor-pointer justify-end text-[16px] font-bold text-[#000] hover:text-[#313131]"
-                  >
-                    x
-                  </div>
-                </nav>
-              </div>
-            ) : (
-              <a
-                href={`${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? `/community/login`
-                    : '/login'
-                }`}
-                className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
-              >
-                Login
-              </a>
-            )}
           </div>
           {/* <div className="lg:hidden">
               <Dialog.Root>
