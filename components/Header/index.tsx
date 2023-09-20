@@ -54,7 +54,7 @@ const Header = () => {
     },
     {
       label: 'Expert community',
-      isCurrentlyPage: !isFAQPage,
+      isCurrentlyPage: false,
       href: `${process.env.NEXT_PUBLIC_BASE_URL}/community`,
     },
     {
@@ -69,7 +69,7 @@ const Header = () => {
     },
     {
       label: 'FAQs',
-      isCurrentlyPage: isFAQPage,
+      isCurrentlyPage: false,
       href: `${process.env.NEXT_PUBLIC_BASE_URL}/community/faqs`,
     },
   ]

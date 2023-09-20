@@ -1,40 +1,29 @@
 import { useEffect, useState } from 'react'
 import SingleCard from './SingleCard'
-import { getPosts } from '@/lib/contentful'
+import { getDatasets } from '@/utils/data'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { DataProvider } from '@/types/dataProvider'
+import { SmileySad } from 'phosphor-react'
 
 const ExpertsList = () => {
-  const [testimonial, setTestimonial] = useState<any[]>([])
+  const [testimonial, setTestimonial] = useState<DataProvider[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [viewAll, setViewAll] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   async function getData() {
-    const data = await getPosts()
-    setTestimonial(data as any)
+    setIsLoading(true)
+
+    let data: DataProvider[]
+    try {
+      data = await getDatasets()
+    } catch (err) {
+      toast.error('Something occured')
+    }
+    setIsLoading(false)
+    setTestimonial(data)
   }
-
-  //   async function getData() {
-  //     const response = await fetch(
-  //       `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
-  //       {
-  //         method: 'GET',
-  //         next: {
-  //           revalidate: 3600,
-  //         },
-  //       },
-  //     )
-
-  //     if (response.ok) {
-  //       const data = await response.json()
-  //       console.log('Fetched')
-  //       const final = data.items.map((item) => item.fields)
-  //       console.log(final)
-  //       setTestimonial(final as any)
-  //     } else {
-  //       console.log(
-  //         `Failed to fetch data: ${response.status} ${response.statusText}`,
-  //       )
-  //     }
-  //   }
 
   useEffect(() => {
     getData()
@@ -42,19 +31,24 @@ const ExpertsList = () => {
 
   const filteredTestimonials = testimonial.filter((t) => {
     return (
-      t.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      t.tags.some((tag) =>
-        tag.toLowerCase().includes(searchTerm.toLowerCase()),
-      ) ||
-      t.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      t.website.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      t.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      t.year.toString().includes(searchTerm)
+      t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      t.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
   const testimonialsToShow = viewAll
     ? filteredTestimonials
     : filteredTestimonials.slice(0, 6)
+
+  if (isLoading) {
+    return (
+      <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
+        <div className="container flex h-60 animate-pulse px-0 pb-12">
+          <div className="mr-10 w-3/4 animate-pulse bg-[#dfdfdf]"></div>
+          <div className="w-1/4 animate-pulse bg-[#dfdfdf]"></div>
+        </div>
+      </section>
+    )
+  }
   return (
     <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
       <div className="mb-[25px] flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[11px] px-[15px] md:h-[42px]">
@@ -79,19 +73,26 @@ const ExpertsList = () => {
         id="experts"
         className="text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
       >
-        Openmesh Experts
+        Openmesh Datasets
       </div>
-      <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[40px] gap-y-[40px] overflow-y-auto lg:grid-cols-2 xl:grid-cols-3">
+      {testimonialsToShow.length === 0 ? (
+        <div>
+          <div className="mt-[64px] mb-[100px] flex flex-col items-center">
+            <SmileySad size={32} className="text-blue-500 mb-2" />
+            <span>No datasets found</span>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[40px] gap-y-[40px] overflow-y-auto lg:grid-cols-2 2xl:grid-cols-3">
         {testimonialsToShow.map((testimonial, index) => (
           <div key={index}>
             <SingleCard
-              title={testimonial.title}
-              tags={testimonial.tags}
+              id={testimonial.id}
+              name={testimonial.name}
               description={testimonial.description}
-              website={testimonial.website}
-              logo={testimonial.logo.fields.file.url}
-              location={testimonial.location}
-              year={testimonial.year}
+              createdAt={testimonial.createdAt}
             />
           </div>
         ))}

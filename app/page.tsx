@@ -5,7 +5,7 @@ import L3AContributors from '@/components/About/L3AContributors'
 import ScrollUp from '@/components/Common/ScrollUp'
 import Hero from '@/components/Hero'
 import SuccessStories from '@/components/SuccessStories'
-import ExpertsList from '@/components/ExpertsList'
+import ExpertsList from '@/components/DataProvidersList'
 import { Inter } from '@next/font/google'
 import { useRef } from 'react'
 import { RevealWrapper } from 'next-reveal'
@@ -22,7 +22,6 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <ExpertsList />
-      <SuccessStories />
     </>
   )
 }
