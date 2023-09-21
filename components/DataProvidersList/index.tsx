@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { DataProvider } from '@/types/dataProvider'
 import { SmileySad } from 'phosphor-react'
+import Filter from '@/components/Filter'
 import { TextField, Autocomplete } from '@mui/material'
 
 const ExpertsList = () => {
@@ -15,11 +16,19 @@ const ExpertsList = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedTags, setTagsCategories] = useState<string[]>([])
+  const [selectedUseCases, setSelectedUseCases] = useState<string[]>([])
 
   const categoriesOptions = [
     'Crypto Exchanges',
     'Public Blockchains',
     'Decentralized Finance (DeFi)',
+    'Blockchain Metaverses',
+    'GameFi (Blockchain Games)',
+    'Financial Data',
+    'Public Medical Research',
+    'Scientific Data',
+    'Cancer Research',
+    'Agricultural',
   ]
 
   const tagsOptions = ['Free', 'Paid']
@@ -38,13 +47,37 @@ const ExpertsList = () => {
   }
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      const categories = url.searchParams.get('category')?.split(',') || []
+      setSelectedCategories(categories)
+    }
     getData()
   }, [])
 
+  const handleUpdate = () => {
+    // setIsLoading(true)
+    // the body that will be passed to call the getTasksFiltered() endpoint
+    const dataBody = {}
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+
+      const categories = url.searchParams.get('category')?.split(',') || []
+      setSelectedCategories(categories)
+
+      const useCases = url.searchParams.get('useCase')?.split(',') || []
+      setSelectedUseCases(useCases)
+    }
+  }
+
   const filteredTestimonials = testimonial.filter((t) => {
     return (
-      t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      t.description.toLowerCase().includes(searchTerm.toLowerCase())
+      (selectedCategories.length === 0 ||
+        selectedCategories.some((category) => t.tags.includes(category))) &&
+      (selectedUseCases.length === 0 ||
+        selectedUseCases.some((useCase) => t.useCases.includes(useCase))) &&
+      (t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        t.description.toLowerCase().includes(searchTerm.toLowerCase()))
     )
   })
   const testimonialsToShow = viewAll
@@ -62,135 +95,144 @@ const ExpertsList = () => {
     )
   }
   return (
-    <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
-      <div className="mb-[25px] flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[11px] px-[15px] md:h-[42px]">
-        <img
-          src={`${
-            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-              ? process.env.NEXT_PUBLIC_BASE_PATH
-              : ''
-          }/images/hero/search.svg`}
-          alt="image"
-          className={`mr-[10px] w-[18px]`}
-        />
-        <input
-          type="text"
-          placeholder="Search here"
-          className=" w-full bg-white text-[10px] font-medium text-[#000000] placeholder-[#575757] outline-none md:text-[14px] 2xl:text-[16px]"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      <div className="mt-[20px] flex gap-x-[20px]">
-        <div className="">
-          <Autocomplete
-            multiple
-            disabled={isLoading}
-            className="mt-[10px]"
-            options={categoriesOptions}
-            size="small"
-            getOptionLabel={(option) => `${option}`}
-            filterOptions={(options, state) =>
-              options.filter((option) =>
-                option.toLowerCase().includes(state.inputValue.toLowerCase()),
-              )
-            }
-            onChange={(e, newValue) => {
-              setTagsCategories([...newValue])
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                variant="outlined"
-                id="margin-none"
-                placeholder="Categories"
-                sx={{
-                  width: '250px',
-                  fieldset: {
-                    borderColor: '#D4D4D4',
-                    borderRadius: '10px',
-                  },
-                  input: { color: 'black' },
-                }}
-              />
-            )}
+    <section className="flex bg-white pl-[30px] pr-[30px] pt-[46px] pb-[55px] text-[#000] md:pl-[90px] md:pr-[130px] lg:pr-[150px] 2xl:pb-[70px]">
+      <Filter onUpdate={handleUpdate} />
+      <div>
+        <div className="mb-[25px] flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[11px] px-[15px] md:h-[42px]">
+          <img
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/hero/search.svg`}
+            alt="image"
+            className={`mr-[10px] w-[18px]`}
+          />
+          <input
+            type="text"
+            placeholder="Search here"
+            className=" w-full bg-white text-[10px] font-medium text-[#000000] placeholder-[#575757] outline-none md:text-[14px] 2xl:text-[16px]"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="">
-          <Autocomplete
-            multiple
-            disabled={isLoading}
-            className="mt-[10px]"
-            options={tagsOptions}
-            size="small"
-            getOptionLabel={(option) => `${option}`}
-            filterOptions={(options, state) =>
-              options.filter((option) =>
-                option.toLowerCase().includes(state.inputValue.toLowerCase()),
-              )
-            }
-            onChange={(e, newValue) => {
-              setSelectedCategories([...newValue])
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                variant="outlined"
-                id="margin-none"
-                placeholder="Tags"
-                sx={{
-                  width: '250px',
-                  fieldset: {
-                    borderColor: '#D4D4D4',
-                    borderRadius: '10px',
-                  },
-                  input: { color: 'black' },
-                }}
-              />
-            )}
-          />
-        </div>
-      </div>
-
-      <div
-        id="experts"
-        className="mt-[40px] text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
-      >
-        Openmesh Datasets
-      </div>
-      {testimonialsToShow.length === 0 ? (
-        <div>
-          <div className="mt-[64px] mb-[100px] flex flex-col items-center">
-            <SmileySad size={32} className="text-blue-500 mb-2" />
-            <span>No datasets found</span>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[40px] gap-y-[40px] overflow-y-auto lg:grid-cols-2 2xl:grid-cols-3">
-        {testimonialsToShow.map((testimonial, index) => (
-          <div key={index}>
-            <SingleCard
-              id={testimonial.id}
-              name={testimonial.name}
-              description={testimonial.description}
-              createdAt={testimonial.createdAt}
+        {/* <div className="mt-[20px] flex gap-x-[20px] p-[5px]">
+          <div className="">
+            <Autocomplete
+              multiple
+              disabled={isLoading}
+              className="mt-[10px]"
+              options={categoriesOptions}
+              size="small"
+              getOptionLabel={(option) => `${option}`}
+              filterOptions={(options, state) =>
+                options.filter((option) =>
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
+                )
+              }
+              onChange={(e, newValue) => {
+                setTagsCategories([...newValue])
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  id="margin-none"
+                  placeholder="Categories"
+                  sx={{
+                    width: '250px',
+                    fieldset: {
+                      borderColor: '#D4D4D4',
+                      borderRadius: '10px',
+                    },
+                    input: { color: 'black' },
+                  }}
+                />
+              )}
             />
           </div>
-        ))}
-      </div>
-      <div
-        onClick={() => {
-          if (viewAll) {
-            const element = document.getElementById('experts')
-            element.scrollIntoView({ behavior: 'smooth' })
-          }
-          setViewAll(!viewAll)
-        }}
-        className="mt-[31px] flex  cursor-pointer justify-end text-[10px] font-bold -tracking-[2%] text-[#0354EC] hover:text-[#2d5092] md:text-[14px] lg:!leading-[150%] xl:text-[16px] 2xl:text-[20px]"
-      >
-        {viewAll ? 'View Less' : 'View All'} {'-->'}
+          <div className="">
+            <Autocomplete
+              multiple
+              disabled={isLoading}
+              className="mt-[10px]"
+              options={tagsOptions}
+              size="small"
+              getOptionLabel={(option) => `${option}`}
+              filterOptions={(options, state) =>
+                options.filter((option) =>
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
+                )
+              }
+              onChange={(e, newValue) => {
+                setSelectedCategories([...newValue])
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  id="margin-none"
+                  placeholder="Tags"
+                  sx={{
+                    width: '250px',
+                    fieldset: {
+                      borderColor: '#D4D4D4',
+                      borderRadius: '10px',
+                    },
+                    input: { color: 'black' },
+                  }}
+                />
+              )}
+            />
+          </div>
+        </div> */}
+
+        <div
+          id="experts"
+          className="mt-[40px] text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
+        >
+          Openmesh Datasets
+        </div>
+        {testimonialsToShow.length === 0 ? (
+          <div>
+            <div className="mt-[64px] mb-[100px] flex flex-col items-center">
+              <SmileySad size={32} className="text-blue-500 mb-2" />
+              <span>No datasets found</span>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[50px] gap-y-[30px] overflow-y-auto lg:grid-cols-2 2xl:grid-cols-3">
+          {testimonialsToShow.map((testimonial, index) => (
+            <div key={index}>
+              <SingleCard
+                id={testimonial.id}
+                name={testimonial.name}
+                description={testimonial.description}
+                createdAt={testimonial.createdAt}
+                company={testimonial.company}
+                sql={testimonial.sql}
+                tags={testimonial.tags}
+                updatedAt={testimonial.updatedAt}
+                live={testimonial.live}
+                download={testimonial.download}
+              />
+            </div>
+          ))}
+        </div>
+        <div
+          onClick={() => {
+            if (viewAll) {
+              const element = document.getElementById('experts')
+              element.scrollIntoView({ behavior: 'smooth' })
+            }
+            setViewAll(!viewAll)
+          }}
+          className="mt-[31px] flex cursor-pointer  justify-center text-[8px] font-medium -tracking-[2%] text-[#959595] hover:text-[#686767] md:text-[13px] lg:!leading-[200%] xl:text-[15px] 2xl:text-[18px]"
+        >
+          {viewAll ? 'Show more' : 'Show less'}
+        </div>
       </div>
     </section>
   )
