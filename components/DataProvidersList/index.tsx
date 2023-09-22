@@ -78,7 +78,7 @@ const ExpertsList = () => {
     }
   }
 
-  const filteredTestimonials = testimonial.filter((t) => {
+  const filteredTestimonials = testimonial?.filter((t) => {
     return (
       (selectedCategories.length === 0 ||
         selectedCategories.some((category) => t.tags.includes(category))) &&
@@ -95,9 +95,14 @@ const ExpertsList = () => {
   if (isLoading) {
     return (
       <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
-        <div className="container flex h-60 animate-pulse px-0 pb-12">
+        <div className="container hidden h-60 animate-pulse px-0 pb-12 md:flex">
           <div className="mr-10 w-3/4 animate-pulse bg-[#dfdfdf]"></div>
           <div className="w-1/4 animate-pulse bg-[#dfdfdf]"></div>
+        </div>
+        <div className="container h-60 animate-pulse px-0 pb-12 md:hidden">
+          <div className="mt-[10px] h-10 w-full animate-pulse bg-[#dfdfdf]"></div>
+          <div className="mt-[10px] h-10 w-full animate-pulse bg-[#dfdfdf]"></div>
+          <div className="mt-[20px] h-32 w-full animate-pulse bg-[#dfdfdf]"></div>
         </div>
       </section>
     )
