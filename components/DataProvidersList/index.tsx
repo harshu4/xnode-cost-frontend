@@ -95,23 +95,23 @@ const ExpertsList = () => {
     )
   }
   return (
-    <section className="flex bg-white pl-[30px] pr-[30px] pt-[46px] pb-[55px] text-[#000] md:pl-[90px] md:pr-[130px] lg:pr-[150px] 2xl:pb-[70px]">
+    <section className="flex bg-white pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pl-[90px] 2xl:pb-[70px]">
       <Filter onUpdate={handleUpdate} />
       <div>
-        <div className="mb-[25px] flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[11px] px-[15px] md:h-[42px]">
+        <div className="flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[10px] px-[15px] md:h-[40px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
           <img
             src={`${
               process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                 ? process.env.NEXT_PUBLIC_BASE_PATH
                 : ''
-            }/images/hero/search.svg`}
+            }/images/hero/searchVector.svg`}
             alt="image"
-            className={`mr-[10px] w-[18px]`}
+            className={`mr-[10px] h-[18px] w-[18px]`}
           />
           <input
             type="text"
             placeholder="Search here"
-            className=" w-full bg-white text-[10px] font-medium text-[#000000] placeholder-[#575757] outline-none md:text-[14px] 2xl:text-[16px]"
+            className=" w-full bg-white text-[8px] font-medium text-[#000000] placeholder-[#737373] outline-none md:text-[14px] 2xl:text-[16px]"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -189,9 +189,10 @@ const ExpertsList = () => {
 
         <div
           id="experts"
-          className="mt-[40px] text-[10px] font-bold -tracking-[2%] md:text-[12px] lg:text-[14px] lg:!leading-[150%] 2xl:text-[20px]"
+          className="mt-[10px] text-[8px] font-medium text-[#959595] md:text-[9px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[12px] 2xl:text-[14px]"
         >
-          Openmesh Datasets
+          Showing {testimonialsToShow.length} out of {testimonial.length} apps
+          by most popular
         </div>
         {testimonialsToShow.length === 0 ? (
           <div>

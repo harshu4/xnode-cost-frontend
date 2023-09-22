@@ -108,23 +108,23 @@ const Filter = ({ onUpdate }: ModalProps) => {
   }, [pathname])
 
   return (
-    <section className="bg-white p-[5px] text-[16px] font-normal text-[#000] lg:!leading-[220%]">
+    <section className="max-w-[190px] bg-white p-[5px] text-[8px] font-normal text-[#000] md:text-[11px] lg:pt-[100px] lg:text-[13px] lg:!leading-[220%] 2xl:max-w-[220px] 2xl:text-[16px]">
       <div className="lg:!leading-[200%]">
         <div className="font-bold">Most Popular</div>
-        <div>Recently added</div>
+        <div className="cursor-pointer">Recently added</div>
       </div>
-      <div className="mt-[40px]">
-        <div className="border-b-[1px] border-[#D9D9D9] pb-[15px] lg:leading-[19px]">
+      <div className="mt-[20px] lg:mt-[32px] 2xl:mt-[40px]">
+        <div className="border-b-[1px] border-[#D9D9D9] pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Categories
         </div>
-        <div className="mt-[15px]">
+        <div className="mt-[8px] lg:mt-[12px] 2xl:mt-[15px]">
           {categoriesOptions.map((category, index) => (
             <div
               onClick={() => {
                 handleCategorySelection(category)
               }}
               key={index}
-              className={`cursor-pointer ${
+              className={`cursor-pointer hover:text-[#000] ${
                 filterCategories.includes(category)
                   ? 'text-[#000]'
                   : 'text-[#959595]'
@@ -135,18 +135,18 @@ const Filter = ({ onUpdate }: ModalProps) => {
           ))}
         </div>
       </div>
-      <div className="mt-[40px] border-b-[1px] border-[#D9D9D9] pb-[40px]">
-        <div className="border-b-[1px] border-[#D9D9D9] pb-[15px] lg:leading-[19px]">
+      <div className="mt-[20px] border-b-[1px] border-[#D9D9D9] pb-[20px] lg:mt-[32px] lg:pb-[32px] 2xl:mt-[40px] 2xl:pb-[40px]">
+        <div className="border-b-[1px] border-[#D9D9D9] pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Use Cases
         </div>
-        <div className="mt-[15px]">
+        <div className="mt-[8px] lg:mt-[12px] 2xl:mt-[15px]">
           {useCasesOptions.map((useCase, index) => (
             <div
               onClick={() => {
                 handleUseCaseSelection(useCase)
               }}
               key={index}
-              className={`cursor-pointer ${
+              className={`cursor-pointer hover:text-[#000] ${
                 filterUseCases.includes(useCase)
                   ? 'text-[#000]'
                   : 'text-[#959595]'
@@ -157,21 +157,26 @@ const Filter = ({ onUpdate }: ModalProps) => {
           ))}
         </div>
       </div>
-      <div className="mt-[15px] border-b-[1px] border-[#D9D9D9] pb-[15px]">
-        <div className="border-b-[1px] border-[#D9D9D9] pb-[15px] lg:leading-[19px]">
+      <div className="mt-[8px] border-b-[1px] border-[#D9D9D9] pb-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+        <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Suggest a new data
         </div>
-        <a className="border-b-[1px] font-medium text-[#0354EC] lg:!leading-[150%]">
-          Join our community and let us know what you’d like to add!
-        </a>
+        <div className=" lg:!leading-[150%]">
+          <a className="border-b-[1px] font-medium text-[#0354EC]">
+            Join our community and let us know what you’d like to add!
+          </a>
+        </div>
       </div>
-      <div className="mt-[15px] border-b-[1px] border-[#D9D9D9] pb-[15px]">
-        <div className="border-b-[1px] border-[#D9D9D9] pb-[15px] lg:leading-[19px]">
+      <div className="mt-[8px] border-b-[1px] border-[#D9D9D9] pb-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+        <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Provide a data source
         </div>
-        <a className="border-b-[1px] font-medium text-[#0354EC] lg:!leading-[150%]">
-          Run an Xnode today{' '}
-        </a>
+        <div className=" lg:!leading-[150%]">
+          {' '}
+          <a className="border-b-[1px] font-medium text-[#0354EC]">
+            Run an Xnode today{' '}
+          </a>
+        </div>
       </div>
     </section>
   )
