@@ -1,4 +1,5 @@
 import { DataProvider } from '@/types/dataProvider'
+import { formatDistanceToNow } from 'date-fns'
 
 const SingleCard = ({
   id,
@@ -12,9 +13,12 @@ const SingleCard = ({
   live,
   download,
 }: DataProvider) => {
+  let timeAgo = formatDistanceToNow(new Date(updatedAt), { addSuffix: true })
+  timeAgo = timeAgo.replace('about', '').trim()
+
   return (
     <a href={`dataset/${id}`}>
-      <div className="flex justify-start gap-x-[10px] rounded-[5px] px-[7px] py-[15px] text-start text-[#000000] hover:border-[0.5px] hover:border-[#D9D9D9] hover:shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:max-w-[600px] xl:gap-x-[20px] xl:py-[24px] xl:px-[20px] 2xl:gap-x-[25px] 2xl:py-[30px] 2xl:px-[25px]">
+      <div className="flex justify-start gap-x-[10px] rounded-[5px] px-[7px] py-[15px] text-start text-[#000000] hover:border-[0.5px] hover:border-[#D9D9D9] hover:shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:max-w-[600px] xl:gap-x-[20px]  xl:py-[24px] xl:px-[20px] 2xl:max-w-[1000px] 2xl:gap-x-[25px] 2xl:py-[30px] 2xl:px-[25px]">
         <div className="h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
           <img
             src={`/openmesh-ico-logo.png`}
@@ -54,7 +58,7 @@ const SingleCard = ({
             <div className="lg::mt-[8px] mt-[5px] text-[8px] font-semibold text-[#505050] lg:text-[13px] lg:!leading-[19px] 2xl:mt-[10px] 2xl:text-[16px]">
               Knoema •{' '}
               <span className="text-[7px] font-medium lg:text-[11px] 2xl:text-[14px]">
-                Updated 7 hours ago
+                Updated {timeAgo}
               </span>
             </div>
 

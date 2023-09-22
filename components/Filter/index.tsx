@@ -20,6 +20,7 @@ const Filter = ({ onUpdate }: ModalProps) => {
   const [viewAll, setViewAll] = useState(false)
   const [filterCategories, setFilterCategories] = useState<string[]>([])
   const [filterUseCases, setFilterUseCases] = useState<string[]>([])
+  const [filterOrderBy, setFilterOrderBy] = useState<string>('')
 
   const categoriesOptions = [
     'Crypto Exchanges',
@@ -34,6 +35,8 @@ const Filter = ({ onUpdate }: ModalProps) => {
     'Agricultural',
   ]
 
+  const orderByOptions = ['Most Popular', 'Recently Added']
+
   const useCasesOptions = [
     'Financial Analysis',
     'Blockchain Transactions',
@@ -43,6 +46,16 @@ const Filter = ({ onUpdate }: ModalProps) => {
   ]
 
   const pathname = usePathname()
+
+  const handleOrderBySelection = (value: string | null) => {
+    if (value === filterOrderBy) {
+      setFilterOrderBy('')
+      updateUrl('orderBy', '')
+      return
+    }
+    setFilterOrderBy(value)
+    updateUrl('orderBy', value)
+  }
 
   const handleCategorySelection = (category: string) => {
     setFilterCategories((prevCategories) => {
@@ -104,14 +117,31 @@ const Filter = ({ onUpdate }: ModalProps) => {
       if (useCases) {
         setFilterUseCases(useCases.split(','))
       }
+      const orderBy = url.searchParams.get('orderBy')
+      if (orderBy) {
+        setFilterOrderBy(orderBy)
+      }
     }
   }, [pathname])
 
   return (
     <section className="max-w-[190px] bg-white p-[5px] text-[8px] font-normal text-[#000] md:text-[11px] lg:pt-[100px] lg:text-[13px] lg:!leading-[220%] 2xl:max-w-[220px] 2xl:text-[16px]">
       <div className="lg:!leading-[200%]">
-        <div className="font-bold">Most Popular</div>
-        <div className="cursor-pointer">Recently added</div>
+        <div className="mt-[8px] lg:mt-[12px] 2xl:mt-[15px]">
+          {orderByOptions.map((order, index) => (
+            <div
+              onClick={() => {
+                handleOrderBySelection(order)
+              }}
+              key={index}
+              className={`cursor-pointer hover:text-[#000] ${
+                filterOrderBy === order ? 'text-[#000]' : 'text-[#959595]'
+              }`}
+            >
+              {order}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="mt-[20px] lg:mt-[32px] 2xl:mt-[40px]">
         <div className="border-b-[1px] border-[#D9D9D9] pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">

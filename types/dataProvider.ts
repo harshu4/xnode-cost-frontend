@@ -9,5 +9,6 @@ export type DataProvider = {
   live: boolean
   download: boolean
   company?: string
+  popularity?: number
   sql?: string
 }

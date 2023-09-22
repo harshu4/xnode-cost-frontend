@@ -15,8 +15,8 @@ const ExpertsList = () => {
   const [viewAll, setViewAll] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedTags, setTagsCategories] = useState<string[]>([])
   const [selectedUseCases, setSelectedUseCases] = useState<string[]>([])
+  const [selectedOrderBy, setSelectedOrderBy] = useState<string>('')
 
   const categoriesOptions = [
     'Crypto Exchanges',
@@ -39,6 +39,8 @@ const ExpertsList = () => {
     'Crypto Liquidity',
   ]
 
+  const orderByOptions = ['Most Popular', 'Recently Added']
+
   const tagsOptions = ['Free', 'Paid']
 
   async function getData() {
@@ -59,6 +61,13 @@ const ExpertsList = () => {
       const url = new URL(window.location.href)
       const categories = url.searchParams.get('category')?.split(',') || []
       setSelectedCategories(categories)
+      const useCases = url.searchParams.get('useCase')?.split(',') || []
+      setSelectedUseCases(useCases)
+      const orderBy = url.searchParams.get('orderBy')
+      console.log(orderBy)
+      if (orderBy && orderByOptions.includes(orderBy)) {
+        setSelectedOrderBy(orderBy)
+      }
     }
     getData()
   }, [])
@@ -75,6 +84,12 @@ const ExpertsList = () => {
 
       const useCases = url.searchParams.get('useCase')?.split(',') || []
       setSelectedUseCases(useCases)
+
+      const orderBy = url.searchParams.get('orderBy')
+      console.log(orderBy)
+      if (orderBy && orderByOptions.includes(orderBy)) {
+        setSelectedOrderBy(orderBy)
+      }
     }
   }
 
@@ -88,9 +103,22 @@ const ExpertsList = () => {
         t.description.toLowerCase().includes(searchTerm.toLowerCase()))
     )
   })
+  let sortedTestimonials = filteredTestimonials
+  if (selectedOrderBy === 'Most Popular') {
+    sortedTestimonials = filteredTestimonials.sort(
+      (a, b) =>
+        (b.popularity ? b.popularity : 0) - (a.popularity ? a.popularity : 0),
+    )
+  } else if (selectedOrderBy === 'Recently Added') {
+    sortedTestimonials = filteredTestimonials.sort(
+      (a, b) =>
+        new Date(b.createdAt || '').getTime() -
+        new Date(a.createdAt || '').getTime(),
+    )
+  }
   const testimonialsToShow = viewAll
-    ? filteredTestimonials
-    : filteredTestimonials.slice(0, 6)
+    ? sortedTestimonials
+    : sortedTestimonials.slice(0, 6)
 
   if (isLoading) {
     return (
