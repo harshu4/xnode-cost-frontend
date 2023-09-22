@@ -31,6 +31,14 @@ const ExpertsList = () => {
     'Agricultural',
   ]
 
+  const useCasesOptions = [
+    'Financial Analysis',
+    'Blockchain Transactions',
+    'DEXs and CEXs',
+    'Gas Optimization',
+    'Crypto Liquidity',
+  ]
+
   const tagsOptions = ['Free', 'Paid']
 
   async function getData() {
@@ -95,10 +103,12 @@ const ExpertsList = () => {
     )
   }
   return (
-    <section className="flex bg-white pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pl-[90px] 2xl:pb-[70px]">
-      <Filter onUpdate={handleUpdate} />
+    <section className="flex bg-white pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pl-[90px] 2xl:pb-[70px]">
+      <div className="hidden md:block">
+        <Filter onUpdate={handleUpdate} />
+      </div>
       <div>
-        <div className="flex h-[32px] min-w-[150px] max-w-[500px] rounded-[5px] border border-[#D9D9D9] bg-white py-[10px] px-[15px] md:h-[40px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
+        <div className="flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white py-[10px] px-[15px] md:h-[40px] md:max-w-[500px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
           <img
             src={`${
               process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -106,7 +116,7 @@ const ExpertsList = () => {
                 : ''
             }/images/hero/searchVector.svg`}
             alt="image"
-            className={`mr-[10px] h-[18px] w-[18px]`}
+            className={`mr-[10px] md:h-[18px] md:w-[18px]`}
           />
           <input
             type="text"
@@ -116,47 +126,13 @@ const ExpertsList = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        {/* <div className="mt-[20px] flex gap-x-[20px] p-[5px]">
+        <div className="mt-[20px] gap-x-[20px] md:hidden">
           <div className="">
             <Autocomplete
               multiple
               disabled={isLoading}
-              className="mt-[10px]"
+              className=""
               options={categoriesOptions}
-              size="small"
-              getOptionLabel={(option) => `${option}`}
-              filterOptions={(options, state) =>
-                options.filter((option) =>
-                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
-                )
-              }
-              onChange={(e, newValue) => {
-                setTagsCategories([...newValue])
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="outlined"
-                  id="margin-none"
-                  placeholder="Categories"
-                  sx={{
-                    width: '250px',
-                    fieldset: {
-                      borderColor: '#D4D4D4',
-                      borderRadius: '10px',
-                    },
-                    input: { color: 'black' },
-                  }}
-                />
-              )}
-            />
-          </div>
-          <div className="">
-            <Autocomplete
-              multiple
-              disabled={isLoading}
-              className="mt-[10px]"
-              options={tagsOptions}
               size="small"
               getOptionLabel={(option) => `${option}`}
               filterOptions={(options, state) =>
@@ -167,26 +143,113 @@ const ExpertsList = () => {
               onChange={(e, newValue) => {
                 setSelectedCategories([...newValue])
               }}
+              renderOption={(props, option, { selected }) => (
+                <li {...props} style={{ fontSize: '10px' }}>
+                  {option}
+                </li>
+              )}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <span
+                    key={index}
+                    {...getTagProps({ index })}
+                    style={{
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {option}
+                  </span>
+                ))
+              }
               renderInput={(params) => (
                 <TextField
                   {...params}
                   variant="outlined"
-                  id="margin-none"
-                  placeholder="Tags"
+                  placeholder="Categories"
                   sx={{
                     width: '250px',
+                    minHeight: '30px', // Defina um minHeight adequado
+                    fontSize: '10px',
                     fieldset: {
                       borderColor: '#D4D4D4',
-                      borderRadius: '10px',
+                      borderRadius: '3px',
                     },
-                    input: { color: 'black' },
+                    input: {
+                      color: 'black',
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexWrap: 'wrap', // Permite que o conteúdo do input se ajuste à altura
+                    },
                   }}
                 />
               )}
             />
           </div>
-        </div> */}
-
+          <div className="mt-[10px]">
+            <Autocomplete
+              multiple
+              disabled={isLoading}
+              className=""
+              options={useCasesOptions}
+              size="small"
+              getOptionLabel={(option) => `${option}`}
+              filterOptions={(options, state) =>
+                options.filter((option) =>
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
+                )
+              }
+              onChange={(e, newValue) => {
+                setSelectedUseCases([...newValue])
+              }}
+              renderOption={(props, option, { selected }) => (
+                <li {...props} style={{ fontSize: '10px' }}>
+                  {option}
+                </li>
+              )}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <span
+                    key={index}
+                    {...getTagProps({ index })}
+                    style={{
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {option}
+                  </span>
+                ))
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  placeholder="Use cases"
+                  sx={{
+                    width: '250px',
+                    minHeight: '30px', // Defina um minHeight adequado
+                    fontSize: '10px',
+                    fieldset: {
+                      borderColor: '#D4D4D4',
+                      borderRadius: '3px',
+                    },
+                    input: {
+                      color: 'black',
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexWrap: 'wrap', // Permite que o conteúdo do input se ajuste à altura
+                    },
+                  }}
+                />
+              )}
+            />
+          </div>
+        </div>
         <div
           id="experts"
           className="mt-[10px] text-[8px] font-medium text-[#959595] md:text-[9px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[12px] 2xl:text-[14px]"
@@ -204,7 +267,7 @@ const ExpertsList = () => {
         ) : (
           <></>
         )}
-        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[50px] gap-y-[30px] overflow-y-auto lg:grid-cols-2 2xl:grid-cols-3">
+        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto lg:grid-cols-2 lg:gap-x-[40px] lg:gap-y-[26px] 2xl:grid-cols-3 2xl:gap-x-[50px] 2xl:gap-y-[30px]">
           {testimonialsToShow.map((testimonial, index) => (
             <div key={index}>
               <SingleCard
@@ -233,6 +296,29 @@ const ExpertsList = () => {
           className="mt-[31px] flex cursor-pointer  justify-center text-[8px] font-medium -tracking-[2%] text-[#959595] hover:text-[#686767] md:text-[13px] lg:!leading-[200%] xl:text-[15px] 2xl:text-[18px]"
         >
           {viewAll ? 'Show more' : 'Show less'}
+        </div>
+        <div className="md:hidden">
+          <div className="mt-[25px] border-b-[1px] border-[#D9D9D9] pb-[8px] text-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+            <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
+              Suggest a new data
+            </div>
+            <div className=" lg:!leading-[150%]">
+              <a className="border-b-[1px] font-medium text-[#0354EC]">
+                Join our community and let us know what you’d like to add!
+              </a>
+            </div>
+          </div>
+          <div className="mt-[8px] pb-[8px] text-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+            <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
+              Provide a data source
+            </div>
+            <div className=" lg:!leading-[150%]">
+              {' '}
+              <a className="border-b-[1px] font-medium text-[#0354EC]">
+                Run an Xnode today{' '}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -167,7 +167,7 @@ const Filter = ({ onUpdate }: ModalProps) => {
           </a>
         </div>
       </div>
-      <div className="mt-[8px] border-b-[1px] border-[#D9D9D9] pb-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+      <div className="mt-[8px] pb-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
         <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Provide a data source
         </div>
