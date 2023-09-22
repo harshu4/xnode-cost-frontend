@@ -196,7 +196,7 @@ const ExpertsList = () => {
         </div>
         {testimonialsToShow.length === 0 ? (
           <div>
-            <div className="mt-[64px] mb-[100px] flex flex-col items-center">
+            <div className="mt-[64px] mb-[100px] flex flex-col items-center justify-center">
               <SmileySad size={32} className="text-blue-500 mb-2" />
               <span>No datasets found</span>
             </div>
