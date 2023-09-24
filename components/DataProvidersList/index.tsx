@@ -300,7 +300,7 @@ const ExpertsList = () => {
         ) : (
           <></>
         )}
-        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto lg:grid-cols-2 lg:gap-x-[40px] lg:gap-y-[26px] 2xl:grid-cols-3 2xl:gap-x-[50px] 2xl:gap-y-[30px]">
+        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto lg:grid-cols-2 lg:gap-x-[40px] lg:gap-y-[26px] 2xl:grid-cols-2 2xl:gap-x-[50px] 2xl:gap-y-[30px] 3xl:grid-cols-3 4xl:grid-cols-4">
           {testimonialsToShow.map((testimonial, index) => (
             <div key={index}>
               <SingleCard
