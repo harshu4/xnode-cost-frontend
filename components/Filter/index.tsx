@@ -125,7 +125,7 @@ const Filter = ({ onUpdate }: ModalProps) => {
   }, [pathname])
 
   return (
-    <section className="max-w-[190px] bg-white p-[5px] text-[8px] font-normal text-[#000] md:text-[11px] lg:pt-[100px] lg:text-[13px] lg:!leading-[220%] 2xl:max-w-[220px] 2xl:text-[14px]">
+    <section className="max-w-[190px] bg-white p-[5px] text-[8px] font-normal text-[#000] md:text-[11px] lg:min-w-[200px] lg:pt-[100px] lg:text-[13px] lg:!leading-[220%] 2xl:max-w-[220px] 2xl:text-[14px]">
       <div className="lg:!leading-[200%]">
         <div className="mt-[8px] lg:mt-[12px] 2xl:mt-[15px]">
           {orderByOptions.map((order, index) => (
