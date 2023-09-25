@@ -136,7 +136,7 @@ const ExpertsList = () => {
     )
   }
   return (
-    <section className="flex bg-white pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pl-[90px] 2xl:pb-[70px]">
+    <section className="flex bg-white pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
       <div className="hidden md:block">
         <Filter onUpdate={handleUpdate} />
       </div>
@@ -300,7 +300,7 @@ const ExpertsList = () => {
         ) : (
           <></>
         )}
-        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto lg:grid-cols-2 lg:gap-x-[40px] lg:gap-y-[26px] 2xl:grid-cols-2 2xl:gap-x-[50px] 2xl:gap-y-[30px] 3xl:grid-cols-3 4xl:grid-cols-4">
+        <div className="mt-[25px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto lg:grid-cols-2 lg:gap-x-[40px] lg:gap-y-[26px] 2xl:grid-cols-2 2xl:gap-x-[50px] 2xl:gap-y-[30px] 3xl:grid-cols-2 4xl:grid-cols-3">
           {testimonialsToShow.map((testimonial, index) => (
             <div key={index}>
               <SingleCard
