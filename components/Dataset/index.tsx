@@ -108,6 +108,20 @@ const Dataset = (id: any) => {
     'Scheme type': 'JSON, CVS',
   }
 
+  const dataHelp = {
+    'Openmesh Overview':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
+    Github: 'https://github.com/L3A-Protocol',
+    'Supported Feeds and Symbols':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
+    'Schema Reference':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
+    'Query Service':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
+    'Data Flow':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
+  }
+
   const dataJsonDetails = [
     [
       'AAVE.USDT-PERP',
@@ -147,6 +161,24 @@ const Dataset = (id: any) => {
     ],
   ]
 
+  const dataJsonSimilarProducts = [
+    [
+      '1213213213-213213213-12312312-3213123',
+      'Economy Data Atlas',
+      'Coinbase#',
+    ],
+    [
+      '1213213213-213213213-12312312-3213123',
+      'Economy Data Atlas',
+      'Coinbase#',
+    ],
+    [
+      '1213213213-213213213-12312312-3213123',
+      'Economy Data Atlas',
+      'Coinbase#',
+    ],
+  ]
+
   const customStyle = {
     ...solarizedlight,
     'pre[class*="language-"]': {
@@ -166,7 +198,7 @@ const Dataset = (id: any) => {
 
   return (
     <>
-      <section className="flex max-w-[1400px] pl-[170px] pt-[75px] pr-[72px] pb-[100px] text-[#000000] md:pl-[204px] md:pt-[90px] md:pr-[87px]  lg:pl-[333px] lg:pt-[120px] lg:pr-[115px]  2xl:gap-x-[295px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
+      <section className="flex pl-[170px] pt-[75px] pr-[72px] pb-[100px] text-[#000000] md:pl-[204px] md:pt-[90px] md:pr-[87px]  lg:pl-[333px] lg:pt-[120px] lg:pr-[115px]  2xl:gap-x-[295px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
         <div>
           <div className="flex gap-x-[23px]">
             <div className="">
@@ -314,26 +346,163 @@ const Dataset = (id: any) => {
           </div>
         </div>
         <div>
-          {data.download && (
-            <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[15px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:p-[21px] lg:p-[24px] 2xl:p-[30px]">
-              <div className="flex gap-x-[7px]">
-                <img src={`/images/Dataset/ellipse-grey.svg`} alt="image" />
-                <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
-                  Historical
+          <div className="grid gap-y-[25px]">
+            {data.download && (
+              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[27px] pt-[15px] pb-[33px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[40px] md:pt-[21px] md:pb-[46px] lg:px-[46px] lg:pt-[24px] lg:pb-[52px] 2xl:px-[58px] 2xl:pt-[30px] 2xl:pb-[66px]">
+                <div className="flex justify-center gap-x-[7px]">
+                  <img src={`/images/Dataset/ellipse-grey.svg`} alt="image" />
+                  <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
+                    Historical
+                  </div>
                 </div>
+                <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
+                  REST APIs
+                </div>
+                <div className="mt-[12.5px] w-full bg-[#F2F2F2] p-[5px] text-[9px] font-medium text-[#505050] md:mt-[17.5px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[22px] 2xl:mt-[25px] 2xl:text-[18px]">
+                  {data?.dataSpace}
+                </div>
+                <a
+                  href={data?.downloadCSVLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="mt-[12.5px] flex w-full cursor-pointer gap-x-[10px]  rounded-[5px] bg-[#000000] px-[9px] py-[8px]  text-[9px] font-medium text-[#fff] hover:bg-[#1f1f1f] md:mt-[17.5px] md:py-[11px] md:px-[13px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[19px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[17px] 2xl:text-[16px]">
+                    <div>Download .csv </div>
+                    <img src={`/images/Dataset/download.svg`} alt="image" />
+                  </div>
+                </a>
               </div>
-              <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
-                REST APIs
+            )}
+            {data.live && (
+              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[15px] pt-[15px] pb-[33px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[21px] md:pt-[21px] md:pb-[46px] lg:px-[24px] lg:pt-[24px] lg:pb-[52px] 2xl:px-[30px] 2xl:pt-[30px] 2xl:pb-[66px]">
+                <div className="flex justify-center gap-x-[7px]">
+                  <img src={`/images/Dataset/ellipse-green.svg`} alt="image" />
+                  <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
+                    Live
+                  </div>
+                </div>
+                <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
+                  Base Endpoint
+                </div>
+                <div className="mt-[12.5px] w-full bg-[#F2F2F2] p-[5px] text-[8px] font-medium text-[#505050] md:mt-[17.5px] md:text-[11px] lg:mt-[20px] lg:text-[13px] lg:!leading-[21px] 2xl:mt-[25px] 2xl:text-[16px]">
+                  {data?.liveLink}
+                </div>
+                <a
+                  href={data?.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="mx-auto mt-[12.5px] flex w-full max-w-[179px] cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px]  text-[9px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:py-[7px] md:px-[11px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[19px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
+                    <div>Free to Access </div>
+                    <img src={`/images/Dataset/arrow.svg`} alt="image" />
+                  </div>
+                </a>
               </div>
-              <div className="mt-[12.5px] w-full bg-[#F2F2F2] p-[5px] text-[9px] font-medium text-[#2E2E2E] md:mt-[17.5px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[22px] 2xl:mt-[25px] 2xl:text-[18px]">
-                {data?.dataSpace}
+            )}
+          </div>
+          <div className="mt-[25px] justify-center text-[7px] font-medium text-[#959595] md:mt-[35px] md:text-[10px] lg:mt-[40px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[51px] 2xl:text-[14px]">
+            <a
+              href={data?.dataCloudLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#0354EC]"
+            >
+              <div className="flex items-center justify-center gap-x-[15px]">
+                <img src={`/images/Dataset/cloud.svg`} alt="image" />
+                <div>{data?.dataCloudName}</div>
               </div>
-              <div className="mt-[12.5px] flex w-full  gap-x-[10px] bg-[#F2F2F2] px-[9px]  py-[8px] text-[9px] font-medium text-[#2E2E2E] md:mt-[17.5px] md:py-[11px] md:px-[13px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[19px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[17px] 2xl:text-[16px]">
-                <div>Download .csv </div>
-                <img src={`/images/Dataset/download.svg`} alt="image" />
+            </a>
+            <a
+              href={data?.dataGithubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#0354EC]"
+            >
+              <div className="mt-[12px] flex items-center justify-center gap-x-[15px] md:mt-[16px] 2xl:mt-[24px]">
+                <img src={`/images/Dataset/github.svg`} alt="image" />
+                <div>{data?.dataGithubName}</div>
               </div>
+            </a>
+          </div>
+          <div className="mx-auto mt-[45px] grid max-w-[230px] justify-center rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#F9F9F9] py-[5px] px-[15px] text-center md:mt-[63px] md:py-[7px] md:px-[21px] lg:mt-[72px] lg:px-[24px] lg:py-[8px] 2xl:mt-[90px] 2xl:py-[10px] 2xl:px-[30px]">
+            <img
+              src={`/images/Dataset/pythia.svg`}
+              alt="image"
+              className=" mx-auto "
+            />
+            <div className="mt-[8px] max-w-[170px] justify-center text-center text-[6px] font-normal text-[#959595] md:mt-[10px] md:text-[8px] lg:mt-[12px] lg:text-[9px] lg:!leading-[15px] 2xl:mt-[15px] 2xl:text-[12px]">
+              Build data products like this? Try our Open source query engine &
+              data develop platform
             </div>
-          )}
+            <a
+              href="https://query.tech.l3a.xyz/search/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="mx-auto mt-[8px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[3px]  text-[9px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[10px] md:py-[4px] md:px-[11px] md:text-[7px] lg:mt-[12px] lg:text-[8px] lg:!leading-[19px] 2xl:mt-[15px] 2xl:py-[6.5px] 2xl:px-[15px] 2xl:text-[10px]">
+                <div>Try Now</div>
+                <img src={`/images/Dataset/arrow.svg`} alt="image" />
+              </div>
+            </a>
+          </div>
+          <div className="mx-auto mt-[32px] w-fit pl-[10px] text-[9px] text-[#000] md:mt-[44px] md:pl-[14px] md:text-[11px] lg:mt-[50px]  lg:pl-[16px] lg:text-[13px] lg:!leading-[200%] 2xl:mt-[63px] 2xl:pl-[20px] 2xl:text-[16px]">
+            <div className="font-bold ">Help</div>
+            <div className="mt-[5px] grid gap-y-[12px] font-normal">
+              {Object.entries(dataHelp).map(([key, value], index, array) => (
+                <a
+                  href={value}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={index}
+                >
+                  <div
+                    className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:text-[#313131] lg:!leading-tight`}
+                  >
+                    {key}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="mx-auto mt-[45px] w-fit pl-[10px] md:mt-[63px] lg:mt-[72px] 2xl:mt-[90px]">
+            <div className="text-[8px] font-bold text-[#959595] md:text-[11px] lg:text-[13px] lg:!leading-[19px] 2xl:text-[16px]">
+              Similar data products
+            </div>
+            <div className="mt-[18px] grid gap-y-[63px] md:mt-[25px] lg:mt-[29px] 2xl:mt-[36px]">
+              {dataJsonSimilarProducts.map(
+                ([value1, value2, value3], index, array) => (
+                  <>
+                    <a
+                      href={`/dataset/${value1}`}
+                      className="transform transition-transform hover:scale-105"
+                    >
+                      <div className="flex gap-x-[6px]  lg:gap-x-[8px] 2xl:gap-x-[12px] ">
+                        <div className="">
+                          <img
+                            src={`/openmesh-ico-logo.png`}
+                            alt="image"
+                            className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px] 2xl:h-[48px] 2xl:w-[48px]`}
+                          />
+                        </div>
+                        <div>
+                          <div className="flex h-full items-center">
+                            <div className="   text-[#313131] ">
+                              <div className="text-[8px] font-bold md:text-[11px] lg:text-[13px] lg:!leading-[19px]  2xl:text-[16px]">
+                                {value2}
+                              </div>
+                              <div className="mt-[2px] text-[7px] font-semibold text-[#505050] lg:mt-[3px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[4px] 2xl:text-[14px]">
+                                {value3}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </>
+                ),
+              )}
+            </div>
+          </div>
         </div>
       </section>
     </>
