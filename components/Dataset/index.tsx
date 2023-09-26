@@ -22,9 +22,10 @@ import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { format } from 'sql-formatter'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
+import { formatDistanceToNow, differenceInDays } from 'date-fns'
 
 const Dataset = (id: any) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [data, setData] = useState<DataProvider>()
 
   const { push } = useRouter()
@@ -74,6 +75,19 @@ const Dataset = (id: any) => {
     return text.replace(/\s+/g, ' ').trim()
   }
 
+  function calculateUpdateTime(updatedAt: Date) {
+    const timeAgo = formatDistanceToNow(new Date(updatedAt), {
+      addSuffix: true,
+    })
+    return timeAgo
+  }
+
+  function isNew(createdAt: Date): boolean {
+    const today = new Date()
+    const difference = differenceInDays(today, new Date(createdAt))
+    return difference <= 7
+  }
+
   if (isLoading) {
     return (
       <section className="py-16 px-32 text-black md:py-20 lg:pt-40">
@@ -84,40 +98,211 @@ const Dataset = (id: any) => {
       </section>
     )
   }
+
+  const dataJson = {
+    'Established data': data?.createdAt,
+    'Size of the data': '124 TB',
+    Coverage: 'Spots, futures',
+    Size: '124 TB',
+    'File formats': 'JSON, CVS',
+    'Scheme type': 'JSON, CVS',
+  }
+
+  const dataJsonDetails = [
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+    [
+      'AAVE.USDT-PERP',
+      'L2 LOB, Ticker, Funding rate',
+      'HFDSAFHASFHASFHA#',
+      '23MB',
+    ],
+  ]
+
+  const customStyle = {
+    ...solarizedlight,
+    'pre[class*="language-"]': {
+      ...solarizedlight['pre[class*="language-"]'],
+      backgroundColor: '#f8f8f8', // Cor de fundo preta
+      width: '100%', // Ajustando a largura para 100%
+      overflowX: 'auto', // Adicionando barra de rolagem se o conteúdo exceder a largura
+      border: '1px solid #d8d6d6',
+    },
+  }
+
   return (
     <>
-      <section className="mt-12 mb-[0px] px-[20px] pt-[15px]  text-[11px]  font-medium !leading-[17px] text-[#000000] lg:mb-24 lg:px-[100px] lg:pt-[100px]  lg:text-[14px]">
-        <div className="flex gap-x-[10px]">
-          <img
-            src={`/openmesh-ico-logo.png`}
-            alt="image"
-            className={`2xlmd:h-[100px] 2xlmd:w-[100px] h-[70px] w-[70px] rounded-[8px] p-2 md:h-[70px] md:w-[70px]`}
-          />
-          <div className="flex items-center text-[15px] font-bold !leading-[150%] text-[#000000] lg:text-[24px]">
-            {data?.name}
+      <section className="flex max-w-[1400px] pl-[170px] pt-[75px] pr-[72px] pb-[100px] text-[#000000] md:pl-[204px] md:pt-[90px]  md:pr-[87px] lg:pl-[333px] lg:pt-[120px]  lg:pr-[115px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
+        <div>
+          <div className="flex gap-x-[23px]">
+            <div className="">
+              <img
+                src={`/openmesh-ico-logo.png`}
+                alt="image"
+                className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px] 2xl:h-[77px] 2xl:w-[77px]`}
+              />
+              <div className="mx-auto mt-[7px] flex justify-center text-[7px] font-semibold text-[#12AD50] lg:!leading-[17px] xl:mt-[12px] xl:text-[11px] 2xl:mt-[15px] 2xl:text-[14px]">
+                Free
+              </div>
+            </div>
+            <div>
+              <div>
+                <div className="flex gap-x-[5px] pt-[4px] text-[#313131] lg:gap-x-[8px] lg:pt-[6px] 2xl:gap-x-[23px] 2xl:pt-[8px]">
+                  <div className="text-[12px] font-bold md:text-[16px] lg:text-[19px] lg:!leading-[29px]  2xl:text-[24px]">
+                    {data.name}
+                  </div>
+                  {isNew(data.createdAt) && (
+                    <div className="h-fit rounded-[5px] border-[1px] border-[#FFC946] bg-[#FFE9B2] px-[4px] py-[2] text-[5px] font-semibold text-[#000] lg:px-[5px] lg:py-[4px] lg:text-[8px] 2xl:px-[7px] 2xl:py-[5px] 2xl:text-[10px] 2xl:!leading-[12px]">
+                      NEW!
+                    </div>
+                  )}
+                </div>
+                <div className="mt-[4px] text-[8px] font-semibold text-[#505050] lg:mt-[6px] lg:text-[13px] lg:!leading-[19px] 2xl:mt-[7px] 2xl:text-[16px]">
+                  Knoema
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-[18px] text-[8px] font-medium  text-[#959595]  md:mt-[26px]  md:text-[10px] lg:mt-[29px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[37px]  2xl:text-[16px]">
+            {data.description}
+          </div>
+          <div className="mt-[27px] text-[8px] font-bold  text-[#959595]  md:mt-[37px]  md:text-[10px] lg:mt-[43px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[54px]  2xl:text-[16px]">
+            Tags
+          </div>
+          <div className="mt-[10px] flex gap-x-[5px] gap-y-[3px] md:mt-[14px] lg:mt-[16px] lg:gap-x-[10px] lg:gap-y-[5px] 2xl:mt-[20px]">
+            {data.tags &&
+              data.tags.map((tag, index) => (
+                <div
+                  key={index}
+                  className=" w-fit max-w-[500px]  rounded-[20px] border-[1px] border-[#D9D9D9] bg-[#F6F6F6] px-[7px] py-[4px] text-[5px] font-medium text-[#575757] md:text-[8px] lg:px-[12px] lg:py-[6px] lg:!leading-[12px] 2xl:py-[7px] 2xl:px-[15px]  2xl:text-[10px]"
+                >
+                  {tag}
+                </div>
+              ))}
+          </div>
+          <div className="mt-[26px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
+            Use cases
+          </div>
+          <div className="mt-[10px] flex gap-x-[5px] gap-y-[3px] md:mt-[14px] lg:mt-[16px] lg:gap-x-[10px] lg:gap-y-[5px] 2xl:mt-[20px]">
+            {data.useCases &&
+              data.useCases.map((useCase, index) => (
+                <div
+                  key={index}
+                  className=" w-fit max-w-[500px]  rounded-[20px] border-[1px] border-[#D9D9D9] bg-[#F6F6F6] px-[7px] py-[4px] text-[5px] font-medium text-[#575757] md:text-[8px] lg:px-[12px] lg:py-[6px] lg:!leading-[12px] 2xl:py-[7px] 2xl:px-[15px]  2xl:text-[10px]"
+                >
+                  {useCase}
+                </div>
+              ))}
+          </div>
+          <div className="mt-[26px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
+            Specification
+          </div>
+          <div className="mt-[10px] grid grid-cols-[auto,1fr] gap-0 text-[8px] text-[#959595] md:mt-[14px] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
+            {Object.entries(dataJson).map(([key, value], index, array) => (
+              <>
+                <div
+                  className={
+                    index === array.length - 1
+                      ? 'border border-r-0 border-[#D9D9D9] p-[20px] pr-[120px] pl-[8px] text-left'
+                      : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] pr-[120px] pl-[8px] text-left'
+                  }
+                >
+                  {key}
+                </div>
+                <div
+                  className={
+                    index === array.length - 1
+                      ? 'border border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                      : 'border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                  }
+                >
+                  {String(value)}
+                </div>
+              </>
+            ))}
+          </div>
+          <div className="mt-[53px] text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
+            Details
+          </div>
+          <div className="mt-[10px] grid grid-cols-[auto,1fr,1fr] gap-0 text-[8px] text-[#959595] md:mt-[14px] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
+            {dataJsonDetails.map(
+              ([value1, value2, value3, value4], index, array) => (
+                <>
+                  <div
+                    className={
+                      index === array.length - 1
+                        ? 'border border-r-0 border-[#D9D9D9] p-[20px] pr-[60px] pl-[8px] text-left'
+                        : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] pr-[60px] pl-[8px] text-left'
+                    }
+                  >
+                    {value1}
+                  </div>
+                  <div
+                    className={
+                      index === array.length - 1
+                        ? 'border border-r-0 border-[#D9D9D9] p-[20px] pl-[30px] pr-[60px] text-left'
+                        : 'border-b-0  border-t border-l border-r-0 border-[#D9D9D9] p-[20px] pl-[30px] pr-[60px] text-left'
+                    }
+                  >
+                    {value2}
+                  </div>
+                  <div
+                    className={
+                      index === array.length - 1
+                        ? 'flex justify-between border border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                        : 'flex justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                    }
+                  >
+                    <div>{value3}</div>
+                    <div>{value4}</div>
+                  </div>
+                </>
+              ),
+            )}
+          </div>
+          <div className="">
+            <div className="mt-[53px] flex justify-between text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
+              <div className="">Query</div>
+              <div>Oi</div>
+            </div>
+            {data?.sql && (
+              <div className="overflow-auto 2xl:mt-[17px]">
+                <SyntaxHighlighter language="sql" style={customStyle}>
+                  {data?.sql}
+                </SyntaxHighlighter>
+              </div>
+            )}
           </div>
         </div>
-        <div className="mt-[20px]">{data?.description}</div>
-        {data?.sql && (
-          <div className=" gap-x-[50px]">
-            <div className="mt-[20px] max-h-[1050px] max-w-[500px] overflow-auto">
-              <SyntaxHighlighter language="sql">
-                {formattedSQL}
-              </SyntaxHighlighter>
-            </div>
-            <div className="mt-[20px] max-h-[1050px] max-w-[500px] overflow-auto">
-              <SyntaxHighlighter language="sql">{data?.sql}</SyntaxHighlighter>
-            </div>
-            <div className="mt-[20px] max-h-[1050px] max-w-[500px]">
-              <SyntaxHighlighter language="sql">
-                {transformText(data?.sql)}
-              </SyntaxHighlighter>
-            </div>
-            <div className="max-w-[500px] space-x-5 rounded-[5px] bg-[#F4F2F0] p-5 font-normal">
-              <div dangerouslySetInnerHTML={{ __html: formattedCode }} />
-            </div>
-          </div>
-        )}
+        <div></div>
       </section>
     </>
   )
