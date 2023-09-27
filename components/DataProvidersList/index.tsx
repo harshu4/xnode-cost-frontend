@@ -8,6 +8,7 @@ import { DataProvider } from '@/types/dataProvider'
 import { SmileySad } from 'phosphor-react'
 import Filter from '@/components/Filter'
 import { TextField, Autocomplete } from '@mui/material'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
 const ExpertsList = () => {
   const [testimonial, setTestimonial] = useState<DataProvider[]>([])
@@ -17,6 +18,7 @@ const ExpertsList = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedUseCases, setSelectedUseCases] = useState<string[]>([])
   const [selectedOrderBy, setSelectedOrderBy] = useState<string>('')
+  const pathname = usePathname()
 
   const categoriesOptions = [
     'Crypto Exchanges',
@@ -120,6 +122,14 @@ const ExpertsList = () => {
     ? sortedTestimonials
     : sortedTestimonials.slice(0, 6)
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      const searchBar = url.searchParams.get('searchBar')
+      if (searchBar && searchBar.length <= 100) setSearchTerm(searchBar)
+    }
+  }, [pathname])
+
   if (isLoading) {
     return (
       <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
@@ -135,13 +145,14 @@ const ExpertsList = () => {
       </section>
     )
   }
+
   return (
     <section className="flex bg-white pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[72px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
       <div className="hidden md:block">
         <Filter onUpdate={handleUpdate} />
       </div>
       <div>
-        <div className="flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white py-[10px] px-[15px] md:h-[40px] md:max-w-[500px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
+        <div className="flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white px-[5px] md:h-[40px] md:max-w-[500px] md:py-[10px] md:px-[15px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
           <img
             src={`${
               process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -149,7 +160,7 @@ const ExpertsList = () => {
                 : ''
             }/images/hero/searchVector.svg`}
             alt="image"
-            className={`mr-[10px] md:h-[18px] md:w-[18px]`}
+            className={`my-auto mr-[10px] md:h-[18px] md:w-[18px]`}
           />
           <input
             type="text"

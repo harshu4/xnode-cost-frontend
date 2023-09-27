@@ -27,6 +27,7 @@ import { formatDistanceToNow, differenceInDays } from 'date-fns'
 const Dataset = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [data, setData] = useState<DataProvider>()
+  const [tasksSearchBar, setTasksSearchBar] = useState('')
 
   const { push } = useRouter()
 
@@ -196,11 +197,73 @@ const Dataset = (id: any) => {
     }
   }
 
+  const handleSearchBarInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.target
+    const value = input.value
+
+    if (tasksSearchBar.length + value.length > 100) {
+      return
+    }
+
+    setTasksSearchBar(value)
+
+    if (value === '') {
+      updateUrl('searchBar', value)
+    }
+  }
+
+  const updateUrl = (param: string, value: string | null) => {
+    console.log('update chamado com sucesso')
+    if (param !== 'page') {
+      if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('page')
+        window.history.pushState({}, '', url.toString())
+      }
+    }
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      if (value) {
+        url.searchParams.set(param, value)
+        push(`?searchBar=${value}`)
+      } else {
+        url.searchParams.delete(param)
+      }
+
+      window.history.pushState({}, '', url.toString())
+    }
+  }
+
   return (
     <>
-      <section className="px-[30px] pt-[45px] pb-[100px] text-[#000000] md:flex md:gap-x-[40px] md:pl-[60px] md:pt-[90px]  md:pr-[87px] lg:gap-x-[100px] lg:px-[90px] xl:gap-x-[150px]  xl:px-[110px] xl:pt-[120px] 2xl:gap-x-[295px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
+      <section className="px-[30px]  pb-[100px] text-[#000000] md:flex md:gap-x-[40px] md:pl-[60px]   md:pr-[87px] lg:gap-x-[100px] lg:px-[90px] xl:gap-x-[150px]  xl:px-[110px]  2xl:gap-x-[295px] 2xl:pl-[340px]  2xl:pr-[144px]">
         <div>
-          <div className="flex gap-x-[11px] md:gap-x-[13px] lg:gap-x-[16px] xl:gap-x-[18px] 2xl:gap-x-[23px]">
+          <div className="mt-[40px] flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white px-[5px] md:h-[40px] md:max-w-[500px] md:py-[10px] md:px-[15px] lg:!leading-[30px] 2xl:mt-[50px] 2xl:h-[50px] 2xl:max-w-[600px]">
+            <img
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/hero/searchVector.svg`}
+              alt="image"
+              onClick={() => {
+                updateUrl('searchBar', tasksSearchBar)
+              }}
+              className={`my-auto mr-[10px] transform cursor-pointer transition-transform hover:scale-110 md:h-[18px] md:w-[18px]`}
+            />
+            <input
+              type="text"
+              placeholder="Search here"
+              onInput={handleSearchBarInput}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  updateUrl('searchBar', tasksSearchBar)
+                }
+              }}
+              className=" w-full bg-white text-[8px] font-medium text-[#000000] placeholder-[#737373] outline-none md:text-[14px] 2xl:text-[16px]"
+            />
+          </div>
+          <div className="flex gap-x-[11px] pt-[40px] md:gap-x-[13px] md:pt-[56px] lg:gap-x-[16px] lg:pt-[65px] xl:gap-x-[18px] xl:pt-[74px] 2xl:gap-x-[23px] 2xl:pt-[94px]">
             <div className="">
               <img
                 src={`/openmesh-ico-logo.png`}
@@ -345,7 +408,7 @@ const Dataset = (id: any) => {
             )}
           </div>
         </div>
-        <div className="mt-[35px]">
+        <div className="pt-[35px] md:pt-[96px] lg:pt-[112px] xl:pt-[128px] 2xl:pt-[160px]">
           <div className="grid gap-y-[35px] md:gap-y-[25px]">
             {data.download && (
               <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[27px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[10px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[40px] xl:pb-[52px] 2xl:px-[58px] 2xl:pt-[30px] 2xl:pb-[66px]">
