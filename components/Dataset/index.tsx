@@ -198,14 +198,14 @@ const Dataset = (id: any) => {
 
   return (
     <>
-      <section className="flex pl-[170px] pt-[75px] pr-[72px] pb-[100px] text-[#000000] md:pl-[204px] md:pt-[90px] md:pr-[87px]  lg:pl-[333px] lg:pt-[120px] lg:pr-[115px]  2xl:gap-x-[295px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
+      <section className="px-[30px] pt-[45px] pb-[100px] text-[#000000] md:flex md:gap-x-[40px] md:pl-[60px] md:pt-[90px]  md:pr-[87px] lg:gap-x-[100px] lg:px-[90px] xl:gap-x-[150px]  xl:px-[110px] xl:pt-[120px] 2xl:gap-x-[295px] 2xl:pl-[340px] 2xl:pt-[150px] 2xl:pr-[144px]">
         <div>
-          <div className="flex gap-x-[23px]">
+          <div className="flex gap-x-[11px] md:gap-x-[13px] lg:gap-x-[16px] xl:gap-x-[18px] 2xl:gap-x-[23px]">
             <div className="">
               <img
                 src={`/openmesh-ico-logo.png`}
                 alt="image"
-                className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px] 2xl:h-[77px] 2xl:w-[77px]`}
+                className={`mx-auto flex h-[30px] w-[30px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[40px] lg:w-[40px] lg:p-[7px] 2xl:h-[77px] 2xl:w-[77px]`}
               />
               <div className="mx-auto mt-[7px] flex justify-center text-[7px] font-semibold text-[#12AD50] lg:!leading-[17px] xl:mt-[12px] xl:text-[11px] 2xl:mt-[15px] 2xl:text-[14px]">
                 Free
@@ -213,26 +213,26 @@ const Dataset = (id: any) => {
             </div>
             <div>
               <div>
-                <div className="flex gap-x-[5px] pt-[4px] text-[#313131] lg:gap-x-[8px] lg:pt-[6px] 2xl:gap-x-[23px] 2xl:pt-[8px]">
-                  <div className="text-[12px] font-bold md:text-[16px] lg:text-[19px] lg:!leading-[29px]  2xl:text-[24px]">
+                <div className="flex gap-x-[10px] pt-[4px] text-[#313131] lg:gap-x-[12px] lg:pt-[6px] 2xl:gap-x-[23px] 2xl:pt-[8px]">
+                  <div className="text-[12px] font-bold md:text-[14px] lg:text-[16px] xl:text-[19px] xl:!leading-[29px]  2xl:text-[24px]">
                     {data.name}
                   </div>
                   {isNew(data.createdAt) && (
-                    <div className="h-fit rounded-[5px] border-[1px] border-[#FFC946] bg-[#FFE9B2] px-[4px] py-[2] text-[5px] font-semibold text-[#000] lg:px-[5px] lg:py-[4px] lg:text-[8px] 2xl:px-[7px] 2xl:py-[5px] 2xl:text-[10px] 2xl:!leading-[12px]">
+                    <div className="mt-auto mb-[2px] h-fit rounded-[5px] border-[1px] border-[#FFC946] bg-[#FFE9B2] px-[4px] py-[2px] text-[5px]  font-semibold text-[#000] lg:px-[5px] lg:text-[6px] xl:mt-0 xl:py-[4px] xl:text-[8px] 2xl:px-[7px] 2xl:py-[5px] 2xl:text-[10px] 2xl:!leading-[12px]">
                       NEW!
                     </div>
                   )}
                 </div>
-                <div className="mt-[4px] text-[8px] font-semibold text-[#505050] lg:mt-[6px] lg:text-[13px] lg:!leading-[19px] 2xl:mt-[7px] 2xl:text-[16px]">
+                <div className="mt-[2px] text-[8px] font-semibold text-[#505050] md:text-[11px] lg:text-[11px] lg:!leading-[19px] xl:mt-[6px] xl:text-[13px] 2xl:mt-[7px] 2xl:text-[16px]">
                   {data.company}
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-[18px] text-[8px] font-medium  text-[#959595]  md:mt-[26px]  md:text-[10px] lg:mt-[29px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[37px]  2xl:text-[16px]">
+          <div className="mt-[18px] text-[8px] font-medium  text-[#959595]  md:mt-[26px] md:text-[10px] lg:mt-[29px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[37px]  2xl:text-[16px]">
             {data.description}
           </div>
-          <div className="mt-[27px] text-[8px] font-bold  text-[#959595]  md:mt-[37px]  md:text-[10px] lg:mt-[43px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[54px]  2xl:text-[16px]">
+          <div className="mt-[20px] text-[8px] font-bold  text-[#959595]  md:mt-[37px]  md:text-[10px] lg:mt-[43px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[54px]  2xl:text-[16px]">
             Tags
           </div>
           <div className="mt-[10px] flex gap-x-[5px] gap-y-[3px] md:mt-[14px] lg:mt-[16px] lg:gap-x-[10px] lg:gap-y-[5px] 2xl:mt-[20px]">
@@ -246,7 +246,7 @@ const Dataset = (id: any) => {
                 </div>
               ))}
           </div>
-          <div className="mt-[26px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
+          <div className="mt-[20px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
             Use cases
           </div>
           <div className="mt-[10px] flex gap-x-[5px] gap-y-[3px] md:mt-[14px] lg:mt-[16px] lg:gap-x-[10px] lg:gap-y-[5px] 2xl:mt-[20px]">
@@ -269,8 +269,8 @@ const Dataset = (id: any) => {
                 <div
                   className={
                     index === array.length - 1
-                      ? 'border border-r-0 border-[#D9D9D9] p-[20px] pr-[120px] pl-[8px] text-left'
-                      : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] pr-[120px] pl-[8px] text-left'
+                      ? 'border border-r-0 border-[#D9D9D9] p-[20px] py-[10px]  pl-[8px] text-left md:py-[20px] md:pr-[120px]'
+                      : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] py-[10px] pl-[8px] text-left md:py-[20px] md:pr-[120px]'
                   }
                 >
                   {key}
@@ -278,8 +278,8 @@ const Dataset = (id: any) => {
                 <div
                   className={
                     index === array.length - 1
-                      ? 'border border-[#D9D9D9] p-[20px] pl-[30px] text-left'
-                      : 'border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                      ? 'border border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
+                      : 'border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
                   }
                 >
                   {String(value)}
@@ -287,18 +287,18 @@ const Dataset = (id: any) => {
               </>
             ))}
           </div>
-          <div className="mt-[53px] text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
+          <div className="mt-[35px] text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
             Details
           </div>
-          <div className="mt-[10px] grid grid-cols-[auto,1fr,1fr] gap-0 text-[8px] text-[#959595] md:mt-[14px] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
+          <div className="mt-[10px] grid grid-cols-3 gap-0 overflow-x-auto text-[8px] text-[#959595] md:mt-[14px] md:grid-cols-[auto,1fr,1fr] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
             {dataJsonDetails.map(
               ([value1, value2, value3, value4], index, array) => (
                 <>
                   <div
                     className={
                       index === array.length - 1
-                        ? 'border border-r-0 border-[#D9D9D9] p-[20px] pr-[60px] pl-[8px] text-left'
-                        : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] pr-[60px] pl-[8px] text-left'
+                        ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
+                        : 'min-w-[100px] border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
                     }
                   >
                     {value1}
@@ -306,8 +306,8 @@ const Dataset = (id: any) => {
                   <div
                     className={
                       index === array.length - 1
-                        ? 'border border-r-0 border-[#D9D9D9] p-[20px] pl-[30px] pr-[60px] text-left'
-                        : 'border-b-0  border-t border-l border-r-0 border-[#D9D9D9] p-[20px] pl-[30px] pr-[60px] text-left'
+                        ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
+                        : 'min-w-[100px]  border-b-0 border-t border-l border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
                     }
                   >
                     {value2}
@@ -315,8 +315,8 @@ const Dataset = (id: any) => {
                   <div
                     className={
                       index === array.length - 1
-                        ? 'flex justify-between border border-[#D9D9D9] p-[20px] pl-[30px] text-left'
-                        : 'flex justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] pl-[30px] text-left'
+                        ? 'min-w-[150px] justify-between border border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
+                        : 'min-w-[150px] justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
                     }
                   >
                     <div>{value3}</div>
@@ -327,13 +327,13 @@ const Dataset = (id: any) => {
             )}
           </div>
           <div className="">
-            <div className="mt-[53px] flex justify-between text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
+            <div className="mt-[35px] flex justify-between text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
               <div className="">Query</div>
               <img
                 src={`/images/Dataset/copy.svg`}
                 alt="image"
                 onClick={copyToClipboard}
-                className="cursor-pointer"
+                className="h-[10px] w-[10px] cursor-pointer md:h-[22px] md:w-[22px]"
               />
             </div>
             {data?.sql && (
@@ -345,10 +345,10 @@ const Dataset = (id: any) => {
             )}
           </div>
         </div>
-        <div>
-          <div className="grid gap-y-[25px]">
+        <div className="mt-[35px]">
+          <div className="grid gap-y-[35px] md:gap-y-[25px]">
             {data.download && (
-              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[27px] pt-[15px] pb-[33px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[40px] md:pt-[21px] md:pb-[46px] lg:px-[46px] lg:pt-[24px] lg:pb-[52px] 2xl:px-[58px] 2xl:pt-[30px] 2xl:pb-[66px]">
+              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[27px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[10px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[40px] xl:pb-[52px] 2xl:px-[58px] 2xl:pt-[30px] 2xl:pb-[66px]">
                 <div className="flex justify-center gap-x-[7px]">
                   <img src={`/images/Dataset/ellipse-grey.svg`} alt="image" />
                   <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
@@ -366,7 +366,7 @@ const Dataset = (id: any) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="mt-[12.5px] flex w-full cursor-pointer gap-x-[10px]  rounded-[5px] bg-[#000000] px-[9px] py-[8px]  text-[9px] font-medium text-[#fff] hover:bg-[#1f1f1f] md:mt-[17.5px] md:py-[11px] md:px-[13px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[19px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[17px] 2xl:text-[16px]">
+                  <div className="mx-auto mt-[12.5px] flex w-fit cursor-pointer justify-center gap-x-[10px] rounded-[5px]  bg-[#000000] px-[9px] py-[8px] text-[9px]  font-medium text-[#fff] hover:bg-[#1f1f1f] md:mt-[17.5px] md:w-full md:py-[11px] md:px-[13px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[17px] 2xl:text-[16px]">
                     <div>Download .csv </div>
                     <img src={`/images/Dataset/download.svg`} alt="image" />
                   </div>
@@ -374,7 +374,7 @@ const Dataset = (id: any) => {
               </div>
             )}
             {data.live && (
-              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[15px] pt-[15px] pb-[33px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[21px] md:pt-[21px] md:pb-[46px] lg:px-[24px] lg:pt-[24px] lg:pb-[52px] 2xl:px-[30px] 2xl:pt-[30px] 2xl:pb-[66px]">
+              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[15px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[21px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[40px] xl:pb-[52px]  2xl:px-[30px] 2xl:pt-[30px] 2xl:pb-[66px]">
                 <div className="flex justify-center gap-x-[7px]">
                   <img src={`/images/Dataset/ellipse-green.svg`} alt="image" />
                   <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
@@ -392,15 +392,19 @@ const Dataset = (id: any) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="mx-auto mt-[12.5px] flex w-full max-w-[179px] cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px]  text-[9px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:py-[7px] md:px-[11px] md:text-[12px] lg:mt-[20px] lg:text-[14px] lg:!leading-[19px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
+                  <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
                     <div>Free to Access </div>
-                    <img src={`/images/Dataset/arrow.svg`} alt="image" />
+                    <img
+                      src={`/images/Dataset/arrow.svg`}
+                      alt="image"
+                      className="my-auto h-[9px] w-[9px] md:h-[15px] md:w-[15.4px]"
+                    />
                   </div>
                 </a>
               </div>
             )}
           </div>
-          <div className="mt-[25px] justify-center text-[7px] font-medium text-[#959595] md:mt-[35px] md:text-[10px] lg:mt-[40px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[51px] 2xl:text-[14px]">
+          <div className="mt-[35px] justify-center text-[7px] font-medium text-[#959595] md:mt-[35px] md:text-[10px] lg:mt-[40px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[51px] 2xl:text-[14px]">
             <a
               href={data?.dataCloudLink}
               target="_blank"
@@ -424,7 +428,7 @@ const Dataset = (id: any) => {
               </div>
             </a>
           </div>
-          <div className="mx-auto mt-[45px] grid max-w-[230px] justify-center rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#F9F9F9] py-[5px] px-[15px] text-center md:mt-[63px] md:py-[7px] md:px-[21px] lg:mt-[72px] lg:px-[24px] lg:py-[8px] 2xl:mt-[90px] 2xl:py-[10px] 2xl:px-[30px]">
+          <div className="mx-auto mt-[35px] grid max-w-[230px] justify-center rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#F9F9F9] py-[15px] px-[15px] text-center md:mt-[54px] md:py-[7px] md:px-[21px] lg:mt-[63px] lg:px-[24px] lg:py-[8px] xl:mt-[72px] 2xl:mt-[90px] 2xl:py-[10px] 2xl:px-[30px]">
             <img
               src={`/images/Dataset/pythia.svg`}
               alt="image"
@@ -439,13 +443,17 @@ const Dataset = (id: any) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="mx-auto mt-[8px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[3px]  text-[9px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[10px] md:py-[4px] md:px-[11px] md:text-[7px] lg:mt-[12px] lg:text-[8px] lg:!leading-[19px] 2xl:mt-[15px] 2xl:py-[6.5px] 2xl:px-[15px] 2xl:text-[10px]">
+              <div className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[3px]  text-[8px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[10px] md:py-[4px] md:px-[11px] md:text-[7px] lg:mt-[12px] lg:text-[8px] lg:!leading-[19px] 2xl:mt-[15px] 2xl:py-[6.5px] 2xl:px-[15px] 2xl:text-[10px]">
                 <div>Try Now</div>
-                <img src={`/images/Dataset/arrow.svg`} alt="image" />
+                <img
+                  src={`/images/Dataset/arrow.svg`}
+                  alt="image"
+                  className="my-auto h-[9px] w-[9px] md:h-[15px] md:w-[15.4px]"
+                />
               </div>
             </a>
           </div>
-          <div className="mx-auto mt-[32px] w-fit pl-[10px] text-[9px] text-[#000] md:mt-[44px] md:pl-[14px] md:text-[11px] lg:mt-[50px]  lg:pl-[16px] lg:text-[13px] lg:!leading-[200%] 2xl:mt-[63px] 2xl:pl-[20px] 2xl:text-[16px]">
+          <div className="mt-[32px] pl-[15px] text-[8px] text-[#000] md:mx-auto md:mt-[44px] md:w-fit md:pl-[14px] md:text-[10px] lg:mt-[50px]  lg:pl-[16px] lg:text-[11px] lg:!leading-[200%] xl:text-[13px] 2xl:mt-[63px] 2xl:pl-[20px] 2xl:text-[16px]">
             <div className="font-bold ">Help</div>
             <div className="mt-[5px] grid gap-y-[12px] font-normal">
               {Object.entries(dataHelp).map(([key, value], index, array) => (
@@ -456,7 +464,7 @@ const Dataset = (id: any) => {
                   key={index}
                 >
                   <div
-                    className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:text-[#313131] lg:!leading-tight`}
+                    className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:border-[#0354EC] hover:text-[#0354EC] lg:!leading-tight`}
                   >
                     {key}
                   </div>
@@ -464,11 +472,11 @@ const Dataset = (id: any) => {
               ))}
             </div>
           </div>
-          <div className="mx-auto mt-[45px] w-fit pl-[10px] md:mt-[63px] lg:mt-[72px] 2xl:mt-[90px]">
-            <div className="text-[8px] font-bold text-[#959595] md:text-[11px] lg:text-[13px] lg:!leading-[19px] 2xl:text-[16px]">
+          <div className="mt-[32px] pl-[15px] md:mx-auto md:mt-[54px] md:w-fit lg:mt-[63px] xl:mt-[72px] 2xl:mt-[90px]">
+            <div className="text-[8px] font-bold text-[#959595] md:text-[10px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:text-[16px]">
               Similar data products
             </div>
-            <div className="mt-[18px] grid gap-y-[63px] md:mt-[25px] lg:mt-[29px] 2xl:mt-[36px]">
+            <div className="mt-[18px] grid  gap-y-[31px] md:mt-[21px] md:gap-y-[37px] lg:mt-[25px] lg:gap-y-[44px] xl:mt-[29px] xl:gap-y-[50px] 2xl:mt-[36px] 2xl:gap-y-[63px]">
               {dataJsonSimilarProducts.map(
                 ([value1, value2, value3], index, array) => (
                   <>
@@ -487,10 +495,10 @@ const Dataset = (id: any) => {
                         <div>
                           <div className="flex h-full items-center">
                             <div className="   text-[#313131] ">
-                              <div className="text-[8px] font-bold md:text-[11px] lg:text-[13px] lg:!leading-[19px]  2xl:text-[16px]">
+                              <div className="text-[8px] font-bold md:text-[10px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px]  2xl:text-[16px]">
                                 {value2}
                               </div>
-                              <div className="mt-[2px] text-[7px] font-semibold text-[#505050] lg:mt-[3px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[4px] 2xl:text-[14px]">
+                              <div className="mt-[2px] text-[7px] font-semibold text-[#505050]   lg:text-[10px] xl:text-[11px] xl:!leading-[17px] 2xl:mt-[4px] 2xl:text-[14px]">
                                 {value3}
                               </div>
                             </div>
@@ -501,6 +509,29 @@ const Dataset = (id: any) => {
                   </>
                 ),
               )}
+            </div>
+          </div>
+          <div className="mt-[66px] max-w-[240px] pl-[15px] text-[8px] md:mx-auto  md:mt-[67px] md:max-w-[220px] md:text-[10px] lg:mt-[78px] lg:text-[12px] xl:mt-[90px] xl:text-[13px] 2xl:mt-[112px] 2xl:text-[16px]">
+            <div className="mt-[8px] border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  lg:pt-[12px] lg:pb-[12px]  2xl:pt-[15px] 2xl:pb-[15px] ">
+              <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
+                Suggest a new feature
+              </div>
+              <div className=" lg:!leading-[150%]">
+                <a className="border-b-[1px] font-medium text-[#0354EC]">
+                  Join our community and let us know what you’d like to add!
+                </a>
+              </div>
+            </div>
+            <div className="mt-[8px] pb-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
+              <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
+                Encounter any issue?
+              </div>
+              <div className=" lg:!leading-[150%]">
+                {' '}
+                <a className="border-b-[1px] font-medium text-[#0354EC]">
+                  Schedule a call with an Openmesh Expert
+                </a>
+              </div>
             </div>
           </div>
         </div>
