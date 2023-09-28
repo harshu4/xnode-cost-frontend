@@ -9,6 +9,7 @@ import ExpertsList from '@/components/DataProvidersList'
 import { Inter } from '@next/font/google'
 import { useRef } from 'react'
 import { RevealWrapper } from 'next-reveal'
+import FirstStep from '@/components/FirstStep'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,8 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <ExpertsList />
+      <Hero />
+      <FirstStep />
     </>
   )
 }
