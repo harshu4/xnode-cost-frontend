@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-const Dropdown = () => {
+const Dropdown = ({ onValueChange }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [value, setValue] = useState('US East (Boston)')
   const dropdownRef = useRef(null)
@@ -27,13 +27,13 @@ const Dropdown = () => {
 
   return (
     <div
-      className="relative inline-block text-left 2xl:text-[20px]"
+      className="relative inline-block text-left text-[10px] font-bold text-[#000] md:text-[12x] lg:text-[14px] lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]"
       ref={dropdownRef}
     >
       <div>
         <button
           type="button"
-          className={`inline-flex w-full justify-center rounded-md px-4 py-2 transition duration-300 ease-in-out hover:text-[#686868] focus:outline-none  focus:ring-2 focus:ring-offset-2
+          className={`inline-flex w-full justify-center gap-x-[5px] rounded-[4px] px-4 transition duration-300 ease-in-out hover:text-[#686868] focus:outline-none focus:ring-2  focus:ring-offset-2 lg:gap-x-[10px]
           ${isOpen ? 'bg-[#fdfdfd] text-[#686868]' : ''}`}
           id="options-menu"
           aria-haspopup="true"
@@ -42,16 +42,14 @@ const Dropdown = () => {
         >
           {value}
           <svg
-            className="-mr-1 ml-2 h-5 w-5"
+            viewBox="0 0 16 12"
+            className="my-auto h-[6px] w-[8px] lg:h-[10px] lg:w-[16px]"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
           >
             <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
+              d="M7.36475 10.6997L0.724121 4.05908C0.265137 3.6001 0.265137 2.85791 0.724121 2.40381L1.82764 1.30029C2.28662 0.841309 3.02881 0.841309 3.48291 1.30029L8.18994 6.00733L12.897 1.30029C13.356 0.841309 14.0981 0.841309 14.5522 1.30029L15.6558 2.40381C16.1147 2.86279 16.1147 3.60498 15.6558 4.05908L9.01514 10.6997C8.56592 11.1587 7.82373 11.1587 7.36475 10.6997Z"
+              fill="#CFCFCF"
             />
           </svg>
         </button>
@@ -70,6 +68,8 @@ const Dropdown = () => {
                 key={index}
                 onClick={() => {
                   setValue(option)
+                  setIsOpen(false)
+                  onValueChange(option)
                 }}
                 className="flex cursor-pointer gap-y-[5px] px-4 py-2 hover:bg-[#f7f5f5] "
               >

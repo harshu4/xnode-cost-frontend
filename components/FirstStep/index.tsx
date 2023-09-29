@@ -1,19 +1,33 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import Dropdown from '../Dropdown'
+import LatencySelector from '../LatencySelector'
+import Presets from '../Presets'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
-  const [cloudProvider, setClouProvider] = useState<String>('equinix')
+  const [cloudProvider, setCloudProvider] = useState<String>('equinix')
+  const [serviceRegion, setServiceRegion] = useState<String>('US East (Boston)')
+  const [latencyPreference, setLatencyPreference] = useState<String>('Low')
+
   const [showTooltipCloudProvider, setShowTooltipCloudProvider] =
     useState<boolean>(false)
   const [showTooltipServiceRegion, setShowTooltipServiceRegion] =
     useState<boolean>(false)
 
+  const handleServiceRegionChange = (newValue) => {
+    setServiceRegion(newValue)
+  }
+
+  const handleLatencyPreferenceChange = (newValue) => {
+    setServiceRegion(newValue)
+  }
+
   return (
     <>
       <section
         id="home"
-        className="bg-white px-[30px] pt-[25px]  pb-[36px] text-[#000000] md:pl-[132px] md:pr-[288px] md:pt-[31px] md:pb-[43px]  lg:pl-[154px] lg:pr-[336px] lg:pt-[36px] lg:pb-[50px] xl:pl-[176px] xl:pr-[384px] xl:pt-[41px] xl:pb-[58px] 2xl:pl-[220px] 2xl:pr-[480px] 2xl:pt-[52px] 2xl:pb-[73px]"
+        className="bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[132px] md:pr-[288px] md:pt-[31px] md:pb-[63px]  lg:pl-[154px] lg:pr-[336px] lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pr-[384px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px] 2xl:pr-[480px] 2xl:pt-[52px] 2xl:pb-[104px]"
       >
         <div className="mx-auto w-full max-w-[1093px]">
           <div>
@@ -23,7 +37,7 @@ const FirstStep = () => {
             <div className="mt-[15px] grid gap-y-[10px] md:mt-[18px] md:gap-y-[12px] lg:mt-[21px] lg:gap-y-[14px]  2xl:mt-[30px] 2xl:gap-y-[20px]">
               <div className="rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]">
                 <div className="relative flex items-center gap-x-[10px]">
-                  <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
+                  <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
                     1. Select cloud provider
                   </div>
                   <img
@@ -44,7 +58,7 @@ const FirstStep = () => {
                   <div className="flex items-center gap-x-[7px] lg:gap-x-[15px]">
                     <div
                       onClick={() => {
-                        setClouProvider('equinix')
+                        setCloudProvider('equinix')
                       }}
                       className={`h-[10px] w-[10px] cursor-pointer rounded-[5px] border-[1px] border-[#D9D9D9] hover:bg-[#0354EC] md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] ${
                         cloudProvider === 'equinix'
@@ -59,7 +73,7 @@ const FirstStep = () => {
                   <div className="flex items-center gap-x-[7px] lg:gap-x-[15px]">
                     <div
                       onClick={() => {
-                        setClouProvider('aws')
+                        setCloudProvider('aws')
                       }}
                       className={`h-[10px] w-[10px] cursor-pointer rounded-[5px] border-[1px] border-[#D9D9D9] hover:bg-[#0354EC] md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] ${
                         cloudProvider === 'aws' ? 'bg-[#0354EC]' : 'bg-[#fff]'
@@ -73,7 +87,7 @@ const FirstStep = () => {
               </div>
               <div className="rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]">
                 <div className="relative flex items-center gap-x-[10px]">
-                  <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
+                  <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
                     2. Select service region
                   </div>
                   <img
@@ -94,17 +108,52 @@ const FirstStep = () => {
                   )}
                 </div>
                 <div className="mt-[12.5px] md:mt-[15px] lg:mt-[17.5px] 2xl:mt-[25px]">
-                  <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
-                    Service region:
-                  </div>
                   <div className="flex">
-                    <div className="mt-[5px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
-                      Closest location recommended: US East (Boston)
+                    <div>
+                      <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
+                        Service region:
+                      </div>
+                      <div className="mt-[5px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
+                        Closest location recommended: US East (Boston)
+                      </div>
                     </div>
                     <div className="ml-auto">
-                      <Dropdown />
+                      <Dropdown onValueChange={handleServiceRegionChange} />
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]">
+                <div className="relative flex items-center gap-x-[10px]">
+                  <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
+                    3. Select latency preference
+                  </div>
+                </div>
+                <div className="mt-[12.5px] items-center md:mt-[15px] md:flex md:gap-x-[91px] lg:mt-[17.5px] lg:gap-x-[107px] xl:gap-x-[122px] 2xl:mt-[25px] 2xl:gap-x-[153px]">
+                  <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
+                    Latency
+                  </div>
+                  <div className="mt-[5px] ml-auto w-full max-w-[213px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
+                    Low latency ensures response time to be around 2-10ms
+                  </div>
+                  <div className="ml-auto">
+                    <LatencySelector
+                      onValueChange={handleLatencyPreferenceChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
+                <Presets />
+              </div>
+              <div>
+                <div className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[11px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[39px] md:py-[5px] md:px-[12.5px] md:text-[8.5px] lg:mt-[45.5px] lg:py-[9px] lg:px-[14.5px] lg:text-[10px] lg:!leading-[19px] xl:py-[10px] xl:px-[17px] xl:text-[11px] 2xl:mt-[65px] 2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]">
+                  <div>Next</div>
+                  <img
+                    src={`/images/dataset/arrow.svg`}
+                    alt="image"
+                    className="my-auto h-[7.5px] w-[8px] md:h-[9px] md:w-[9.4px] lg:h-[10.5px] lg:w-[11px] xl:h-[12px] xl:w-[12.3px] 2xl:h-[15px] 2xl:w-[15.4px]"
+                  />
                 </div>
               </div>
             </div>
