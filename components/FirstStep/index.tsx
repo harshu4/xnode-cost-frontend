@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Dropdown from '../Dropdown'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
@@ -96,8 +97,13 @@ const FirstStep = () => {
                   <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
                     Service region:
                   </div>
-                  <div className="mt-[5px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
-                    Closest location recommended: US East (Boston)
+                  <div className="flex">
+                    <div className="mt-[5px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
+                      Closest location recommended: US East (Boston)
+                    </div>
+                    <div className="ml-auto">
+                      <Dropdown />
+                    </div>
                   </div>
                 </div>
               </div>
