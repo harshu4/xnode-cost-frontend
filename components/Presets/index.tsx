@@ -92,10 +92,10 @@ const Presets = ({ onValueChange }) => {
             configurations
           </div>
         </div>
-        <div className="relative mt-[12.5px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[15px] md:gap-x-[9px] md:gap-y-[18px] lg:mt-[17.5px] lg:gap-x-[10.5px] lg:gap-y-[21px] xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
+        <div className="relative mt-[12.5px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[15px] md:grid-cols-2 md:gap-x-[9px] md:gap-y-[18px] lg:mt-[17.5px] lg:grid-cols-2 lg:gap-x-[10.5px] lg:gap-y-[21px] xl:grid-cols-3 xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
           {preSetsOptions.map((option, index) => (
             <div
-              className={`h-[400px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:scale-105 hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
+              className={`h-[200px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:h-[300px] md:p-[12px] md:hover:scale-105 lg:h-[400px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
                 presetId === index
                   ? 'border-[1.5px] border-[#0354EC] shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)]'
                   : 'border-[0.5px] border-[#D9D9D9]'
@@ -154,10 +154,16 @@ const Presets = ({ onValueChange }) => {
             </div>
           ))}
           <div
+            className={`h-[200px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:h-[300px] md:p-[12px] md:hover:scale-105 lg:h-[400px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
+              presetId === 5
+                ? 'border-[1.5px] border-[#0354EC] shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)]'
+                : 'border-[0.5px] border-[#D9D9D9]'
+            }`}
+            key={5}
             onClick={() => {
               setPresetId(5)
+              onValueChange(5)
             }}
-            className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]"
           >
             <div className="relative h-full w-full max-w-[300px]">
               <img
@@ -183,12 +189,29 @@ const Presets = ({ onValueChange }) => {
                 />
               </div>
             </div>
+            {presetId === 5 && (
+              <div className="absolute top-[1px] right-0">
+                <img
+                  src="/images/presets/check.svg"
+                  alt="image"
+                  className={
+                    'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'
+                  }
+                />
+              </div>
+            )}
           </div>
           <div
+            className={`h-[200px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:h-[300px] md:p-[12px] md:hover:scale-105 lg:h-[400px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
+              presetId === 6
+                ? 'border-[1.5px] border-[#0354EC] shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)]'
+                : 'border-[0.5px] border-[#D9D9D9]'
+            }`}
+            key={6}
             onClick={() => {
               setPresetId(6)
+              onValueChange(6)
             }}
-            className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]"
           >
             <div className="relative h-full w-full max-w-[300px]">
               <img
@@ -211,6 +234,17 @@ const Presets = ({ onValueChange }) => {
                 />
               </div>
             </div>
+            {presetId === 6 && (
+              <div className="absolute top-[1px] right-0">
+                <img
+                  src="/images/presets/check.svg"
+                  alt="image"
+                  className={
+                    'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'
+                  }
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

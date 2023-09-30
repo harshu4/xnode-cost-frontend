@@ -161,29 +161,14 @@ const Header = () => {
             }`}
           >
             <div className=" grid gap-y-[15px] text-[12px]  font-medium !leading-[19px]">
-              <div className="mt-[15px] flex justify-start text-center 2xl:mt-[25px]">
+              <div className="my-auto flex text-center md:justify-center">
                 <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={`https://calendly.com/`}
-                  className="cursor-pointer rounded-[5px] border border-[#D5D8DB] bg-[#F5F8FA] px-[16px] py-[8px] text-[7px] font-bold text-[#505050] hover:bg-[#d3d5d6] md:text-[10px] lg:!leading-[19px] xl:text-[11px]  2xl:px-[21px] 2xl:py-[12.5px] 2xl:text-[12px]"
+                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+                  className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[4.5px] px-[9px] text-[10px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] md:py-[9px] md:px-[18px] md:text-[14px] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
                 >
-                  Schedule a Call
+                  Schedule a call
                 </a>
               </div>
-              {features.map((feature, index) => (
-                <div className="flex h-full items-center" key={index}>
-                  <a
-                    className={`flex h-full cursor-pointer items-center text-[#000]  hover:bg-[#ececec] ${
-                      feature.isCurrentlyPage
-                        ? 'border-b  text-[14px] font-bold '
-                        : ''
-                    }`}
-                  >
-                    {feature.label}
-                  </a>
-                </div>
-              ))}
             </div>
           </nav>
         </div>

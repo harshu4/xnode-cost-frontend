@@ -4,7 +4,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="bg-white px-[30px] pt-[36px]  pb-[36px] text-[#000000] md:px-[90px] md:pt-[43px] md:pb-[43px]  lg:px-[105px] lg:pt-[50px] lg:pb-[50px] xl:px-[120px] xl:pt-[58px] xl:pb-[58px] 2xl:px-[150px] 2xl:pt-[73px] 2xl:pb-[73px]"
+        className="bg-white px-[30px] pt-[36px]  pb-[36px] text-[#000000] md:px-[70px] md:pt-[43px] md:pb-[43px]  lg:px-[105px] lg:pt-[50px] lg:pb-[50px] xl:px-[120px] xl:pt-[58px] xl:pb-[58px] 2xl:px-[150px] 2xl:pt-[73px] 2xl:pb-[73px]"
       >
         <div className="grid justify-center gap-x-[40px] md:flex md:gap-x-[68px] lg:gap-x-[79px] xl:gap-x-[90px] 2xl:gap-x-[140px]">
           <div className="pb-[25px]">
@@ -18,13 +18,13 @@ const Hero = () => {
               full-stack data infrastructure
             </div>
           </div>
-          <div className="mt-auto flex gap-x-[15px] text-[9px] font-medium text-[#959595] md:gap-x-[18px] md:text-[10px] lg:gap-x-[21px] lg:text-[11px] lg:!leading-[150%] xl:gap-x-[24px] xl:text-[13px] 2xl:gap-x-[30px] 2xl:text-[16px]">
+          <div className="mt-auto gap-x-[15px] text-[9px] font-medium text-[#959595] md:flex md:gap-x-[18px] md:text-[10px] lg:gap-x-[21px] lg:text-[11px] lg:!leading-[150%] xl:gap-x-[24px] xl:text-[13px] 2xl:gap-x-[30px] 2xl:text-[16px]">
             <div className="max-w-[360px]">
               <span className="text-[#000]">Scalable</span> <br /> Xnode adapts
               to the growing needs of a project, making it a reliable solution
               throughout a project's lifecycle
             </div>
-            <div className="max-w-[360px]">
+            <div className="mt-[12px] max-w-[360px] md:mt-[0px]">
               <span className="text-[#000]">Automated setup process</span>{' '}
               <br /> Server provisioning, Kubernetes configuration, networking
               setup, and essential services e.g. Apache Kafka and PostgreSQL

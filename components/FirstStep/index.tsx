@@ -27,7 +27,7 @@ const FirstStep = () => {
     <>
       <section
         id="home"
-        className="bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[132px] md:pr-[288px] md:pt-[31px] md:pb-[63px]  lg:pl-[154px] lg:pr-[336px] lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pr-[384px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px] 2xl:pr-[480px] 2xl:pt-[52px] 2xl:pb-[104px]"
+        className="bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[70px] md:pr-[288px] md:pt-[31px] md:pb-[63px]  lg:pl-[154px] lg:pr-[336px] lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pr-[384px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px] 2xl:pr-[480px] 2xl:pt-[52px] 2xl:pb-[104px]"
       >
         <div className="mx-auto w-full max-w-[1093px]">
           <div>
@@ -108,7 +108,7 @@ const FirstStep = () => {
                   )}
                 </div>
                 <div className="mt-[12.5px] md:mt-[15px] lg:mt-[17.5px] 2xl:mt-[25px]">
-                  <div className="flex">
+                  <div className="md:flex">
                     <div>
                       <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
                         Service region:
@@ -117,7 +117,7 @@ const FirstStep = () => {
                         Closest location recommended: US East (Boston)
                       </div>
                     </div>
-                    <div className="ml-auto">
+                    <div className="md:ml-auto">
                       <Dropdown onValueChange={handleServiceRegionChange} />
                     </div>
                   </div>
@@ -129,14 +129,14 @@ const FirstStep = () => {
                     3. Select latency preference
                   </div>
                 </div>
-                <div className="mt-[12.5px] items-center md:mt-[15px] md:flex md:gap-x-[91px] lg:mt-[17.5px] lg:gap-x-[107px] xl:gap-x-[122px] 2xl:mt-[25px] 2xl:gap-x-[153px]">
+                <div className="mt-[12px] items-center md:mt-[15px] md:flex md:gap-x-[91px] lg:mt-[17.5px] lg:gap-x-[107px] xl:gap-x-[122px] 2xl:mt-[25px] 2xl:gap-x-[153px]">
                   <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
                     Latency
                   </div>
-                  <div className="mt-[5px] ml-auto w-full max-w-[213px] text-[7px] text-[#959595] md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
+                  <div className="mt-[5px] w-full max-w-[213px] text-[7px] text-[#959595] md:ml-auto md:text-[8px] lg:text-[10px] lg:!leading-[17px] xl:text-[11px] 2xl:text-[14px]">
                     Low latency ensures response time to be around 2-10ms
                   </div>
-                  <div className="ml-auto">
+                  <div className="ml-auto mt-[5px] md:mt-[0px]">
                     <LatencySelector
                       onValueChange={handleLatencyPreferenceChange}
                     />
