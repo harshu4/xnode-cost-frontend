@@ -144,7 +144,11 @@ const FirstStep = () => {
                 </div>
               </div>
               <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
-                <Presets />
+                <Presets
+                  onValueChange={() => {
+                    console.log('test')
+                  }}
+                />
               </div>
               <div>
                 <div className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[11px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[39px] md:py-[5px] md:px-[12.5px] md:text-[8.5px] lg:mt-[45.5px] lg:py-[9px] lg:px-[14.5px] lg:text-[10px] lg:!leading-[19px] xl:py-[10px] xl:px-[17px] xl:text-[11px] 2xl:mt-[65px] 2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]">
