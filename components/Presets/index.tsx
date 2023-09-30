@@ -4,7 +4,9 @@ import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 
 /* eslint-disable react/no-unescaped-entities */
-const Presets = () => {
+const Presets = ({ onValueChange }) => {
+  const [presetId, setPresetId] = useState(0)
+
   const preSetsOptions = [
     {
       icon: '/images/presets/building.svg',
@@ -93,8 +95,16 @@ const Presets = () => {
         <div className="mt-[12.5px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[15px] md:gap-x-[9px] md:gap-y-[18px] lg:mt-[17.5px] lg:gap-x-[10.5px] lg:gap-y-[21px] xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
           {preSetsOptions.map((option, index) => (
             <div
-              className="h-[400px] transform cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] transition-transform hover:scale-105 md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]"
+              className={`h-[400px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:scale-105 hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
+                presetId === index
+                  ? 'border-[1.5px] border-[#0354EC] shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)]'
+                  : 'border-[0.5px] border-[#D9D9D9]'
+              }`}
               key={index}
+              onClick={() => {
+                setPresetId(index)
+                onValueChange(index)
+              }}
             >
               <div className="relative h-full w-full max-w-[300px]">
                 <img
@@ -132,7 +142,12 @@ const Presets = () => {
               </div>
             </div>
           ))}
-          <div className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]">
+          <div
+            onClick={() => {
+              setPresetId(5)
+            }}
+            className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]"
+          >
             <div className="relative h-full w-full max-w-[300px]">
               <img
                 src="/images/presets/robot.svg"
@@ -158,7 +173,12 @@ const Presets = () => {
               </div>
             </div>
           </div>
-          <div className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]">
+          <div
+            onClick={() => {
+              setPresetId(6)
+            }}
+            className="h-[400px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[10px] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]"
+          >
             <div className="relative h-full w-full max-w-[300px]">
               <img
                 src="/images/presets/robot.svg"
@@ -174,7 +194,7 @@ const Presets = () => {
               </div>
               <div className={`absolute bottom-0`}>
                 <img
-                  src="/images/presets/config.svg"
+                  src="/images/presets/custom.svg"
                   alt="image"
                   className={`h-[18px] w-[22.5px] md:h-[21.5px] md:w-[27px] lg:h-[25px] lg:w-[31.5px] xl:h-[29px] xl:w-[36px] 2xl:h-[36px] 2xl:w-[45px]`}
                 />
