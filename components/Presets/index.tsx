@@ -92,7 +92,7 @@ const Presets = ({ onValueChange }) => {
             configurations
           </div>
         </div>
-        <div className="mt-[12.5px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[15px] md:gap-x-[9px] md:gap-y-[18px] lg:mt-[17.5px] lg:gap-x-[10.5px] lg:gap-y-[21px] xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
+        <div className="relative mt-[12.5px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[15px] md:gap-x-[9px] md:gap-y-[18px] lg:mt-[17.5px] lg:gap-x-[10.5px] lg:gap-y-[21px] xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
           {preSetsOptions.map((option, index) => (
             <div
               className={`h-[400px] transform cursor-pointer rounded-[5px] p-[10px] transition-transform hover:scale-105 hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
@@ -140,6 +140,17 @@ const Presets = ({ onValueChange }) => {
                   />
                 </div>
               </div>
+              {presetId === index && (
+                <div className="absolute top-[1px] right-0">
+                  <img
+                    src="/images/presets/check.svg"
+                    alt="image"
+                    className={
+                      'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'
+                    }
+                  />
+                </div>
+              )}
             </div>
           ))}
           <div
@@ -152,7 +163,7 @@ const Presets = ({ onValueChange }) => {
               <img
                 src="/images/presets/robot.svg"
                 alt="image"
-                className={`'h-[12.5px] 2xl:w-[31px]' w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px]  md:w-[18.5px] lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px]`}
+                className={`h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[31px]`}
               />
               <div className="mt-[8px] text-[9px] font-bold text-[#313131] md:mt-[9px] md:text-[11px] lg:mt-[10.5px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:text-[18px]">
                 Customized LLMs, analytics, and dashboards
@@ -181,9 +192,9 @@ const Presets = ({ onValueChange }) => {
           >
             <div className="relative h-full w-full max-w-[300px]">
               <img
-                src="/images/presets/robot.svg"
+                src="/images/presets/custom.svg"
                 alt="image"
-                className={`'h-[12.5px] 2xl:w-[31px]' w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px]  md:w-[18.5px] lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px]`}
+                className={`h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[28px]`}
               />
               <div className="mt-[8px] text-[9px] font-bold text-[#313131] md:mt-[9px] md:text-[11px] lg:mt-[10.5px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:text-[18px]">
                 Custom configuration
@@ -194,7 +205,7 @@ const Presets = ({ onValueChange }) => {
               </div>
               <div className={`absolute bottom-0`}>
                 <img
-                  src="/images/presets/custom.svg"
+                  src="/images/presets/config.svg"
                   alt="image"
                   className={`h-[18px] w-[22.5px] md:h-[21.5px] md:w-[27px] lg:h-[25px] lg:w-[31.5px] xl:h-[29px] xl:w-[36px] 2xl:h-[36px] 2xl:w-[45px]`}
                 />
