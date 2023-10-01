@@ -4,13 +4,16 @@ import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import Presets from '../Presets'
 import CostEstimator from '../CostEstimator'
+import ServerProvision from '../ServerProvision'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
-  const [cloudProvider, setCloudProvider] = useState<String>('equinix')
-  const [serviceRegion, setServiceRegion] = useState<String>('US East (Boston)')
-  const [latencyPreference, setLatencyPreference] = useState<String>('Low')
-  const [preset, setPreset] = useState<Number>(0)
+  const [cloudProvider, setCloudProvider] = useState<string>('equinix')
+  const [serviceRegion, setServiceRegion] = useState<string>('US East (Boston)')
+  const [latencyPreference, setLatencyPreference] = useState<string>('Low')
+  const [preset, setPreset] = useState<number>(0)
+  const [serversNumber, setServersNumber] = useState<number>(2)
+  const [serversType, setServersType] = useState<string>('small')
 
   const [next, setNext] = useState<Boolean>(false)
 
@@ -27,21 +30,29 @@ const FirstStep = () => {
     setServiceRegion(newValue)
   }
 
+  const handleServersTypeChange = (newValue) => {
+    setServersType(newValue)
+  }
+
+  const handleServersNumberChange = (newValue) => {
+    setServersNumber(newValue)
+  }
+
   const renderSecondStepComponent = () => {
-    switch (preset) {
-      case 0:
-        return <Component1 />
-      case 1:
-        return <Component2 />
-      case 2:
-        return <Component3 />
-      case 3:
-        return <Component4 />
-      case 4:
-        return <Component5 />
-      default:
-        return null
-    }
+    // switch (preset) {
+    //   case 0:
+    //     return <Component1 />
+    //   case 1:
+    //     return <Component2 />
+    //   case 2:
+    //     return <Component3 />
+    //   case 3:
+    //     return <Component4 />
+    //   case 4:
+    //     return <Component5 />
+    //   default:
+    //     return null
+    // }
   }
 
   return (
@@ -49,13 +60,13 @@ const FirstStep = () => {
       <div className="flex">
         <section
           id="home"
-          className={`bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[70px] ${
+          className={`w-full px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[70px] ${
             next
-              ? ''
-              : 'md:pr-[288px] lg:pr-[336px] xl:pr-[384px] 2xl:pr-[480px] '
+              ? 'px-[30px]'
+              : 'md:pr-[288px] lg:pr-[336px] xl:pr-[384px] 2xl:pr-[480px]'
           } md:pt-[31px] md:pb-[63px]  lg:pl-[154px]  lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px]  2xl:pt-[52px] 2xl:pb-[104px]`}
         >
-          <div className="mx-auto w-full max-w-[1093px]">
+          <div className="">
             <div>
               <div className="text-[18px] font-medium -tracking-[2%] text-[#959595] md:text-[19px] lg:text-[22px] lg:!leading-[39px] xl:text-[25px] 2xl:text-[32px]">
                 Cloud deployment preference
@@ -170,13 +181,22 @@ const FirstStep = () => {
                   </div>
                 </div>
                 {next ? (
-                  <div>{renderSecondStepComponent()}</div>
+                  <div>
+                    {
+                      <ServerProvision
+                        onChangeServerType={handleServersTypeChange}
+                        onChangeServerNumber={handleServersNumberChange}
+                        serversNumber={serversNumber}
+                        serverType={serversType}
+                      />
+                    }
+                  </div>
                 ) : (
                   <div>
                     <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
                       <Presets
-                        onValueChange={() => {
-                          console.log('test')
+                        onValueChange={(value) => {
+                          setPreset(value)
                         }}
                       />
                     </div>
@@ -202,7 +222,7 @@ const FirstStep = () => {
           </div>
         </section>
         {next && (
-          <div className="relative min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[320px] 2xl:min-w-[400px]">
+          <div className="relative mr-[56px] min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[320px] 2xl:min-w-[400px]">
             <CostEstimator
               addOns={['wqde']}
               cloud="sqd"
