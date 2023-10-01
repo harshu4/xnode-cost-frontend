@@ -5,6 +5,7 @@ import LatencySelector from '../LatencySelector'
 import Presets from '../Presets'
 import CostEstimator from '../CostEstimator'
 import ServerProvision from '../ServerProvision'
+import IncludedServices from '../IncludedServices'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
@@ -12,6 +13,7 @@ const FirstStep = () => {
   const [serviceRegion, setServiceRegion] = useState<string>('US East (Boston)')
   const [latencyPreference, setLatencyPreference] = useState<string>('Low')
   const [preset, setPreset] = useState<number>(0)
+  const [includedServices, setIncludedServices] = useState([])
   const [serversNumber, setServersNumber] = useState<number>(2)
   const [serversType, setServersType] = useState<string>('small')
 
@@ -27,7 +29,7 @@ const FirstStep = () => {
   }
 
   const handleLatencyPreferenceChange = (newValue) => {
-    setServiceRegion(newValue)
+    setLatencyPreference(newValue)
   }
 
   const handleServersTypeChange = (newValue) => {
@@ -36,6 +38,18 @@ const FirstStep = () => {
 
   const handleServersNumberChange = (newValue) => {
     setServersNumber(newValue)
+  }
+
+  const handleIncludedServersChange = (newValue) => {
+    if (includedServices.includes(newValue)) {
+      // Se o valor já existe, remova-o do array
+      setIncludedServices((prevServices) =>
+        prevServices.filter((service) => service !== newValue),
+      )
+    } else {
+      // Se o valor não existe, adicione-o ao array
+      setIncludedServices((prevServices) => [...prevServices, newValue])
+    }
   }
 
   const renderSecondStepComponent = () => {
@@ -181,16 +195,32 @@ const FirstStep = () => {
                   </div>
                 </div>
                 {next ? (
-                  <div>
-                    {
-                      <ServerProvision
-                        onChangeServerType={handleServersTypeChange}
-                        onChangeServerNumber={handleServersNumberChange}
-                        serversNumber={serversNumber}
-                        serverType={serversType}
-                      />
-                    }
-                  </div>
+                  <>
+                    <div>
+                      {
+                        <>
+                          <ServerProvision
+                            onChangeServerType={handleServersTypeChange}
+                            onChangeServerNumber={handleServersNumberChange}
+                            serversNumber={serversNumber}
+                            serverType={serversType}
+                          />
+                        </>
+                      }
+                    </div>
+                    <div>
+                      {
+                        <>
+                          <IncludedServices
+                            onChangeIncludedService={
+                              handleIncludedServersChange
+                            }
+                            includedServicesArray={includedServices}
+                          />
+                        </>
+                      }
+                    </div>
+                  </>
                 ) : (
                   <div>
                     <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
