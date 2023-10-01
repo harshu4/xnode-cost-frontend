@@ -10,6 +10,8 @@ const FirstStep = () => {
   const [cloudProvider, setCloudProvider] = useState<String>('equinix')
   const [serviceRegion, setServiceRegion] = useState<String>('US East (Boston)')
   const [latencyPreference, setLatencyPreference] = useState<String>('Low')
+  const [preset, setPreset] = useState<Number>(0)
+
   const [next, setNext] = useState<Boolean>(false)
 
   const [showTooltipCloudProvider, setShowTooltipCloudProvider] =
@@ -25,12 +27,33 @@ const FirstStep = () => {
     setServiceRegion(newValue)
   }
 
+  const renderSecondStepComponent = () => {
+    switch (preset) {
+      case 0:
+        return <Component1 />
+      case 1:
+        return <Component2 />
+      case 2:
+        return <Component3 />
+      case 3:
+        return <Component4 />
+      case 4:
+        return <Component5 />
+      default:
+        return null
+    }
+  }
+
   return (
     <>
       <div className="flex">
         <section
           id="home"
-          className="bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[70px] md:pr-[288px] md:pt-[31px] md:pb-[63px]  lg:pl-[154px] lg:pr-[336px] lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pr-[384px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px] 2xl:pr-[480px] 2xl:pt-[52px] 2xl:pb-[104px]"
+          className={`bg-white px-[30px] pt-[25px]  pb-[52px] text-[#000000] md:pl-[70px] ${
+            next
+              ? ''
+              : 'md:pr-[288px] lg:pr-[336px] xl:pr-[384px] 2xl:pr-[480px] '
+          } md:pt-[31px] md:pb-[63px]  lg:pl-[154px]  lg:pt-[36px] lg:pb-[72px] xl:pl-[176px] xl:pt-[41px] xl:pb-[83px] 2xl:pl-[220px]  2xl:pt-[52px] 2xl:pb-[104px]`}
         >
           <div className="mx-auto w-full max-w-[1093px]">
             <div>
@@ -146,34 +169,40 @@ const FirstStep = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
-                  <Presets
-                    onValueChange={() => {
-                      console.log('test')
-                    }}
-                  />
-                </div>
-                <div>
-                  <div
-                    onClick={() => {
-                      setNext(true)
-                    }}
-                    className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[11px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[39px] md:py-[5px] md:px-[12.5px] md:text-[8.5px] lg:mt-[45.5px] lg:py-[9px] lg:px-[14.5px] lg:text-[10px] lg:!leading-[19px] xl:py-[10px] xl:px-[17px] xl:text-[11px] 2xl:mt-[65px] 2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]"
-                  >
-                    <div>Next</div>
-                    <img
-                      src={`/images/dataset/arrow.svg`}
-                      alt="image"
-                      className="my-auto h-[7.5px] w-[8px] md:h-[9px] md:w-[9.4px] lg:h-[10.5px] lg:w-[11px] xl:h-[12px] xl:w-[12.3px] 2xl:h-[15px] 2xl:w-[15.4px]"
-                    />
+                {next ? (
+                  <div>{renderSecondStepComponent()}</div>
+                ) : (
+                  <div>
+                    <div className="mt-[31px] md:mt-[37px] lg:mt-[43px] 2xl:mt-[62px]">
+                      <Presets
+                        onValueChange={() => {
+                          console.log('test')
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <div
+                        onClick={() => {
+                          setNext(true)
+                        }}
+                        className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[11px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#123981] md:mt-[39px] md:py-[5px] md:px-[12.5px] md:text-[8.5px] lg:mt-[45.5px] lg:py-[9px] lg:px-[14.5px] lg:text-[10px] lg:!leading-[19px] xl:py-[10px] xl:px-[17px] xl:text-[11px] 2xl:mt-[65px] 2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]"
+                      >
+                        <div>Next</div>
+                        <img
+                          src={`/images/dataset/arrow.svg`}
+                          alt="image"
+                          className="my-auto h-[7.5px] w-[8px] md:h-[9px] md:w-[9.4px] lg:h-[10.5px] lg:w-[11px] xl:h-[12px] xl:w-[12.3px] 2xl:h-[15px] 2xl:w-[15.4px]"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </section>
         {next && (
-          <div className="">
+          <div className="relative min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[320px] 2xl:min-w-[400px]">
             <CostEstimator
               addOns={['wqde']}
               cloud="sqd"
