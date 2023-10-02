@@ -6,6 +6,7 @@ import Presets from '../Presets'
 import CostEstimator from '../CostEstimator'
 import ServerProvision from '../ServerProvision'
 import IncludedServices from '../IncludedServices'
+import AddOns from '../AddOns'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
@@ -196,27 +197,42 @@ const FirstStep = () => {
                 </div>
                 {next ? (
                   <>
-                    <div>
-                      {
-                        <>
-                          <ServerProvision
-                            onChangeServerType={handleServersTypeChange}
-                            onChangeServerNumber={handleServersNumberChange}
-                            serversNumber={serversNumber}
-                            serverType={serversType}
-                          />
-                        </>
-                      }
-                    </div>
-                    <div className="mt-[30px] w-full border-b-[1px] text-[#D4D4D4] md:mt-[48px] lg:mt-[48px] 2xl:mt-[60px]"></div>
+                    <div className="grid gap-y-0">
+                      <div>
+                        {
+                          <>
+                            <ServerProvision
+                              onChangeServerType={handleServersTypeChange}
+                              onChangeServerNumber={handleServersNumberChange}
+                              serversNumber={serversNumber}
+                              serverType={serversType}
+                            />
+                          </>
+                        }
+                      </div>
+                      <div className="mt-[37px] w-full border-b-[1px] text-[#D4D4D4] md:mt-[44px] lg:mt-[51px] 2xl:mt-[74px]"></div>
 
-                    <div className="mt-[20px] md:mt-[24px] lg:mt-[28px] 2xl:mt-[40px]">
-                      {
-                        <IncludedServices
-                          onChangeIncludedService={handleIncludedServersChange}
-                          includedServicesArray={includedServices}
-                        />
-                      }
+                      <div className="mt-[26px] md:mt-[31px] lg:mt-[36px] 2xl:mt-[52px]">
+                        {
+                          <IncludedServices
+                            onChangeIncludedService={
+                              handleIncludedServersChange
+                            }
+                            includedServicesArray={includedServices}
+                          />
+                        }
+                      </div>
+                      <div className="mt-[37px] w-full border-b-[1px] text-[#D4D4D4] md:mt-[44px] lg:mt-[51px] 2xl:mt-[74px]"></div>
+                      <div className="mt-[15px] md:mt-[18px] lg:mt-[21px] 2xl:mt-[30px]">
+                        {
+                          <AddOns
+                            onChangeIncludedService={
+                              handleIncludedServersChange
+                            }
+                            includedServicesArray={includedServices}
+                          />
+                        }
+                      </div>
                     </div>
                   </>
                 ) : (
@@ -252,16 +268,16 @@ const FirstStep = () => {
         {next && (
           <div className="relative mr-[56px] min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[320px] 2xl:min-w-[400px]">
             <CostEstimator
-              addOns={['wqde']}
-              cloud="sqd"
-              cost={21}
-              dataSources={[{ title: 'wqe', list: ['wqedwqe'] }]}
-              database="wqee"
-              latency="qweqw"
-              region="wqewq"
-              serverType="wqeqw"
-              serversNumber={2}
-              service="qwewqe"
+              addOns={['Pythia']}
+              cloud="cloudProvider"
+              cost={20 * serversNumber}
+              dataSources={[{ title: 'Pythia', list: ['Searcher'] }]}
+              database="PostgreSQL"
+              latency={latencyPreference}
+              region={serviceRegion}
+              serverType={serversType}
+              serversNumber={serversNumber}
+              service="Xnode"
             />
           </div>
         )}

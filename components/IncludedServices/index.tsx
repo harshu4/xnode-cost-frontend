@@ -37,9 +37,19 @@ const IncludedServices = ({ ...data }: ModalProps) => {
   return (
     <>
       <div className="w-full">
-        <div>
+        <div className="flex justify-between">
           <div className="text-[18px] font-medium -tracking-[2%] text-[#959595] md:text-[19px] lg:text-[22px] lg:!leading-[39px] xl:text-[25px] 2xl:text-[32px]">
             Included services
+          </div>
+          <div className="ml-auto flex items-center  gap-x-[8px] md:gap-x-[9px] lg:gap-x-[10.5px] xl:gap-x-[12px] 2xl:gap-x-[15px]">
+            <div className="text-[10px] font-medium text-[#505050] md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
+              Added to deployment
+            </div>
+            <img
+              src={`/images/includedServices/rectangle.svg`}
+              alt="image"
+              className="h-[10px] w-[10px] md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px]"
+            />
           </div>
         </div>
         <div className="mt-[15px] rounded-[10px] bg-[#F9F9F9] p-[10px] md:mt-[18px] md:p-[12px] lg:mt-[21px] lg:p-[14px] xl:p-[16px] 2xl:mt-[30px] 2xl:p-[20px]">
@@ -49,11 +59,7 @@ const IncludedServices = ({ ...data }: ModalProps) => {
           <div className="relative mt-[12.5px] grid justify-between gap-x-[15px] gap-y-[15px] md:mt-[15px] md:grid-cols-2 md:gap-x-[18px] md:gap-y-[18px] lg:mt-[17.5px] lg:grid-cols-2 lg:gap-x-[21px] lg:gap-y-[21px] xl:grid-cols-3 xl:gap-x-[24px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[30px] 2xl:gap-y-[30px]">
             {preSetsOptions.map((option, index) => (
               <div
-                className={`relative h-[100px] cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
-                  data.includedServicesArray.includes(option.title)
-                    ? 'shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)]'
-                    : ''
-                }`}
+                className={`relative h-[100px] cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]`}
                 key={index}
                 onClick={() => {
                   data.onChangeIncludedService(option.title)
