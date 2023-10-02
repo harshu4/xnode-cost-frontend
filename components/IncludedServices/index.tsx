@@ -12,23 +12,34 @@ interface ModalProps {
 const IncludedServices = ({ ...data }: ModalProps) => {
   const preSetsOptions = [
     {
-      title: 'Run a validator',
+      title: 'Kubernetes',
       description:
-        'Rapid prototype, test, and deploy mobile, web & decentralized applications (dApps)',
+        'automating deployment, scaling, and management of containerized applications',
     },
     {
-      title: 'Run a validator',
-      description:
-        'Rapid prototype, test, and deploy mobile, web & decentralized applications (dApps)',
+      title: 'Openmesh Consensus',
+      description: 'Explanation here',
+    },
+    {
+      title: 'BitTorrent Protocol Client',
+      description: 'Used for seeding purposes',
+    },
+    {
+      title: 'Phytia Pro',
+      description: 'Explanation here',
+    },
+    {
+      title: 'APIs & Connectivity',
+      description: 'Websockets',
     },
   ]
 
   return (
     <>
-      <div className="w-full max-w-[1053px]">
+      <div className="w-full">
         <div>
           <div className="text-[18px] font-medium -tracking-[2%] text-[#959595] md:text-[19px] lg:text-[22px] lg:!leading-[39px] xl:text-[25px] 2xl:text-[32px]">
-            Get started with use cases
+            Included services
           </div>
         </div>
         <div className="mt-[15px] rounded-[10px] bg-[#F9F9F9] p-[10px] md:mt-[18px] md:p-[12px] lg:mt-[21px] lg:p-[14px] xl:p-[16px] 2xl:mt-[30px] 2xl:p-[20px]">
@@ -38,7 +49,7 @@ const IncludedServices = ({ ...data }: ModalProps) => {
           <div className="relative mt-[12.5px] grid justify-between gap-x-[15px] gap-y-[15px] md:mt-[15px] md:grid-cols-2 md:gap-x-[18px] md:gap-y-[18px] lg:mt-[17.5px] lg:grid-cols-2 lg:gap-x-[21px] lg:gap-y-[21px] xl:grid-cols-3 xl:gap-x-[24px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[30px] 2xl:gap-y-[30px]">
             {preSetsOptions.map((option, index) => (
               <div
-                className={`h-[100px] cursor-pointer rounded-[5px]  border-[0.5px] border-[#D9D9D9] p-[10px] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
+                className={`relative h-[100px] cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px] ${
                   data.includedServicesArray.includes(option.title)
                     ? 'shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)]'
                     : ''
@@ -48,8 +59,8 @@ const IncludedServices = ({ ...data }: ModalProps) => {
                   data.onChangeIncludedService(option.title)
                 }}
               >
-                <div className="relative h-full w-full max-w-[300px]">
-                  <div className="mt-[8px] text-[9px] font-bold text-[#313131] md:mt-[9px] md:text-[11px] lg:mt-[10.5px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:text-[18px]">
+                <div className="h-full w-full max-w-[300px]">
+                  <div className="text-[9px] font-bold text-[#313131] md:text-[11px]  lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px]  2xl:text-[18px]">
                     {option.title}
                   </div>
                   <div className=" mt-[5px] mr-[10px] text-[8px]  font-medium text-[#959595] md:mt-[6px] md:mr-[12px]  md:text-[9px] lg:mt-[7px] lg:mr-[14px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[10px] 2xl:mr-[20px] 2xl:text-[16px]">

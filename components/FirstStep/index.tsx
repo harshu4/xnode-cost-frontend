@@ -208,16 +208,14 @@ const FirstStep = () => {
                         </>
                       }
                     </div>
-                    <div>
+                    <div className="mt-[30px] w-full border-b-[1px] text-[#D4D4D4] md:mt-[48px] lg:mt-[48px] 2xl:mt-[60px]"></div>
+
+                    <div className="mt-[20px] md:mt-[24px] lg:mt-[28px] 2xl:mt-[40px]">
                       {
-                        <>
-                          <IncludedServices
-                            onChangeIncludedService={
-                              handleIncludedServersChange
-                            }
-                            includedServicesArray={includedServices}
-                          />
-                        </>
+                        <IncludedServices
+                          onChangeIncludedService={handleIncludedServersChange}
+                          includedServicesArray={includedServices}
+                        />
                       }
                     </div>
                   </>
