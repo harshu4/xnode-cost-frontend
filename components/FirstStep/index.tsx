@@ -15,6 +15,7 @@ const FirstStep = () => {
   const [latencyPreference, setLatencyPreference] = useState<string>('Low')
   const [preset, setPreset] = useState<number>(0)
   const [includedServices, setIncludedServices] = useState([])
+  const [addOnsServices, setAddOnsServices] = useState([])
   const [serversNumber, setServersNumber] = useState<number>(2)
   const [serversType, setServersType] = useState<string>('small')
 
@@ -50,6 +51,18 @@ const FirstStep = () => {
     } else {
       // Se o valor não existe, adicione-o ao array
       setIncludedServices((prevServices) => [...prevServices, newValue])
+    }
+  }
+
+  const handleObservabilityServicesChange = (newValue) => {
+    if (addOnsServices.includes(newValue)) {
+      // Se o valor já existe, remova-o do array
+      setAddOnsServices((prevServices) =>
+        prevServices.filter((service) => service !== newValue),
+      )
+    } else {
+      // Se o valor não existe, adicione-o ao array
+      setAddOnsServices((prevServices) => [...prevServices, newValue])
     }
   }
 
@@ -226,10 +239,10 @@ const FirstStep = () => {
                       <div className="mt-[15px] md:mt-[18px] lg:mt-[21px] 2xl:mt-[30px]">
                         {
                           <AddOns
-                            onChangeIncludedService={
-                              handleIncludedServersChange
+                            onChangeIncludedAddOns={
+                              handleObservabilityServicesChange
                             }
-                            includedServicesArray={includedServices}
+                            includedAddOnsArray={addOnsServices}
                           />
                         }
                       </div>
@@ -268,8 +281,8 @@ const FirstStep = () => {
         {next && (
           <div className="relative mr-[56px] min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[320px] 2xl:min-w-[400px]">
             <CostEstimator
-              addOns={['Pythia']}
-              cloud="cloudProvider"
+              addOns={addOnsServices}
+              cloud={cloudProvider}
               cost={20 * serversNumber}
               dataSources={[{ title: 'Pythia', list: ['Searcher'] }]}
               database="PostgreSQL"

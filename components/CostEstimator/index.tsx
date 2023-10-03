@@ -74,7 +74,13 @@ const CostEstimator = ({ ...data }: ModalProps) => {
           <div className="mt-[5px] border-b-[1px] border-[#D4D4D4] pb-[5px] md:mt-[6px] lg:mt-[7px] 2xl:mt-[10px]">
             <div>Add-ons</div>
             <div className="mt-[5px] font-bold text-[#505050]">
-              {data.addOns}
+              <ul className="grid gap-y-[2px]">
+                {data.addOns.map((dataSource, index) => (
+                  <>
+                    <li key={index}>{dataSource}</li>
+                  </>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
