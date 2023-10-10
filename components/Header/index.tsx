@@ -125,7 +125,7 @@ const Header = () => {
                 process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                   ? process.env.NEXT_PUBLIC_BASE_PATH
                   : ''
-              }/images/logo/openmesh-logo.svg`}
+              }/images/new/openmesh-logo-new.png`}
               alt="image"
               className={`w-[150px]`}
             />
@@ -180,9 +180,9 @@ const Header = () => {
                   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                     ? process.env.NEXT_PUBLIC_BASE_PATH
                     : ''
-                }/images/logo/openmesh-logo.svg`}
+                }/images/new/openmesh-logo-new.png`}
                 alt="image"
-                className={`mr-[60px]`}
+                className={`mr-[60px] w-[200px]`}
               />
             </a>
           </div>
