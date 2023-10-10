@@ -41,8 +41,8 @@ const SelectServiceRegion = ({ ...data }: ModalProps) => {
             </div>
           )}
         </div>
-        <div className="ml-[47.5px]  md:ml-[57px]  lg:ml-[66.5px]  xl:ml-[76px] 2xl:ml-[95px]">
-          <Dropdown onValueChange={handleServiceRegionChange} />
+        <div className="ml-[47.5px]  text-[10px]  font-bold  text-[#000] md:ml-[57px] md:text-[12x] lg:ml-[66.5px] lg:text-[14px] lg:!leading-[24px] xl:ml-[76px] xl:text-[16px] 2xl:ml-[95px] 2xl:text-[20px]">
+          {serviceRegion}
         </div>
         <div
           onClick={() => {

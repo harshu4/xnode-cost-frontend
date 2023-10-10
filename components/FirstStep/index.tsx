@@ -133,6 +133,7 @@ const FirstStep = () => {
                             /> */}
                             <SelectUseCase
                               next={next}
+                              presetValueFromParent={preset}
                               onValueChange={(value) => {
                                 setPreset(value)
                               }}

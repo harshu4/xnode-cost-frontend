@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Dropdown from '../Dropdown'
 import Presets from '../Presets'
 
 interface ModalProps {
   next: Boolean
   onValueChange(string): void
+  presetValueFromParent
 }
 
-const SelectUseCase = ({ ...data }: ModalProps) => {
+const SelectUseCase = ({ presetValueFromParent, ...data }: ModalProps) => {
   const [showTooltipServiceRegion, setShowTooltipServiceRegion] =
     useState<boolean>(false)
   const [edit, setEdit] = useState<boolean>(false)
@@ -22,6 +23,12 @@ const SelectUseCase = ({ ...data }: ModalProps) => {
     // useCaseRef.current?.scrollIntoView({ behavior: 'smooth' })
     data.onValueChange(newValue)
   }
+
+  useEffect(() => {
+    if (presetValueFromParent !== undefined) {
+      setPreset(presetValueFromParent)
+    }
+  }, [presetValueFromParent])
 
   const presetIndexToName = [
     {
