@@ -9,6 +9,7 @@ const Dropdown = ({ onValueChange }) => {
     'US East (Boston)',
     'US West (Oregon)',
     'US East 1 (N. Virginia)',
+    'US West 1 (N. California)',
     'Asia Pacific (Sydney)',
   ]
 
