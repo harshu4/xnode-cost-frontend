@@ -7,9 +7,9 @@ const Dropdown = ({ onValueChange }) => {
 
   const valueOptions = [
     'US East (Boston)',
-    'US East 1 (N. Virginia)',
-    'US West 1 (N. California)',
     'US West (Oregon)',
+    'US East 1 (N. Virginia)',
+    'Asia Pacific (Sydney)',
   ]
 
   const handleClickOutside = (event) => {
@@ -33,7 +33,7 @@ const Dropdown = ({ onValueChange }) => {
       <div>
         <button
           type="button"
-          className={`inline-flex w-full justify-center gap-x-[5px] rounded-[4px] px-4 transition duration-300 ease-in-out hover:text-[#686868] focus:outline-none focus:ring-2  focus:ring-offset-2 lg:gap-x-[10px]
+          className={`inline-flex w-full justify-center gap-x-[5px] rounded-[4px]  pr-4 transition duration-300 ease-in-out hover:text-[#686868] focus:outline-none focus:ring-2  focus:ring-offset-2 lg:gap-x-[10px]
           ${isOpen ? 'bg-[#fdfdfd] text-[#686868]' : ''}`}
           id="options-menu"
           aria-haspopup="true"
@@ -56,7 +56,7 @@ const Dropdown = ({ onValueChange }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition">
+        <div className="absolute right-0 z-50 mt-2 w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition">
           <div
             className="py-1"
             role="menu"
@@ -71,9 +71,9 @@ const Dropdown = ({ onValueChange }) => {
                   setIsOpen(false)
                   onValueChange(option)
                 }}
-                className="flex cursor-pointer gap-y-[5px] px-4 py-2 hover:bg-[#f7f5f5] "
+                className="flex cursor-pointer  px-4 py-2 hover:bg-[#f7f5f5] "
               >
-                <div className="block transition " role="menuitem">
+                <div className="block transition" role="menuitem">
                   {option}
                 </div>
                 {option === value && (

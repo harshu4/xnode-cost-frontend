@@ -18,7 +18,6 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <Hero />
       <FirstStep />
       <Footer />
     </>

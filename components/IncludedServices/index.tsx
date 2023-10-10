@@ -62,7 +62,7 @@ const IncludedServices = ({ ...data }: ModalProps) => {
                 className={`relative h-[100px] cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]`}
                 key={index}
                 onClick={() => {
-                  data.onChangeIncludedService(option.title)
+                  // data.onChangeIncludedService(option.title)
                 }}
               >
                 <div className="h-full w-full max-w-[300px]">

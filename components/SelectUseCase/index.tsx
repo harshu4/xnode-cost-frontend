@@ -1,15 +1,58 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
+import { useState } from 'react'
+import Dropdown from '../Dropdown'
+import Presets from '../Presets'
 
 interface ModalProps {
-  serversNumber: number
-  serverType: string
-  onChangeServerNumber(number): void
-  onChangeServerType(string): void
+  next: Boolean
+  onValueChange(string): void
 }
 
-const ServerProvision = ({ ...data }: ModalProps) => {
-  const numberOfServersOptions = [1, 2, 3, 4, 5, 6]
+const SelectUseCase = ({ ...data }: ModalProps) => {
+  const [showTooltipServiceRegion, setShowTooltipServiceRegion] =
+    useState<boolean>(false)
+  const [edit, setEdit] = useState<boolean>(false)
+  const [preset, setPreset] = useState<number>(0)
+  const handleUsecaseChangeChange = (newValue) => {
+    setPreset(newValue)
+    setEdit(false)
+    data.onValueChange(newValue)
+  }
+
+  const presetIndexToName = [
+    'Building a decentralized data infrastructure',
+    'Developing Apps and dApps',
+    'Real time analysis engine',
+    'Research and development',
+    'Run a validator',
+    'Customized LLMs, analytics, and dashboards',
+    'Custom configuration',
+  ]
+
+  if (data.next && !edit) {
+    return (
+      <div className="flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]">
+        <div className="relative flex items-center gap-x-[10px]">
+          <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
+            4. Usecase
+          </div>
+        </div>
+        <div className="ml-[121px]  md:ml-[145px]  lg:ml-[170px]  xl:ml-[195px] 2xl:ml-[243px]">
+          <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
+            {presetIndexToName[preset]}
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            setEdit(true)
+          }}
+          className="ml-auto mr-[22.5px] cursor-pointer border-b-[1px] border-[#0354EC] text-[10px] font-medium  text-[#0354EC] hover:border-[#123981] hover:text-[#123981] md:mr-[27px] md:text-[12px] lg:mr-[31.5px] lg:text-[14px]  lg:!leading-[24px]  xl:mr-[36px]  xl:text-[16px] 2xl:mr-[45px] 2xl:text-[20px]"
+        >
+          Edit
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -20,37 +63,13 @@ const ServerProvision = ({ ...data }: ModalProps) => {
           </div>
         </div>
         <div
-          className={` mt-[12px] w-fit rounded-[5px] bg-[#fff] p-[10px]  md:p-[12px] lg:mt-[17.5px] lg:p-[14px] xl:p-[16px] 2xl:mt-[25px] 2xl:p-[20px]`}
+          className={` mt-[12px] p-[10px]  md:p-[12px] lg:mt-[17.5px] lg:p-[14px] xl:p-[16px] 2xl:mt-[25px] 2xl:p-[20px]`}
         >
-          <div className="">
-            <div className="w-full max-w-[250px]">
-              <div className=" text-[9px] font-bold text-[#313131] md:text-[11px]  lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:text-[18px]">
-                Basic Validator
-              </div>
-              <div className=" mt-[5px]  text-[8px]  font-semibold text-[#505050] md:mt-[6px]  md:text-[9px] lg:mt-[7px]  lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[10px]  2xl:text-[16px]">
-                {String(data.serversNumber)} x {data.serverType} servers
-              </div>
-              <div className="mt-[8px] text-[8px] font-medium text-[#959595] md:mt-[9px]  md:text-[9px] lg:mt-[10.5px]  lg:text-[11px]  lg:!leading-[19px] xl:text-[13px] 2xl:mt-[15px]   2xl:text-[16px]">
-                <div className="">Best for:</div>
-                <ul className="list-disc pl-[25px]">
-                  <li>Designing custom data products</li>
-                  <li>Data visualization</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`mt-[18px]  flex gap-x-[5px] md:mt-[19.2px] md:gap-x-[6px]  lg:mt-[22.5px] lg:gap-x-[7px] xl:gap-x-[8px] 2xl:mt-[32px] 2xl:gap-x-[10px]`}
-          >
-            {Array.from({ length: data.serversNumber }).map((_, index) => (
-              <img
-                key={index}
-                src="/images/presets/server.svg"
-                alt="image"
-                className={`h-[18px] w-[22.5px] md:h-[21.5px] md:w-[27px] lg:h-[25px] lg:w-[31.5px] xl:h-[29px] xl:w-[36px] 2xl:h-[36px] 2xl:w-[45px]`}
-              />
-            ))}
-          </div>
+          <Presets
+            onValueChange={(value) => {
+              handleUsecaseChangeChange(value)
+            }}
+          />
         </div>
       </div>
       {/* <div className="mt-[10px] rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px]   md:mt-[12px] md:px-[12px] md:py-[9px] lg:mt-[14px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:mt-[20px] 2xl:px-[20px] 2xl:py-[15px]">
@@ -107,4 +126,4 @@ const ServerProvision = ({ ...data }: ModalProps) => {
   )
 }
 
-export default ServerProvision
+export default SelectUseCase
