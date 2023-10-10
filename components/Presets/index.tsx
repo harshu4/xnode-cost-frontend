@@ -51,9 +51,9 @@ const Presets = ({ onValueChange }) => {
       ],
     },
     {
-      icon: '/images/presets/search.svg',
+      icon: '/images/presets/research.svg',
       iconStyle:
-        'h-[12.5px] w-[12.5px] md:h-[15px] md:w-[15px]  lg:h-[17.5px] lg:w-[17.5px] xl:h-[20px] xl:w-[20px] 2xl:h-[25px] 2xl:w-[25px]',
+        'h-[14px] w-[16px] md:h-[16.5px] md:w-[19px]  lg:h-[19px] lg:w-[22.5px] xl:h-[22px] xl:w-[25.5px] 2xl:h-[27.7px] 2xl:w-[32px]',
       title: 'Research and development',
       description:
         'Rapid prototype, test, and deploy mobile, web & decentralized applications (dApps)',
@@ -220,7 +220,7 @@ const Presets = ({ onValueChange }) => {
                 className={`h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[28px]`}
               />
               <div className="mt-[8px] text-[9px] font-bold text-[#313131] md:mt-[9px] md:text-[11px] lg:mt-[10.5px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:text-[18px]">
-                Custom configuration
+                Build your own data cloud
               </div>
               <div className=" mt-[5px] mr-[10px] text-[8px]  font-medium text-[#959595] md:mt-[6px] md:mr-[12px]  md:text-[9px] lg:mt-[7px] lg:mr-[14px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[10px] 2xl:mr-[20px] 2xl:text-[16px]">
                 Fully customize your Xnode provision by selecting the available

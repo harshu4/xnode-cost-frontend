@@ -59,7 +59,7 @@ const IncludedServices = ({ ...data }: ModalProps) => {
           <div className="relative mt-[12.5px] grid justify-between gap-x-[15px] gap-y-[15px] md:mt-[15px] md:grid-cols-2 md:gap-x-[18px] md:gap-y-[18px] lg:mt-[17.5px] lg:grid-cols-2 lg:gap-x-[21px] lg:gap-y-[21px] xl:grid-cols-3 xl:gap-x-[24px] xl:gap-y-[24px] 2xl:mt-[25px] 2xl:grid-cols-3 2xl:gap-x-[30px] 2xl:gap-y-[30px]">
             {preSetsOptions.map((option, index) => (
               <div
-                className={`relative h-[100px] cursor-pointer rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_20px_0px_rgba(3,84,236,0.40)] md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]`}
+                className={`relative h-[100px] rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#fff] p-[10px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)]  md:p-[12px] lg:h-[150px] lg:p-[14px] xl:p-[16px] 2xl:p-[20px]`}
                 key={index}
                 onClick={() => {
                   // data.onChangeIncludedService(option.title)
@@ -76,7 +76,7 @@ const IncludedServices = ({ ...data }: ModalProps) => {
                 {data.includedServicesArray.includes(option.title) && (
                   <div className="absolute top-[1px] right-0">
                     <img
-                      src="/images/presets/check.svg"
+                      src="/images/presets/check-gray.svg"
                       alt="image"
                       className={
                         'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'

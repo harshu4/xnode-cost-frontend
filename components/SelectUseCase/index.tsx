@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Dropdown from '../Dropdown'
 import Presets from '../Presets'
 
@@ -13,20 +13,58 @@ const SelectUseCase = ({ ...data }: ModalProps) => {
     useState<boolean>(false)
   const [edit, setEdit] = useState<boolean>(false)
   const [preset, setPreset] = useState<number>(0)
+
+  const useCaseRef = useRef(null)
+
   const handleUsecaseChangeChange = (newValue) => {
     setPreset(newValue)
     setEdit(false)
+    // useCaseRef.current?.scrollIntoView({ behavior: 'smooth' })
     data.onValueChange(newValue)
   }
 
   const presetIndexToName = [
-    'Building a decentralized data infrastructure',
-    'Developing Apps and dApps',
-    'Real time analysis engine',
-    'Research and development',
-    'Run a validator',
-    'Customized LLMs, analytics, and dashboards',
-    'Custom configuration',
+    {
+      icon: '/images/presets/building.svg',
+      iconStyle:
+        'h-[12.5px] w-[11px] md:h-[15px] md:w-[12.5px]  lg:h-[17.5px] lg:w-[14.7px] xl:h-[20px] xl:w-[17px] 2xl:h-[25px] 2xl:w-[21px]',
+      title: 'Building a decentralized data infrastructure',
+    },
+    {
+      icon: '/images/presets/computer.svg',
+      iconStyle:
+        'h-[12.5px] w-[15.5px] md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[31px]',
+      title: 'Developing Apps and dApps',
+    },
+    {
+      icon: '/images/presets/chart.svg',
+      iconStyle:
+        'h-[12.5px] w-[16.5px] md:h-[15px] md:w-[20px]  lg:h-[17.5px] lg:w-[23px] xl:h-[20px] xl:w-[26px] 2xl:h-[25px] 2xl:w-[33px]',
+      title: 'Real time analysis engine',
+    },
+    {
+      icon: '/images/presets/research.svg',
+      iconStyle: 'w-[16px] md:w-[19px]lg:w-[22.5px]xl:w-[25.5px]  2xl:w-[25px]',
+      title: 'Research and development',
+    },
+    {
+      icon: '/images/presets/person.svg',
+      iconStyle:
+        'h-[12.5px] w-[15.5px] md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[31px]',
+      title: 'Run a validator',
+    },
+    {
+      icon: '/images/presets/robot.svg',
+      iconStyle:
+        'h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[31px]',
+      title: 'Customized LLMs, analytics, and dashboards',
+    },
+    {
+      icon: '/images/presets/custom.svg',
+      iconStyle:
+        'h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[28px]',
+      title: 'Build your own data cloud',
+    },
   ]
 
   if (data.next && !edit) {
@@ -37,9 +75,14 @@ const SelectUseCase = ({ ...data }: ModalProps) => {
             4. Usecase
           </div>
         </div>
-        <div className="ml-[121px]  md:ml-[145px]  lg:ml-[170px]  xl:ml-[195px] 2xl:ml-[243px]">
+        <div className="ml-[121px]  flex  gap-x-[7.5px]  md:ml-[145px] md:gap-x-[10.5px] lg:ml-[170px] lg:gap-x-[9px] xl:ml-[195px] xl:gap-x-[12px] 2xl:ml-[243px] 2xl:gap-x-[15px]">
+          <img
+            src={presetIndexToName[preset].icon}
+            alt="image"
+            className={`transform cursor-pointer transition-transform hover:scale-105 ${presetIndexToName[preset].iconStyle}`}
+          />
           <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
-            {presetIndexToName[preset]}
+            {presetIndexToName[preset].title}
           </div>
         </div>
         <div
@@ -56,7 +99,10 @@ const SelectUseCase = ({ ...data }: ModalProps) => {
 
   return (
     <>
-      <div className="rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]">
+      <div
+        ref={useCaseRef} // Adicione a referência aqui
+        className="rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] 2xl:px-[20px] 2xl:py-[15px]"
+      >
         <div className="relative flex items-center gap-x-[10px]">
           <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
             4. Usecase

@@ -201,7 +201,7 @@ const FirstStep = () => {
             <CostEstimator
               addOns={addOnsServices}
               cloud={cloudProvider}
-              cost={20 * serversNumber}
+              cost={20 * serversNumber + 2 * addOnsServices.length}
               dataSources={[{ title: 'Pythia', list: ['Searcher'] }]}
               database="PostgreSQL"
               latency={latencyPreference}
