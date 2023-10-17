@@ -17,57 +17,70 @@ import ReactFlow, {
   Background,
   applyNodeChanges,
   applyEdgeChanges,
+  MiniMap,
   addEdge,
+  useNodesState,
+  useEdgesState,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-const initialNodes = [
-  {
-    id: '1',
-    data: { label: 'Hello' },
-    position: { x: 0, y: 0 },
-    type: 'input',
-  },
-  {
-    id: '2',
-    data: { label: 'World' },
-    position: { x: 100, y: 100 },
-  },
-]
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initial-elements'
+import CustomNode from './CustomNode'
 
-const initialEdges = []
+import './overview.css'
 
-const Testing = () => {
-  const [nodes, setNodes] = useState<any>(initialNodes)
-  const [edges, setEdges] = useState(initialEdges)
+const nodeTypes = {
+  custom: CustomNode,
+}
 
-  const onNodesChange = useCallback(
-    (changes) => setNodes((nds: any) => applyNodeChanges(changes, nds)),
-    [],
-  )
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [],
-  )
+const minimapStyle = {
+  height: 120,
+}
 
+const onInit = (reactFlowInstance) =>
+  console.log('flow loaded:', reactFlowInstance)
+
+const OverviewFlow = () => {
+  const [nodes, setNodes, onNodesChange] = useNodesState<any>(initialNodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [],
   )
 
+  // we are using a bit of a shortcut here to adjust the edge type
+  // this could also be done with a custom edge for example
+  const edgesWithUpdatedTypes = edges.map((edge) => {
+    if (edge.sourceHandle) {
+      const edgeType = nodes.find((node) => node.type === 'custom').data
+        .selects[edge.sourceHandle]
+      edge.type = edgeType
+    }
+
+    return edge
+  })
+
   return (
     <div className="h-[1500px]">
       <ReactFlow
         nodes={nodes}
+        edges={edgesWithUpdatedTypes}
         onNodesChange={onNodesChange}
-        edges={edges}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onInit={onInit}
+        fitView
+        attributionPosition="top-right"
+        nodeTypes={nodeTypes}
       >
-        <Background />
+        <MiniMap style={minimapStyle} zoomable pannable />
         <Controls />
+        <Background color="#aaa" gap={16} />
       </ReactFlow>
     </div>
   )
 }
 
-export default Testing
+export default OverviewFlow
