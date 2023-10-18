@@ -276,7 +276,7 @@ const StartHere = ({ onValueChange }) => {
                 <div className=" mt-[5px] mr-[10px] text-[8px]  font-medium text-[#959595] md:mt-[6px] md:mr-[12px]  md:text-[9px] lg:mt-[7px] lg:mr-[14px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[10px] 2xl:mr-[20px] 2xl:text-[16px]">
                   {option.description}
                 </div>
-                <div className="absolute top-10 flex flex-wrap gap-x-[17.5px] gap-y-[12.5px] md:gap-y-[15px] md:gap-x-[21px] lg:gap-y-[17.5px] lg:gap-x-[24.5px] xl:gap-y-[20px] xl:gap-x-[28px] 2xl:gap-y-[25px] 2xl:gap-x-[35px]">
+                <div className="absolute top-[200px] flex flex-wrap gap-x-[17.5px] gap-y-[12.5px] md:gap-y-[15px] md:gap-x-[21px] lg:gap-y-[17.5px] lg:gap-x-[24.5px] xl:gap-y-[20px] xl:gap-x-[28px] 2xl:gap-y-[25px] 2xl:gap-x-[35px]">
                   {option.list.map((option, index) => (
                     <div key={index}>
                       <img
