@@ -117,8 +117,8 @@ const Header = () => {
           </span>
         </div>
       </Link> */}
-      <header className="max-w-screen top-0 left-0 z-40 mx-0 flex h-[95px] w-full  items-center bg-[#F9F9F9]  bg-opacity-80 text-[#000000]">
-        <div className="w-full justify-between px-[20px] md:px-[90px] xl:hidden">
+      <header className="top-0 left-0 z-40 mx-0 flex h-[95px] w-full  items-center bg-[#fff] text-[#000000]">
+        <div className="w-full justify-between px-[20px] md:px-[33px] xl:hidden">
           <div className="">
             <img
               src={`${
@@ -172,28 +172,41 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[90px] xl:flex">
-          <div className="flex  h-full items-center">
+        <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
+          <div className="flex items-center">
             <a href={'/'}>
               <img
-                src={`${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? process.env.NEXT_PUBLIC_BASE_PATH
-                    : ''
-                }/images/new/openmesh-logo-new.png`}
+                src={`/images/logo/xnode-logo.svg`}
                 alt="image"
-                className={`mr-[60px] w-[200px]`}
+                className="h-[35px] w-[90px] md:h-[42px] md:w-[108px]  lg:h-[49px] lg:w-[126px] xl:h-[56px] xl:w-[144px] 2xl:h-[70px] 2xl:w-[180px]"
               />
             </a>
           </div>
-          <div className="my-auto flex justify-center text-center">
-            <a
-              href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
-              className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
-            >
-              Schedule a call
-            </a>
+          <div className="flex gap-x-[115px]">
+            <div className="flex gap-x-[70px]">
+              <a
+                href={`https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases`}
+                className="flex cursor-pointer items-center "
+              >
+                Docs
+              </a>
+              <a
+                href={`https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases`}
+                className="flex cursor-pointer items-center "
+              >
+                FAQS
+              </a>
+            </div>
+            <div className="my-auto flex justify-center text-center">
+              <a
+                href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+                className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
+              >
+                Schedule a call
+              </a>
+            </div>
           </div>
+
           {/* <div className="lg:hidden">
               <Dialog.Root>
                 <Dialog.Trigger>

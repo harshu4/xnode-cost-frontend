@@ -6,6 +6,7 @@ import 'node_modules/react-modal-video/css/modal-video.css'
 import '../styles/index.css'
 import { Providers } from './providers'
 import Header from '@/components/Header'
+import LateralNav from '@/components/LateralNav'
 
 export default function RootLayout({
   children,
@@ -23,8 +24,14 @@ export default function RootLayout({
 
       <body className="max-w-screen w-full bg-white">
         <Providers>
-          <Header />
-          {children}
+          <div className="flex">
+            <LateralNav onValueChange={console.log('teste')} />
+            <div>
+              <Header />
+              {children}
+            </div>
+          </div>
+
           <ScrollToTop />
         </Providers>
       </body>

@@ -24,8 +24,11 @@ interface CreateContextProps {
 }
 
 interface CreateUserContextProps {
+  selectionSideNavBar: string
+  setSelectionSideNavBar: (value: string) => void
+
   user: UserProps | undefined
-  setUser: (user: UserProps | undefined) => void // Permitindo que setUser aceite undefined
+  setUser: (user: UserProps | undefined) => void
 }
 
 export const AccountContext = createContext({} as CreateUserContextProps)
@@ -34,10 +37,14 @@ export default function AccountContextProvider({
   children,
 }: CreateContextProps) {
   const [user, setUser] = useState<UserProps>()
+  const [selectionSideNavBar, setSelectionSideNavBar] =
+    useState<string>('Start here')
 
   return (
     <AccountContext.Provider
       value={{
+        selectionSideNavBar,
+        setSelectionSideNavBar,
         user,
         setUser,
       }}
