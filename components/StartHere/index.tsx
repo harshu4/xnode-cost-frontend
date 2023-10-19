@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 'use client'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
+import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
 const StartHere = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
+  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
+    useContext(AccountContext)
 
   const preSetsOptions = [
     {
@@ -161,19 +164,27 @@ const StartHere = ({ onValueChange }) => {
     },
   ]
 
+  if (next) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] "></div>
+      </>
+    )
+  }
+
   return (
     <>
       <div className="w-full max-w-[1800px] rounded-[10px] bg-[#F9F9F9] pl-[85px] pr-[132px] pt-[45px] pb-[172px] md:pl-[102px] md:pr-[158px] md:pt-[54px] md:pb-[213px] lg:pl-[119px] lg:pr-[184px] lg:pt-[63px] lg:pb-[248px] xl:pl-[136px] xl:pr-[211px] xl:pt-[72px] xl:pb-[284px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[90px] 2xl:pb-[355px]  ">
         <div className="flex justify-between gap-x-[20px]">
           <div
-            className={`w-full max-w-[180px] transform cursor-pointer rounded-[5px] border-[1px] border-[#0354EC] px-[21px] pt-[12px] pb-[17px] transition-transform  md:max-w-[216px] md:px-[25px] md:pt-[14px] md:pb-[20px] md:hover:scale-105 lg:max-w-[252px] lg:px-[29px] lg:pt-[17px] lg:pb-[23px] xl:max-w-[288px] xl:px-[33px] xl:pt-[19px] xl:pb-[27px] 2xl:max-w-[360px] 2xl:px-[42px] 2xl:pt-[24px] 2xl:pb-[34px]`}
+            className={`w-full max-w-[180px] rounded-[5px] border-[1px] border-[#0354EC] px-[21px] pt-[12px] pb-[17px]  md:max-w-[216px] md:px-[25px] md:pt-[14px] md:pb-[20px]  lg:max-w-[252px] lg:px-[29px] lg:pt-[17px] lg:pb-[23px] xl:max-w-[288px] xl:px-[33px] xl:pt-[19px] xl:pb-[27px] 2xl:max-w-[360px] 2xl:px-[42px] 2xl:pt-[24px] 2xl:pb-[34px]`}
             onClick={() => {}}
           >
             <div className="relative ">
               <img
                 src="/images/presets/custom.svg"
                 alt="image"
-                className={`h-[12.5px] w-[15.5px] transform cursor-pointer transition-transform hover:scale-105 md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[28px]`}
+                className={`h-[12.5px] w-[15.5px] cursor-pointer md:h-[15px] md:w-[18.5px]  lg:h-[17.5px] lg:w-[21.7px] xl:h-[20px] xl:w-[25px] 2xl:h-[25px] 2xl:w-[28px]`}
               />
               <div className="mt-[8px] text-[12px] font-bold text-[#313131] md:mt-[9px] md:text-[14.5px] lg:mt-[10.5px] lg:text-[17px] lg:!leading-[22px] xl:text-[19px] 2xl:mt-[15px] 2xl:text-[24px]">
                 How to build your first Xnode
@@ -182,7 +193,13 @@ const StartHere = ({ onValueChange }) => {
                 Fully customize your Xnode provision by selecting the available
                 configurations in the next page
               </div>
-              <div className="mt-[37px] text-[10px] font-normal text-[#12AD50] md:mt-[45px] md:text-[12px] lg:mt-[52px] lg:text-[14px] xl:mt-[60px] xl:text-[16px] 2xl:mt-[75px] 2xl:text-[20px]">
+              <div
+                onClick={() => {
+                  setNext(true)
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+                className="mt-[37px] cursor-pointer text-[10px] font-normal text-[#12AD50] hover:font-medium md:mt-[45px] md:text-[12px] lg:mt-[52px] lg:text-[14px] xl:mt-[60px] xl:text-[16px] 2xl:mt-[75px] 2xl:text-[20px]"
+              >
                 Start {'>'}
               </div>
             </div>
@@ -319,6 +336,20 @@ const StartHere = ({ onValueChange }) => {
               )}
             </div>
           ))}
+        </div>
+        <div
+          onClick={() => {
+            setNext(true)
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+          className=" mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[54px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#123981] md:mt-[65px] md:py-[5px] md:px-[39px] md:text-[8.5px] lg:mt-[75.5px] lg:py-[9px] lg:px-[45px] lg:text-[10px] lg:!leading-[19px] xl:mt-[86.5px] xl:py-[10px] xl:px-[51px] xl:text-[11px] 2xl:mt-[108px] 2xl:py-[12.5px] 2xl:px-[64px] 2xl:text-[14px]"
+        >
+          <div>Next</div>
+          <img
+            src={`/images/dataset/arrow.svg`}
+            alt="image"
+            className="my-auto h-[7.5px] w-[8px] md:h-[9px] md:w-[9.4px] lg:h-[10.5px] lg:w-[11px] xl:h-[12px] xl:w-[12.3px] 2xl:h-[15px] 2xl:w-[15.4px]"
+          />
         </div>
       </div>
     </>

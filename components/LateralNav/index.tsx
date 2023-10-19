@@ -4,6 +4,7 @@ import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
+import SubBarData from '../SubBarData'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -103,7 +104,7 @@ const LateralNav = ({ onValueChange }) => {
 
   return (
     <>
-      <div className="z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <div className="relative z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
         <div className="">
           <div className="pb-[24px] pt-[17px] md:pb-[30px] md:pt-[20px] lg:pb-[34px] lg:pt-[24px] xl:pb-[39px] xl:pt-[27px] 2xl:pb-[49px] 2xl:pt-[34px]">
             <img
@@ -119,9 +120,11 @@ const LateralNav = ({ onValueChange }) => {
               onClick={() => {
                 handleButtonClick(option.title)
               }}
-              className={`relative cursor-pointer px-[11px] py-[14px] hover:bg-[#F4F4F4] md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
-                selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''
-              }`}
+              className={`relative px-[11px] py-[14px]  md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
+                !next && option.title !== 'Start here'
+                  ? 'opacity-50 hover:bg-[#fff]'
+                  : 'cursor-pointer hover:bg-[#F4F4F4]'
+              } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
             >
               <img
                 src={option.icon}
@@ -142,6 +145,11 @@ const LateralNav = ({ onValueChange }) => {
             </div>
           ))}
         </div>
+        {selectionSideNavBar === 'Data' && (
+          <div className="absolute top-[80px] -right-[283px]">
+            <SubBarData onValueChange={console.log('hello')} />
+          </div>
+        )}
       </div>
     </>
   )
