@@ -8,8 +8,10 @@ import { AccountContext } from '@/contexts/AccountContext'
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
-  const { selectionSideNavBar, setSelectionSideNavBar } =
+  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
     useContext(AccountContext)
+  const [isOpen, setIsOpen] = useState<boolean>(true)
+  const [greenDotOpacity, setGreenDotOpacity] = useState(0)
 
   const preSetsOptions = [
     {
@@ -71,24 +73,53 @@ const LateralNav = ({ onValueChange }) => {
     },
   ]
 
+  function handleButtonClick(title: string) {
+    if (!next && title !== 'Start here') {
+      setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
+      setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
+    } else {
+      setSelectionSideNavBar(title)
+    }
+  }
+
+  if (!isOpen) {
+    return (
+      <>
+        <div className="z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+          <div className="">
+            <div className="px-[9.5px] pb-[24px] pt-[17px] md:px-[11.5px] md:pb-[30px] md:pt-[20px] lg:px-[13.5px] lg:pb-[34px] lg:pt-[24px] xl:px-[15px] xl:pb-[39px] xl:pt-[27px] 2xl:px-[19px] 2xl:pb-[49px] 2xl:pt-[34px]">
+              <img
+                onClick={() => setIsOpen(true)}
+                src="/images/lateralNavBar/nav-close.svg"
+                alt="image"
+                className={`mx-auto w-[13px]  cursor-pointer md:w-[14px] md:hover:scale-105 lg:w-[16px] xl:w-[18.5px] 2xl:w-[23px]`}
+              />
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
-      <div className="shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <div className="z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
         <div className="">
           <div className="pb-[24px] pt-[17px] md:pb-[30px] md:pt-[20px] lg:pb-[34px] lg:pt-[24px] xl:pb-[39px] xl:pt-[27px] 2xl:pb-[49px] 2xl:pt-[34px]">
             <img
+              onClick={() => setIsOpen(false)}
               src="/images/lateralNavBar/nav.svg"
               alt="image"
-              className={`mx-auto  w-[16px] cursor-pointer md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]`}
+              className={`mx-auto w-[16px]  cursor-pointer md:w-[19.5px] md:hover:scale-105 lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]`}
             />
           </div>
           {preSetsOptions.map((option, index) => (
             <div
               key={index}
               onClick={() => {
-                setSelectionSideNavBar(option.title)
+                handleButtonClick(option.title)
               }}
-              className={`cursor-pointer px-[11px] py-[14px] hover:bg-[#F4F4F4] md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
+              className={`relative cursor-pointer px-[11px] py-[14px] hover:bg-[#F4F4F4] md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
                 selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''
               }`}
             >
@@ -97,8 +128,16 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
                 className={`${option.iconStyle}  mx-auto`}
               />
-              <div className="flex justify-center text-center text-[8px] !-tracking-[2%] text-[#000] md:text-[9.5px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:text-[16px]">
-                {title}
+              {option.title === 'Start here' && (
+                <img
+                  src="/images/lateralNavBar/green-ellipse.svg"
+                  alt="green dot"
+                  style={{ opacity: greenDotOpacity }}
+                  className="absolute top-2 right-2 h-3 w-3 transition-opacity duration-500" // Adicionando uma transição de 2 segundos
+                />
+              )}
+              <div className="mt-[5px] flex justify-center text-center text-[8px] !-tracking-[2%] text-[#000] md:mt-[6px] md:text-[9.5px] lg:mt-[7px] lg:text-[11px] lg:!leading-[19px] xl:mt-[8px] xl:text-[13px] 2xl:mt-[9px] 2xl:text-[16px]">
+                {option.title}
               </div>
             </div>
           ))}

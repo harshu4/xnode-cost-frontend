@@ -117,7 +117,7 @@ const Header = () => {
           </span>
         </div>
       </Link> */}
-      <header className="top-0 left-0 z-40 mx-0 flex h-[95px] w-full  items-center bg-[#fff] text-[#000000]">
+      <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[11px] text-[#000000] xl:pb-[27.8px] 2xl:pb-[46px]">
         <div className="w-full justify-between px-[20px] md:px-[33px] xl:hidden">
           <div className="">
             <img
@@ -178,7 +178,7 @@ const Header = () => {
               <img
                 src={`/images/logo/xnode-logo.svg`}
                 alt="image"
-                className="h-[35px] w-[90px] md:h-[42px] md:w-[108px]  lg:h-[49px] lg:w-[126px] xl:h-[56px] xl:w-[144px] 2xl:h-[70px] 2xl:w-[180px]"
+                className="h-[28.5px] w-[72.5px] md:h-[34px] md:w-[87px]  lg:h-[40px] lg:w-[101px] xl:h-[45.5px] xl:w-[116px] 2xl:h-[57px] 2xl:w-[145px]"
               />
             </a>
           </div>

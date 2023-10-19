@@ -193,7 +193,7 @@ const StartHere = ({ onValueChange }) => {
                 How to build your first Xnode
               </div>
               <div className="lg:!leading-[150%]">
-                <a className="text-[6.5px] font-bold text-[#0354EC] md:text-[7px] lg:text-[8.5px] xl:text-[10.5px] 2xl:text-[12px]">
+                <a className="text-[8px] font-bold text-[#0354EC] md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]">
                   Understanding Xnode
                 </a>
               </div>
@@ -203,7 +203,7 @@ const StartHere = ({ onValueChange }) => {
                     'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                   }
                   target="_blank"
-                  className="text-[6.5px] font-normal text-[#0354EC] hover:font-medium md:text-[7px] lg:text-[8.5px] xl:text-[10.5px] 2xl:text-[12px]"
+                  className="text-[8px] font-normal text-[#0354EC] hover:font-medium md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
                   rel="noreferrer"
                 >
                   An introduction to xNode's role in decentralizing data
@@ -211,7 +211,7 @@ const StartHere = ({ onValueChange }) => {
                 </a>
               </div>
               <div className="mt-[15px]">
-                <a className="text-[6.5px] font-normal text-[#0354EC] md:text-[7px] lg:text-[8.5px] xl:text-[9.5px] 2xl:text-[12px]">
+                <a className="text-[8px] font-normal text-[#0354EC] md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]">
                   Setting Up
                 </a>
               </div>
@@ -221,14 +221,14 @@ const StartHere = ({ onValueChange }) => {
                     'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                   }
                   target="_blank"
-                  className="cursor-pointer text-[6.5px] font-normal text-[#0354EC] hover:font-medium md:text-[7px] lg:text-[8.5px] xl:text-[10.5px] 2xl:text-[12px]"
+                  className="cursor-pointer text-[8px] font-normal text-[#0354EC] hover:font-medium md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
                   rel="noreferrer"
                 >
                   Step-by-step guide to deploying an xNode.{' '}
                 </a>
               </div>
               <div className="mt-[15px]">
-                <a className="text-[6.5px] font-normal text-[#0354EC] md:text-[7px] lg:text-[8.5px] xl:text-[10.5px] 2xl:text-[12px]">
+                <a className="text-[8px] font-normal text-[#0354EC] md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]">
                   Developer support and resources{' '}
                 </a>
               </div>
@@ -238,7 +238,7 @@ const StartHere = ({ onValueChange }) => {
                     'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                   }
                   target="_blank"
-                  className="cursor-pointer text-[6.5px] font-normal text-[#0354EC] hover:font-medium md:text-[7px] lg:text-[8.5px] xl:text-[10.5px] 2xl:text-[12px]"
+                  className="cursor-pointer text-[8px] font-normal text-[#0354EC] hover:font-medium md:text-[9.5px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
                   rel="noreferrer"
                 >
                   Docs & Research
