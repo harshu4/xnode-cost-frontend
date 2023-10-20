@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import Presets from '../Presets'
@@ -12,6 +12,7 @@ import SelectServiceRegion from '../SelectServiceRegion'
 import SelectLatencyPreference from '../SelectLatencyPreference'
 import SelectUseCase from '../SelectUseCase'
 import Hero from '../Hero'
+import { useRouter } from 'next/navigation'
 
 /* eslint-disable react/no-unescaped-entities */
 const FirstStep = () => {
@@ -88,6 +89,11 @@ const FirstStep = () => {
     //     return null
     // }
   }
+  const { push } = useRouter()
+
+  useEffect(() => {
+    push('/console')
+  }, [])
 
   return (
     <>
