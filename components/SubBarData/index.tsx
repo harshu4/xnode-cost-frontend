@@ -10,9 +10,7 @@ const SubBarData = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
   const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
     useContext(AccountContext)
-  const [isOpen, setIsOpen] = useState<boolean>(true)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
-  const [greenDotOpacity, setGreenDotOpacity] = useState(0)
 
   const categoriesOptions = [
     {
@@ -203,6 +201,20 @@ const SubBarData = ({ onValueChange }) => {
     },
   ]
 
+  const dataUseCase = {
+    'Financial Analysis':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
+    Github: 'https://github.com/L3A-Protocol',
+    'Blockchain Transactions':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
+    'DEXs and CEXs':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
+    'Gas Optimization':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
+    'Crypto Liquidity':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
+  }
+
   function handleButtonClick(title: string) {
     if (title === selectionSubBar) {
       setSelectionSubBar('')
@@ -222,7 +234,7 @@ const SubBarData = ({ onValueChange }) => {
                 alt="image"
                 className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
               />
-              <div className="text-[7.5px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+              <div className="cursor-pointer text-[7.5px] font-light underline underline-offset-[2.5px] hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                 {option.title}
               </div>
             </div>
@@ -243,25 +255,33 @@ const SubBarData = ({ onValueChange }) => {
 
   return (
     <>
-      <div className="z-100 bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px] ">
+      <div className="z-100 relative bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Categories
         </div>
+        <img
+          src="/images/lateralNavBar/close.svg"
+          onClick={() => setSelectionSideNavBar('')}
+          alt="image"
+          className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
+        />
         <div className="">
           {categoriesOptions.map((option, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                if (option.enabled) {
-                  handleButtonClick(option.title)
-                }
-              }}
-            >
+            <div key={index}>
               <div
+                onClick={() => {
+                  if (option.enabled) {
+                    handleButtonClick(option.title)
+                  }
+                }}
                 className={`relative mt-[14px] flex w-fit ${
                   option.enabled
                     ? 'cursor-pointer hover:text-[#5b5b5b]'
                     : 'text-[#959595]'
+                } ${
+                  selectionSubBar === option.title
+                    ? 'underline underline-offset-[3px]'
+                    : ''
                 }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
               >
                 {selectionSubBar === option.title ? (
@@ -289,10 +309,27 @@ const SubBarData = ({ onValueChange }) => {
             </div>
           ))}
         </div>
+        <div className="mt-[41px] pl-[5px] text-[8px] text-[#000] md:mt-[49px] md:w-fit md:text-[10px] lg:mt-[58px] lg:text-[11px] xl:mt-[66px] xl:text-[13px] 2xl:mt-[83px] 2xl:text-[16px]">
+          <div className="font-bold ">Use Cases</div>
+          <div className="mt-[7.5px] grid font-normal md:mt-[9px] lg:mt-[10.5px] lg:!leading-[300%] xl:mt-[12px] 2xl:mt-[15px]">
+            {Object.entries(dataUseCase).map(([key, value], index, array) => (
+              <a
+                href={value}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+              >
+                <div className={`w-fit cursor-pointer hover:text-[#0354EC]`}>
+                  {key}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
         <div className="mt-[21px] max-w-[110px] text-[9px] md:mt-[25px] md:max-w-[132px] md:text-[10px] lg:mt-[30px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[34px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[43px] 2xl:max-w-[220px] 2xl:text-[16px]">
           <div className="border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  pt-[7.5px]  md:pt-[9px] lg:pb-[12px] lg:pt-[10.5px] xl:pt-[12px] 2xl:pb-[15px] 2xl:pt-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
-              Suggest a new data
+              Support articles
             </div>
             <div className=" lg:!leading-[150%]">
               <a
