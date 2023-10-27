@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Dropdown from '../Dropdown'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 import SubBarData from '../SubBarData'
+import SubBarServers from '../SubBarServers'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -13,6 +15,7 @@ const LateralNav = ({ onValueChange }) => {
     useContext(AccountContext)
   const [isOpen, setIsOpen] = useState<boolean>(true)
   const [greenDotOpacity, setGreenDotOpacity] = useState(0)
+  const { push } = useRouter()
 
   const preSetsOptions = [
     {
@@ -75,6 +78,10 @@ const LateralNav = ({ onValueChange }) => {
   ]
 
   function handleButtonClick(title: string) {
+    if (title === 'Start here') {
+      push('/console')
+      return
+    }
     if (!next && title !== 'Start here') {
       setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
       setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
@@ -148,6 +155,11 @@ const LateralNav = ({ onValueChange }) => {
         {selectionSideNavBar === 'Data' && (
           <div className="absolute top-[80px] -right-[283px]">
             <SubBarData onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {selectionSideNavBar === 'Servers' && (
+          <div className="absolute top-[80px] -right-[283px]">
+            <SubBarServers onValueChange={console.log('hello')} />
           </div>
         )}
       </div>

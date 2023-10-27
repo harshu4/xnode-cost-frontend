@@ -6,198 +6,37 @@ import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
-const SubBarData = ({ onValueChange }) => {
+const SubBarServers = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
   const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
     useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
+  const [cloudProvider, setCloudProvider] = useState<string>('Equinix')
 
   const categoriesOptions = [
     {
-      title: 'Crypto Exchanges',
-      isFree: true,
+      title: 'Equinix (Decentralized)',
       enabled: true,
-      dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
-      ],
+      src: '/images/subNavBarServers/equinix.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
     },
     {
-      title: 'Public Blockchains',
-      isFree: true,
+      title: 'AWS (Centralized)',
       enabled: true,
-      dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
-      ],
+      src: '/images/subNavBarServers/aws.svg',
+      style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
     },
     {
-      title: 'Descentralized Finance (DeFi)',
-      isFree: true,
-      enabled: true,
-      dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
-      ],
-    },
-    {
-      title: 'GameFi & Metaverses',
-      isFree: true,
-      enabled: true,
-      dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
-      ],
-    },
-    {
-      title: 'Public Medical Research',
+      title: 'Azure (Centralized)',
       enabled: false,
-      isFree: false,
+      src: '/images/subNavBarServers/azure.svg',
+      style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
     {
-      title: 'Financial Data',
+      title: 'GCP (Centralized)',
       enabled: false,
-      isFree: false,
-    },
-    {
-      title: 'Weather Report',
-      enabled: false,
-      isFree: false,
-    },
-    {
-      title: 'Scientific Data',
-      enabled: false,
-      isFree: false,
-    },
-    {
-      title: 'Cancer Research',
-      enabled: false,
-      isFree: false,
-    },
-    {
-      title: 'Agricultural',
-      enabled: false,
-      isFree: false,
+      src: '/images/subNavBarServers/gcp.svg',
+      style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
   ]
 
@@ -259,7 +98,7 @@ const SubBarData = ({ onValueChange }) => {
     <>
       <div className="z-100 relative bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
-          Categories
+          Select cloud provider{' '}
         </div>
         <img
           src="/images/lateralNavBar/close.svg"
@@ -267,47 +106,37 @@ const SubBarData = ({ onValueChange }) => {
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
         />
-        <div className="">
+        <div className="mt-[8px] md:mt-[10.2px] lg:mt-[12px] xl:mt-[13.5px] 2xl:mt-[17px]">
           {categoriesOptions.map((option, index) => (
-            <div key={index}>
+            <div key={index} className="relative flex">
+              <div className="flex gap-x-[4px]">
+                <img
+                  src={option.src}
+                  alt="image"
+                  className={`absolute -left-[5px] top-[15px] my-auto ${option.style}`}
+                />
+                <div
+                  className={` ${
+                    option.enabled ? 'text-[#000]' : 'text-[#B1B1B1]'
+                  } ml-[25px] text-[8px] font-light   md:text-[10px] lg:text-[11px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]`}
+                >
+                  {option.title}
+                </div>
+              </div>
               <div
                 onClick={() => {
                   if (option.enabled) {
-                    handleButtonClick(option.title)
+                    setCloudProvider(option.title)
                   }
                 }}
-                className={`relative mt-[14px] flex w-fit ${
-                  option.enabled
-                    ? 'cursor-pointer hover:text-[#5b5b5b]'
-                    : 'text-[#959595]'
-                } ${
-                  selectionSubBar === option.title
-                    ? 'underline underline-offset-[3px]'
-                    : ''
-                }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
-              >
-                {selectionSubBar === option.title ? (
-                  <img
-                    src="/images/lateralNavBar/seta-baixo.svg"
-                    alt="image"
-                    className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-                  />
-                ) : (
-                  <img
-                    src="/images/lateralNavBar/seta-lado.svg"
-                    alt="image"
-                    className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
-                  />
-                )}
-                <div>{option.title}</div>
-                {option.isFree && (
-                  <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
-                    Free
-                  </div>
-                )}
-              </div>
-
-              {selectionSubBar === option.title && renderSubOptions(option)}
+                className={`absolute -right-[20px] top-[10px] h-[10px] w-[10px] rounded-[5px] border-[1px] border-[#D9D9D9] ${
+                  option.enabled ? 'cursor-pointer hover:bg-[#0354EC]' : ''
+                } md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] ${
+                  cloudProvider === option.title && option.enabled
+                    ? 'bg-[#0354EC]'
+                    : 'bg-[#fff]'
+                }`}
+              ></div>
             </div>
           ))}
         </div>
@@ -373,4 +202,4 @@ const SubBarData = ({ onValueChange }) => {
   )
 }
 
-export default SubBarData
+export default SubBarServers

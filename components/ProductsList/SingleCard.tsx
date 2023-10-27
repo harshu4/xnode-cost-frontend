@@ -39,7 +39,7 @@ const SingleCard = ({
       <div>
         <div>
           <div className="flex gap-x-[5px] lg:gap-x-[8px] 2xl:gap-x-[10px]">
-            <a href={`dataset/${id}`}>
+            <a href={`data-product/${id}`}>
               <div
                 className={`text-[10px] font-bold text-[#313131] hover:text-[#000] hover:underline md:text-[12px] lg:text-[14px] lg:!leading-[22px]  2xl:text-[18px]`}
               >

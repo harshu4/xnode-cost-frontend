@@ -124,7 +124,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
 
   if (isLoading) {
     return (
-      <section className="bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px]">
+      <section className="mx-auto bg-white pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px] md:pr-[130px] lg:min-w-[800px] xl:min-w-[1200px] 2xl:min-w-[1200px]">
         <div className="container hidden h-60 animate-pulse px-0 pb-12 md:flex">
           <div className="mr-10 w-3/4 animate-pulse bg-[#dfdfdf]"></div>
           <div className="w-1/4 animate-pulse bg-[#dfdfdf]"></div>
@@ -139,7 +139,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   }
 
   return (
-    <section className="flex bg-white pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[32px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
+    <section className="flex pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[32px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
       <div className="hidden md:block">
         <Filter onUpdate={handleUpdate} />
       </div>
@@ -295,7 +295,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
         </div>
         {testimonialsToShow?.length === 0 ? (
           <div>
-            <div className="mt-[64px] mb-[100px] flex flex-col items-center justify-center">
+            <div className="mt-[64px] mb-[100px] flex items-center justify-center">
               <SmileySad size={32} className="text-blue-500 mb-2" />
               <span>No datasets found</span>
             </div>

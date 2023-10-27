@@ -92,7 +92,7 @@ const FirstStep = () => {
   const { push } = useRouter()
 
   useEffect(() => {
-    push('/console')
+    // push('/console')
   }, [])
 
   return (
