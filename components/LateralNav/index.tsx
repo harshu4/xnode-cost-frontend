@@ -7,6 +7,7 @@ import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 import SubBarData from '../SubBarData'
 import SubBarServers from '../SubBarServers'
+import SubBarAPIs from '../SubBarAPIs'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -160,6 +161,11 @@ const LateralNav = ({ onValueChange }) => {
         {selectionSideNavBar === 'Servers' && (
           <div className="absolute top-[80px] -right-[282px]">
             <SubBarServers onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {selectionSideNavBar === 'APIs' && (
+          <div className="absolute top-[80px] -right-[282px]">
+            <SubBarAPIs onValueChange={console.log('hello')} />
           </div>
         )}
       </div>

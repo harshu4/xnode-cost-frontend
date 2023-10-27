@@ -115,6 +115,12 @@ const SubBarServers = ({ onValueChange }) => {
     }
   }
 
+  function handleAddServer(option: any) {
+    if (option.servers > 0) {
+      console.log('do something')
+    }
+  }
+
   function handleServerPlus(title: string) {
     if (title === 'Small (c3.x86)') {
       if (smallServerNumber <= 4) {
@@ -149,12 +155,12 @@ const SubBarServers = ({ onValueChange }) => {
 
   function renderChooseYourServerOptions() {
     return (
-      <div className="mt-[11px] md:mt-[13px] lg:mt-[15.5px]  xl:mt-[17.5px]  2xl:mt-[22px] ">
+      <div className="mt-[11px] grid gap-y-[22px] md:mt-[13px] md:gap-y-[27px] lg:mt-[15.5px] lg:gap-y-[31px] xl:mt-[17.5px] xl:gap-y-[35px]  2xl:mt-[22px]  2xl:gap-y-[44px] ">
         {chooseYourServerOptions.map((option, index) => (
           <div key={index} className="relative">
             <div className="relative flex gap-x-[8px] text-[#000] md:gap-x-[9.6px] lg:gap-x-[11.2px] xl:gap-x-[13px] 2xl:gap-x-[16px]">
               <div>
-                <div className="text-[8px] font-medium md:text-[9.6px] lg:text-[11.2px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]">
+                <div className=" text-[8px] font-medium md:text-[9.6px] lg:text-[11.2px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]">
                   {option.title}
                 </div>
                 <div className="text-[7px] font-light md:text-[8.4px] lg:text-[10px] lg:!leading-[150%] xl:text-[11.2px] 2xl:text-[14px]">
@@ -163,11 +169,11 @@ const SubBarServers = ({ onValueChange }) => {
                   ))}
                 </div>
               </div>
-              <div>
-                <div className="flex gap-x-[3px]">
+              <div className="mt-[6px] h-fit">
+                <div className="flex h-fit items-center gap-x-[3px]">
                   <div
                     onClick={() => handleServerMinus(option.title)}
-                    className="cursor-pointer hover:text-[#6d6a6a]"
+                    className="cursor-pointer text-[7px] hover:text-[#6d6a6a] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
                   >
                     -
                   </div>
@@ -176,10 +182,23 @@ const SubBarServers = ({ onValueChange }) => {
                   </div>
                   <div
                     onClick={() => handleServerPlus(option.title)}
-                    className="cursor-pointer hover:text-[#6d6a6a]"
+                    className="cursor-pointer text-[7px] hover:text-[#6d6a6a] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
                   >
                     +
                   </div>
+                </div>
+                <div
+                  onClick={() => {
+                    handleAddServer(option)
+                    // window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }}
+                  className={`mx-auto mt-[10px] w-fit !leading-[15px] ${
+                    option.servers > 0
+                      ? 'cursor-pointer bg-[#0354EC] hover:bg-[#123981]'
+                      : 'bg-[#939393] '
+                  }  rounded-[5px]  px-[7px] py-[3px] text-[6.5px] font-medium text-[#fff]   md:mt-[12px] md:text-[7px] lg:mt-[14px] lg:py-[2.8px]  lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:mt-[16px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px] 2xl:mt-[20px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
+                >
+                  <div>Add</div>
                 </div>
               </div>
             </div>
@@ -251,11 +270,11 @@ const SubBarServers = ({ onValueChange }) => {
         </div>
         <div>{renderChooseYourServerOptions()}</div>
         <a href="/data-products">
-          <div className="mt-[9px] text-[8px] font-medium hover:font-bold md:mt-[11px] md:ml-[21px] md:text-[9.6px] lg:mt-[12.5px] lg:ml-[24.5px] lg:text-[11.5px] lg:!leading-[300%] xl:mt-[14.5px] xl:ml-[25px] xl:text-[13px] 2xl:mt-[18px] 2xl:ml-[34px] 2xl:text-[16px]">
+          <div className="mt-[35px] flex w-full justify-center  text-[8px] font-medium hover:text-[#3a3a3a] md:mt-[41px] md:text-[9.6px] lg:mt-[48px]  lg:text-[11.5px] lg:!leading-[300%] xl:mt-[55px] xl:text-[13px] 2xl:mt-[69px] 2xl:text-[16px]">
             View More
           </div>
         </a>
-        <div className="mt-[21px] max-w-[110px] text-[9px] md:mt-[25px] md:max-w-[132px] md:text-[10px] lg:mt-[30px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[34px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[43px] 2xl:max-w-[220px] 2xl:text-[16px]">
+        <div className="mt-[44px] max-w-[110px] text-[9px] md:mt-[52px] md:max-w-[132px] md:text-[10px] lg:mt-[60px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[70px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[88px] 2xl:max-w-[220px] 2xl:text-[16px]">
           <div className="border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  pt-[7.5px]  md:pt-[9px] lg:pb-[12px] lg:pt-[10.5px] xl:pt-[12px] 2xl:pb-[15px] 2xl:pt-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
               Support articles
