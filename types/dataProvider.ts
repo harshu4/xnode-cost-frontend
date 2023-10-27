@@ -14,6 +14,7 @@ export type DataProvider = {
   dataCloudName?: string
   dataSpace?: string
   downloadCSVLink?: string
+  type?: string
   liveLink?: string
   company?: string
   popularity?: number
