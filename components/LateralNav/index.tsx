@@ -158,7 +158,7 @@ const LateralNav = ({ onValueChange }) => {
           </div>
         )}
         {selectionSideNavBar === 'Servers' && (
-          <div className="absolute top-[80px] -right-[283px]">
+          <div className="absolute top-[80px] -right-[282px]">
             <SubBarServers onValueChange={console.log('hello')} />
           </div>
         )}

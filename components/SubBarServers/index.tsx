@@ -4,6 +4,7 @@ import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
+import DropdownServiceRegion from '../DropdownServiceRegion'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarServers = ({ onValueChange }) => {
@@ -11,7 +12,25 @@ const SubBarServers = ({ onValueChange }) => {
   const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
     useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
-  const [cloudProvider, setCloudProvider] = useState<string>('Equinix')
+  const [cloudProvider, setCloudProvider] = useState<string>(
+    'Equinix (Decentralized)',
+  )
+
+  const [smallServerNumber, setSmallServerNumber] = useState<number>(0)
+  const [mediumServerNumber, setMediumServerNumber] = useState<number>(0)
+  const [largeServerNumber, setLargeServerNumber] = useState<number>(0)
+
+  const [serviceRegion, setServiceRegion] = useState<string>(
+    'Equinix (Decentralized)',
+  )
+
+  const optionsServiceRegionSelection = [
+    {
+      title: 'Dallas',
+      src: '/images/subNavBarServers/aws.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
+    },
+  ]
 
   const categoriesOptions = [
     {
@@ -40,19 +59,53 @@ const SubBarServers = ({ onValueChange }) => {
     },
   ]
 
-  const dataUseCase = {
-    'Financial Analysis':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
-    Github: 'https://github.com/L3A-Protocol',
-    'Blockchain Transactions':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
-    'DEXs and CEXs':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
-    'Gas Optimization':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
-    'Crypto Liquidity':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
-  }
+  const chooseYourServerOptions = [
+    {
+      title: 'Small (c3.x86)',
+      enabled: true,
+      specs: [
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
+      ],
+      link: 'Rapid prototype, Data user (Unified API)',
+      linkRef:
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      servers: smallServerNumber,
+    },
+    {
+      title: 'Medium (c2.x86)',
+      enabled: true,
+      specs: [
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
+      ],
+      link: 'Rapid prototype, Decentralized data cloud + Analytics',
+      linkRef:
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      servers: mediumServerNumber,
+    },
+    {
+      title: 'Large (23.x86)',
+      enabled: true,
+      specs: [
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
+      ],
+      link: 'Build, manage, and scale decentralized data clouds + Low latency + Heavy Analytics',
+      linkRef:
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      servers: largeServerNumber,
+    },
+  ]
 
   function handleButtonClick(title: string) {
     if (title === selectionSubBar) {
@@ -62,32 +115,79 @@ const SubBarServers = ({ onValueChange }) => {
     }
   }
 
-  function renderSubOptions(option: any) {
+  function handleServerPlus(title: string) {
+    if (title === 'Small (c3.x86)') {
+      if (smallServerNumber <= 4) {
+        setSmallServerNumber(smallServerNumber + 1)
+      }
+    } else if (title === 'Medium (c2.x86)') {
+      if (mediumServerNumber <= 4) {
+        setMediumServerNumber(mediumServerNumber + 1)
+      }
+    } else if (title === 'Large (23.x86)') {
+      if (largeServerNumber <= 4) {
+        setLargeServerNumber(largeServerNumber + 1)
+      }
+    }
+  }
+
+  function handleServerMinus(title: string) {
+    if (title === 'Small (c3.x86)') {
+      if (smallServerNumber > 0) {
+        setSmallServerNumber(smallServerNumber - 1)
+      }
+    } else if (title === 'Medium (c2.x86)') {
+      if (mediumServerNumber > 0) {
+        setMediumServerNumber(mediumServerNumber - 1)
+      }
+    } else if (title === 'Large (23.x86)') {
+      if (largeServerNumber > 0) {
+        setLargeServerNumber(largeServerNumber - 1)
+      }
+    }
+  }
+
+  function renderChooseYourServerOptions() {
     return (
-      <div className="mt-[6.5px] mb-[25px] grid gap-y-[15px] pl-[19px] md:mt-[7.5px] md:mb-[30px] md:gap-y-[18px] md:pl-[22px] lg:mt-[8.5px] lg:mb-[35px] lg:gap-y-[21px] lg:pl-[27px] xl:mt-[10px] xl:mb-[40px] xl:gap-y-[24px] xl:pl-[30px]  2xl:mt-[12px]  2xl:mb-[50px]  2xl:gap-y-[30px] 2xl:pl-[38px]">
-        {option.dataOptions.map((option, index) => (
-          <div key={index} className="relative flex text-[#000]">
-            <div className="flex gap-x-[9px]">
-              <img
-                src={option.icon}
-                alt="image"
-                className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
-              />
-              <a href="/data-products">
-                <div className="cursor-pointer text-[7.5px] font-light underline underline-offset-[2.5px] hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+      <div className="mt-[11px] md:mt-[13px] lg:mt-[15.5px]  xl:mt-[17.5px]  2xl:mt-[22px] ">
+        {chooseYourServerOptions.map((option, index) => (
+          <div key={index} className="relative">
+            <div className="relative flex gap-x-[8px] text-[#000] md:gap-x-[9.6px] lg:gap-x-[11.2px] xl:gap-x-[13px] 2xl:gap-x-[16px]">
+              <div>
+                <div className="text-[8px] font-medium md:text-[9.6px] lg:text-[11.2px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]">
                   {option.title}
                 </div>
-              </a>
+                <div className="text-[7px] font-light md:text-[8.4px] lg:text-[10px] lg:!leading-[150%] xl:text-[11.2px] 2xl:text-[14px]">
+                  {option.specs.map((spec, index2) => (
+                    <div key={index2}> {spec}</div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="flex gap-x-[3px]">
+                  <div
+                    onClick={() => handleServerMinus(option.title)}
+                    className="cursor-pointer hover:text-[#6d6a6a]"
+                  >
+                    -
+                  </div>
+                  <div className="flex h-[10px] w-[15px] items-center justify-center rounded-[5px] border-[1px] border-[#D9D9D9] p-[1px] text-[7px] font-normal md:h-[12.5px] md:w-[18px]  md:text-[9.8px] lg:h-[15px] lg:w-[21px] lg:text-[9.8px] xl:h-[17px] xl:w-[24px]  xl:text-[11.2px] 2xl:h-[21px] 2xl:w-[30px] 2xl:text-[14px]">
+                    {option.servers}
+                  </div>
+                  <div
+                    onClick={() => handleServerPlus(option.title)}
+                    className="cursor-pointer hover:text-[#6d6a6a]"
+                  >
+                    +
+                  </div>
+                </div>
+              </div>
             </div>
-            <div
-              onClick={() => {
-                setNext(true)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
-              className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
-            >
-              <div>Add</div>
-            </div>
+            <a href={option.linkRef} target="_blank" rel="noreferrer">
+              <div className="mt-[5.5px] max-w-[120px] text-[6px] font-light text-[#0354EC] hover:text-[#0243bd] md:mt-[6.6px] md:max-w-[144px] md:text-[7.2px] lg:mt-[7.7px] lg:max-w-[168px] lg:text-[8.4px] lg:!leading-[150%] xl:mt-[8.8px] xl:max-w-[192px] xl:text-[9.5px] 2xl:mt-[11px] 2xl:max-w-[240px] 2xl:text-[12px]">
+                {option.link}
+              </div>
+            </a>
           </div>
         ))}
       </div>
@@ -140,28 +240,21 @@ const SubBarServers = ({ onValueChange }) => {
             </div>
           ))}
         </div>
+        <div className="mt-[28px] text-[9px] font-bold md:mt-[33px] md:text-[11px] lg:mt-[38.5px] lg:text-[12.5px] xl:mt-[44px] xl:text-[14.5px] 2xl:mt-[55px] 2xl:text-[18px]">
+          Select service region{' '}
+        </div>
+        <div className="mt-[12px] w-fit md:mt-[14.5px] lg:mt-[17px] xl:mt-[19px] 2xl:mt-[24px]">
+          <DropdownServiceRegion onValueChange={console.log('oi')} />
+        </div>
+        <div className="mt-[35px] text-[9px] font-bold md:mt-[42px] md:text-[11px] lg:mt-[49px] lg:text-[12.5px] xl:mt-[56px] xl:text-[14.5px] 2xl:mt-[70px] 2xl:text-[18px]">
+          Choose your server{' '}
+        </div>
+        <div>{renderChooseYourServerOptions()}</div>
         <a href="/data-products">
           <div className="mt-[9px] text-[8px] font-medium hover:font-bold md:mt-[11px] md:ml-[21px] md:text-[9.6px] lg:mt-[12.5px] lg:ml-[24.5px] lg:text-[11.5px] lg:!leading-[300%] xl:mt-[14.5px] xl:ml-[25px] xl:text-[13px] 2xl:mt-[18px] 2xl:ml-[34px] 2xl:text-[16px]">
             View More
           </div>
         </a>
-        <div className="mt-[15px] pl-[5px] text-[8px] text-[#000] md:mt-[14px] md:w-fit md:text-[10px] lg:mt-[16px] lg:text-[11px] xl:mt-[18px] xl:text-[13px] 2xl:mt-[23px] 2xl:text-[16px]">
-          <div className="font-bold ">Use Cases</div>
-          <div className="mt-[7.5px] grid font-normal md:mt-[9px] lg:mt-[10.5px] lg:!leading-[300%] xl:mt-[12px] 2xl:mt-[15px]">
-            {Object.entries(dataUseCase).map(([key, value], index, array) => (
-              <a
-                href={value}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-              >
-                <div className={`w-fit cursor-pointer hover:text-[#0354EC]`}>
-                  {key}
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
         <div className="mt-[21px] max-w-[110px] text-[9px] md:mt-[25px] md:max-w-[132px] md:text-[10px] lg:mt-[30px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[34px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[43px] 2xl:max-w-[220px] 2xl:text-[16px]">
           <div className="border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  pt-[7.5px]  md:pt-[9px] lg:pb-[12px] lg:pt-[10.5px] xl:pt-[12px] 2xl:pb-[15px] 2xl:pt-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
