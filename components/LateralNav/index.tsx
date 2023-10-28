@@ -8,6 +8,7 @@ import { AccountContext } from '@/contexts/AccountContext'
 import SubBarData from '../SubBarData'
 import SubBarServers from '../SubBarServers'
 import SubBarAPIs from '../SubBarAPIs'
+import SubBarAnalytics from '../SubBarAnalytics'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -127,6 +128,7 @@ const LateralNav = ({ onValueChange }) => {
               key={index}
               onClick={() => {
                 handleButtonClick(option.title)
+                window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className={`relative px-[11px] py-[14px]  md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
                 !next && option.title !== 'Start here'
@@ -164,8 +166,13 @@ const LateralNav = ({ onValueChange }) => {
           </div>
         )}
         {selectionSideNavBar === 'APIs' && (
-          <div className="absolute top-[80px] -right-[282px]">
+          <div className="absolute top-[80px] -right-[277px]">
             <SubBarAPIs onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {selectionSideNavBar === 'Analytics' && (
+          <div className="absolute top-[80px] -right-[277px]">
+            <SubBarAnalytics onValueChange={console.log('hello')} />
           </div>
         )}
       </div>
