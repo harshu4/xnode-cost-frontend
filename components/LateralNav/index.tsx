@@ -9,6 +9,8 @@ import SubBarData from '../SubBarData'
 import SubBarServers from '../SubBarServers'
 import SubBarAPIs from '../SubBarAPIs'
 import SubBarAnalytics from '../SubBarAnalytics'
+import SubBarRPC from '../SubBarRPC'
+import SubBarUtility from '../SubBarUtility'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -173,6 +175,16 @@ const LateralNav = ({ onValueChange }) => {
         {selectionSideNavBar === 'Analytics' && (
           <div className="absolute top-[80px] -right-[277px]">
             <SubBarAnalytics onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {selectionSideNavBar === 'RPC' && (
+          <div className="absolute top-[80px] -right-[277px]">
+            <SubBarRPC onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {selectionSideNavBar === 'Utility' && (
+          <div className="absolute top-[80px] -right-[277px]">
+            <SubBarUtility onValueChange={console.log('hello')} />
           </div>
         )}
       </div>

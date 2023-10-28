@@ -4,6 +4,7 @@ import { useState, useContext } from 'react'
 import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import { AccountContext } from '@/contexts/AccountContext'
+import NodesFlow from '../NodesFlow'
 
 /* eslint-disable react/no-unescaped-entities */
 const StartHere = ({ onValueChange }) => {
@@ -167,7 +168,9 @@ const StartHere = ({ onValueChange }) => {
   if (next) {
     return (
       <>
-        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] "></div>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <NodesFlow />
+        </div>
       </>
     )
   }

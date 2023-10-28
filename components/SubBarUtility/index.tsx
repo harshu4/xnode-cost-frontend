@@ -6,7 +6,7 @@ import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
-const SubBarRPC = ({ onValueChange }) => {
+const SubBarUtility = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
   const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
     useContext(AccountContext)
@@ -14,40 +14,69 @@ const SubBarRPC = ({ onValueChange }) => {
 
   const categoriesOptions = [
     {
-      title: 'ValidationCloud',
-      desc: 'Enterprise-grade staking and node infrastructure',
-      link: 'Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.',
+      title: 'Grafana',
+      desc: 'Data Streaming service',
+      link: 'Access live markets data & blockchain data. Power your dApps, web and mobile applications',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      src: '/images/subNavBarRPC/validateCloud.svg',
-      style: '2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]',
-      isFree: false,
+      src: '/images/subNavBarUtility/grafana.svg',
+      style: '2xl:w-[21px] xl:w-[17px] lg:w-[14.5px] md:w-[12.6px] w-[10.5px]',
+      isFree: true,
       enabled: true,
-      thirdParty: true,
+      thirdParty: false,
+      type: 'Observability',
     },
     {
-      title: 'NodeReal',
-      desc: 'One-stop blockchain infrastructure and service provider.',
+      title: 'Prometheus',
+      desc: 'A node service provider, that provides.',
       link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      src: '/images/subNavBarRPC/node.svg',
-      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
-      isFree: false,
+      src: '/images/subNavBarUtility/prometheus.svg',
+      style: '2xl:w-[20px] xl:w-[16px] lg:w-[14px] md:w-[12px] w-[10px]',
+      isFree: true,
       enabled: true,
-      thirdParty: true,
+      thirdParty: false,
+      type: 'Observability',
     },
     {
-      title: 'NodeReal',
-      desc: 'One-stop blockchain infrastructure and service provider.',
-      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
+      title: 'Ascend',
+      desc: "Data Pipeline Automation for building the world's most intelligent data pipelines.",
+      link: 'Data Pipeline, Data Engineering,  Propagate Change',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      src: '/images/subNavBarRPC/node.svg',
-      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
+      src: '/images/subNavBarUtility/ascend.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px] md:w-[19px] w-[16px]',
+      isFree: true,
+      enabled: true,
+      thirdParty: true,
+      type: 'Data Pipeline Automation',
+    },
+    {
+      title: 'Databricks',
+      desc: 'Combines data warehouses & data lakes into a lakehouse architecture.',
+      link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
+      linkRef:
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarAnalytics/databricks.svg',
+      style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
+      type: 'Data Pipeline Automation',
+    },
+    {
+      title: 'InfraAdmin',
+      desc: 'One-stop blockchain infrastructure and service provider.',
+      link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
+      linkRef:
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarAnalytics/databricks.svg',
+      style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
+      isFree: false,
+      enabled: true,
+      thirdParty: true,
+      type: 'Admin Tools',
     },
   ]
 
@@ -69,11 +98,11 @@ const SubBarRPC = ({ onValueChange }) => {
     console.log('nothing')
   }
 
-  function renderOptions(type: boolean) {
+  function renderOptions(type: string) {
     return (
-      <div className="mt-[40px] grid gap-y-[39px] md:mt-[48px] md:gap-y-[48px] lg:mt-[56px] lg:gap-y-[44px] xl:mt-[64px] xl:gap-y-[51px] 2xl:mt-[80px] 2xl:gap-y-[64px]">
+      <div className="mt-[28px] grid gap-y-[35px] md:mt-[33px] md:gap-y-[48px] lg:mt-[40px] lg:gap-y-[40px] xl:mt-[45px] xl:gap-y-[47px] 2xl:mt-[56px] 2xl:gap-y-[58px]">
         {categoriesOptions
-          .filter((option) => option.thirdParty === type)
+          .filter((option) => option.type === type)
           .map((option, index) => (
             <div key={index}>
               <div
@@ -82,7 +111,7 @@ const SubBarRPC = ({ onValueChange }) => {
                     handleButtonClick(option.title)
                   }
                 }}
-                className={`relative  text-[9px] font-normal   md:text-[10px] lg:mt-[19.5px] lg:text-[11px] xl:text-[13px]  2xl:text-[16px]`}
+                className={`relative  text-[9px] font-normal   md:text-[10px] lg:text-[11px] xl:text-[13px]  2xl:text-[16px]`}
               >
                 <div
                   className={` ${
@@ -151,29 +180,23 @@ const SubBarRPC = ({ onValueChange }) => {
     <>
       <div className="z-100 relative bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
         <img
-          src="/images/subNavBarRPC/rpc.svg"
-          onClick={() => setSelectionSideNavBar('')}
-          alt="image"
-          className="w-[20px] md:w-[24px] lg:w-[28px] xl:w-[32px] 2xl:w-[40px]"
-        />
-        <div className="mt-[7.5px] max-w-[140px] text-[9px] font-light md:mt-[9px] md:max-w-[167px] md:text-[11px] lg:mt-[10.5px] lg:max-w-[195px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[12px] xl:max-w-[223px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:max-w-[279px] 2xl:text-[18px]">
-          Design, build, visualize, deploy and store powerful crypto and web3
-          data products directly in your web3 wallet.{' '}
-        </div>
-        <img
           src="/images/lateralNavBar/close.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]"
         />
-        {/* {renderOptions(false)}
-        <div className="mt-[37px] h-[1px] w-full bg-[#C6C6C6] md:mt-[45px] lg:mt-[52px] xl:mt-[60px] 2xl:mt-[74px]"></div> */}
-        {renderOptions(true)}
-        <a href="/data-products">
-          <div className="mt-[35px] flex w-full justify-center  text-[8px] font-medium hover:text-[#3a3a3a] md:mt-[41px] md:text-[9.6px] lg:mt-[48px]  lg:text-[11.5px] lg:!leading-[300%] xl:mt-[55px] xl:text-[13px] 2xl:mt-[69px] 2xl:text-[16px]">
-            View More
-          </div>
-        </a>
+        <div className="text-[9px]  font-bold md:text-[11px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:text-[18px]">
+          Observability
+        </div>
+        {renderOptions('Observability')}
+        <div className="mt-[44px] text-[9px] font-bold md:mt-[53px] md:text-[11px] lg:mt-[61.5px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[71px] xl:text-[14.5px] 2xl:mt-[88px] 2xl:text-[18px]">
+          Data Pipeline Automation
+        </div>
+        {renderOptions('Data Pipeline Automation')}
+        <div className="mt-[44px] text-[9px] font-bold md:mt-[53px] md:text-[11px] lg:mt-[61.5px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[71px] xl:text-[14.5px] 2xl:mt-[88px] 2xl:text-[18px]">
+          Admin Tools
+        </div>
+        {renderOptions('Admin Tools')}
         <div className="mt-[62px] max-w-[110px] text-[9px] md:mt-[75px] md:max-w-[132px] md:text-[10px] lg:mt-[87.5px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[100px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[125px] 2xl:max-w-[220px] 2xl:text-[16px]">
           <div className="border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  pt-[7.5px]  md:pt-[9px] lg:pb-[12px] lg:pt-[10.5px] xl:pt-[12px] 2xl:pb-[15px] 2xl:pt-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
@@ -214,4 +237,4 @@ const SubBarRPC = ({ onValueChange }) => {
   )
 }
 
-export default SubBarRPC
+export default SubBarUtility
