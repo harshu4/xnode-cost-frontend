@@ -165,7 +165,7 @@ function ServerNode({ id, data }) {
             optionsSelection={['Low', 'Med', 'High']}
           />
         </div>
-        <Handle type="source" position={Position.Right} id={'1'} />
+        <Handle type="target" position={Position.Left} id={'1'} />
       </div>
     </>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { MarkerType, Position } from 'reactflow'
 
@@ -26,141 +27,128 @@ export const nodes = [
   //     position: { x: 400, y: 100 },
   //   },
   {
-    id: '4',
-    type: 'custom',
-    position: { x: 100, y: 200 },
-    data: {
-      selects: {
-        'handle-0': 'smoothstep',
-        'handle-1': 'smoothstep',
-      },
-    },
-  },
-  {
-    id: '5',
-    data: {
-      label: 'Data',
-    },
-    className: 'circle',
-    style: {
-      background: '#2B6CB0',
-      color: 'white',
-    },
-    position: { x: 500, y: 200 },
-    sourcePosition: Position.Right,
-    targetPosition: Position.Left,
-  },
-  {
-    id: '6',
-    type: 'output',
-    style: {
-      background: '#63B3ED',
-      color: 'white',
-      width: 100,
-    },
-    data: {
-      label: 'Node',
-    },
-    position: { x: 500, y: 450 },
-    sourcePosition: Position.Right,
-    targetPosition: Position.Left,
-  },
-  {
-    id: '7',
-    type: 'default',
-    className: 'annotation',
-    data: {
-      label: (
-        <>
-          This is your <strong>Xnode</strong> plataform <strong>board</strong>.
-        </>
-      ),
-    },
-    draggable: false,
-    selectable: false,
-    position: { x: 100, y: 420 },
-  },
-  {
-    id: '8',
-    type: 'output',
-    data: {
-      label: 'Phytia Pro',
-    },
-    position: { x: 620, y: 130 },
-    targetPosition: Position.Left,
-  },
-  {
-    id: '9',
-    type: 'output',
-    data: {
-      label: 'APIs & Connectivity',
-    },
-    position: { x: 620, y: 200 },
-    targetPosition: Position.Left,
-  },
-  {
-    id: '10',
-    type: 'output',
-    data: {
-      label: 'BitTorrent Protocol Client',
-    },
-    position: { x: 620, y: 270 },
-    targetPosition: Position.Left,
-  },
-  {
     id: '11',
     type: 'server',
-    position: { x: 120, y: 200 },
+    position: { x: 500, y: 200 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
         'handle-1': 'smoothstep',
       },
+    },
+    targetPosition: Position.Left,
+    sourcePosition: Position.Right,
+  },
+  {
+    id: '12',
+    type: 'api',
+    position: { x: 170, y: -50 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'WebSocket API',
+    },
+  },
+  {
+    id: '13',
+    type: 'data',
+    position: { x: 150, y: 150 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'Crypto Exchanges',
+      lists: [
+        {
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
+        },
+        {
+          icon: '/images/subNavBarData/coinbase.svg',
+          title: 'Coinbase',
+        },
+      ],
+    },
+  },
+  {
+    id: '14',
+    type: 'utility',
+    position: { x: 120, y: 400 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      title: 'Observability',
+      name: 'Grafana',
+      icon: '/images/subNavBarUtility/grafana.svg',
+    },
+  },
+  {
+    id: '15',
+    type: 'rpc',
+    position: { x: 150, y: 550 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'ValidationCloud',
+      icon: '/images/subNavBarRPC/validateCloud.svg',
+    },
+  },
+  {
+    id: '16',
+    type: 'analytics',
+    position: { x: 450, y: 570 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'Pythia Pro',
+      icon: '/images/subNavBarAnalytics/pythia-logo.svg',
     },
   },
 ]
 
 export const edges = [
-  { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
-  { id: 'e1-3', source: '1', target: '3', animated: true },
   {
-    id: 'e4-5',
-    source: '4',
-    target: '5',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
+    id: 'e12-e11',
+    source: '12',
+    target: '11',
+    animated: true,
+    style: { stroke: '#000' },
   },
   {
-    id: 'e4-6',
-    source: '4',
-    target: '6',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
+    id: 'e13-e11',
+    source: '13',
+    target: '11',
+    animated: true,
+    style: { stroke: '#000' },
   },
   {
-    id: 'e5-8',
-    source: '5',
-    target: '8',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
+    id: 'e14-e11',
+    source: '14',
+    target: '11',
+    animated: true,
+    style: { stroke: '#000' },
   },
   {
-    id: 'e5-9',
-    source: '5',
-    target: '9',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
+    id: 'e15-e11',
+    source: '15',
+    target: '11',
+    animated: true,
+    style: { stroke: '#000' },
   },
   {
-    id: 'e5-10',
-    source: '5',
-    target: '10',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
+    id: 'e16-e11',
+    source: '16',
+    target: '11',
+    animated: true,
+    style: { stroke: '#000' },
   },
 ]

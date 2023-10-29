@@ -8,8 +8,13 @@ import { AccountContext } from '@/contexts/AccountContext'
 /* eslint-disable react/no-unescaped-entities */
 const SubBarAnalytics = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
-  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
-    useContext(AccountContext)
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    setChangeNodes,
+  } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
 
   const categoriesOptions = [
@@ -142,7 +147,11 @@ const SubBarAnalytics = ({ onValueChange }) => {
                 )}
                 <div
                   onClick={() => {
-                    setNext(true)
+                    setChangeNodes({
+                      type: 'analytics',
+                      name: option.title,
+                      icon: option.src,
+                    })
                   }}
                   className={`absolute ${
                     option.enabled

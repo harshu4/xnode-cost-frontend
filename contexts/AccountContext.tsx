@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useState } from 'react'
 
 export interface UserProps {
@@ -30,6 +31,9 @@ interface CreateUserContextProps {
   next: boolean
   setNext: (value: boolean) => void
 
+  changeNodes: any
+  setChangeNodes: (value: any) => void
+
   user: UserProps | undefined
   setUser: (user: UserProps | undefined) => void
 }
@@ -40,9 +44,11 @@ export default function AccountContextProvider({
   children,
 }: CreateContextProps) {
   const [user, setUser] = useState<UserProps>()
+  const [changeNodes, setChangeNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
   const [next, setNext] = useState<boolean>(false)
+
   return (
     <AccountContext.Provider
       value={{
@@ -52,6 +58,8 @@ export default function AccountContextProvider({
         setUser,
         next,
         setNext,
+        changeNodes,
+        setChangeNodes,
       }}
     >
       {children}
