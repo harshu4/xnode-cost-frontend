@@ -24,7 +24,7 @@ const Header = () => {
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
 
-  const { user, setUser } = useContext(AccountContext)
+  const { user, setUser, next, setNext } = useContext(AccountContext)
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1)
@@ -107,6 +107,116 @@ const Header = () => {
       setUser(null)
     }
   }, [])
+
+  if (next) {
+    return (
+      <>
+        <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[11px] text-[#000000] xl:pb-[27.8px] 2xl:pb-[46px]">
+          <div className="w-full justify-between px-[20px] md:px-[33px] xl:hidden">
+            <div className="">
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/new/openmesh-logo-new.png`}
+                alt="image"
+                className={`w-[150px]`}
+              />
+            </div>
+            <button
+              onClick={navbarToggleHandler}
+              id="navbarToggler"
+              aria-label="Mobile Menu"
+              className="absolute right-7 top-7 block  rounded-lg px-3 py-[6px] ring-primary focus:ring-2"
+            >
+              <span
+                className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300  ${
+                  navbarOpen ? ' top-[7px] rotate-45' : ' '
+                }`}
+              />
+              <span
+                className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 ${
+                  navbarOpen ? 'opacity-0 ' : ' '
+                }`}
+              />
+              <span
+                className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300  ${
+                  navbarOpen ? ' top-[-8px] -rotate-45' : ' '
+                }`}
+              />
+            </button>
+            <nav
+              id="navbarCollapse"
+              className={`navbar absolute right-7 z-50 w-[250px] rounded border-[.5px] bg-[#e6e4e4] py-6  px-6 text-[13px] text-[#fff] duration-300  ${
+                navbarOpen
+                  ? 'visibility top-20 opacity-100'
+                  : 'invisible top-20 opacity-0'
+              }`}
+            >
+              <div className=" grid gap-y-[15px] text-[12px]  font-medium !leading-[19px]">
+                <div className="my-auto flex text-center md:justify-center">
+                  <a
+                    href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+                    className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[4.5px] px-[9px] text-[10px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] md:py-[9px] md:px-[18px] md:text-[14px] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
+                  >
+                    Schedule a call
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
+            <div className="flex items-center">
+              <img
+                src={`/images/header/user.svg`}
+                alt="image"
+                className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[32px]"
+              />
+              <input className="ml-[5px] text-[12px] font-bold text-[#313131] md:ml-[6px] md:text-[14.5px] lg:ml-[7px] lg:text-[17px] xl:ml-[8px] xl:text-[19px] 2xl:ml-[10px] 2xl:text-[24px]">
+                Project Name
+              </input>
+              <div className="ml-[5px] text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]">
+                Edit
+              </div>
+              <img
+                src={`/images/header/config.svg`}
+                alt="image"
+                className="ml-[7.5px] w-[8px] md:ml-[9px] md:w-[10.8px] lg:ml-[10.5px] lg:w-[12.6px] xl:ml-[12px] xl:w-[14.5px] 2xl:ml-[15px] 2xl:w-[18px]"
+              />
+            </div>
+            <div className="flex gap-x-[55px] md:gap-x-[66px] lg:gap-x-[77px] xl:gap-x-[88px] 2xl:gap-x-[110px]">
+              <div className="">
+                <div className="text-[7px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                  Estimated monthly price*
+                </div>
+                <div className="text-[7px] font-light md:text-[8.5px] lg:text-[18px] xl:text-[21px] 2xl:text-[26px]">
+                  $40 / month
+                </div>
+              </div>
+              <div className="my-auto flex justify-center text-center">
+                <a
+                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
+                  className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
+                >
+                  Schedule a call
+                </a>
+              </div>
+            </div>
+
+            {/* <div className="lg:hidden">
+            <Dialog.Root>
+              <Dialog.Trigger>
+                <List className="text-black" size={24} weight="bold" />
+              </Dialog.Trigger>
+              <HeaderModal navigationItems={navigationItems} />
+            </Dialog.Root>
+          </div> */}
+          </div>
+        </header>
+      </>
+    )
+  }
 
   return (
     <>

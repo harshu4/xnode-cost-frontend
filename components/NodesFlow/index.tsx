@@ -78,7 +78,7 @@ const NodesFlow = () => {
   // this could also be done with a custom edge for example
   const edgesWithUpdatedTypes = edges.map((edge) => {
     if (edge.sourceHandle) {
-      const edgeType = nodes.find((node) => node.type === 'custom').data
+      const edgeType = nodes.find((node) => node.type === 'server').data
         .selects[edge.sourceHandle]
       edge.type = edgeType
     }
@@ -87,7 +87,7 @@ const NodesFlow = () => {
   })
 
   useEffect(() => {
-    console.log('bib bop detectei uma falha no siste')
+    console.log('bib bop entrei')
     console.log(changeNodes)
 
     if (changeNodes?.type === 'api') {
@@ -182,24 +182,51 @@ const NodesFlow = () => {
       }
     }
     if (changeNodes?.type === 'data') {
+      console.log('entrei no data')
       const existingNodeIndex = nodes.findIndex(
         (node) =>
           node.type === 'data' && node.data.lists && node.data.lists.length > 0,
       )
 
       if (existingNodeIndex !== -1) {
+        console.log('node existe')
         // O nó 'data' já existe, então vamos adicionar o novo objeto a ele
+        // antes verificar se nao existe o title, se existir nao prosseguimos
         const existingNode = nodes[existingNodeIndex]
+
+        const existsTitle = existingNode.data.lists.some(
+          (data) => data.title === changeNodes?.name,
+        )
+
+        if (existsTitle) {
+          return
+        }
+
         existingNode.data.lists.push({
-          title: changeNodes?.name,
           icon: changeNodes?.icon,
+          title: changeNodes?.name,
         })
 
         // Atualize o array de nós
         const updatedNodes = [...nodes]
         updatedNodes[existingNodeIndex] = existingNode
-        setNodes(updatedNodes)
+        console.log('o updated node')
+        console.log(existingNode)
+        setNodes((nds) =>
+          nds.map((node) => {
+            if (node.type === 'data') {
+              // when you update a simple type you can just update the value
+              node.data = {
+                ...node.data,
+                lists: existingNode.data.lists,
+              }
+            }
+
+            return node
+          }),
+        )
       } else {
+        console.log('node nao existe, vamos criar um')
         // O nó 'data' não existe, então vamos criar um novo nó
         const newNode = {
           id: uuidv4(),
@@ -210,8 +237,12 @@ const NodesFlow = () => {
               'handle-0': 'smoothstep',
               'handle-1': 'smoothstep',
             },
-            title: changeNodes?.name,
-            icon: changeNodes?.icon,
+            lists: [
+              {
+                title: changeNodes?.name,
+                icon: changeNodes?.icon,
+              },
+            ],
           },
         }
         setNodes((prevNodes) => [...prevNodes, newNode])

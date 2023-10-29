@@ -7,6 +7,7 @@ import { Inter } from '@next/font/google'
 import { useRef } from 'react'
 import FirstStep from '@/components/FirstStep'
 import Footer from '@/components/Footer'
+import Console from '@/components/Console'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,8 +19,7 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <FirstStep />
-      <Footer />
+      <Console />
     </>
   )
 }

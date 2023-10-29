@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useContext } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
+import { AccountContext } from '@/contexts/AccountContext'
 
 const options = [
   {
@@ -86,6 +87,8 @@ function Options({ handleId, name, optionsSelection }) {
 
 function DataNode({ id, data }) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true)
+  const { selectionSideNavBar, setSelectionSideNavBar } =
+    useContext(AccountContext)
 
   return (
     <>
@@ -120,7 +123,13 @@ function DataNode({ id, data }) {
             </div>
           ))}
         </div>
-        <div className="mt-[20px] cursor-pointer pl-[5px] text-[7.5px] font-medium text-[#0354EC] md:mt-[24px] md:text-[8.5px] lg:mt-[28px] lg:text-[10px] xl:mt-[32px] xl:text-[11.2px] 2xl:mt-[40px] 2xl:text-[14px]">
+        <div
+          onClick={() => {
+            setSelectionSideNavBar('Data')
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+          className="mt-[20px] cursor-pointer pl-[5px] text-[7.5px] font-medium text-[#0354EC] md:mt-[24px] md:text-[8.5px] lg:mt-[28px] lg:text-[10px] xl:mt-[32px] xl:text-[11.2px] 2xl:mt-[40px] 2xl:text-[14px]"
+        >
           Add
         </div>
         <Handle type="source" position={Position.Right} id={'1'} />
