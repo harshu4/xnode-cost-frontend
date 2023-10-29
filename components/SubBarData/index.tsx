@@ -247,7 +247,11 @@ const SubBarData = ({ onValueChange }) => {
             </div>
             <div
               onClick={() => {
-                setChangeNodes('add')
+                setChangeNodes({
+                  type: 'data',
+                  name: option.title,
+                  icon: option.src,
+                })
               }}
               className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
             >

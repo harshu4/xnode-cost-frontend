@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
 
 const options = [
@@ -62,10 +62,8 @@ function Select({ value, handleId, nodeId }) {
   )
 }
 
-function Options({ handleId, name, optionsSelection }) {
-  const { setNodes } = useReactFlow()
-  const store = useStoreApi()
-  const [selected, setSelected] = useState<any>()
+function Options({ handleId, name, optionsSelection, defaultValue }) {
+  const [selected, setSelected] = useState<any>(defaultValue)
 
   return (
     <div className="">
@@ -153,16 +151,19 @@ function ServerNode({ id, data }) {
               'Large 23.x86 x 2',
               'Large 23.x86 x 3',
             ]}
+            defaultValue={data.defaultValueServerType}
           />
           <Options
             handleId={1}
             name={'Location'}
-            optionsSelection={['US East', 'US West', 'Sydney Asia']}
+            optionsSelection={['US East', 'US West', 'Sydney']}
+            defaultValue={data.defaultValueLocation}
           />
           <Options
             handleId={1}
             name={'Latency'}
             optionsSelection={['Low', 'Med', 'High']}
+            defaultValue={'Low'}
           />
         </div>
         <Handle type="target" position={Position.Left} id={'1'} />

@@ -9,8 +9,13 @@ import DropdownServiceRegion from '../DropdownServiceRegion'
 /* eslint-disable react/no-unescaped-entities */
 const SubBarServers = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
-  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
-    useContext(AccountContext)
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    setChangeNodes,
+  } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
   const [cloudProvider, setCloudProvider] = useState<string>(
     'Equinix (Decentralized)',
@@ -20,9 +25,7 @@ const SubBarServers = ({ onValueChange }) => {
   const [mediumServerNumber, setMediumServerNumber] = useState<number>(0)
   const [largeServerNumber, setLargeServerNumber] = useState<number>(0)
 
-  const [serviceRegion, setServiceRegion] = useState<string>(
-    'Equinix (Decentralized)',
-  )
+  const [serviceRegion, setServiceRegion] = useState<string>('Us East')
 
   const optionsServiceRegionSelection = [
     {
@@ -61,7 +64,7 @@ const SubBarServers = ({ onValueChange }) => {
 
   const chooseYourServerOptions = [
     {
-      title: 'Small (c3.x86)',
+      title: 'Small c3.x86',
       enabled: true,
       specs: [
         '1x 8 Core @ 3.40Ghz',
@@ -76,7 +79,7 @@ const SubBarServers = ({ onValueChange }) => {
       servers: smallServerNumber,
     },
     {
-      title: 'Medium (c2.x86)',
+      title: 'Medium c2.x86',
       enabled: true,
       specs: [
         '1x 8 Core @ 3.40Ghz',
@@ -91,7 +94,7 @@ const SubBarServers = ({ onValueChange }) => {
       servers: mediumServerNumber,
     },
     {
-      title: 'Large (23.x86)',
+      title: 'Large 23.x86',
       enabled: true,
       specs: [
         '1x 8 Core @ 3.40Ghz',
@@ -117,36 +120,48 @@ const SubBarServers = ({ onValueChange }) => {
 
   function handleAddServer(option: any) {
     if (option.servers > 0) {
-      console.log('do something')
+      let numberServer = 1
+      if (option.title === 'Small c3.x86') {
+        numberServer = smallServerNumber
+      } else if (option.title === 'Medium c2.x86') {
+        numberServer = mediumServerNumber
+      } else if (option.title === 'Large 23.x86') {
+        numberServer = largeServerNumber
+      }
+      setChangeNodes({
+        type: 'server',
+        defaultValueServerType: `${option.title} x ${numberServer}`,
+        defaultValueLocation: serviceRegion,
+      })
     }
   }
 
   function handleServerPlus(title: string) {
-    if (title === 'Small (c3.x86)') {
-      if (smallServerNumber <= 4) {
+    if (title === 'Small c3.x86') {
+      if (smallServerNumber <= 2) {
         setSmallServerNumber(smallServerNumber + 1)
       }
-    } else if (title === 'Medium (c2.x86)') {
-      if (mediumServerNumber <= 4) {
+    } else if (title === 'Medium c2.x86') {
+      if (mediumServerNumber <= 2) {
         setMediumServerNumber(mediumServerNumber + 1)
       }
-    } else if (title === 'Large (23.x86)') {
-      if (largeServerNumber <= 4) {
+    } else if (title === 'Large 23.x86') {
+      if (largeServerNumber <= 2) {
         setLargeServerNumber(largeServerNumber + 1)
       }
     }
   }
 
   function handleServerMinus(title: string) {
-    if (title === 'Small (c3.x86)') {
+    if (title === 'Small c3.x86') {
       if (smallServerNumber > 0) {
         setSmallServerNumber(smallServerNumber - 1)
       }
-    } else if (title === 'Medium (c2.x86)') {
+    } else if (title === 'Medium c2.x86') {
       if (mediumServerNumber > 0) {
         setMediumServerNumber(mediumServerNumber - 1)
       }
-    } else if (title === 'Large (23.x86)') {
+    } else if (title === 'Large 23.x86') {
       if (largeServerNumber > 0) {
         setLargeServerNumber(largeServerNumber - 1)
       }
@@ -263,7 +278,11 @@ const SubBarServers = ({ onValueChange }) => {
           Select service region{' '}
         </div>
         <div className="mt-[12px] w-fit md:mt-[14.5px] lg:mt-[17px] xl:mt-[19px] 2xl:mt-[24px]">
-          <DropdownServiceRegion onValueChange={console.log('oi')} />
+          <DropdownServiceRegion
+            onValueChange={(value) => {
+              setServiceRegion(value.title)
+            }}
+          />
         </div>
         <div className="mt-[35px] text-[9px] font-bold md:mt-[42px] md:text-[11px] lg:mt-[49px] lg:text-[12.5px] xl:mt-[56px] xl:text-[14.5px] 2xl:mt-[70px] 2xl:text-[18px]">
           Choose your server{' '}

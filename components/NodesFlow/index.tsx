@@ -181,6 +181,65 @@ const NodesFlow = () => {
         setNodes((prevNodes) => [...prevNodes, newNode])
       }
     }
+    if (changeNodes?.type === 'data') {
+      const existingNodeIndex = nodes.findIndex(
+        (node) =>
+          node.type === 'data' && node.data.lists && node.data.lists.length > 0,
+      )
+
+      if (existingNodeIndex !== -1) {
+        // O nó 'data' já existe, então vamos adicionar o novo objeto a ele
+        const existingNode = nodes[existingNodeIndex]
+        existingNode.data.lists.push({
+          title: changeNodes?.name,
+          icon: changeNodes?.icon,
+        })
+
+        // Atualize o array de nós
+        const updatedNodes = [...nodes]
+        updatedNodes[existingNodeIndex] = existingNode
+        setNodes(updatedNodes)
+      } else {
+        // O nó 'data' não existe, então vamos criar um novo nó
+        const newNode = {
+          id: uuidv4(),
+          type: 'data',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            title: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+    if (changeNodes?.type === 'server') {
+      const nodeExists = nodes.some((node) => node.type === 'server')
+      console.log(nodes)
+      if (!nodeExists) {
+        console.log('vou inputar o server')
+        console.log(changeNodes?.defaultValueServerType)
+        console.log(changeNodes?.defaultValueLocation)
+        const newNode = {
+          id: uuidv4(),
+          type: 'server',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            defaultValueServerType: changeNodes?.defaultValueServerType,
+            defaultValueLocation: changeNodes?.defaultValueLocation,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
   }, [changeNodes])
 
   return (

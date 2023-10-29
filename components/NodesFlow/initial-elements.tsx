@@ -35,6 +35,8 @@ export const nodes = [
         'handle-0': 'smoothstep',
         'handle-1': 'smoothstep',
       },
+      defaultValueServerType: 'Small c3.x86 x 1',
+      defaultValueLocation: 'US East',
     },
     targetPosition: Position.Left,
     sourcePosition: Position.Right,

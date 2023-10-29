@@ -2,18 +2,24 @@ import { useEffect, useRef, useState } from 'react'
 
 const DropdownServiceRegion = ({ onValueChange }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState('Dallas')
+  const [value, setValue] = useState('US East')
   const dropdownRef = useRef(null)
 
   const valueOptions = [
     {
-      title: 'Dallas',
+      title: 'US East',
       enabled: true,
       src: '/images/subNavBarServers/usa.svg',
       style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
     },
     {
-      title: 'New york',
+      title: 'US West',
+      enabled: true,
+      src: '/images/subNavBarServers/usa.svg',
+      style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
+    },
+    {
+      title: 'Sydney',
       enabled: true,
       src: '/images/subNavBarServers/usa.svg',
       style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
