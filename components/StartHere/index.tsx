@@ -17,6 +17,8 @@ const StartHere = ({ onValueChange }) => {
     setNext,
     reviewYourBuild,
     setReviewYourBuild,
+    setNextFromScratch,
+    nextFromScratch,
   } = useContext(AccountContext)
 
   const preSetsOptions = [
@@ -182,11 +184,21 @@ const StartHere = ({ onValueChange }) => {
     )
   }
 
+  if (nextFromScratch) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <NodesFlow fromScratch={true} />
+        </div>
+      </>
+    )
+  }
+
   if (next) {
     return (
       <>
         <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
-          <NodesFlow />
+          <NodesFlow fromScratch={false} />
         </div>
       </>
     )
@@ -215,7 +227,7 @@ const StartHere = ({ onValueChange }) => {
               </div>
               <div
                 onClick={() => {
-                  setNext(true)
+                  setNextFromScratch(true)
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
                 className="mt-[37px] cursor-pointer text-[10px] font-normal text-[#12AD50] hover:font-medium md:mt-[45px] md:text-[12px] lg:mt-[52px] lg:text-[14px] xl:mt-[60px] xl:text-[16px] 2xl:mt-[75px] 2xl:text-[20px]"

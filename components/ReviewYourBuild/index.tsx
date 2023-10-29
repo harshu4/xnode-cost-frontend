@@ -6,7 +6,7 @@ import Presets from '../Presets'
 import CostEstimator from '../CostEstimator'
 import ServerProvision from '../ServerProvision'
 import IncludedServices from '../IncludedServices'
-import AddOns from '../AddOns'
+import AddOns from './AddOns'
 import SelectCloudProvider from '../SelectCloudProvider'
 import SelectServiceRegion from '../SelectServiceRegion'
 import SelectLatencyPreference from '../SelectLatencyPreference'
@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation'
 import CloudProvider from './CloudProvider'
 import { AccountContext } from '@/contexts/AccountContext'
 import ServiceRegion from './ServiceRegion'
+import YourCore from './YourCore'
 
 /* eslint-disable react/no-unescaped-entities */
 const ReviewYourBuild = () => {
@@ -56,7 +57,7 @@ const ReviewYourBuild = () => {
     <>
       <section
         id="home"
-        className={`w-full bg-[#fff] px-[48px] pt-[88px] 2xl:px-[60px] 2xl:pt-[110px]`}
+        className={`w-full bg-[#fff] px-[48px] pb-[1000px] pt-[88px] 2xl:px-[60px] 2xl:pt-[110px]`}
       >
         <div>
           <div className="text-[18px]  font-bold -tracking-[2%] text-[#000000] md:text-[19px] lg:text-[22px] lg:!leading-[39px] xl:text-[25px] 2xl:text-[32px]">
@@ -74,6 +75,8 @@ const ReviewYourBuild = () => {
               onValueChange={() => setReviewYourBuild(false)}
               serviceRegion={serviceRegion}
             />
+            <YourCore onValueChange={() => setReviewYourBuild(false)} />
+            <AddOns onValueChange={() => setReviewYourBuild(false)} />
           </div>
         </div>
       </section>

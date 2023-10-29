@@ -29,10 +29,6 @@ import {
   nodes as initialNodes,
   edges as initialEdges,
 } from './initial-elements'
-import {
-  nodes as initialNodesScratch,
-  edges as initialEdgesScratch,
-} from './initial-elements-fromscratch'
 import CustomNode from './CustomNode'
 
 import './overview.css'
@@ -56,14 +52,11 @@ const nodeTypes = {
 const minimapStyle = {
   height: 120,
 }
-interface ModalProps {
-  fromScratch: boolean
-}
 
 const onInit = (reactFlowInstance) =>
   console.log('flow loaded:', reactFlowInstance)
 
-const NodesFlow = ({ ...dataM }: ModalProps) => {
+const NodesFlow = () => {
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
@@ -73,12 +66,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setFinalNodes,
     finalNodes,
   } = useContext(AccountContext)
-  const [nodes, setNodes, onNodesChange] = useNodesState<any>(
-    !dataM.fromScratch ? initialNodes : initialNodesScratch,
-  )
-  const [edges, setEdges, onEdgesChange] = useEdgesState(
-    !dataM.fromScratch ? initialEdges : initialEdgesScratch,
-  )
+  const [nodes, setNodes, onNodesChange] = useNodesState<any>(initialNodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>

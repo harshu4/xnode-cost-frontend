@@ -34,6 +34,9 @@ interface CreateUserContextProps {
   next: boolean
   setNext: (value: boolean) => void
 
+  nextFromScratch: boolean
+  setNextFromScratch: (value: boolean) => void
+
   reviewYourBuild: boolean
   setReviewYourBuild: (value: boolean) => void
 
@@ -55,6 +58,7 @@ export default function AccountContextProvider({
     useState<string>('Start here')
   const [finalNodes, setFinalNodes] = useState<any>()
   const [next, setNext] = useState<boolean>(false)
+  const [nextFromScratch, setNextFromScratch] = useState<boolean>(false)
   const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false)
 
   return (
@@ -66,6 +70,8 @@ export default function AccountContextProvider({
         setUser,
         next,
         setNext,
+        nextFromScratch,
+        setNextFromScratch,
         reviewYourBuild,
         setReviewYourBuild,
         finalNodes,
