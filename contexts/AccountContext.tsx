@@ -28,8 +28,14 @@ interface CreateUserContextProps {
   selectionSideNavBar: string
   setSelectionSideNavBar: (value: string) => void
 
+  finalNodes: any
+  setFinalNodes: (value: any) => void
+
   next: boolean
   setNext: (value: boolean) => void
+
+  reviewYourBuild: boolean
+  setReviewYourBuild: (value: boolean) => void
 
   changeNodes: any
   setChangeNodes: (value: any) => void
@@ -47,7 +53,9 @@ export default function AccountContextProvider({
   const [changeNodes, setChangeNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
+  const [finalNodes, setFinalNodes] = useState<any>()
   const [next, setNext] = useState<boolean>(false)
+  const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false)
 
   return (
     <AccountContext.Provider
@@ -58,6 +66,10 @@ export default function AccountContextProvider({
         setUser,
         next,
         setNext,
+        reviewYourBuild,
+        setReviewYourBuild,
+        finalNodes,
+        setFinalNodes,
         changeNodes,
         setChangeNodes,
       }}

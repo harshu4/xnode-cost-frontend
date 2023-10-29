@@ -5,12 +5,19 @@ import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import { AccountContext } from '@/contexts/AccountContext'
 import NodesFlow from '../NodesFlow'
+import ReviewYourBuild from '../ReviewYourBuild'
 
 /* eslint-disable react/no-unescaped-entities */
 const StartHere = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
-  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
-    useContext(AccountContext)
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    reviewYourBuild,
+    setReviewYourBuild,
+  } = useContext(AccountContext)
 
   const preSetsOptions = [
     {
@@ -164,6 +171,16 @@ const StartHere = ({ onValueChange }) => {
       ],
     },
   ]
+
+  if (reviewYourBuild) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <ReviewYourBuild />
+        </div>
+      </>
+    )
+  }
 
   if (next) {
     return (

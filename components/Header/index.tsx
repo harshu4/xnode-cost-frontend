@@ -18,13 +18,23 @@ const Header = () => {
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
   }
+  const [projectName, setProjectName] = useState('Project Name')
+  const [isEditing, setIsEditing] = useState(false)
   const pathname = usePathname()
   const isFAQPage = pathname.includes('/faqs')
 
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
 
-  const { user, setUser, next, setNext } = useContext(AccountContext)
+  const {
+    user,
+    setUser,
+    next,
+    setNext,
+    finalNodes,
+    setReviewYourBuild,
+    reviewYourBuild,
+  } = useContext(AccountContext)
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1)
@@ -108,10 +118,10 @@ const Header = () => {
     }
   }, [])
 
-  if (next) {
+  if (next && !reviewYourBuild) {
     return (
       <>
-        <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[11px] text-[#000000] xl:pb-[27.8px] 2xl:pb-[46px]">
+        <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[45px] text-[#000000] md:pt-[54px] lg:pt-[62px] xl:pt-[72px] xl:pb-[27.8px] 2xl:pt-[90px] 2xl:pb-[46px]">
           <div className="w-full justify-between px-[20px] md:px-[33px] xl:hidden">
             <div className="">
               <img
@@ -166,19 +176,41 @@ const Header = () => {
               </div>
             </nav>
           </div>
-          <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
+          <div className="mx-auto hidden h-full w-full max-w-[1800px] items-start justify-between px-[33px] xl:flex">
             <div className="flex items-center">
               <img
                 src={`/images/header/user.svg`}
                 alt="image"
                 className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[32px]"
               />
-              <input className="ml-[5px] text-[12px] font-bold text-[#313131] md:ml-[6px] md:text-[14.5px] lg:ml-[7px] lg:text-[17px] xl:ml-[8px] xl:text-[19px] 2xl:ml-[10px] 2xl:text-[24px]">
-                Project Name
-              </input>
-              <div className="ml-[5px] text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]">
-                Edit
-              </div>
+              {isEditing ? (
+                <input
+                  value={projectName}
+                  onChange={(e) => setProjectName(e.target.value)}
+                  onBlur={() => setIsEditing(false)}
+                  className="ml-[5px] bg-[#fff]"
+                  autoFocus
+                />
+              ) : (
+                <div className="ml-[5px] text-[12px] font-bold text-[#313131] md:ml-[6px] md:text-[14.5px] lg:ml-[7px] lg:text-[17px] xl:ml-[8px] xl:text-[19px] 2xl:ml-[10px] 2xl:text-[24px]">
+                  {projectName}
+                </div>
+              )}
+              {isEditing ? (
+                <div
+                  onClick={() => setIsEditing(false)}
+                  className="ml-[5px] cursor-pointer text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]"
+                >
+                  Save
+                </div>
+              ) : (
+                <div
+                  onClick={() => setIsEditing(true)}
+                  className="ml-[5px] cursor-pointer text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]"
+                >
+                  Edit
+                </div>
+              )}
               <img
                 src={`/images/header/config.svg`}
                 alt="image"
@@ -190,17 +222,54 @@ const Header = () => {
                 <div className="text-[7px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                   Estimated monthly price*
                 </div>
-                <div className="text-[7px] font-light md:text-[8.5px] lg:text-[18px] xl:text-[21px] 2xl:text-[26px]">
-                  $40 / month
+                <div className="text-[13px] font-medium md:text-[15.5px] lg:text-[18px] xl:text-[21px] 2xl:text-[26px]">
+                  $<span className="font-bold">40</span> / month
+                </div>
+                <div className="mt-[5px] flex justify-between">
+                  <div className="text-[7px] text-[#12AD50]  md:text-[8.4px]  lg:text-[10px]  xl:text-[11.2px] 2xl:text-[14px]">
+                    ~$13,000 savings
+                  </div>
+                  <img
+                    src={`/images/header/question.svg`}
+                    alt="image"
+                    className="mb-[5px] w-[6.5px]  md:w-[7.8px]  lg:w-[9.1px] xl:w-[10.4px] 2xl:w-[13px]"
+                  />
                 </div>
               </div>
-              <div className="my-auto flex justify-center text-center">
-                <a
-                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/community/register`}
-                  className="flex cursor-pointer items-center rounded-[5px] bg-[#0354EC] py-[9px] px-[18px] text-[14px] font-bold !leading-[19px] text-[#fff] hover:border hover:border-[#0354EC] hover:bg-[#fff] hover:text-[#0354EC] 2xl:py-[11.5px] 2xl:px-[35px] 2xl:text-[16px]"
-                >
-                  Schedule a call
-                </a>
+              <div className="grid gap-y-[12px] text-[7px]  font-medium md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                <div className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#0e2e69]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[12.5px] 2xl:px-[21px]">
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/header/storm.svg`}
+                    alt="image"
+                    className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+                  />
+                  <div
+                    onClick={() => {
+                      console.log(finalNodes)
+                      setReviewYourBuild(true)
+                    }}
+                  >
+                    Create service and deploy
+                  </div>
+                </div>
+                <div className="flex h-fit cursor-pointer justify-center gap-x-[5px]">
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/header/arrow-down.svg`}
+                    alt="image"
+                    className={`w-[7px] md:w-[9px] lg:w-[10.5px] xl:w-[12px] 2xl:w-[15px]`}
+                  />
+                  <div className="text-[#959595] hover:text-[#7a7a7a]">
+                    Download Service as PDF
+                  </div>
+                </div>
               </div>
             </div>
 

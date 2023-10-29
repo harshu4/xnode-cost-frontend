@@ -63,6 +63,8 @@ const NodesFlow = () => {
     next,
     setNext,
     changeNodes,
+    setFinalNodes,
+    finalNodes,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
@@ -272,6 +274,10 @@ const NodesFlow = () => {
       }
     }
   }, [changeNodes])
+
+  useEffect(() => {
+    setFinalNodes(nodes)
+  }, [nodes])
 
   return (
     <div className="h-[1500px]">
