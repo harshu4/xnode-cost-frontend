@@ -6,6 +6,9 @@ import LatencySelector from '../LatencySelector'
 import { AccountContext } from '@/contexts/AccountContext'
 import NodesFlow from '../NodesFlow'
 import ReviewYourBuild from '../ReviewYourBuild'
+import Signup from '../Signup'
+import Connections from '../Connections'
+import FinalBuild from '../FinalBuild'
 
 /* eslint-disable react/no-unescaped-entities */
 const StartHere = ({ onValueChange }) => {
@@ -19,6 +22,9 @@ const StartHere = ({ onValueChange }) => {
     setReviewYourBuild,
     setNextFromScratch,
     nextFromScratch,
+    connections,
+    finalBuild,
+    signup,
   } = useContext(AccountContext)
 
   const preSetsOptions = [
@@ -173,6 +179,36 @@ const StartHere = ({ onValueChange }) => {
       ],
     },
   ]
+
+  if (finalBuild) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <FinalBuild />
+        </div>
+      </>
+    )
+  }
+
+  if (connections) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <Connections />
+        </div>
+      </>
+    )
+  }
+
+  if (signup) {
+    return (
+      <>
+        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+          <Signup />
+        </div>
+      </>
+    )
+  }
 
   if (reviewYourBuild) {
     return (

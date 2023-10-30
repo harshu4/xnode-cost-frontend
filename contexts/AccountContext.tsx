@@ -40,6 +40,15 @@ interface CreateUserContextProps {
   reviewYourBuild: boolean
   setReviewYourBuild: (value: boolean) => void
 
+  finalBuild: boolean
+  setFinalBuild: (value: boolean) => void
+
+  signup: boolean
+  setSignup: (value: boolean) => void
+
+  connections: boolean
+  setConnections: (value: boolean) => void
+
   changeNodes: any
   setChangeNodes: (value: any) => void
 
@@ -58,8 +67,11 @@ export default function AccountContextProvider({
     useState<string>('Start here')
   const [finalNodes, setFinalNodes] = useState<any>()
   const [next, setNext] = useState<boolean>(false)
+  const [finalBuild, setFinalBuild] = useState<boolean>(false)
   const [nextFromScratch, setNextFromScratch] = useState<boolean>(false)
   const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false)
+  const [connections, setConnections] = useState<boolean>(false)
+  const [signup, setSignup] = useState<boolean>(false)
 
   return (
     <AccountContext.Provider
@@ -74,8 +86,14 @@ export default function AccountContextProvider({
         setNextFromScratch,
         reviewYourBuild,
         setReviewYourBuild,
+        signup,
+        setSignup,
         finalNodes,
         setFinalNodes,
+        finalBuild,
+        setFinalBuild,
+        setConnections,
+        connections,
         changeNodes,
         setChangeNodes,
       }}

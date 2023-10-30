@@ -115,7 +115,7 @@ const LateralNav = ({ onValueChange }) => {
 
   return (
     <>
-      <div className="relative z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]">
+      <div className="relative z-50 pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] 2xl:pb-[600px]">
         <div className="">
           <div className="pb-[24px] pt-[17px] md:pb-[30px] md:pt-[20px] lg:pb-[34px] lg:pt-[24px] xl:pb-[39px] xl:pt-[27px] 2xl:pb-[49px] 2xl:pt-[34px]">
             <img

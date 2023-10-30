@@ -56,7 +56,7 @@ const minimapStyle = {
 const onInit = (reactFlowInstance) =>
   console.log('flow loaded:', reactFlowInstance)
 
-const NodesFlow = () => {
+const NodesFlow = (fromScratch: boolean) => {
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
@@ -66,8 +66,12 @@ const NodesFlow = () => {
     setFinalNodes,
     finalNodes,
   } = useContext(AccountContext)
-  const [nodes, setNodes, onNodesChange] = useNodesState<any>(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+  const [nodes, setNodes, onNodesChange] = useNodesState<any>(
+    !fromScratch ? initialNodes : null,
+  )
+  const [edges, setEdges, onEdgesChange] = useEdgesState(
+    !fromScratch ? initialEdges : null,
+  )
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
