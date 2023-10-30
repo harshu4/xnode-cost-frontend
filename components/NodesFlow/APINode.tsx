@@ -110,7 +110,7 @@ function APINode({ id, data }) {
             optionsSelection={['Fast API config', 'Express config']}
           />
         </div>
-        <Handle type="source" position={Position.Right} id={'1'} />
+        <Handle type="target" position={Position.Left} id={'1'} />
       </div>
     </>
   )

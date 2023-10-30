@@ -167,6 +167,7 @@ function ServerNode({ id, data }) {
           />
         </div>
         <Handle type="target" position={Position.Left} id={'1'} />
+        <Handle type="source" position={Position.Right} id={'2'} />
       </div>
     </>
   )

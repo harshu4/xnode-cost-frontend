@@ -44,7 +44,7 @@ export const nodes = [
   {
     id: '12',
     type: 'api',
-    position: { x: 170, y: -50 },
+    position: { x: 1000, y: 190 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -78,7 +78,7 @@ export const nodes = [
   {
     id: '14',
     type: 'utility',
-    position: { x: 120, y: 400 },
+    position: { x: 1000, y: 400 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -119,9 +119,9 @@ export const nodes = [
 
 export const edges = [
   {
-    id: 'e12-e11',
-    source: '12',
-    target: '11',
+    id: 'e11-e12',
+    source: '11',
+    target: '12',
     animated: true,
     style: { stroke: '#000' },
   },
@@ -133,9 +133,9 @@ export const edges = [
     style: { stroke: '#000' },
   },
   {
-    id: 'e14-e11',
-    source: '14',
-    target: '11',
+    id: 'e11-e14',
+    source: '11',
+    target: '14',
     animated: true,
     style: { stroke: '#000' },
   },

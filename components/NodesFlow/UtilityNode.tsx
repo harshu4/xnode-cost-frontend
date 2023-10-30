@@ -106,7 +106,7 @@ function UtilityNode({ id, data }) {
           />
           <div className="cursor-pointer">{data.name}</div>
         </div>
-        <Handle type="source" position={Position.Right} id={'1'} />
+        <Handle type="target" position={Position.Left} id={'1'} />
       </div>
     </>
   )
