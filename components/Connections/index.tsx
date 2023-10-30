@@ -37,8 +37,8 @@ const Connections = () => {
     },
     {
       isOpen: true,
-      image: '/images/connections/cu.svg',
-      icon: '2xl:w-[300px] xl:w-[240px]',
+      image: '/images/dataset/equinix2.svg',
+      icon: '2xl:w-[298px] xl:w-[238px]',
     },
     {
       isOpen: false,

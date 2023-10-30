@@ -178,6 +178,11 @@ const SubBarServers = ({ onValueChange }) => {
                 <div className=" text-[8px] font-medium md:text-[9.6px] lg:text-[11.2px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]">
                   {option.title}
                 </div>
+                {option.title === 'Equinix (Decentralized)' && (
+                  <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                    Recommended
+                  </div>
+                )}
                 <div className="text-[7px] font-light md:text-[8.4px] lg:text-[10px] lg:!leading-[150%] xl:text-[11.2px] 2xl:text-[14px]">
                   {option.specs.map((spec, index2) => (
                     <div key={index2}> {spec}</div>
@@ -256,6 +261,11 @@ const SubBarServers = ({ onValueChange }) => {
                 >
                   {option.title}
                 </div>
+                {option.title === 'Equinix (Decentralized)' && (
+                  <div className="absolute text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:-top-[11.2px] xl:-right-[8px] xl:text-[11.2px] 2xl:-top-[14px] 2xl:-right-[10px] 2xl:text-[14px]">
+                    Recommended
+                  </div>
+                )}
               </div>
               <div
                 onClick={() => {
