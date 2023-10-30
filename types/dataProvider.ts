@@ -8,6 +8,7 @@ export type DataProvider = {
   useCases?: string[]
   live: boolean
   download: boolean
+  isThirdParty: boolean
   dataGithubName?: string
   dataGithubLink?: string
   dataCloudLink?: string

@@ -79,7 +79,12 @@ const FinalStep = () => {
               <div className="mt-[5px] font-bold text-[#12AD50] xl:text-[13px] 2xl:text-[16px]">
                 Success
               </div>
-              <div className="mr-auto mt-[41px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#0e2e69] md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px] lg:px-[14.5px] lg:text-[10px]  xl:mb-[56px] xl:mt-[65px]   xl:py-[10px] xl:px-[17px]    xl:text-[11.2px]  2xl:mb-[70px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]">
+              <div
+                onClick={() => {
+                  setFinalBuild(true)
+                }}
+                className="mr-auto mt-[41px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#0e2e69] md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px] lg:px-[14.5px] lg:text-[10px]  xl:mb-[56px] xl:mt-[65px]   xl:py-[10px] xl:px-[17px]    xl:text-[11.2px]  2xl:mb-[70px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]"
+              >
                 <img
                   src={`${
                     process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -90,13 +95,7 @@ const FinalStep = () => {
                   className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
                 />
 
-                <div
-                  onClick={() => {
-                    setFinalBuild(true)
-                  }}
-                >
-                  Close
-                </div>
+                <div>Close</div>
               </div>
             </>
           )}

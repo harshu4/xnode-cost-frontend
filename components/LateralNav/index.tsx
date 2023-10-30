@@ -15,8 +15,14 @@ import SubBarUtility from '../SubBarUtility'
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
-  const { selectionSideNavBar, setSelectionSideNavBar, next, setNext } =
-    useContext(AccountContext)
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    nextFromScratch,
+    setNextFromScratch,
+  } = useContext(AccountContext)
   const [isOpen, setIsOpen] = useState<boolean>(true)
   const [greenDotOpacity, setGreenDotOpacity] = useState(0)
   const { push } = useRouter()
@@ -83,10 +89,12 @@ const LateralNav = ({ onValueChange }) => {
 
   function handleButtonClick(title: string) {
     if (title === 'Start here') {
-      push('/console')
+      setNextFromScratch(false)
+      setNext(false)
+      push('/')
       return
     }
-    if (!next && title !== 'Start here') {
+    if (!next && !nextFromScratch && title !== 'Start here') {
       setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
       setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
     } else {
@@ -133,7 +141,7 @@ const LateralNav = ({ onValueChange }) => {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className={`relative px-[11px] py-[14px]  md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
-                !next && option.title !== 'Start here'
+                !next && !nextFromScratch && option.title !== 'Start here'
                   ? 'opacity-50 hover:bg-[#fff]'
                   : 'cursor-pointer hover:bg-[#F4F4F4]'
               } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
@@ -158,32 +166,32 @@ const LateralNav = ({ onValueChange }) => {
           ))}
         </div>
         {selectionSideNavBar === 'Data' && (
-          <div className="absolute top-[80px] -right-[283px]">
+          <div className="absolute top-[80px] -right-[283px] 2xl:top-[105px] 2xl:-right-[346px]">
             <SubBarData onValueChange={console.log('hello')} />
           </div>
         )}
         {selectionSideNavBar === 'Servers' && (
-          <div className="absolute top-[80px] -right-[282px]">
+          <div className="absolute top-[80px] -right-[282px] 2xl:top-[105px] 2xl:-right-[348px]">
             <SubBarServers onValueChange={console.log('hello')} />
           </div>
         )}
         {selectionSideNavBar === 'APIs' && (
-          <div className="absolute top-[80px] -right-[277px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
             <SubBarAPIs onValueChange={console.log('hello')} />
           </div>
         )}
         {selectionSideNavBar === 'Analytics' && (
-          <div className="absolute top-[80px] -right-[277px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
             <SubBarAnalytics onValueChange={console.log('hello')} />
           </div>
         )}
         {selectionSideNavBar === 'RPC' && (
-          <div className="absolute top-[80px] -right-[277px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
             <SubBarRPC onValueChange={console.log('hello')} />
           </div>
         )}
         {selectionSideNavBar === 'Utility' && (
-          <div className="absolute top-[80px] -right-[277px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
             <SubBarUtility onValueChange={console.log('hello')} />
           </div>
         )}

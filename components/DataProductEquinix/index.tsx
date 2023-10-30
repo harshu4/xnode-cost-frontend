@@ -24,7 +24,7 @@ import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
 import { formatDistanceToNow, differenceInDays } from 'date-fns'
 
-const DataProduct = (id: any) => {
+const DataProductEquinix = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [data, setData] = useState<DataProvider>()
   const [tasksSearchBar, setTasksSearchBar] = useState('')
@@ -99,7 +99,7 @@ const DataProduct = (id: any) => {
   }
 
   const dataHelp = {
-    'Openmesh Overview':
+    'Equinix Overview':
       'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
     Github: 'https://github.com/L3A-Protocol',
     'Supported Feeds and Symbols':
@@ -154,18 +154,24 @@ const DataProduct = (id: any) => {
   const dataJsonSimilarProducts = [
     [
       '1213213213-213213213-12312312-3213123',
-      'Economy Data Atlas',
-      'Coinbase#',
+      'Databricks',
+      'Analytics',
+      '/images/dataset/databricks.svg',
+      '2xl:w-[34px] w-[27px]',
+    ],
+    [
+      '1213213213-213213213-12312312-3213123',
+      'Pythia Pro',
+      'Analytics',
+      '/images/dataset/py.svg',
+      '2xl:w-[34px] w-[27px]',
     ],
     [
       '1213213213-213213213-12312312-3213123',
       'Economy Data Atlas',
       'Coinbase#',
-    ],
-    [
-      '1213213213-213213213-12312312-3213123',
-      'Economy Data Atlas',
-      'Coinbase#',
+      '/images/dataset/coinbase.svg',
+      '2xl:w-[34px] w-[27px]',
     ],
   ]
 
@@ -271,12 +277,22 @@ const DataProduct = (id: any) => {
           <div className="flex gap-x-[11px] pt-[40px] md:gap-x-[13px] md:pt-[56px] lg:gap-x-[16px] lg:pt-[65px] xl:gap-x-[18px] xl:pt-[74px] 2xl:gap-x-[23px] 2xl:pt-[94px]">
             <div className="">
               <img
-                src={`/openmesh-ico-logo.png`}
+                src={`/images/dataset/equinix.svg`}
                 alt="image"
                 className={`mx-auto flex h-[30px] w-[30px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[40px] lg:w-[40px] lg:p-[7px] 2xl:h-[77px] 2xl:w-[77px]`}
               />
-              <div className="mx-auto mt-[7px] flex justify-center text-[7px] font-semibold text-[#12AD50] lg:!leading-[17px] xl:mt-[12px] xl:text-[11px] 2xl:mt-[15px] 2xl:text-[14px]">
-                Free
+              <div className="mx-auto mt-[7px] flex justify-center xl:mt-[12px] 2xl:mt-[15px]">
+                {data.isThirdParty && (
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/dataset/third.svg`}
+                    alt="image"
+                    className={`w-[46.5] 2xl:w-[58px]`}
+                  />
+                )}
               </div>
             </div>
             <div>
@@ -297,7 +313,7 @@ const DataProduct = (id: any) => {
               </div>
             </div>
           </div>
-          <div className="mt-[18px] text-[8px] font-medium  text-[#959595]  md:mt-[26px] md:text-[10px] lg:mt-[29px] lg:text-[11px] lg:!leading-[19px] xl:text-[13px] 2xl:mt-[37px]  2xl:text-[16px]">
+          <div className="mt-[18px] text-[8px] font-medium text-[#959595] md:mt-[26px]  md:text-[10px]  lg:mt-[29px] lg:text-[11px] lg:!leading-[19px] xl:max-w-[572px] xl:text-[13px] 2xl:mt-[37px] 2xl:max-w-[715px]  2xl:text-[16px]">
             {data.description}
           </div>
           <div className="mt-[20px] text-[8px] font-bold  text-[#959595]  md:mt-[37px]  md:text-[10px] lg:mt-[43px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[54px]  2xl:text-[16px]">
@@ -328,90 +344,6 @@ const DataProduct = (id: any) => {
                 </div>
               ))}
           </div>
-          <div className="mt-[26px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
-            Specification
-          </div>
-          <div className="mt-[10px] grid grid-cols-[auto,1fr] gap-0 text-[8px] text-[#959595] md:mt-[14px] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
-            {Object.entries(dataJson).map(([key, value], index, array) => (
-              <>
-                <div
-                  className={
-                    index === array.length - 1
-                      ? 'border border-r-0 border-[#D9D9D9] p-[20px] py-[10px]  pl-[8px] text-left md:py-[20px] md:pr-[120px]'
-                      : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] py-[10px] pl-[8px] text-left md:py-[20px] md:pr-[120px]'
-                  }
-                >
-                  {key}
-                </div>
-                <div
-                  className={
-                    index === array.length - 1
-                      ? 'border border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
-                      : 'border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
-                  }
-                >
-                  {String(value)}
-                </div>
-              </>
-            ))}
-          </div>
-          <div className="mt-[35px] text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
-            Details
-          </div>
-          <div className="mt-[10px] grid grid-cols-3 gap-0 overflow-x-auto text-[8px] text-[#959595] md:mt-[14px] md:grid-cols-[auto,1fr,1fr] md:text-[10px] lg:mt-[16px] lg:text-[11px] lg:!leading-[19px] 2xl:mt-[20px] 2xl:text-[13px]">
-            {dataJsonDetails.map(
-              ([value1, value2, value3, value4], index, array) => (
-                <>
-                  <div
-                    className={
-                      index === array.length - 1
-                        ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
-                        : 'min-w-[100px] border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
-                    }
-                  >
-                    {value1}
-                  </div>
-                  <div
-                    className={
-                      index === array.length - 1
-                        ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
-                        : 'min-w-[100px]  border-b-0 border-t border-l border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
-                    }
-                  >
-                    {value2}
-                  </div>
-                  <div
-                    className={
-                      index === array.length - 1
-                        ? 'min-w-[150px] justify-between border border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
-                        : 'min-w-[150px] justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
-                    }
-                  >
-                    <div>{value3}</div>
-                    <div>{value4}</div>
-                  </div>
-                </>
-              ),
-            )}
-          </div>
-          <div className="">
-            <div className="mt-[35px] flex justify-between text-[8px] font-bold  text-[#959595]  md:mt-[53px]  md:text-[10px] lg:mt-[60px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[76px]  2xl:text-[16px]">
-              <div className="">Query</div>
-              <img
-                src={`/images/dataset/copy.svg`}
-                alt="image"
-                onClick={copyToClipboard}
-                className="h-[10px] w-[10px] cursor-pointer md:h-[22px] md:w-[22px]"
-              />
-            </div>
-            {data?.sql && (
-              <div className="overflow-auto 2xl:mt-[17px]">
-                <SyntaxHighlighter language="sql" style={customStyle}>
-                  {data?.sql}
-                </SyntaxHighlighter>
-              </div>
-            )}
-          </div>
         </div>
         <div className="pt-[35px] md:pt-[96px] lg:pt-[112px] xl:pt-[128px] 2xl:pt-[160px]">
           <div className="grid gap-y-[35px] md:gap-y-[25px]">
@@ -439,6 +371,30 @@ const DataProduct = (id: any) => {
                     <img src={`/images/dataset/download.svg`} alt="image" />
                   </div>
                 </a>
+              </div>
+            )}
+            {data.isThirdParty && (
+              <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[15px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[21px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[48px] xl:pb-[52px]  2xl:px-[60px] 2xl:pt-[30px] 2xl:pb-[66px]">
+                <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
+                  3rd Party Intergration
+                </div>
+                <a
+                  href={data?.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
+                    <div>Add to Xnode</div>
+                    <img
+                      src={`/images/dataset/bolas.svg`}
+                      alt="image"
+                      className="my-auto w-[12px] xl:w-[13.6px] 2xl:w-[17px]"
+                    />
+                  </div>
+                </a>
+                <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] underline underline-offset-1 md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
+                  Website
+                </div>
               </div>
             )}
             {data.live && (
@@ -546,7 +502,7 @@ const DataProduct = (id: any) => {
             </div>
             <div className="mt-[18px] grid  gap-y-[31px] md:mt-[21px] md:gap-y-[37px] lg:mt-[25px] lg:gap-y-[44px] xl:mt-[29px] xl:gap-y-[50px] 2xl:mt-[36px] 2xl:gap-y-[63px]">
               {dataJsonSimilarProducts.map(
-                ([value1, value2, value3], index, array) => (
+                ([value1, value2, value3, value4, value5], index, array) => (
                   <>
                     <a
                       href={`/dataset/${value1}`}
@@ -555,9 +511,9 @@ const DataProduct = (id: any) => {
                       <div className="flex gap-x-[6px]  lg:gap-x-[8px] 2xl:gap-x-[12px] ">
                         <div className="">
                           <img
-                            src={`/openmesh-ico-logo.png`}
+                            src={`${value4}`}
                             alt="image"
-                            className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px] 2xl:h-[48px] 2xl:w-[48px]`}
+                            className={`mx-auto flex rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:p-[7px] ${value5}`}
                           />
                         </div>
                         <div>
@@ -608,4 +564,4 @@ const DataProduct = (id: any) => {
   )
 }
 
-export default DataProduct
+export default DataProductEquinix

@@ -307,6 +307,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
           {testimonialsToShow?.map((testimonial, index) => (
             <div key={index}>
               <SingleCard
+                isThirdParty={testimonial.isThirdParty}
                 id={testimonial.id}
                 name={testimonial.name}
                 description={testimonial.description}

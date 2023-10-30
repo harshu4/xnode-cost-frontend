@@ -14,6 +14,7 @@ const SingleCard = ({
   updatedAt,
   live,
   download,
+  isThirdParty,
 }: DataProvider) => {
   let timeAgo = formatDistanceToNow(new Date(updatedAt), { addSuffix: true })
   timeAgo = timeAgo.replace('about', '').trim()
@@ -26,20 +27,44 @@ const SingleCard = ({
       onMouseLeave={() => setAddVisible(false)}
       className="flex justify-start gap-x-[10px] rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[7px] py-[15px] text-start text-[#000000] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:max-w-[600px] lg:p-[21px] xl:gap-x-[20px]  xl:p-[24px] 2xl:max-w-[1000px] 2xl:gap-x-[25px] 2xl:p-[30px]"
     >
-      <div className="h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
-        <img
-          src={`/openmesh-ico-logo.png`}
-          alt="image"
-          className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px]`}
-        />
-        <div className="mx-auto mt-[4px] flex justify-center text-[7px] font-semibold text-[#12AD50] lg:!leading-[17px] xl:mt-[8px] xl:text-[11px] 2xl:mt-[10px] 2xl:text-[14px]">
-          Free
-        </div>
+      <div className="flex-grow-1 h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
+        {isThirdParty ? (
+          <img
+            src={`/images/dataset/equinix.svg`}
+            alt="image"
+            className={`mx-auto flex w-[1000px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`}
+          />
+        ) : (
+          <img
+            src={`/openmesh-ico-logo.png`}
+            alt="image"
+            className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px]`}
+          />
+        )}
+
+        {isThirdParty && (
+          <div className="mx-auto mt-[7px] flex justify-center xl:mt-[8px] 2xl:mt-[10px]">
+            <img
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/dataset/third.svg`}
+              alt="image"
+              className={`w-[46.5] 2xl:w-[58px]`}
+            />
+          </div>
+        )}
+        {!isThirdParty && (
+          <div className="mx-auto mt-[4px] flex justify-center text-[7px] font-semibold text-[#12AD50] lg:!leading-[17px] xl:mt-[8px] xl:text-[11px] 2xl:mt-[10px] 2xl:text-[14px]">
+            Free
+          </div>
+        )}
       </div>
-      <div>
+      <div className="flex-grow-0">
         <div>
           <div className="flex gap-x-[5px] lg:gap-x-[8px] 2xl:gap-x-[10px]">
-            <a href={`data-product/${id}`}>
+            <a href={`${isThirdParty ? '/equinix' : `data-product/${id}`}`}>
               <div
                 className={`text-[10px] font-bold text-[#313131] hover:text-[#000] hover:underline md:text-[12px] lg:text-[14px] lg:!leading-[22px]  2xl:text-[18px]`}
               >
@@ -90,7 +115,7 @@ const SingleCard = ({
 
           <div
             title={description}
-            className="mt-[8px] overflow-hidden text-[8px] font-medium text-[#959595]  line-clamp-5 md:text-[10px] lg:mt-[12px]  lg:text-[12px] lg:!leading-[19px] 2xl:mt-[15px] 2xl:text-[16px]"
+            className="mt-[8px]  overflow-hidden text-[8px] font-medium text-[#959595] line-clamp-5 md:text-[10px]  lg:mt-[12px] lg:text-[12px] lg:!leading-[19px]  xl:max-w-[480px] 2xl:mt-[15px] 2xl:max-w-[600px] 2xl:text-[16px]"
           >
             {description}
           </div>

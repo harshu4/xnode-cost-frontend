@@ -37,7 +37,6 @@ export async function getData(id: any) {
     },
     data,
   }
-
   let dado
 
   await axios(config).then(function (response) {
