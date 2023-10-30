@@ -31,6 +31,7 @@ const Header = () => {
     setUser,
     next,
     setNext,
+    nextFromScratch,
     finalNodes,
     setReviewYourBuild,
     reviewYourBuild,
@@ -118,7 +119,7 @@ const Header = () => {
     }
   }, [])
 
-  if (next && !reviewYourBuild) {
+  if ((next || nextFromScratch) && !reviewYourBuild) {
     return (
       <>
         <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[45px] text-[#000000] md:pt-[54px] lg:pt-[62px] xl:pt-[72px] xl:pb-[27.8px] 2xl:pt-[90px] 2xl:pb-[46px]">
