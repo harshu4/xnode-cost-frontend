@@ -1,230 +1,230 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react'
-import Dropdown from '../Dropdown'
-import LatencySelector from '../LatencySelector'
-import { title } from 'process'
-import { AccountContext } from '@/contexts/AccountContext'
+import { useContext, useState } from "react";
+import Dropdown from "../Dropdown";
+import LatencySelector from "../LatencySelector";
+import { title } from "process";
+import { AccountContext } from "@/contexts/AccountContext";
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarData = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0)
+  const [presetId, setPresetId] = useState(0);
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
     next,
     setNext,
     setChangeNodes,
-  } = useContext(AccountContext)
-  const [selectionSubBar, setSelectionSubBar] = useState<string>('')
+  } = useContext(AccountContext);
+  const [selectionSubBar, setSelectionSubBar] = useState<string>("");
 
   const categoriesOptions = [
     {
-      title: 'Crypto Exchanges',
+      title: "Crypto Exchanges",
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          icon: "/images/subNavBarData/binance.svg",
+          title: "Binance",
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: "/images/subNavBarData/coinbase.svg",
+          title: "Coinbase",
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
+          icon: "/images/subNavBarData/bybit.svg",
+          title: "Bybit",
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: "/images/subNavBarData/okx.svg",
+          title: "OKX",
         },
         {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          icon: "/images/subNavBarData/krakan.svg",
+          title: "Krakan",
         },
         {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
+          icon: "/images/subNavBarData/hubai.svg",
+          title: "Hubai",
         },
         {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
+          icon: "/images/subNavBarData/gateio.svg",
+          title: "Gate.io",
         },
         {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: "/images/subNavBarData/kucoin.svg",
+          title: "Kucoin",
         },
       ],
     },
     {
-      title: 'Public Blockchains',
+      title: "Public Blockchains",
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          icon: "/images/subNavBarData/binance.svg",
+          title: "Binance",
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: "/images/subNavBarData/coinbase.svg",
+          title: "Coinbase",
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
+          icon: "/images/subNavBarData/bybit.svg",
+          title: "Bybit",
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: "/images/subNavBarData/okx.svg",
+          title: "OKX",
         },
         {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          icon: "/images/subNavBarData/krakan.svg",
+          title: "Krakan",
         },
         {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
+          icon: "/images/subNavBarData/hubai.svg",
+          title: "Hubai",
         },
         {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
+          icon: "/images/subNavBarData/gateio.svg",
+          title: "Gate.io",
         },
         {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: "/images/subNavBarData/kucoin.svg",
+          title: "Kucoin",
         },
       ],
     },
     {
-      title: 'Descentralized Finance (DeFi)',
+      title: "Descentralized Finance (DeFi)",
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          icon: "/images/subNavBarData/binance.svg",
+          title: "Binance",
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: "/images/subNavBarData/coinbase.svg",
+          title: "Coinbase",
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
+          icon: "/images/subNavBarData/bybit.svg",
+          title: "Bybit",
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: "/images/subNavBarData/okx.svg",
+          title: "OKX",
         },
         {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          icon: "/images/subNavBarData/krakan.svg",
+          title: "Krakan",
         },
         {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
+          icon: "/images/subNavBarData/hubai.svg",
+          title: "Hubai",
         },
         {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
+          icon: "/images/subNavBarData/gateio.svg",
+          title: "Gate.io",
         },
         {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: "/images/subNavBarData/kucoin.svg",
+          title: "Kucoin",
         },
       ],
     },
     {
-      title: 'GameFi & Metaverses',
+      title: "GameFi & Metaverses",
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          icon: "/images/subNavBarData/binance.svg",
+          title: "Binance",
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: "/images/subNavBarData/coinbase.svg",
+          title: "Coinbase",
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
+          icon: "/images/subNavBarData/bybit.svg",
+          title: "Bybit",
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: "/images/subNavBarData/okx.svg",
+          title: "OKX",
         },
         {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          icon: "/images/subNavBarData/krakan.svg",
+          title: "Krakan",
         },
         {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
+          icon: "/images/subNavBarData/hubai.svg",
+          title: "Hubai",
         },
         {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
+          icon: "/images/subNavBarData/gateio.svg",
+          title: "Gate.io",
         },
         {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: "/images/subNavBarData/kucoin.svg",
+          title: "Kucoin",
         },
       ],
     },
     {
-      title: 'Public Medical Research',
+      title: "Public Medical Research",
       enabled: false,
       isFree: false,
     },
     {
-      title: 'Financial Data',
+      title: "Financial Data",
       enabled: false,
       isFree: false,
     },
     {
-      title: 'Weather Report',
+      title: "Weather Report",
       enabled: false,
       isFree: false,
     },
     {
-      title: 'Scientific Data',
+      title: "Scientific Data",
       enabled: false,
       isFree: false,
     },
     {
-      title: 'Cancer Research',
+      title: "Cancer Research",
       enabled: false,
       isFree: false,
     },
     {
-      title: 'Agricultural',
+      title: "Agricultural",
       enabled: false,
       isFree: false,
     },
-  ]
+  ];
 
   const dataUseCase = {
-    'Financial Analysis':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
-    Github: 'https://github.com/L3A-Protocol',
-    'Blockchain Transactions':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
-    'DEXs and CEXs':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
-    'Gas Optimization':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
-    'Crypto Liquidity':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
-  }
+    "Financial Analysis":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh",
+    Github: "https://github.com/L3A-Protocol",
+    "Blockchain Transactions":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols",
+    "DEXs and CEXs":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference",
+    "Gas Optimization":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview",
+    "Crypto Liquidity":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow",
+  };
 
   function handleButtonClick(title: string) {
     if (title === selectionSubBar) {
-      setSelectionSubBar('')
+      setSelectionSubBar("");
     } else {
-      setSelectionSubBar(title)
+      setSelectionSubBar(title);
     }
   }
 
@@ -248,10 +248,10 @@ const SubBarData = ({ onValueChange }) => {
             <div
               onClick={() => {
                 setChangeNodes({
-                  type: 'data',
+                  type: "data",
                   name: option.title,
                   icon: option.icon,
-                })
+                });
               }}
               className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
             >
@@ -260,7 +260,7 @@ const SubBarData = ({ onValueChange }) => {
           </div>
         ))}
       </div>
-    )
+    );
   }
 
   return (
@@ -269,29 +269,29 @@ const SubBarData = ({ onValueChange }) => {
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Categories
         </div>
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
-          onClick={() => setSelectionSideNavBar('')}
+          onClick={() => setSelectionSideNavBar("")}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-        />
+        /> */}
         <div className="">
           {categoriesOptions.map((option, index) => (
             <div key={index}>
               <div
                 onClick={() => {
                   if (option.enabled) {
-                    handleButtonClick(option.title)
+                    handleButtonClick(option.title);
                   }
                 }}
                 className={`relative mt-[14px] flex w-fit ${
                   option.enabled
-                    ? 'cursor-pointer hover:text-[#5b5b5b]'
-                    : 'text-[#959595]'
+                    ? "cursor-pointer hover:text-[#5b5b5b]"
+                    : "text-[#959595]"
                 } ${
                   selectionSubBar === option.title
-                    ? 'underline underline-offset-[3px]'
-                    : ''
+                    ? "underline underline-offset-[3px]"
+                    : ""
                 }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
               >
                 {selectionSubBar === option.title ? (
@@ -348,7 +348,7 @@ const SubBarData = ({ onValueChange }) => {
             </div>
             <div className=" lg:!leading-[150%]">
               <a
-                href={'https://www.openmesh.network/oec/register'}
+                href={"https://www.openmesh.network/oec/register"}
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
@@ -362,23 +362,23 @@ const SubBarData = ({ onValueChange }) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {' '}
+              {" "}
               <a
                 href={
-                  'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
+                  "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases"
                 }
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
               >
-                Run an Xnode today{' '}
+                Run an Xnode today{" "}
               </a>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SubBarData
+export default SubBarData;
