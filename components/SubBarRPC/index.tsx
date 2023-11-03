@@ -169,12 +169,12 @@ const SubBarRPC = ({ onValueChange }) => {
           Design, build, visualize, deploy and store powerful crypto and web3
           data products directly in your web3 wallet.{' '}
         </div>
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]"
-        />
+        /> */}
         {/* {renderOptions(false)}
         <div className="mt-[37px] h-[1px] w-full bg-[#C6C6C6] md:mt-[45px] lg:mt-[52px] xl:mt-[60px] 2xl:mt-[74px]"></div> */}
         {renderOptions(true)}

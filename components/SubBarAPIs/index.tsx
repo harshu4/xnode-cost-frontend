@@ -137,12 +137,12 @@ const SubBarAPIs = ({ onValueChange }) => {
         <div className="mt-[7.5px] max-w-[140px] text-[9px] font-light md:mt-[9px] md:max-w-[167px] md:text-[11px] lg:mt-[10.5px] lg:max-w-[195px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[12px] xl:max-w-[223px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:max-w-[279px] 2xl:text-[18px]">
           Single endpoint for all crypto & web3 data, free forever.
         </div>
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]"
-        />
+        /> */}
         <div className="mt-[14px] grid gap-y-[40px] md:mt-[17px] md:gap-y-[48px] lg:gap-y-[56px] xl:mt-[70px] xl:gap-y-[64px] 2xl:mt-[87px] 2xl:gap-y-[80px]">
           {categoriesOptions.map((option, index) => (
             <div key={index}>

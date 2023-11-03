@@ -364,10 +364,7 @@ const Header = () => {
           </div>
           <div className="flex gap-x-[115px]">
             <div className="flex gap-x-[70px]">
-              <a
-                href={`https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases`}
-                className="flex cursor-pointer items-center "
-              >
+              <a href={`/docs`} className="flex cursor-pointer items-center ">
                 Docs
               </a>
               <a

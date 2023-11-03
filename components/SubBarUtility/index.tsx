@@ -189,12 +189,12 @@ const SubBarUtility = ({ onValueChange }) => {
   return (
     <>
       <div className="z-100 relative bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]"
-        />
+        /> */}
         <div className="text-[9px]  font-bold md:text-[11px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:text-[18px]">
           Observability
         </div>

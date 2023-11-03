@@ -63,36 +63,32 @@ const SubBarData = ({ onValueChange }) => {
       enabled: true,
       dataOptions: [
         {
+          icon: '/images/subNavBarData/bitcoin.svg',
+          title: 'Bitcoin',
+        },
+        {
+          icon: '/images/subNavBarData/ethereum.svg',
+          title: 'Ethereum',
+        },
+        {
+          icon: '/images/subNavBarData/polygon.svg',
+          title: 'Polygon',
+        },
+        {
+          icon: '/images/subNavBarData/avalanche.svg',
+          title: 'Avalanche',
+        },
+        {
           icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          title: 'BNB',
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: '/images/subNavBarData/aptos.svg',
+          title: 'Aptos',
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: '/images/subNavBarData/hedera.svg',
+          title: 'Hedera',
         },
       ],
     },
@@ -106,32 +102,28 @@ const SubBarData = ({ onValueChange }) => {
           title: 'Binance',
         },
         {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
+          icon: '/images/subNavBarData/aave.svg',
+          title: 'Aave',
         },
         {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
+          icon: '/images/subNavBarData/yfi.svg',
+          title: 'Yearn Finance',
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: '/images/subNavBarData/curve.svg',
+          title: 'Curve',
         },
         {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          icon: '/images/subNavBarData/gala.svg',
+          title: 'Gala',
         },
         {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
+          icon: '/images/subNavBarData/aavegotchi.svg',
+          title: 'Aavegotchi',
         },
         {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
+          icon: '/images/subNavBarData/opensea.svg',
+          title: 'OpenSea',
         },
       ],
     },
@@ -269,12 +261,12 @@ const SubBarData = ({ onValueChange }) => {
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Categories
         </div>
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
-          onClick={() => setSelectionSideNavBar('')}
+          onClick={() => setSelectionSideNavBar("")}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-        />
+        /> */}
         <div className="">
           {categoriesOptions.map((option, index) => (
             <div key={index}>

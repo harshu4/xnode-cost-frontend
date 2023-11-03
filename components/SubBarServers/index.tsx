@@ -239,12 +239,12 @@ const SubBarServers = ({ onValueChange }) => {
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Select cloud provider{' '}
         </div>
-        <img
+        {/* <img
           src="/images/lateralNavBar/close.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-        />
+        /> */}
         <div className="mt-[8px] md:mt-[10.2px] lg:mt-[12px] xl:mt-[13.5px] 2xl:mt-[17px]">
           {categoriesOptions.map((option, index) => (
             <div key={index} className="relative flex">
