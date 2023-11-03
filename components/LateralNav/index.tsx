@@ -199,24 +199,24 @@ const LateralNav = ({ onValueChange }) => {
           ))}
         </div>
         {hoveredIcon === "Data" && (
-          <div className="absolute top-[80px] -right-[283px] 2xl:top-[105px] 2xl:-right-[346px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
             <SubBarData onValueChange={console.log("hello")} />
           </div>
         )}
         {hoveredIcon === "Servers" && (
-          <div className="absolute top-[80px] -right-[282px] 2xl:top-[105px] 2xl:-right-[348px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
             <SubBarServers onValueChange={console.log("hello")} />
           </div>
         )}
         {hoveredIcon === "APIs" && (
-          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
             <SubBarAPIs onValueChange={console.log("hello")} />
           </div>
         )}
         {hoveredIcon === "Analytics" && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]"
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
             <SubBarAnalytics onValueChange={console.log("hello")} />
           </div>
@@ -224,13 +224,13 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === "RPC" && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]"
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
             <SubBarRPC onValueChange={console.log("hello")} />
           </div>
         )}
         {hoveredIcon === "Utility" ? (
-          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[346px]">
+          <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
             <SubBarUtility onValueChange={console.log("valueChanged")} />
           </div>
         ) : null}
