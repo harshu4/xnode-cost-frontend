@@ -23,11 +23,10 @@ const LateralNav = ({ onValueChange }) => {
     nextFromScratch,
     setNextFromScratch,
   } = useContext(AccountContext);
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [greenDotOpacity, setGreenDotOpacity] = useState(0);
   const { push } = useRouter();
   const [hoveredIcon, setHoveredIcon] = useState(null);
-  console.log(isOpen);
 
   const preSetsOptions = [
     {
