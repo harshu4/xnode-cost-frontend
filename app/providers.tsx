@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
-'use client'
+"use client";
 
-import AccountContextProvider from '@/contexts/AccountContext'
-import { ThemeProvider } from 'next-themes'
-import { ToastContainer } from 'react-toastify'
+import AccountContextProvider from "@/contexts/AccountContext";
+import { ThemeProvider } from "next-themes";
+import { ToastContainer } from "react-toastify";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -20,5 +20,5 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       <ToastContainer />
     </>
-  )
+  );
 }

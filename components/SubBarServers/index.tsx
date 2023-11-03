@@ -1,169 +1,169 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
-import Dropdown from "../Dropdown";
-import LatencySelector from "../LatencySelector";
-import { title } from "process";
-import { AccountContext } from "@/contexts/AccountContext";
-import DropdownServiceRegion from "../DropdownServiceRegion";
+import { useContext, useState } from 'react'
+import Dropdown from '../Dropdown'
+import LatencySelector from '../LatencySelector'
+import { title } from 'process'
+import { AccountContext } from '@/contexts/AccountContext'
+import DropdownServiceRegion from '../DropdownServiceRegion'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarServers = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0);
+  const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
     next,
     setNext,
     setChangeNodes,
-  } = useContext(AccountContext);
-  const [selectionSubBar, setSelectionSubBar] = useState<string>("");
+  } = useContext(AccountContext)
+  const [selectionSubBar, setSelectionSubBar] = useState<string>('')
   const [cloudProvider, setCloudProvider] = useState<string>(
-    "Equinix (Decentralized)"
-  );
+    'Equinix (Decentralized)',
+  )
 
-  const [smallServerNumber, setSmallServerNumber] = useState<number>(0);
-  const [mediumServerNumber, setMediumServerNumber] = useState<number>(0);
-  const [largeServerNumber, setLargeServerNumber] = useState<number>(0);
+  const [smallServerNumber, setSmallServerNumber] = useState<number>(0)
+  const [mediumServerNumber, setMediumServerNumber] = useState<number>(0)
+  const [largeServerNumber, setLargeServerNumber] = useState<number>(0)
 
-  const [serviceRegion, setServiceRegion] = useState<string>("Us East");
+  const [serviceRegion, setServiceRegion] = useState<string>('Us East')
 
   const optionsServiceRegionSelection = [
     {
-      title: "Dallas",
-      src: "/images/subNavBarServers/aws.svg",
-      style: "2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]",
+      title: 'Dallas',
+      src: '/images/subNavBarServers/aws.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
     },
-  ];
+  ]
 
   const categoriesOptions = [
     {
-      title: "Equinix (Decentralized)",
+      title: 'Equinix (Decentralized)',
       enabled: true,
-      src: "/images/subNavBarServers/equinix.svg",
-      style: "2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]",
+      src: '/images/subNavBarServers/equinix.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
     },
     {
-      title: "AWS (Centralized)",
+      title: 'AWS (Centralized)',
       enabled: true,
-      src: "/images/subNavBarServers/aws.svg",
-      style: "2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]",
+      src: '/images/subNavBarServers/aws.svg',
+      style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
     },
     {
-      title: "Azure (Centralized)",
+      title: 'Azure (Centralized)',
       enabled: false,
-      src: "/images/subNavBarServers/azure.svg",
-      style: "2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]",
+      src: '/images/subNavBarServers/azure.svg',
+      style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
     {
-      title: "GCP (Centralized)",
+      title: 'GCP (Centralized)',
       enabled: false,
-      src: "/images/subNavBarServers/gcp.svg",
-      style: "2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]",
+      src: '/images/subNavBarServers/gcp.svg',
+      style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
-  ];
+  ]
 
   const chooseYourServerOptions = [
     {
-      title: "Small c3.x86",
+      title: 'Small c3.x86',
       enabled: true,
       specs: [
-        "1x 8 Core @ 3.40Ghz",
-        "32GB RAM",
-        "2x 480GB SSD",
-        "2x 10Gbps",
-        "1x Intel HD Graphics P630",
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
       ],
-      link: "Rapid prototype, Data user (Unified API)",
+      link: 'Rapid prototype, Data user (Unified API)',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
       servers: smallServerNumber,
     },
     {
-      title: "Medium c2.x86",
+      title: 'Medium c2.x86',
       enabled: true,
       specs: [
-        "1x 8 Core @ 3.40Ghz",
-        "32GB RAM",
-        "2x 480GB SSD",
-        "2x 10Gbps",
-        "1x Intel HD Graphics P630",
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
       ],
-      link: "Rapid prototype, Decentralized data cloud + Analytics",
+      link: 'Rapid prototype, Decentralized data cloud + Analytics',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
       servers: mediumServerNumber,
     },
     {
-      title: "Large 23.x86",
+      title: 'Large 23.x86',
       enabled: true,
       specs: [
-        "1x 8 Core @ 3.40Ghz",
-        "32GB RAM",
-        "2x 480GB SSD",
-        "2x 10Gbps",
-        "1x Intel HD Graphics P630",
+        '1x 8 Core @ 3.40Ghz',
+        '32GB RAM',
+        '2x 480GB SSD',
+        '2x 10Gbps',
+        '1x Intel HD Graphics P630',
       ],
-      link: "Build, manage, and scale decentralized data clouds + Low latency + Heavy Analytics",
+      link: 'Build, manage, and scale decentralized data clouds + Low latency + Heavy Analytics',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
       servers: largeServerNumber,
     },
-  ];
+  ]
 
   function handleButtonClick(title: string) {
     if (title === selectionSubBar) {
-      setSelectionSubBar("");
+      setSelectionSubBar('')
     } else {
-      setSelectionSubBar(title);
+      setSelectionSubBar(title)
     }
   }
 
   function handleAddServer(option: any) {
     if (option.servers > 0) {
-      let numberServer = 1;
-      if (option.title === "Small c3.x86") {
-        numberServer = smallServerNumber;
-      } else if (option.title === "Medium c2.x86") {
-        numberServer = mediumServerNumber;
-      } else if (option.title === "Large 23.x86") {
-        numberServer = largeServerNumber;
+      let numberServer = 1
+      if (option.title === 'Small c3.x86') {
+        numberServer = smallServerNumber
+      } else if (option.title === 'Medium c2.x86') {
+        numberServer = mediumServerNumber
+      } else if (option.title === 'Large 23.x86') {
+        numberServer = largeServerNumber
       }
       setChangeNodes({
-        type: "server",
+        type: 'server',
         defaultValueServerType: `${option.title} x ${numberServer}`,
         defaultValueLocation: serviceRegion,
-      });
+      })
     }
   }
 
   function handleServerPlus(title: string) {
-    if (title === "Small c3.x86") {
+    if (title === 'Small c3.x86') {
       if (smallServerNumber <= 2) {
-        setSmallServerNumber(smallServerNumber + 1);
+        setSmallServerNumber(smallServerNumber + 1)
       }
-    } else if (title === "Medium c2.x86") {
+    } else if (title === 'Medium c2.x86') {
       if (mediumServerNumber <= 2) {
-        setMediumServerNumber(mediumServerNumber + 1);
+        setMediumServerNumber(mediumServerNumber + 1)
       }
-    } else if (title === "Large 23.x86") {
+    } else if (title === 'Large 23.x86') {
       if (largeServerNumber <= 2) {
-        setLargeServerNumber(largeServerNumber + 1);
+        setLargeServerNumber(largeServerNumber + 1)
       }
     }
   }
 
   function handleServerMinus(title: string) {
-    if (title === "Small c3.x86") {
+    if (title === 'Small c3.x86') {
       if (smallServerNumber > 0) {
-        setSmallServerNumber(smallServerNumber - 1);
+        setSmallServerNumber(smallServerNumber - 1)
       }
-    } else if (title === "Medium c2.x86") {
+    } else if (title === 'Medium c2.x86') {
       if (mediumServerNumber > 0) {
-        setMediumServerNumber(mediumServerNumber - 1);
+        setMediumServerNumber(mediumServerNumber - 1)
       }
-    } else if (title === "Large 23.x86") {
+    } else if (title === 'Large 23.x86') {
       if (largeServerNumber > 0) {
-        setLargeServerNumber(largeServerNumber - 1);
+        setLargeServerNumber(largeServerNumber - 1)
       }
     }
   }
@@ -178,7 +178,7 @@ const SubBarServers = ({ onValueChange }) => {
                 <div className=" text-[8px] font-medium md:text-[9.6px] lg:text-[11.2px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]">
                   {option.title}
                 </div>
-                {option.title === "Equinix (Decentralized)" && (
+                {option.title === 'Equinix (Decentralized)' && (
                   <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                     Recommended
                   </div>
@@ -209,13 +209,13 @@ const SubBarServers = ({ onValueChange }) => {
                 </div>
                 <div
                   onClick={() => {
-                    handleAddServer(option);
+                    handleAddServer(option)
                     // window.scrollTo({ top: 0, behavior: 'smooth' })
                   }}
                   className={`mx-auto mt-[10px] w-fit !leading-[15px] ${
                     option.servers > 0
-                      ? "cursor-pointer bg-[#0354EC] hover:bg-[#123981]"
-                      : "bg-[#939393] "
+                      ? 'cursor-pointer bg-[#0354EC] hover:bg-[#123981]'
+                      : 'bg-[#939393] '
                   }  rounded-[5px]  px-[7px] py-[3px] text-[6.5px] font-medium text-[#fff]   md:mt-[12px] md:text-[7px] lg:mt-[14px] lg:py-[2.8px]  lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:mt-[16px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px] 2xl:mt-[20px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
                 >
                   <div>Add</div>
@@ -230,14 +230,14 @@ const SubBarServers = ({ onValueChange }) => {
           </div>
         ))}
       </div>
-    );
+    )
   }
 
   return (
     <>
       <div className="z-100 relative bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
         <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
-          Select cloud provider{" "}
+          Select cloud provider{' '}
         </div>
         {/* <img
           src="/images/lateralNavBar/close.svg"
@@ -256,12 +256,12 @@ const SubBarServers = ({ onValueChange }) => {
                 />
                 <div
                   className={` ${
-                    option.enabled ? "text-[#000]" : "text-[#B1B1B1]"
+                    option.enabled ? 'text-[#000]' : 'text-[#B1B1B1]'
                   } ml-[25px] text-[8px] font-light   md:text-[10px] lg:text-[11px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]`}
                 >
                   {option.title}
                 </div>
-                {option.title === "Equinix (Decentralized)" && (
+                {option.title === 'Equinix (Decentralized)' && (
                   <div className="absolute text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:-top-[11.2px] xl:-right-[8px] xl:text-[11.2px] 2xl:-top-[14px] 2xl:-right-[10px] 2xl:text-[14px]">
                     Recommended
                   </div>
@@ -270,32 +270,32 @@ const SubBarServers = ({ onValueChange }) => {
               <div
                 onClick={() => {
                   if (option.enabled) {
-                    setCloudProvider(option.title);
+                    setCloudProvider(option.title)
                   }
                 }}
                 className={`absolute -right-[20px] top-[10px] h-[10px] w-[10px] rounded-[5px] border-[1px] border-[#D9D9D9] ${
-                  option.enabled ? "cursor-pointer hover:bg-[#0354EC]" : ""
+                  option.enabled ? 'cursor-pointer hover:bg-[#0354EC]' : ''
                 } md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] ${
                   cloudProvider === option.title && option.enabled
-                    ? "bg-[#0354EC]"
-                    : "bg-[#fff]"
+                    ? 'bg-[#0354EC]'
+                    : 'bg-[#fff]'
                 }`}
               ></div>
             </div>
           ))}
         </div>
         <div className="mt-[28px] text-[9px] font-bold md:mt-[33px] md:text-[11px] lg:mt-[38.5px] lg:text-[12.5px] xl:mt-[44px] xl:text-[14.5px] 2xl:mt-[55px] 2xl:text-[18px]">
-          Select service region{" "}
+          Select service region{' '}
         </div>
         <div className="mt-[12px] w-fit md:mt-[14.5px] lg:mt-[17px] xl:mt-[19px] 2xl:mt-[24px]">
           <DropdownServiceRegion
             onValueChange={(value) => {
-              setServiceRegion(value.title);
+              setServiceRegion(value.title)
             }}
           />
         </div>
         <div className="mt-[35px] text-[9px] font-bold md:mt-[42px] md:text-[11px] lg:mt-[49px] lg:text-[12.5px] xl:mt-[56px] xl:text-[14.5px] 2xl:mt-[70px] 2xl:text-[18px]">
-          Choose your server{" "}
+          Choose your server{' '}
         </div>
         <div>{renderChooseYourServerOptions()}</div>
         <a href="/data-products">
@@ -310,7 +310,7 @@ const SubBarServers = ({ onValueChange }) => {
             </div>
             <div className=" lg:!leading-[150%]">
               <a
-                href={"https://www.openmesh.network/oec/register"}
+                href={'https://www.openmesh.network/oec/register'}
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
@@ -324,23 +324,23 @@ const SubBarServers = ({ onValueChange }) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {" "}
+              {' '}
               <a
                 href={
-                  "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases"
+                  'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                 }
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
               >
-                Run an Xnode today{" "}
+                Run an Xnode today{' '}
               </a>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SubBarServers;
+export default SubBarServers

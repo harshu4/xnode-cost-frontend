@@ -1,20 +1,20 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState, useEffect } from "react";
-import Dropdown from "../Dropdown";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import LatencySelector from "../LatencySelector";
-import { title } from "process";
-import { AccountContext } from "@/contexts/AccountContext";
-import SubBarData from "../SubBarData";
-import SubBarServers from "../SubBarServers";
-import SubBarAPIs from "../SubBarAPIs";
-import SubBarAnalytics from "../SubBarAnalytics";
-import SubBarRPC from "../SubBarRPC";
-import SubBarUtility from "../SubBarUtility";
+import { useContext, useState, useEffect } from 'react'
+import Dropdown from '../Dropdown'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import LatencySelector from '../LatencySelector'
+import { title } from 'process'
+import { AccountContext } from '@/contexts/AccountContext'
+import SubBarData from '../SubBarData'
+import SubBarServers from '../SubBarServers'
+import SubBarAPIs from '../SubBarAPIs'
+import SubBarAnalytics from '../SubBarAnalytics'
+import SubBarRPC from '../SubBarRPC'
+import SubBarUtility from '../SubBarUtility'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0);
+  const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
@@ -22,89 +22,89 @@ const LateralNav = ({ onValueChange }) => {
     setNext,
     nextFromScratch,
     setNextFromScratch,
-  } = useContext(AccountContext);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [greenDotOpacity, setGreenDotOpacity] = useState(0);
-  const { push } = useRouter();
-  const [hoveredIcon, setHoveredIcon] = useState(null);
+  } = useContext(AccountContext)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [greenDotOpacity, setGreenDotOpacity] = useState(0)
+  const { push } = useRouter()
+  const [hoveredIcon, setHoveredIcon] = useState(null)
 
   const preSetsOptions = [
     {
-      icon: "/images/lateralNavBar/start.svg",
+      icon: '/images/lateralNavBar/start.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]",
-      title: "Start here",
+        'w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]',
+      title: 'Start here',
     },
     {
-      icon: "/images/lateralNavBar/cubo.svg",
+      icon: '/images/lateralNavBar/cubo.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]",
-      title: "Dashboard",
+        'w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]',
+      title: 'Dashboard',
     },
     {
-      icon: "/images/lateralNavBar/server.svg",
+      icon: '/images/lateralNavBar/server.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]",
-      title: "Servers",
+        'w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]',
+      title: 'Servers',
     },
     {
-      icon: "/images/lateralNavBar/tomada.svg",
+      icon: '/images/lateralNavBar/tomada.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[20px] lg:w-[25px] xl:w-[28px] 2xl:w-[35px]",
-      title: "APIs",
+        'w-[23px] h-[24px] md:w-[20px] lg:w-[25px] xl:w-[28px] 2xl:w-[35px]',
+      title: 'APIs',
     },
     {
-      icon: "/images/lateralNavBar/database.svg",
+      icon: '/images/lateralNavBar/database.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[19.5px] lg:w-[23px] xl:w-[26px] 2xl:w-[33px]",
-      title: "Data",
+        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[23px] xl:w-[26px] 2xl:w-[33px]',
+      title: 'Data',
     },
     {
-      icon: "/images/lateralNavBar/node.svg",
+      icon: '/images/lateralNavBar/node.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[20px] lg:w-[24.5px] xl:w-[28px] 2xl:w-[35px]",
-      title: "RPC",
+        'w-[23px] h-[24px] md:w-[20px] lg:w-[24.5px] xl:w-[28px] 2xl:w-[35px]',
+      title: 'RPC',
     },
     {
-      icon: "/images/lateralNavBar/bolas.svg",
+      icon: '/images/lateralNavBar/bolas.svg',
       iconStyle:
-        "w-[23px]  h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]",
-      title: "Analytics",
+        'w-[23px]  h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
+      title: 'Analytics',
     },
     {
-      icon: "/images/lateralNavBar/dash.svg",
+      icon: '/images/lateralNavBar/dash.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]",
-      title: "Apps",
+        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
+      title: 'Apps',
     },
     {
-      icon: "/images/lateralNavBar/ml.svg",
+      icon: '/images/lateralNavBar/ml.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]",
-      title: "ML/LLMs",
+        'w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]',
+      title: 'ML/LLMs',
     },
     {
-      icon: "/images/lateralNavBar/settings.svg",
+      icon: '/images/lateralNavBar/settings.svg',
       iconStyle:
-        "w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]",
-      title: "Utility",
+        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
+      title: 'Utility',
     },
-  ];
+  ]
 
   function handleButtonClick(title: string) {
-    if (title === "Start here") {
-      setNextFromScratch(false);
-      setNext(false);
-      push("/");
-      return;
+    if (title === 'Start here') {
+      setNextFromScratch(false)
+      setNext(false)
+      push('/')
+      return
     }
-    if (!next && !nextFromScratch && title !== "Start here") {
-      setGreenDotOpacity(1); // Mostrar a bolinha verde com opacidade total
-      setTimeout(() => setGreenDotOpacity(0), 1000); // Esconder a bolinha verde após 5 segundos
+    if (!next && !nextFromScratch && title !== 'Start here') {
+      setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
+      setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
     } else {
-      setSelectionSideNavBar(title);
+      setSelectionSideNavBar(title)
     }
-    setHoveredIcon(title);
+    setHoveredIcon(title)
   }
 
   if (!isOpen) {
@@ -140,7 +140,7 @@ const LateralNav = ({ onValueChange }) => {
           </div>
         </div>
       </>
-    );
+    )
   }
 
   return (
@@ -159,7 +159,7 @@ const LateralNav = ({ onValueChange }) => {
               />
             </div>
             <a
-              href={"/"}
+              href={'/'}
               className="ml-[18.6px] mr-[18.6px] flex h-[39px] w-[99px] cursor-pointer flex-col items-center "
             >
               <img src="/images/logo/xnode-logo.svg" alt="image" />
@@ -170,21 +170,21 @@ const LateralNav = ({ onValueChange }) => {
               key={index}
               onMouseEnter={() => setHoveredIcon(option.title)}
               onClick={() => {
-                handleButtonClick(option.title);
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                handleButtonClick(option.title)
+                window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className={`relative  mb-[14px] flex h-[24px] w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[14px] md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
-                !next && !nextFromScratch && option.title !== "Start here"
-                  ? "w-full opacity-50 hover:bg-[#fff]"
-                  : "cursor-pointer hover:bg-[#F4F4F4]"
-              } ${selectionSideNavBar === option.title ? "bg-[#F4F4F4]" : ""}`}
+                !next && !nextFromScratch && option.title !== 'Start here'
+                  ? 'w-full opacity-50 hover:bg-[#fff]'
+                  : 'cursor-pointer hover:bg-[#F4F4F4]'
+              } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
             >
               <img
                 src={option.icon}
                 alt="image"
                 className={`${option.iconStyle}  mx-auto`}
               />
-              {option.title === "Start here" && (
+              {option.title === 'Start here' && (
                 <img
                   src="/images/lateralNavBar/green-ellipse.svg"
                   alt="green dot"
@@ -198,45 +198,45 @@ const LateralNav = ({ onValueChange }) => {
             </div>
           ))}
         </div>
-        {hoveredIcon === "Data" && (
+        {hoveredIcon === 'Data' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarData onValueChange={console.log("hello")} />
+            <SubBarData onValueChange={console.log('hello')} />
           </div>
         )}
-        {hoveredIcon === "Servers" && (
+        {hoveredIcon === 'Servers' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarServers onValueChange={console.log("hello")} />
+            <SubBarServers onValueChange={console.log('hello')} />
           </div>
         )}
-        {hoveredIcon === "APIs" && (
+        {hoveredIcon === 'APIs' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarAPIs onValueChange={console.log("hello")} />
+            <SubBarAPIs onValueChange={console.log('hello')} />
           </div>
         )}
-        {hoveredIcon === "Analytics" && (
+        {hoveredIcon === 'Analytics' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarAnalytics onValueChange={console.log("hello")} />
+            <SubBarAnalytics onValueChange={console.log('hello')} />
           </div>
         )}
-        {hoveredIcon === "RPC" && (
+        {hoveredIcon === 'RPC' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarRPC onValueChange={console.log("hello")} />
+            <SubBarRPC onValueChange={console.log('hello')} />
           </div>
         )}
-        {hoveredIcon === "Utility" ? (
+        {hoveredIcon === 'Utility' ? (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarUtility onValueChange={console.log("valueChanged")} />
+            <SubBarUtility onValueChange={console.log('valueChanged')} />
           </div>
         ) : null}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default LateralNav;
+export default LateralNav

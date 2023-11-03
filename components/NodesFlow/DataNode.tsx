@@ -92,7 +92,7 @@ function DataNode({ id, data }) {
 
   return (
     <>
-      <div className="relative rounded-[7px] bg-[#EAEAEA] py-[7px]  px-[10px]  pb-[23px] pr-[33px] text-[8px]  text-[#000] md:py-[8.4px] md:px-[12px] md:pb-[15.6px] md:pr-[46px] md:text-[9.6px] lg:py-[10px] lg:px-[14px] lg:pb-[18px] lg:pr-[53px] lg:text-[11.2px] xl:py-[11.2px] xl:px-[16px] xl:pb-[21px] xl:pr-[61px] xl:text-[12.8px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[46px] 2xl:pr-[77px] 2xl:text-[16px]">
+      <div className="relative rounded-[7px] border-[0.5px] border-[#C1C1C1] bg-[#fff] py-[7px]  px-[10px]  pb-[23px] pr-[33px] text-[8px]  text-[#000] md:py-[8.4px] md:px-[12px] md:pb-[15.6px] md:pr-[46px] md:text-[9.6px] lg:py-[10px] lg:px-[14px] lg:pb-[18px] lg:pr-[53px] lg:text-[11.2px] xl:py-[11.2px] xl:px-[16px] xl:pb-[21px] xl:pr-[61px] xl:text-[12.8px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[46px] 2xl:pr-[77px] 2xl:text-[16px]">
         <img
           src={'/images/nodesFlow/database.svg'}
           alt="image"
@@ -103,7 +103,8 @@ function DataNode({ id, data }) {
         <div className="mt-[5px] font-medium md:mt-[6px] lg:mt-[7px] lg:!leading-[19px] xl:mt-[8px] 2xl:mt-[10px]">
           Data
         </div>
-        <div className="text-[7px] md:text-[8.4px] lg:mt-[7px] lg:text-[10px] xl:mt-[8px] xl:text-[11.2px] 2xl:mt-[10px] 2xl:text-[14px]">
+        <div className="absolute left-0 h-[0.5px] w-full bg-[#C1C1C1] lg:mt-[10px] 2xl:mt-[12px]"></div>
+        <div className="text-[7px] md:text-[8.4px] lg:mt-[20px] lg:text-[10px] xl:mt-[24px] xl:text-[11.2px] 2xl:mt-[30px] 2xl:text-[14px]">
           {data.name}
         </div>
         <div className="mt-[6px] grid gap-y-[18px] pl-[5px] md:mt-[7.2px] md:gap-y-[19.2px] lg:mt-[8.4px] lg:gap-y-[22.5px] xl:mt-[9.6px] xl:gap-y-[16px] 2xl:mt-[12px] 2xl:gap-y-[20px]">

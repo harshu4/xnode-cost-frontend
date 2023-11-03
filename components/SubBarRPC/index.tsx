@@ -1,77 +1,77 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
-import Dropdown from "../Dropdown";
-import LatencySelector from "../LatencySelector";
-import { title } from "process";
-import { AccountContext } from "@/contexts/AccountContext";
+import { useContext, useState } from 'react'
+import Dropdown from '../Dropdown'
+import LatencySelector from '../LatencySelector'
+import { title } from 'process'
+import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarRPC = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0);
+  const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
     next,
     setNext,
     setChangeNodes,
-  } = useContext(AccountContext);
-  const [selectionSubBar, setSelectionSubBar] = useState<string>("");
+  } = useContext(AccountContext)
+  const [selectionSubBar, setSelectionSubBar] = useState<string>('')
 
   const categoriesOptions = [
     {
-      title: "ValidationCloud",
-      desc: "Enterprise-grade staking and node infrastructure",
-      link: "Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.",
+      title: 'ValidationCloud',
+      desc: 'Enterprise-grade staking and node infrastructure',
+      link: 'Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarRPC/validateCloud.svg",
-      style: "2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarRPC/validateCloud.svg',
+      style: '2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
     },
     {
-      title: "NodeReal",
-      desc: "One-stop blockchain infrastructure and service provider.",
-      link: "Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana",
+      title: 'NodeReal',
+      desc: 'One-stop blockchain infrastructure and service provider.',
+      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarRPC/node.svg",
-      style: "2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarRPC/node.svg',
+      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
     },
     {
-      title: "NodeReal",
-      desc: "One-stop blockchain infrastructure and service provider.",
-      link: "Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana",
+      title: 'NodeReal',
+      desc: 'One-stop blockchain infrastructure and service provider.',
+      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarRPC/node.svg",
-      style: "2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarRPC/node.svg',
+      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
     },
-  ];
+  ]
 
   const dataUseCase = {
-    "Financial Analysis":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh",
-    Github: "https://github.com/L3A-Protocol",
-    "Blockchain Transactions":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols",
-    "DEXs and CEXs":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference",
-    "Gas Optimization":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview",
-    "Crypto Liquidity":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow",
-  };
+    'Financial Analysis':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
+    Github: 'https://github.com/L3A-Protocol',
+    'Blockchain Transactions':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
+    'DEXs and CEXs':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
+    'Gas Optimization':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
+    'Crypto Liquidity':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
+  }
 
   function handleButtonClick(title: string) {
-    console.log("nothing");
+    console.log('nothing')
   }
 
   function renderOptions(type: boolean) {
@@ -84,7 +84,7 @@ const SubBarRPC = ({ onValueChange }) => {
               <div
                 onClick={() => {
                   if (option.enabled) {
-                    handleButtonClick(option.title);
+                    handleButtonClick(option.title)
                   }
                 }}
                 className={`relative  text-[9px] font-normal   md:text-[10px] lg:mt-[19.5px] lg:text-[11px] xl:text-[13px]  2xl:text-[16px]`}
@@ -92,8 +92,8 @@ const SubBarRPC = ({ onValueChange }) => {
                 <div
                   className={` ${
                     option.enabled
-                      ? "cursor-pointer hover:text-[#5b5b5b]"
-                      : "text-[#9A9A9A]"
+                      ? 'cursor-pointer hover:text-[#5b5b5b]'
+                      : 'text-[#9A9A9A]'
                   } relative flex w-fit gap-x-[7px] md:gap-x-[8.5px] lg:gap-x-[10px] xl:gap-x-[11.2px] 2xl:gap-x-[14px]`}
                 >
                   <img
@@ -110,7 +110,7 @@ const SubBarRPC = ({ onValueChange }) => {
                 </div>
                 <div
                   className={`mt-[9px] ${
-                    option.enabled ? "text-[#000]" : "text-[#A1A0A0]"
+                    option.enabled ? 'text-[#000]' : 'text-[#A1A0A0]'
                   } max-w-[103px]  font-light md:mt-[11px] md:max-w-[123px] lg:mt-[12.5px] lg:max-w-[145px] xl:mt-[14px] xl:max-w-[165px] 2xl:mt-[18px] 2xl:max-w-[206px]`}
                 >
                   {option.desc}
@@ -119,8 +119,8 @@ const SubBarRPC = ({ onValueChange }) => {
                   <div
                     className={`mt-[5.5px] ${
                       option.enabled
-                        ? "text-[#0354EC] hover:text-[#0243bd]"
-                        : "text-[#B0B0B0]"
+                        ? 'text-[#0354EC] hover:text-[#0243bd]'
+                        : 'text-[#B0B0B0]'
                     } max-w-[120px] text-[6px] font-light  md:mt-[6.6px] md:max-w-[144px] md:text-[7.2px] lg:mt-[6.7px] lg:max-w-[192px] lg:text-[8.4px] lg:!leading-[150%] xl:mt-[7.8px] xl:max-w-[220px] xl:text-[9.5px] 2xl:mt-[9px] 2xl:max-w-[275px] 2xl:text-[12px]`}
                   >
                     {option.link}
@@ -136,15 +136,15 @@ const SubBarRPC = ({ onValueChange }) => {
                 <div
                   onClick={() => {
                     setChangeNodes({
-                      type: "rpc",
+                      type: 'rpc',
                       name: option.title,
                       icon: option.src,
-                    });
+                    })
                   }}
                   className={`absolute ${
                     option.enabled
-                      ? "cursor-pointer bg-[#0354EC]  hover:bg-[#123981]"
-                      : "bg-[#898989]"
+                      ? 'cursor-pointer bg-[#0354EC]  hover:bg-[#123981]'
+                      : 'bg-[#898989]'
                   } right-0 -top-[2px]  rounded-[5px] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
                 >
                   <div>Add</div>
@@ -153,7 +153,7 @@ const SubBarRPC = ({ onValueChange }) => {
             </div>
           ))}
       </div>
-    );
+    )
   }
 
   return (
@@ -161,13 +161,13 @@ const SubBarRPC = ({ onValueChange }) => {
       <div className="z-100 relative bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
         <img
           src="/images/subNavBarRPC/rpc.svg"
-          onClick={() => setSelectionSideNavBar("")}
+          onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="w-[20px] md:w-[24px] lg:w-[28px] xl:w-[32px] 2xl:w-[40px]"
         />
         <div className="mt-[7.5px] max-w-[140px] text-[9px] font-light md:mt-[9px] md:max-w-[167px] md:text-[11px] lg:mt-[10.5px] lg:max-w-[195px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[12px] xl:max-w-[223px] xl:text-[14.5px] 2xl:mt-[15px] 2xl:max-w-[279px] 2xl:text-[18px]">
           Design, build, visualize, deploy and store powerful crypto and web3
-          data products directly in your web3 wallet.{" "}
+          data products directly in your web3 wallet.{' '}
         </div>
         {/* <img
           src="/images/lateralNavBar/close.svg"
@@ -190,7 +190,7 @@ const SubBarRPC = ({ onValueChange }) => {
             </div>
             <div className=" lg:!leading-[150%]">
               <a
-                href={"https://www.openmesh.network/oec/register"}
+                href={'https://www.openmesh.network/oec/register'}
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
@@ -204,23 +204,23 @@ const SubBarRPC = ({ onValueChange }) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {" "}
+              {' '}
               <a
                 href={
-                  "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases"
+                  'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                 }
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
               >
-                Run an Xnode today{" "}
+                Run an Xnode today{' '}
               </a>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SubBarRPC;
+export default SubBarRPC

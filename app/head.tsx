@@ -6,5 +6,5 @@ export default function Head() {
       <meta name="description" content="Openmesh Xnode" />
       <link rel="icon" href="/openmesh-ico-logo.png" />
     </>
-  )
+  );
 }

@@ -1,106 +1,106 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
-import Dropdown from "../Dropdown";
-import LatencySelector from "../LatencySelector";
-import { title } from "process";
-import { AccountContext } from "@/contexts/AccountContext";
+import { useContext, useState } from 'react'
+import Dropdown from '../Dropdown'
+import LatencySelector from '../LatencySelector'
+import { title } from 'process'
+import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarUtility = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0);
+  const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
     next,
     setNext,
     setChangeNodes,
-  } = useContext(AccountContext);
-  const [selectionSubBar, setSelectionSubBar] = useState<string>("");
+  } = useContext(AccountContext)
+  const [selectionSubBar, setSelectionSubBar] = useState<string>('')
 
   const categoriesOptions = [
     {
-      title: "Grafana",
-      desc: "Data Streaming service",
-      link: "Access live markets data & blockchain data. Power your dApps, web and mobile applications",
+      title: 'Grafana',
+      desc: 'Data Streaming service',
+      link: 'Access live markets data & blockchain data. Power your dApps, web and mobile applications',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarUtility/grafana.svg",
-      style: "2xl:w-[21px] xl:w-[17px] lg:w-[14.5px] md:w-[12.6px] w-[10.5px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarUtility/grafana.svg',
+      style: '2xl:w-[21px] xl:w-[17px] lg:w-[14.5px] md:w-[12.6px] w-[10.5px]',
       isFree: true,
       enabled: true,
       thirdParty: false,
-      type: "Observability",
+      type: 'Observability',
     },
     {
-      title: "Prometheus",
-      desc: "A node service provider, that provides.",
-      link: "Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana",
+      title: 'Prometheus',
+      desc: 'A node service provider, that provides.',
+      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarUtility/prometheus.svg",
-      style: "2xl:w-[20px] xl:w-[16px] lg:w-[14px] md:w-[12px] w-[10px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarUtility/prometheus.svg',
+      style: '2xl:w-[20px] xl:w-[16px] lg:w-[14px] md:w-[12px] w-[10px]',
       isFree: true,
       enabled: true,
       thirdParty: false,
-      type: "Observability",
+      type: 'Observability',
     },
     {
-      title: "Ascend",
+      title: 'Ascend',
       desc: "Data Pipeline Automation for building the world's most intelligent data pipelines.",
-      link: "Data Pipeline, Data Engineering,  Propagate Change",
+      link: 'Data Pipeline, Data Engineering,  Propagate Change',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarUtility/ascend.svg",
-      style: "2xl:w-[31px] xl:w-[25px] lg:w-[22px] md:w-[19px] w-[16px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarUtility/ascend.svg',
+      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px] md:w-[19px] w-[16px]',
       isFree: true,
       enabled: true,
       thirdParty: true,
-      type: "Data Pipeline Automation",
+      type: 'Data Pipeline Automation',
     },
     {
-      title: "Databricks",
-      desc: "Combines data warehouses & data lakes into a lakehouse architecture.",
-      link: "Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana",
+      title: 'Databricks',
+      desc: 'Combines data warehouses & data lakes into a lakehouse architecture.',
+      link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarAnalytics/databricks.svg",
-      style: "2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarAnalytics/databricks.svg',
+      style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
-      type: "Data Pipeline Automation",
+      type: 'Data Pipeline Automation',
     },
     {
-      title: "InfraAdmin",
-      desc: "One-stop blockchain infrastructure and service provider.",
-      link: "Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana",
+      title: 'InfraAdmin',
+      desc: 'One-stop blockchain infrastructure and service provider.',
+      link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
       linkRef:
-        "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases",
-      src: "/images/subNavBarAnalytics/databricks.svg",
-      style: "2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]",
+        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      src: '/images/subNavBarAnalytics/databricks.svg',
+      style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
       isFree: false,
       enabled: true,
       thirdParty: true,
-      type: "Admin Tools",
+      type: 'Admin Tools',
     },
-  ];
+  ]
 
   const dataUseCase = {
-    "Financial Analysis":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh",
-    Github: "https://github.com/L3A-Protocol",
-    "Blockchain Transactions":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols",
-    "DEXs and CEXs":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference",
-    "Gas Optimization":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview",
-    "Crypto Liquidity":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow",
-  };
+    'Financial Analysis':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
+    Github: 'https://github.com/L3A-Protocol',
+    'Blockchain Transactions':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
+    'DEXs and CEXs':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
+    'Gas Optimization':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
+    'Crypto Liquidity':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
+  }
 
   function handleButtonClick(title: string) {
-    console.log("nothing");
+    console.log('nothing')
   }
 
   function renderOptions(type: string) {
@@ -113,7 +113,7 @@ const SubBarUtility = ({ onValueChange }) => {
               <div
                 onClick={() => {
                   if (option.enabled) {
-                    handleButtonClick(option.title);
+                    handleButtonClick(option.title)
                   }
                 }}
                 className={`relative  text-[9px] font-normal   md:text-[10px] lg:text-[11px] xl:text-[13px]  2xl:text-[16px]`}
@@ -121,8 +121,8 @@ const SubBarUtility = ({ onValueChange }) => {
                 <div
                   className={` ${
                     option.enabled
-                      ? "cursor-pointer hover:text-[#5b5b5b]"
-                      : "text-[#9A9A9A]"
+                      ? 'cursor-pointer hover:text-[#5b5b5b]'
+                      : 'text-[#9A9A9A]'
                   } relative flex w-fit gap-x-[7px] md:gap-x-[8.5px] lg:gap-x-[10px] xl:gap-x-[11.2px] 2xl:gap-x-[14px]`}
                 >
                   <img
@@ -139,7 +139,7 @@ const SubBarUtility = ({ onValueChange }) => {
                 </div>
                 <div
                   className={`mt-[9px] ${
-                    option.enabled ? "text-[#000]" : "text-[#A1A0A0]"
+                    option.enabled ? 'text-[#000]' : 'text-[#A1A0A0]'
                   } max-w-[103px]  font-light md:mt-[11px] md:max-w-[123px] lg:mt-[12.5px] lg:max-w-[145px] xl:mt-[14px] xl:max-w-[165px] 2xl:mt-[18px] 2xl:max-w-[206px]`}
                 >
                   {option.desc}
@@ -148,8 +148,8 @@ const SubBarUtility = ({ onValueChange }) => {
                   <div
                     className={`mt-[5.5px] ${
                       option.enabled
-                        ? "text-[#0354EC] hover:text-[#0243bd]"
-                        : "text-[#B0B0B0]"
+                        ? 'text-[#0354EC] hover:text-[#0243bd]'
+                        : 'text-[#B0B0B0]'
                     } max-w-[120px] text-[6px] font-light  md:mt-[6.6px] md:max-w-[144px] md:text-[7.2px] lg:mt-[6.7px] lg:max-w-[192px] lg:text-[8.4px] lg:!leading-[150%] xl:mt-[7.8px] xl:max-w-[220px] xl:text-[9.5px] 2xl:mt-[9px] 2xl:max-w-[275px] 2xl:text-[12px]`}
                   >
                     {option.link}
@@ -166,15 +166,15 @@ const SubBarUtility = ({ onValueChange }) => {
                   onClick={() => {
                     setChangeNodes({
                       title: type,
-                      type: "utility",
+                      type: 'utility',
                       name: option.title,
                       icon: option.src,
-                    });
+                    })
                   }}
                   className={`absolute ${
                     option.enabled
-                      ? "cursor-pointer bg-[#0354EC]  hover:bg-[#123981]"
-                      : "bg-[#898989]"
+                      ? 'cursor-pointer bg-[#0354EC]  hover:bg-[#123981]'
+                      : 'bg-[#898989]'
                   } right-0 -top-[2px]  rounded-[5px] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
                 >
                   <div>Add</div>
@@ -183,7 +183,7 @@ const SubBarUtility = ({ onValueChange }) => {
             </div>
           ))}
       </div>
-    );
+    )
   }
 
   return (
@@ -198,15 +198,15 @@ const SubBarUtility = ({ onValueChange }) => {
         <div className="text-[9px]  font-bold md:text-[11px] lg:text-[12.5px] lg:!leading-[22px] xl:text-[14.5px] 2xl:text-[18px]">
           Observability
         </div>
-        {renderOptions("Observability")}
+        {renderOptions('Observability')}
         <div className="mt-[44px] text-[9px] font-bold md:mt-[53px] md:text-[11px] lg:mt-[61.5px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[71px] xl:text-[14.5px] 2xl:mt-[88px] 2xl:text-[18px]">
           Data Pipeline Automation
         </div>
-        {renderOptions("Data Pipeline Automation")}
+        {renderOptions('Data Pipeline Automation')}
         <div className="mt-[44px] text-[9px] font-bold md:mt-[53px] md:text-[11px] lg:mt-[61.5px] lg:text-[12.5px] lg:!leading-[22px] xl:mt-[71px] xl:text-[14.5px] 2xl:mt-[88px] 2xl:text-[18px]">
           Admin Tools
         </div>
-        {renderOptions("Admin Tools")}
+        {renderOptions('Admin Tools')}
         <div className="mt-[62px] max-w-[110px] text-[9px] md:mt-[75px] md:max-w-[132px] md:text-[10px] lg:mt-[87.5px]  lg:max-w-[154px]  lg:text-[11px]  xl:mt-[100px] xl:max-w-[176px] xl:text-[13px] 2xl:mt-[125px] 2xl:max-w-[220px] 2xl:text-[16px]">
           <div className="border-b-[1px] border-t-[1px] border-[#D9D9D9] pb-[8px]  pt-[7.5px]  md:pt-[9px] lg:pb-[12px] lg:pt-[10.5px] xl:pt-[12px] 2xl:pb-[15px] 2xl:pt-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
@@ -214,7 +214,7 @@ const SubBarUtility = ({ onValueChange }) => {
             </div>
             <div className=" lg:!leading-[150%]">
               <a
-                href={"https://www.openmesh.network/oec/register"}
+                href={'https://www.openmesh.network/oec/register'}
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
@@ -228,23 +228,23 @@ const SubBarUtility = ({ onValueChange }) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {" "}
+              {' '}
               <a
                 href={
-                  "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases"
+                  'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                 }
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
               >
-                Run an Xnode today{" "}
+                Run an Xnode today{' '}
               </a>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SubBarUtility;
+export default SubBarUtility
