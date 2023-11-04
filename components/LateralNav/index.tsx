@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-return */
 /* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from 'react'
 import Dropdown from '../Dropdown'
@@ -107,6 +108,14 @@ const LateralNav = ({ onValueChange }) => {
     setHoveredIcon(title)
   }
 
+  function handleButtonHover(title: string) {
+    if (!next && !nextFromScratch && title !== 'Start here') {
+      return
+    } else {
+      setHoveredIcon(title)
+    }
+  }
+
   if (!isOpen) {
     return (
       <>
@@ -168,7 +177,7 @@ const LateralNav = ({ onValueChange }) => {
           {preSetsOptions.map((option, index) => (
             <div
               key={index}
-              onMouseEnter={() => setHoveredIcon(option.title)}
+              onMouseEnter={() => handleButtonHover(option.title)}
               onClick={() => {
                 handleButtonClick(option.title)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
