@@ -120,12 +120,12 @@ const SingleCard = ({
           >
             {description}
           </div>
-          <div className="mt-[10px] flex gap-x-[5px] gap-y-[3px] lg:gap-x-[10px] lg:gap-y-[5px] 2xl:mt-[12px]">
+          <div className="mt-[10px] flex max-w-[800px] flex-wrap  gap-x-[5px] gap-y-[3px] lg:gap-x-[10px] lg:gap-y-[10px] 2xl:mt-[12px]">
             {tags &&
               tags.map((tag, index) => (
                 <div
                   key={index}
-                  className=" w-fit rounded-[20px]  border-[1px] border-[#D9D9D9] bg-[#F6F6F6] px-[7px] py-[4px] text-[5px] font-medium text-[#575757] md:text-[8px] lg:px-[12px] lg:py-[6px] lg:!leading-[12px] 2xl:py-[7px] 2xl:px-[15px]  2xl:text-[10px]"
+                  className="w-fit rounded-[20px]  border-[1px] border-[#D9D9D9] bg-[#F6F6F6] px-[7px] py-[4px] text-[5px] font-medium text-[#575757] md:text-[8px] lg:px-[12px] lg:py-[6px] lg:!leading-[12px] 2xl:py-[7px] 2xl:px-[15px]  2xl:text-[10px]"
                 >
                   {tag}
                 </div>
