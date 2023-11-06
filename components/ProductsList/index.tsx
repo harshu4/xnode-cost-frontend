@@ -112,7 +112,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   }
   const testimonialsToShow = viewAll
     ? sortedTestimonials
-    : sortedTestimonials?.slice(0, 6)
+    : sortedTestimonials?.slice(0, 10)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -303,7 +303,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
         ) : (
           <></>
         )}
-        <div className="mt-[30px] grid max-h-[2500px] grid-cols-1 gap-x-[25px] gap-y-[15px] overflow-y-auto  lg:mt-[42px]  lg:grid-cols-2 lg:gap-x-[28px] lg:gap-y-[21px] xl:mt-[48px] xl:gap-y-[24px] xl:gap-x-[32px] 2xl:mt-[60px] 2xl:grid-cols-2 2xl:gap-x-[40px] 2xl:gap-y-[30px] 3xl:grid-cols-2 4xl:grid-cols-3">
+        <div className="mt-[30px] grid  grid-cols-1 gap-x-[25px] gap-y-[15px]   lg:mt-[42px]  lg:grid-cols-2 lg:gap-x-[28px] lg:gap-y-[21px] xl:mt-[48px] xl:gap-y-[24px] xl:gap-x-[32px] 2xl:mt-[60px] 2xl:grid-cols-2 2xl:gap-x-[40px] 2xl:gap-y-[30px] 3xl:grid-cols-2 4xl:grid-cols-3">
           {testimonialsToShow?.map((testimonial, index) => (
             <div key={index}>
               <SingleCard
@@ -321,6 +321,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                 updatedAt={testimonial.updatedAt}
                 live={testimonial.live}
                 download={testimonial.download}
+                addToXnodeMessage={testimonial.addToXnodeMessage}
               />
             </div>
           ))}
@@ -335,7 +336,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
           }}
           className="mt-[31px] flex cursor-pointer  justify-center text-[8px] font-medium -tracking-[2%] text-[#959595] hover:text-[#686767] md:text-[13px] lg:!leading-[200%] xl:text-[15px] 2xl:text-[18px]"
         >
-          {viewAll ? 'Show more' : 'Show less'}
+          {viewAll ? 'Show less' : 'Show more'}
         </div>
         <div className="md:hidden">
           <div className="mt-[25px] border-b-[1px] border-[#D9D9D9] pb-[8px] text-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
