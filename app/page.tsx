@@ -1,25 +1,25 @@
 /* eslint-disable no-unused-vars */
-"use client";
+'use client'
 
-import ScrollUp from "@/components/Common/ScrollUp";
-import Hero from "@/components/Hero";
-import { Inter } from "@next/font/google";
-import { useRef } from "react";
-import FirstStep from "@/components/FirstStep";
-import Footer from "@/components/Footer";
-import Console from "@/components/Console";
+import ScrollUp from '@/components/Common/ScrollUp'
+import Hero from '@/components/Hero'
+import { Inter } from '@next/font/google'
+import { useRef } from 'react'
+import FirstStep from '@/components/FirstStep'
+import Footer from '@/components/Footer'
+import Console from '@/components/Console'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const pricingRef = useRef(null);
-  const contributorsRef = useRef(null);
-  const tallyFormsRef = useRef(null);
+  const pricingRef = useRef(null)
+  const contributorsRef = useRef(null)
+  const tallyFormsRef = useRef(null)
 
   return (
     <>
       <ScrollUp />
       <Console />
     </>
-  );
+  )
 }

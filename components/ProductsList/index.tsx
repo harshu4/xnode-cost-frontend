@@ -313,8 +313,11 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                 description={testimonial.description}
                 createdAt={testimonial.createdAt}
                 company={testimonial.company}
+                logoURL={testimonial.logoURL}
                 sql={testimonial.sql}
                 tags={testimonial.tags}
+                relevantDocs={testimonial.relevantDocs}
+                free={testimonial.free}
                 updatedAt={testimonial.updatedAt}
                 live={testimonial.live}
                 download={testimonial.download}
