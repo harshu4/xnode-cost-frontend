@@ -484,20 +484,27 @@ const DataProduct = (id: any) => {
                 <div className="text-[7px] font-semibold text-[#B7B7B7]  md:text-[10px]  lg:text-[12px] lg:!leading-[17px] 2xl:text-[14px]">
                   3rd Party Intergration
                 </div>
-                <a
-                  href={data?.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:py-[11.6px] xl:px-[16.5px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[20.5px] 2xl:text-[16px]">
-                    <div>Add to Xnode</div>
-                    <img
-                      src={`/images/dataset/bolas.svg`}
-                      alt="image"
-                      className="my-auto w-[12px] xl:w-[13.6px] 2xl:w-[17px]"
-                    />
+                {data.addToXnodeMessage === 'Add to Xnode' ? (
+                  <a
+                    href={data?.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:py-[11.6px] xl:px-[16.5px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[20.5px] 2xl:text-[16px]">
+                      <div>Add to Xnode</div>
+                      <img
+                        src={`/images/dataset/bolas.svg`}
+                        alt="image"
+                        className="my-auto w-[12px] xl:w-[13.6px] 2xl:w-[17px]"
+                      />
+                    </div>
+                  </a>
+                ) : (
+                  <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] justify-center gap-x-[10px] rounded-[5px] bg-[#8f8e8e] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:py-[11.6px] xl:px-[16.5px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[20.5px] 2xl:text-[16px]">
+                    <div>Coming Soon...</div>
                   </div>
-                </a>
+                )}
+
                 <a href={data.website} target="_blank" rel="noreferrer">
                   <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] underline underline-offset-1 hover:text-[#a3a3a3] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
                     Website
