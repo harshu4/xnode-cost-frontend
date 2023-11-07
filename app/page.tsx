@@ -8,6 +8,7 @@ import { useRef } from 'react'
 import FirstStep from '@/components/FirstStep'
 import Footer from '@/components/Footer'
 import Console from '@/components/Console'
+import LandingPage from '@/components/LandingPage'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <Console />
+      <LandingPage />
     </>
   )
 }

@@ -12,7 +12,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function DataProductsPage() {
   return (
     <>
-      <DataProducts />
+      <ScrollUp />
+      <Console />
     </>
   )
 }
