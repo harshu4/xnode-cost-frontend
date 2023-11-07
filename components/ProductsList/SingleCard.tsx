@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use client'
 import { DataProvider } from '@/types/dataProvider'
 import { formatDistanceToNow } from 'date-fns'
@@ -16,6 +17,7 @@ const SingleCard = ({
   live,
   download,
   isThirdParty,
+  addToXnodeMessage,
 }: DataProvider) => {
   let timeAgo = formatDistanceToNow(new Date(updatedAt), { addSuffix: true })
   timeAgo = timeAgo.replace('about', '').trim()
@@ -75,37 +77,27 @@ const SingleCard = ({
             <div className="h-fit rounded-[5px] border-[1px] border-[#FFC946] bg-[#FFE9B2] px-[4px] py-[2] text-[5px] font-semibold lg:px-[5px] lg:py-[4px] lg:text-[8px] 2xl:px-[7px] 2xl:py-[5px] 2xl:text-[10px] 2xl:!leading-[12px]">
               NEW!
             </div>
-            <div
-              onClick={() => {
-                // setNext(true)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
-              className={`ml-auto ${
-                addVisible ? 'flex' : 'hidden'
-              }  cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
-            >
-              <div>Add</div>
-            </div>
-            <div
-              className={`ml-auto flex gap-x-[5px] lg:gap-x-[8px] 2xl:gap-x-[10px] ${
-                addVisible ? 'hidden' : ''
-              }`}
-            >
-              {live && (
-                <img
-                  src={`/images/hero/live2.svg`}
-                  alt="image"
-                  className={`h-[15px] w-[22.5px] lg:h-[25px] lg:w-[40px] 2xl:h-[30px] 2xl:w-[45px]`}
-                />
-              )}
-              {download && (
-                <img
-                  src={`/images/hero/download.svg`}
-                  alt="image"
-                  className={`h-[15px] w-[22.5px] lg:h-[25px] lg:w-[40px] 2xl:h-[30px] 2xl:w-[45px]`}
-                />
-              )}
-            </div>
+            {addToXnodeMessage === 'Add to Xnode' ? (
+              <div
+                onClick={() => {
+                  // setNext(true)
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+                className={`ml-auto flex cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
+              >
+                <div>Add</div>
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  // setNext(true)
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+                className={`ml-auto flex rounded-[5px] bg-[#B4B7BB] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
+              >
+                <div>Soon</div>
+              </div>
+            )}
           </div>
           <div className="lg::mt-[8px] mt-[5px] text-[8px] font-semibold text-[#505050] lg:text-[13px] lg:!leading-[19px] 2xl:mt-[10px] 2xl:text-[16px]">
             {company} •{' '}
@@ -116,7 +108,7 @@ const SingleCard = ({
 
           <div
             title={description}
-            className="mt-[8px]  overflow-hidden text-[8px] font-medium text-[#959595] line-clamp-5 md:text-[10px]  lg:mt-[12px] lg:text-[12px] lg:!leading-[19px]  xl:max-w-[480px] 2xl:mt-[15px] 2xl:max-w-[600px] 2xl:text-[16px]"
+            className="mt-[8px]  overflow-hidden text-[8px] font-medium text-[#959595] line-clamp-3 md:text-[10px]  lg:mt-[12px] lg:text-[12px] lg:!leading-[19px]  xl:max-w-[480px] 2xl:mt-[15px] 2xl:max-w-[600px] 2xl:text-[16px]"
           >
             {description}
           </div>
