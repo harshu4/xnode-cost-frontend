@@ -209,7 +209,7 @@ export default function Tasks() {
         <h1 className=" mt-[120px] flex h-[56px] w-[1067px] flex-row justify-start font-inter text-[40px] font-normal text-black">
           Get to know individual modules
         </h1>
-        <div className="grid grid-cols-2 items-center justify-between gap-x-[115px] gap-y-[100px]">
+        <div className="lg:w-70 min-[1536]:grid-cols-1 grid grid-cols-1 items-center justify-between gap-x-[115px] gap-y-[100px] sm:grid-cols-2 xl:w-80 2xl:w-full ">
           <IndividualModules {...modulesData[0]} />
           <IndividualModules {...modulesData[1]} />
           <IndividualModules {...modulesData[2]} />
