@@ -41,7 +41,7 @@ const LandingPage = () => {
               Play around it now
             </h2>
             <button className="h-[59px] w-[265px] rounded-[50px] bg-gradient-to-r from-[#4255FF] via-[#6069EC] to-[#4023B5] p-[10px] text-center text-[20px] font-normal text-[#FFFFFF]">
-              Launch
+              <a href="/start-here">Launch</a>
             </button>
           </div>
         </div>

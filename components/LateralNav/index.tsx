@@ -31,75 +31,97 @@ const LateralNav = ({ onValueChange }) => {
 
   const preSetsOptions = [
     {
-      icon: '/images/lateralNavBar/start.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]',
-      title: 'Start here',
+      icon: '/images/lateralNavBar/new-home.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Home',
     },
     {
-      icon: '/images/lateralNavBar/cubo.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[20px] lg:w-[24px] xl:w-[27px] 2xl:w-[34px]',
+      icon: '/images/lateralNavBar/new-dashboard.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Dashboard',
     },
     {
-      icon: '/images/lateralNavBar/server.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]',
+      icon: '/images/lateralNavBar/new-servers.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Servers',
     },
     {
-      icon: '/images/lateralNavBar/tomada.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[20px] lg:w-[25px] xl:w-[28px] 2xl:w-[35px]',
-      title: 'APIs',
-    },
-    {
-      icon: '/images/lateralNavBar/database.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[23px] xl:w-[26px] 2xl:w-[33px]',
+      icon: '/images/lateralNavBar/new-data.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Data',
     },
     {
-      icon: '/images/lateralNavBar/node.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[20px] lg:w-[24.5px] xl:w-[28px] 2xl:w-[35px]',
+      icon: '/images/lateralNavBar/new-apis.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'APIs',
+    },
+    {
+      icon: '/images/lateralNavBar/new-rpc.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'RPC',
     },
     {
-      icon: '/images/lateralNavBar/bolas.svg',
-      iconStyle:
-        'w-[23px]  h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
+      icon: '/images/lateralNavBar/new-analytics.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Analytics',
     },
     {
-      icon: '/images/lateralNavBar/dash.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
-      title: 'Apps',
+      icon: '/images/lateralNavBar/new-data-management.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Data management',
     },
     {
-      icon: '/images/lateralNavBar/ml.svg',
+      icon: '/images/lateralNavBar/new-storage.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Storage',
+    },
+    {
+      icon: '/images/lateralNavBar/new-compute.svg',
       iconStyle:
-        'w-[23px] h-[24px] md:w-[18.5px] lg:w-[22px] xl:w-[25px] 2xl:w-[31px]',
+        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
+      title: 'Compute',
+    },
+    {
+      icon: '/images/lateralNavBar/new-trading.svg',
+      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.5px] 2xl:w-[18px]',
+      title: 'Trading',
+    },
+    {
+      icon: '/images/lateralNavBar/new-ai.svg',
+      iconStyle:
+        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
       title: 'ML/LLMs',
     },
     {
-      icon: '/images/lateralNavBar/settings.svg',
-      iconStyle:
-        'w-[23px] h-[24px] md:w-[19.5px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]',
+      icon: '/images/lateralNavBar/new-apps.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Apps',
+    },
+    {
+      icon: '/images/lateralNavBar/new-utility.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Utility',
+    },
+    {
+      icon: '/images/lateralNavBar/new-docs.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Docs',
+    },
+    {
+      icon: '/images/lateralNavBar/new-profile.png',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Profile',
     },
   ]
 
   function handleButtonClick(title: string) {
-    if (title === 'Start here') {
+    if (title === 'Home') {
       setNextFromScratch(false)
       setNext(false)
-      push('/')
+      push('/start-here')
       return
     }
-    if (!next && !nextFromScratch && title !== 'Start here') {
+    if (!next && !nextFromScratch && title !== 'Home') {
       setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
       setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
     } else {
@@ -109,7 +131,7 @@ const LateralNav = ({ onValueChange }) => {
   }
 
   function handleButtonHover(title: string) {
-    if (!next && !nextFromScratch && title !== 'Start here') {
+    if (!next && !nextFromScratch && title !== 'Home') {
       return
     } else {
       setHoveredIcon(title)
@@ -123,29 +145,36 @@ const LateralNav = ({ onValueChange }) => {
           onMouseEnter={() => setIsOpen(true)}
           className="z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
-          <div className="">
-            <div className="flex w-[50px] flex-col items-center justify-center px-[15px] pb-[24px] pt-[17px] md:px-[11.5px] md:pb-[30px] md:pt-[20px] lg:px-[13.5px] lg:pb-[34px] lg:pt-[24px] xl:px-[15px] xl:pb-[39px] xl:pt-[27px] 2xl:px-[19px] 2xl:pb-[49px] 2xl:pt-[34px]">
-              <div className="h-[24px] w-[32px]">
-                <img src="/images/lateralNavBar/box.svg"></img>
-              </div>
-              <div className={` mt-[139px] mb-[33px] h-[12px] w-[20.5px] `}>
-                <img
-                  onClick={() => setIsOpen(true)}
-                  src="/images/lateralNavBar/nav.svg"
-                  alt="image"
-                />
-              </div>
-
-              <ul className="flex flex-col items-center gap-[38px]">
-                {preSetsOptions.map((option, index) => (
-                  <li key={index}>
-                    <div className=" h-[24px] w-[23px]">
-                      <img src={option.icon}></img>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+          <div className="flex w-[42px] flex-col items-center justify-center px-[15px] pb-[45px] pt-[14px] md:w-[51px] md:px-[11.5px] md:pb-[54px] md:pt-[17px] lg:w-[60px] lg:px-[13.5px] lg:pb-[63px] lg:pt-[20px] xl:w-[68px] xl:px-[15px] xl:pb-[72px] xl:pt-[23px] 2xl:w-[85px] 2xl:px-[15px] 2xl:pb-[90px] 2xl:pt-[28px]">
+            <div
+              className={`mb-[29px] h-[12px] w-[20.5px] md:mb-[35px] lg:mb-[40px] xl:mb-[47px] 2xl:mb-[58px] `}
+            >
+              <img
+                onClick={() => setIsOpen(true)}
+                src="/images/lateralNavBar/nav.svg"
+                alt="image"
+              />
             </div>
+            <ul className="flex flex-col items-center gap-[40px]">
+              {preSetsOptions.map((option, index) => (
+                <li className="relative" key={index}>
+                  <img
+                    src={option.icon}
+                    alt="image"
+                    className={option.iconStyle}
+                  />
+                  <img
+                    src="/images/lateralNavBar/new-arrow.svg"
+                    alt="image"
+                    className={` ${
+                      option.title === 'Home' || option.title === 'Dashboard'
+                        ? 'hidden'
+                        : ''
+                    } absolute top-[2.5px] right-[14px] w-[4px] md:top-[3px] md:right-[16.8px] md:w-[4.8px] lg:top-[3.5px] lg:right-[19.6px] lg:w-[5.6px] xl:top-[4px] xl:right-[22.4px] xl:w-[6.4px] 2xl:top-[5px] 2xl:right-[28px] 2xl:w-[8px]`}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </>
@@ -156,10 +185,10 @@ const LateralNav = ({ onValueChange }) => {
     <>
       <div
         onMouseLeave={() => setIsOpen(false)}
-        className="relative z-50 max-w-[177px]  pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:pb-[600px]"
+        className="relative z-50 max-w-[109px] pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:max-w-[130px]  md:pb-[600px] lg:max-w-[152px] xl:max-w-[180px] 2xl:max-w-[230px]"
       >
         <div className="flex  flex-col items-start">
-          <div className="mb-[139px] mt-[14px] flex h-[39px] w-[177px] flex-row items-center justify-between   ">
+          <div className="mb-[13px] mt-[14px] flex h-[39px] w-[177px] flex-row items-center justify-between md:mb-[16px] lg:mb-[19px] xl:mb-[22px] 2xl:mb-[27px]   ">
             <div className="ml-[15px] flex h-[12px] w-[20.4px] cursor-pointer flex-col items-center  ">
               <img
                 onClick={() => setIsOpen(false)}
@@ -182,8 +211,8 @@ const LateralNav = ({ onValueChange }) => {
                 handleButtonClick(option.title)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className={`relative  mb-[14px] flex h-[24px] w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[14px] md:px-[13px] md:py-[17px] lg:px-[15.5px] lg:py-[20px] xl:px-[17.5px] xl:py-[22.5px] 2xl:px-[22px] 2xl:py-[28px] ${
-                !next && !nextFromScratch && option.title !== 'Start here'
+              className={`relative flex h-[24px] w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[20px] md:px-[20px] md:py-[24px] lg:px-[23px] lg:py-[28px] xl:px-[27px] xl:py-[32px] 2xl:px-[33px]  2xl:py-[40px] ${
+                !next && !nextFromScratch && option.title !== 'Home'
                   ? 'w-full opacity-50 hover:bg-[#fff]'
                   : 'cursor-pointer hover:bg-[#F4F4F4]'
               } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
@@ -193,7 +222,7 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
                 className={`${option.iconStyle}  mx-auto`}
               />
-              {option.title === 'Start here' && (
+              {option.title === 'Home' && (
                 <img
                   src="/images/lateralNavBar/green-ellipse.svg"
                   alt="green dot"
@@ -201,9 +230,18 @@ const LateralNav = ({ onValueChange }) => {
                   className="absolute top-2 right-2 h-3 w-3 transition-opacity duration-500"
                 />
               )}
-              <div className=" flex w-full items-center text-start font-inter text-[15px] font-medium !-tracking-[2%] text-[#000]  md:text-[9.5px] lg:text-[11px] lg:!leading-[19px]  xl:text-[13px] 2xl:text-[16px]">
+              <div className=" flex w-full items-center text-start font-inter text-[9px] font-medium !-tracking-[2%] text-[#000]  md:text-[8.4px] lg:text-[10px] lg:!leading-[19px]  xl:text-[11.2px] 2xl:text-[14px]">
                 {option.title}
               </div>
+              <img
+                src="/images/lateralNavBar/new-arrow.svg"
+                alt="image"
+                className={` ${
+                  option.title === 'Home' || option.title === 'Dashboard'
+                    ? 'hidden'
+                    : ''
+                } absolute top-[17.5px] left-[7px] w-[4px] md:top-[21px] md:right-[9px] md:w-[4.8px] lg:top-[24.5px] lg:left-[10.5px] lg:w-[5.6px] xl:top-[28px] xl:left-[12px] xl:w-[6.4px] 2xl:top-[35px] 2xl:left-[15px] 2xl:w-[8px]`}
+              />
             </div>
           ))}
         </div>
