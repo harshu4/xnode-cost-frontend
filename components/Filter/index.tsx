@@ -23,16 +23,15 @@ const Filter = ({ onUpdate }: ModalProps) => {
   const [filterOrderBy, setFilterOrderBy] = useState<string>('')
 
   const categoriesOptions = [
-    'Crypto Exchanges',
-    'Public Blockchains',
-    'Decentralized Finance (DeFi)',
-    'Blockchain Metaverses',
-    'GameFi (Blockchain Games)',
-    'Financial Data',
-    'Public Medical Research',
-    'Scientific Data',
-    'Cancer Research',
-    'Agricultural',
+    'Analytics',
+    'Servers',
+    'RPC',
+    'Compute',
+    'Utility',
+    'Data',
+    'Trading',
+    'Storage',
+    'Streaming Data',
   ]
 
   const orderByOptions = ['Most Popular', 'Recently Added']
@@ -126,7 +125,7 @@ const Filter = ({ onUpdate }: ModalProps) => {
 
   return (
     <section className="max-w-[190px] bg-white p-[5px] text-[8px] font-normal text-[#000] md:text-[11px] lg:min-w-[200px] lg:pt-[100px] lg:text-[13px] lg:!leading-[220%] 2xl:max-w-[220px] 2xl:text-[14px]">
-      <div className="lg:!leading-[200%]">
+      {/* <div className="lg:!leading-[200%]">
         <div className="mt-[8px] lg:mt-[12px] 2xl:mt-[15px]">
           {orderByOptions.map((order, index) => (
             <div
@@ -142,7 +141,7 @@ const Filter = ({ onUpdate }: ModalProps) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       <div className="mt-[20px] lg:mt-[32px] 2xl:mt-[40px]">
         <div className="border-b-[1px] border-[#D9D9D9] pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
           Categories
