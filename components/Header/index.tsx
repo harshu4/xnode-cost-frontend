@@ -311,7 +311,7 @@ const Header = () => {
   return (
     <>
       <header className="top-0 left-0 z-40 mx-0 flex w-full items-center bg-[#fff]  pt-[7px] text-[#000000] md:pt-[8px] lg:pt-[9px] xl:pt-[10.5px] xl:pb-[27.8px] 2xl:pt-[13px] 2xl:pb-[46px]">
-        <div className="w-full justify-between px-[20px] md:px-[33px] xl:hidden">
+        <div className="w-full justify-between py-[20px] px-[20px] md:px-[33px] xl:hidden">
           <div className="">
             <img
               src={`${
@@ -327,7 +327,7 @@ const Header = () => {
             onClick={navbarToggleHandler}
             id="navbarToggler"
             aria-label="Mobile Menu"
-            className="absolute right-7 top-7 block  rounded-lg px-3 py-[6px] ring-primary focus:ring-2"
+            className="absolute right-7 top-5 block  rounded-lg px-3 py-[6px] ring-primary focus:ring-2"
           >
             <span
               className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300  ${
