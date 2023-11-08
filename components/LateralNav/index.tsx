@@ -83,13 +83,13 @@ const LateralNav = ({ onValueChange }) => {
     },
     {
       icon: '/images/lateralNavBar/new-trading.svg',
-      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.5px] 2xl:w-[18px]',
+      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]',
       title: 'Trading',
     },
     {
       icon: '/images/lateralNavBar/new-ai.svg',
       iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
+        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]',
       title: 'ML/LLMs',
     },
     {
@@ -188,7 +188,7 @@ const LateralNav = ({ onValueChange }) => {
         className="relative z-50 max-w-[109px] pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:max-w-[130px]  md:pb-[600px] lg:max-w-[152px] xl:max-w-[180px] 2xl:max-w-[230px]"
       >
         <div className="flex  flex-col items-start">
-          <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between md:mt-[29.4px] md:mb-[17.4px] md:ml-[19.2px] lg:mt-[34.3px] lg:mb-[20.3px] lg:ml-[22.4px] xl:mt-[39.2px] xl:mb-[22.2px] xl:ml-[25.6px] 2xl:mt-[49px] 2xl:mb-[29px] 2xl:ml-[32px]">
+          <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between md:mt-[29.4px] md:mb-[17.4px] md:ml-[19.2px] lg:mt-[34.3px] lg:mb-[20.3px] lg:ml-[22.4px] xl:mt-[39.2px] xl:mb-[21.2px] xl:ml-[25.6px] 2xl:mt-[49px] 2xl:mb-[29px] 2xl:ml-[32px]">
             <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center md:top-[16.8px] md:w-[12.9px] lg:top-[19.6px] lg:w-[15.05px] xl:top-[22.4px]  xl:w-[17.2px] 2xl:top-[28px] 2xl:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(false)}
