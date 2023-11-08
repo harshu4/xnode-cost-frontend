@@ -79,19 +79,19 @@ const Header = () => {
   const headerItens = [
     {
       label: 'About',
-      href: `/`,
+      href: `https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview`,
     },
     {
       label: 'Use cases',
-      href: `/`,
+      href: `https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases`,
     },
     {
       label: 'Innovation',
-      href: `/faqs`,
+      href: `https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/vision-and-roadmap`,
     },
     {
       label: 'Docs',
-      href: `/faqs`,
+      href: `/docs`,
     },
   ]
 
