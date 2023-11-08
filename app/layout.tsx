@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
 // import Footer from '@/components/Footer'
-import ScrollToTop from "@/components/ScrollToTop";
-import "node_modules/react-modal-video/css/modal-video.css";
-import "../styles/index.css";
-import { Providers } from "./providers";
-import Header from "@/components/Header";
-import LateralNav from "@/components/LateralNav";
+import ScrollToTop from '@/components/ScrollToTop'
+import 'node_modules/react-modal-video/css/modal-video.css'
+import '../styles/index.css'
+import { Providers } from './providers'
+import Header from '@/components/Header'
+import LateralNav from '@/components/LateralNav'
 
 export default function RootLayout({
   children,
 }: {
   // eslint-disable-next-line no-undef
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html suppressHydrationWarning lang="en">
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="max-w-screen w-full bg-white">
         <Providers>
           <div className="flex">
-            <LateralNav onValueChange={console.log("teste")} />
+            <LateralNav onValueChange={console.log('teste')} />
             <div>
               <Header />
               {children}
@@ -36,5 +36,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  );
+  )
 }
