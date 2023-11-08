@@ -153,11 +153,9 @@ const Filter = ({ onUpdate }: ModalProps) => {
                 handleCategorySelection(category)
               }}
               key={index}
-              className={`cursor-pointer hover:text-[#000] ${
-                filterCategories.includes(category)
-                  ? 'text-[#000]'
-                  : 'text-[#959595]'
-              }`}
+              className={`hidden cursor-pointer hover:text-[#000] ${
+                filterCategories.includes(category) && '!block text-[#000]'
+              } ${filterCategories.length === 0 && '!block text-[#000]'}`}
             >
               {category}
             </div>

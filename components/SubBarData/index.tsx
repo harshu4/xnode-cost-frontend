@@ -311,8 +311,8 @@ const SubBarData = ({ onValueChange }) => {
             </div>
           ))}
         </div>
-        <a href="/data-products">
-          <div className="mt-[9px] text-[8px] font-medium hover:font-bold md:mt-[11px] md:ml-[21px] md:text-[9.6px] lg:mt-[12.5px] lg:ml-[24.5px] lg:text-[11.5px] lg:!leading-[300%] xl:mt-[14.5px] xl:ml-[25px] xl:text-[13px] 2xl:mt-[18px] 2xl:ml-[34px] 2xl:text-[16px]">
+        <a href="/data-products?category=Data">
+          <div className="mt-[35px] flex w-full justify-center  text-[8px] font-medium hover:text-[#3a3a3a] md:mt-[41px] md:text-[9.6px] lg:mt-[48px]  lg:text-[11.5px] lg:!leading-[300%] xl:mt-[55px] xl:text-[13px] 2xl:mt-[69px] 2xl:text-[16px]">
             View More
           </div>
         </a>

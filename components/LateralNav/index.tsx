@@ -145,9 +145,9 @@ const LateralNav = ({ onValueChange }) => {
           onMouseEnter={() => setIsOpen(true)}
           className="z-50 shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
-          <div className="flex w-[42px] flex-col items-center justify-center px-[15px] pb-[45px] pt-[14px] md:w-[51px] md:px-[11.5px] md:pb-[54px] md:pt-[17px] lg:w-[60px] lg:px-[13.5px] lg:pb-[63px] lg:pt-[20px] xl:w-[68px] xl:px-[15px] xl:pb-[72px] xl:pt-[23px] 2xl:w-[85px] 2xl:px-[15px] 2xl:pb-[90px] 2xl:pt-[28px]">
+          <div className="flex w-[42px] flex-col items-center justify-center px-[15px] pb-[45px] pt-[49px] md:w-[51px] md:px-[11.5px] md:pb-[54px] md:pt-[58.8px] lg:w-[60px] lg:px-[13.5px] lg:pb-[63px] lg:pt-[68.5px] xl:w-[68px] xl:px-[15px] xl:pb-[72px] xl:pt-[78.4px] 2xl:w-[85px] 2xl:px-[15px] 2xl:pb-[90px] 2xl:pt-[98px]">
             <div
-              className={`mb-[29px] h-[12px] w-[20.5px] md:mb-[35px] lg:mb-[40px] xl:mb-[47px] 2xl:mb-[58px] `}
+              className={`absolute top-[14px] mb-[29px] w-[10.5px] md:top-[16.8px] md:mb-[35px] md:w-[12.9px] lg:top-[19.6px] lg:mb-[40px]  lg:w-[15.05px] xl:top-[22.4px] xl:mb-[47px] xl:w-[17.2px] 2xl:top-[28px] 2xl:mb-[58px] 2xl:w-[21.5px] `}
             >
               <img
                 onClick={() => setIsOpen(true)}
@@ -155,13 +155,13 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
               />
             </div>
-            <ul className="flex flex-col items-center gap-[40px]">
+            <ul className="flex flex-col items-center gap-[20px] md:gap-[24px] lg:gap-[28px] xl:gap-[32px] 2xl:gap-[40px]">
               {preSetsOptions.map((option, index) => (
                 <li className="relative" key={index}>
                   <img
                     src={option.icon}
                     alt="image"
-                    className={option.iconStyle}
+                    className={`${option.iconStyle}`}
                   />
                   <img
                     src="/images/lateralNavBar/new-arrow.svg"
@@ -188,20 +188,20 @@ const LateralNav = ({ onValueChange }) => {
         className="relative z-50 max-w-[109px] pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:max-w-[130px]  md:pb-[600px] lg:max-w-[152px] xl:max-w-[180px] 2xl:max-w-[230px]"
       >
         <div className="flex  flex-col items-start">
-          <div className="mb-[13px] mt-[14px] flex h-[39px] w-[177px] flex-row items-center justify-between md:mb-[16px] lg:mb-[19px] xl:mb-[22px] 2xl:mb-[27px]   ">
-            <div className="ml-[15px] flex h-[12px] w-[20.4px] cursor-pointer flex-col items-center  ">
+          <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between md:mt-[29.4px] md:mb-[17.4px] md:ml-[19.2px] lg:mt-[34.3px] lg:mb-[20.3px] lg:ml-[22.4px] xl:mt-[39.2px] xl:mb-[22.2px] xl:ml-[25.6px] 2xl:mt-[49px] 2xl:mb-[29px] 2xl:ml-[32px]">
+            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center md:top-[16.8px] md:w-[12.9px] lg:top-[19.6px] lg:w-[15.05px] xl:top-[22.4px]  xl:w-[17.2px] 2xl:top-[28px] 2xl:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(false)}
                 src="/images/lateralNavBar/nav.svg"
                 alt="image"
               />
+              <a
+                href={'/'}
+                className="absolute -top-[8px] left-[25px] flex w-[50px] cursor-pointer flex-col items-center md:-top-[9.6px] md:left-[30px] md:w-[60px] lg:-top-[11.2px]  lg:left-[35px] lg:w-[70px] xl:-top-[12.8px] xl:left-[40px] xl:w-[80px] 2xl:-top-[16px] 2xl:left-[50px] 2xl:w-[100px] "
+              >
+                <img src="/images/logo/xnode-logo.svg" alt="image" />
+              </a>
             </div>
-            <a
-              href={'/'}
-              className="ml-[18.6px] mr-[18.6px] flex h-[39px] w-[99px] cursor-pointer flex-col items-center "
-            >
-              <img src="/images/logo/xnode-logo.svg" alt="image" />
-            </a>
           </div>
           {preSetsOptions.map((option, index) => (
             <div
@@ -211,7 +211,7 @@ const LateralNav = ({ onValueChange }) => {
                 handleButtonClick(option.title)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className={`relative flex h-[24px] w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[20px] md:px-[20px] md:py-[24px] lg:px-[23px] lg:py-[28px] xl:px-[27px] xl:py-[32px] 2xl:px-[33px]  2xl:py-[40px] ${
+              className={`relative flex w-full flex-row items-center justify-between gap-[7.5px] px-[13px] py-[10px] md:gap-[9px] md:px-[20px]  md:py-[12px]  lg:gap-[10.5px] lg:px-[23px] lg:py-[14px] xl:gap-[12px] xl:px-[26.4px] xl:py-[16px] 2xl:gap-[15px] 2xl:px-[33px]  2xl:py-[20px] ${
                 !next && !nextFromScratch && option.title !== 'Home'
                   ? 'w-full opacity-50 hover:bg-[#fff]'
                   : 'cursor-pointer hover:bg-[#F4F4F4]'
@@ -230,7 +230,7 @@ const LateralNav = ({ onValueChange }) => {
                   className="absolute top-2 right-2 h-3 w-3 transition-opacity duration-500"
                 />
               )}
-              <div className=" flex w-full items-center text-start font-inter text-[9px] font-medium !-tracking-[2%] text-[#000]  md:text-[8.4px] lg:text-[10px] lg:!leading-[19px]  xl:text-[11.2px] 2xl:text-[14px]">
+              <div className=" flex w-full items-center text-start font-inter text-[9px] font-medium !-tracking-[2%] text-[#000]  md:text-[8.4px] lg:text-[10px] xl:text-[11.2px]  2xl:text-[14px] 2xl:!leading-[19px]">
                 {option.title}
               </div>
               <img
@@ -240,7 +240,7 @@ const LateralNav = ({ onValueChange }) => {
                   option.title === 'Home' || option.title === 'Dashboard'
                     ? 'hidden'
                     : ''
-                } absolute top-[17.5px] left-[7px] w-[4px] md:top-[21px] md:right-[9px] md:w-[4.8px] lg:top-[24.5px] lg:left-[10.5px] lg:w-[5.6px] xl:top-[28px] xl:left-[12px] xl:w-[6.4px] 2xl:top-[35px] 2xl:left-[15px] 2xl:w-[8px]`}
+                } absolute top-[12.5px] left-[7px] w-[4px] md:top-[15px] md:left-[10.2px] md:w-[4.8px] lg:top-[17.5px] lg:left-[12px] lg:w-[5.6px] xl:top-[20px] xl:left-[13.6px] xl:w-[6.4px] 2xl:top-[25px] 2xl:left-[17px] 2xl:w-[8px]`}
               />
             </div>
           ))}
