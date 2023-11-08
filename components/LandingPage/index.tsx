@@ -14,7 +14,7 @@ const LandingPage = () => {
               Revolution Has Started!
             </h1>
           </div>
-          <div className="mt-[20px] mb-[20px] h-[228px] w-[355px] px-[20px]  md:w-[426px]  lg:w-[482px]  xl:w-[568px]  2xl:w-[710px]">
+          <div className="mt-[20px] mb-[20px]  w-[355px] px-[20px]  md:w-[426px]  lg:w-[482px]  xl:w-[568px]  2xl:w-[710px]">
             <p className="text-center text-[18px] leading-[36.31px] tracking-[-5%] text-[#444444] md:text-[22px] lg:text-[25px] xl:text-[29px] 2xl:text-[36px]">
               Build your own data clouds, infrastructure, data connectivity,
               APIs, analytics&nbsp;
@@ -39,7 +39,7 @@ const LandingPage = () => {
           </div>
           <CostSaving></CostSaving>
           <div></div>
-          <div className="mt-[100px] flex h-[169px] w-[208px] flex-col  items-center  md:w-[250px]  lg:w-[290px]  xl:w-[333px] 2xl:w-[417px]">
+          <div className="mt-[100px] flex w-[208px] flex-col  items-center  md:w-[250px]  lg:w-[290px]  xl:w-[333px] 2xl:w-[417px]">
             <h2 className="text-[20px] font-normal leading-[110px] text-[#000] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[40px]">
               Play around it now
             </h2>
@@ -49,8 +49,8 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="mt-[75px] mb-[50px] h-[2px] w-full bg-[#DFD6D6] md:mt-[90px] md:mb-[60px] md:w-3/5 lg:mt-[105px] lg:mb-[70px] lg:w-[70%] xl:mt-[120px] xl:mb-[80px] xl:w-4/5  2xl:mt-[150px] 2xl:mb-[100px] 2xl:w-full"></hr>
-        <div className="flex h-[435px] w-full flex-col items-start justify-center md:w-[729px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]">
-          <div className="mr-[10px] flex h-[130px] w-full flex-col items-start md:mr-[180px] md:w-[648px] lg:mr-[210px] lg:w-[756px] xl:mr-[240px] xl:w-[864px] 2xl:mr-[300px]  2xl:w-[1081px] ">
+        <div className="flex w-full flex-col items-start justify-center md:w-[729px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]">
+          <div className="mr-[10px] flex w-full flex-col items-start md:mr-[180px] md:w-[648px] lg:mr-[210px] lg:w-[756px] xl:mr-[240px] xl:w-[864px] 2xl:mr-[300px]  2xl:w-[1081px] ">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Data Cloud Management
             </h1>
@@ -63,7 +63,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="flex flex-col items-center gap-y-20">
-            <div className="mt-[30px] flex h-[78px] w-full flex-row items-center justify-start">
+            <div className="mt-[30px] flex  w-full flex-row items-center justify-start">
               <img
                 className="hidden h-[39] w-[99px] md:block"
                 src="/images/logo/xnode-logo.svg"
@@ -98,7 +98,7 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[15px] flex h-[78px] w-full flex-row  items-center justify-start md:mt-[18px] lg:mt-[21px] xl:mt-[24px] 2xl:mt-[30px]">
+            <div className="mt-[15px] flex  w-full flex-row  items-center justify-start md:mt-[18px] lg:mt-[21px] xl:mt-[24px] 2xl:mt-[30px]">
               <h2 className="hidden text-[10px] font-bold text-black md:flex md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
                 Others
               </h2>
@@ -117,7 +117,7 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="mt-[20px] mb-[30px] h-[2px] w-full bg-[#DFD6D6] md:mt-[24px] md:w-3/5 lg:mt-[28px] lg:w-[70%] xl:mt-[32px]  xl:w-4/5 2xl:mt-[40px] 2xl:w-full"></hr>
-        <div className="flex h-[535px] w-[607px] flex-col items-center justify-center md:w-[730px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]  ">
+        <div className="flex  w-[607px] flex-col items-center justify-center md:w-[730px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]  ">
           <div className=" flex flex-col items-start">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Explore possibilites
@@ -130,7 +130,7 @@ const LandingPage = () => {
               research outcome predictions.
             </p>
           </div>
-          <div className="grid h-full w-full grid-cols-1 pt-[30px] md:grid-cols-3 lg:grid-cols-3 ">
+          <div className="grid w-full grid-cols-1 pt-[30px] md:grid-cols-3 lg:grid-cols-3 ">
             <div className="flex  w-[340px] flex-col gap-y-[10px]  p-[20px]">
               <img
                 alt="images"
