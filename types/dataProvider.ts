@@ -14,6 +14,7 @@ export type DataProvider = {
   dataGithubLink?: string
   dataCloudLink?: string
   dataCloudName?: string
+  category?: string
   dataSpace?: string
   location?: string
   foundingYear?: string

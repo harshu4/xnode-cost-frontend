@@ -26,16 +26,15 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   const pathname = usePathname()
 
   const categoriesOptions = [
-    'Crypto Exchanges',
-    'Public Blockchains',
-    'Decentralized Finance (DeFi)',
-    'Blockchain Metaverses',
-    'GameFi (Blockchain Games)',
-    'Financial Data',
-    'Public Medical Research',
-    'Scientific Data',
-    'Cancer Research',
-    'Agricultural',
+    'Analytics',
+    'Servers',
+    'RPC',
+    'Compute',
+    'Utility',
+    'Data',
+    'Trading',
+    'Storage',
+    'Streaming Data',
   ]
 
   const useCasesOptions = [
@@ -88,9 +87,11 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   }
 
   const filteredTestimonials = testimonial?.filter((t) => {
+    console.log('the categories hereee')
+    console.log(t)
     return (
       (selectedCategories.length === 0 ||
-        selectedCategories.some((category) => t.tags.includes(category))) &&
+        selectedCategories.some((category) => category === t.category)) &&
       (selectedUseCases.length === 0 ||
         selectedUseCases.some((useCase) => t.useCases.includes(useCase))) &&
       (t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -113,6 +114,19 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   const testimonialsToShow = viewAll
     ? sortedTestimonials
     : sortedTestimonials?.slice(0, 10)
+
+  const groupByCategory = (testimonials) => {
+    return testimonials.reduce((groups, testimonial) => {
+      const category = testimonial.category
+      if (!groups[category]) {
+        groups[category] = []
+      }
+      groups[category].push(testimonial)
+      return groups
+    }, {})
+  }
+
+  const groupedTestimonials = groupByCategory(filteredTestimonials)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -303,30 +317,21 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
         ) : (
           <></>
         )}
-        <div className="mt-[30px] grid  grid-cols-1 gap-x-[25px] gap-y-[15px]   lg:mt-[42px]  lg:grid-cols-2 lg:gap-x-[28px] lg:gap-y-[21px] xl:mt-[48px] xl:gap-y-[24px] xl:gap-x-[32px] 2xl:mt-[60px] 2xl:grid-cols-2 2xl:gap-x-[40px] 2xl:gap-y-[30px] 3xl:grid-cols-2 4xl:grid-cols-3">
-          {testimonialsToShow?.map((testimonial, index) => (
-            <div key={index}>
-              <SingleCard
-                isThirdParty={testimonial.isThirdParty}
-                id={testimonial.id}
-                name={testimonial.name}
-                description={testimonial.description}
-                createdAt={testimonial.createdAt}
-                company={testimonial.company}
-                logoURL={testimonial.logoURL}
-                sql={testimonial.sql}
-                tags={testimonial.tags}
-                relevantDocs={testimonial.relevantDocs}
-                free={testimonial.free}
-                updatedAt={testimonial.updatedAt}
-                live={testimonial.live}
-                download={testimonial.download}
-                addToXnodeMessage={testimonial.addToXnodeMessage}
-              />
+        <div className="mt-[30px] grid gap-y-[41px] md:gap-y-[50px] lg:gap-y-[58px] xl:gap-y-[67px] 2xl:gap-y-[83px]">
+          {Object.keys(groupedTestimonials).map((category) => (
+            <div key={category}>
+              <div className="text-lg text-[10px] font-bold text-[#505050] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
+                {category}
+              </div>
+              <div className="mt-[20px] grid grid-cols-1 gap-x-[25px] gap-y-[15px] md:mt-[24px] lg:mt-[28px] lg:grid-cols-2 lg:gap-x-[28px] lg:gap-y-[21px] xl:mt-[32px] 2xl:mt-[40px]">
+                {groupedTestimonials[category].map((testimonial, index) => (
+                  <SingleCard key={index} {...testimonial} />
+                ))}
+              </div>
             </div>
           ))}
         </div>
-        <div
+        {/* <div
           onClick={() => {
             if (viewAll) {
               const element = document.getElementById('experts')
@@ -337,7 +342,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
           className="mt-[31px] flex cursor-pointer  justify-center text-[8px] font-medium -tracking-[2%] text-[#959595] hover:text-[#686767] md:text-[13px] lg:!leading-[200%] xl:text-[15px] 2xl:text-[18px]"
         >
           {viewAll ? 'Show less' : 'Show more'}
-        </div>
+        </div> */}
         <div className="md:hidden">
           <div className="mt-[25px] border-b-[1px] border-[#D9D9D9] pb-[8px] text-[8px] lg:mt-[12px] lg:pb-[12px] 2xl:mt-[15px] 2xl:pb-[15px]">
             <div className="pb-[8px] font-bold lg:pb-[12px] lg:leading-[19px] 2xl:pb-[15px]">
