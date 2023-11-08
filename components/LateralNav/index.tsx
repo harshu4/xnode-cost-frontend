@@ -155,7 +155,7 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
               />
             </div>
-            <ul className="flex flex-col items-center gap-[40px]">
+            <ul className="flex flex-col items-center gap-[20px] md:gap-[24px] lg:gap-[28px] xl:gap-[32px] 2xl:gap-[40px]">
               {preSetsOptions.map((option, index) => (
                 <li className="relative" key={index}>
                   <img
@@ -188,8 +188,8 @@ const LateralNav = ({ onValueChange }) => {
         className="relative z-50 max-w-[109px] pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:max-w-[130px]  md:pb-[600px] lg:max-w-[152px] xl:max-w-[180px] 2xl:max-w-[230px]"
       >
         <div className="flex  flex-col items-start">
-          <div className="mb-[13px] mt-[14px] flex h-[39px] w-[177px] flex-row items-center justify-between md:mb-[16px] lg:mb-[19px] xl:mb-[22px] 2xl:mb-[27px]   ">
-            <div className="ml-[15px] flex h-[12px] w-[20.4px] cursor-pointer flex-col items-center  ">
+          <div className="mb-[12.5px] mt-[14px] flex  w-[177px] flex-row items-center justify-between md:mb-[15px] lg:mb-[17.5px] xl:mb-[20px] 2xl:mb-[25px] 2xl:pl-[33px]">
+            <div className="flex w-[20.4px] cursor-pointer flex-col items-center">
               <img
                 onClick={() => setIsOpen(false)}
                 src="/images/lateralNavBar/nav.svg"
@@ -198,7 +198,7 @@ const LateralNav = ({ onValueChange }) => {
             </div>
             <a
               href={'/'}
-              className="ml-[18.6px] mr-[18.6px] flex h-[39px] w-[99px] cursor-pointer flex-col items-center "
+              className="ml-[18.6px] mr-[18.6px] flex w-[99px] cursor-pointer flex-col items-center "
             >
               <img src="/images/logo/xnode-logo.svg" alt="image" />
             </a>
@@ -211,7 +211,7 @@ const LateralNav = ({ onValueChange }) => {
                 handleButtonClick(option.title)
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className={`relative flex h-[24px] w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[20px] md:px-[20px] md:py-[24px] lg:px-[23px] lg:py-[28px] xl:px-[27px] xl:py-[32px] 2xl:px-[33px]  2xl:py-[40px] ${
+              className={`relative flex w-full flex-row items-center justify-between gap-[15px] px-[13px]  py-[10px] md:px-[20px] md:py-[12px] lg:px-[23px] lg:py-[14px] xl:px-[27px] xl:py-[16px] 2xl:px-[33px]  2xl:py-[20px] ${
                 !next && !nextFromScratch && option.title !== 'Home'
                   ? 'w-full opacity-50 hover:bg-[#fff]'
                   : 'cursor-pointer hover:bg-[#F4F4F4]'
@@ -240,7 +240,7 @@ const LateralNav = ({ onValueChange }) => {
                   option.title === 'Home' || option.title === 'Dashboard'
                     ? 'hidden'
                     : ''
-                } absolute top-[17.5px] left-[7px] w-[4px] md:top-[21px] md:right-[9px] md:w-[4.8px] lg:top-[24.5px] lg:left-[10.5px] lg:w-[5.6px] xl:top-[28px] xl:left-[12px] xl:w-[6.4px] 2xl:top-[35px] 2xl:left-[15px] 2xl:w-[8px]`}
+                } absolute top-[12.5px] left-[7px] w-[4px] md:top-[15px] md:left-[10.2px] md:w-[4.8px] lg:top-[17.5px] lg:left-[12px] lg:w-[5.6px] xl:top-[20px] xl:left-[13.6px] xl:w-[6.4px] 2xl:top-[25px] 2xl:left-[17px] 2xl:w-[8px]`}
               />
             </div>
           ))}
