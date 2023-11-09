@@ -49,7 +49,7 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="mt-[75px] mb-[25px] h-[2px] w-full bg-[#DFD6D6] md:mt-[90px] md:mb-[60px] md:w-3/5 lg:mt-[105px] lg:mb-[70px] lg:w-[70%] xl:mt-[120px] xl:mb-[80px] xl:w-4/5  2xl:mt-[150px] 2xl:mb-[100px] 2xl:w-full"></hr>
-        <div className="flex w-full flex-col items-start justify-center md:w-[729px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]">
+        <div className="flex w-full flex-col items-start justify-center md:w-[329px] lg:w-[550px] xl:w-[772px] 2xl:w-[1215px]">
           <div className="mr-[10px] flex w-full flex-col items-start md:mr-[180px] md:w-[648px] lg:mr-[210px] lg:w-[756px] xl:mr-[240px] xl:w-[864px] 2xl:mr-[300px]  2xl:w-[1081px] ">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Data Cloud Management
@@ -121,7 +121,7 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="mt-[20px] mb-[30px] h-[2px] w-full bg-[#DFD6D6] md:mt-[24px] md:w-3/5 lg:mt-[28px] lg:w-[70%] xl:mt-[32px]  xl:w-4/5 2xl:mt-[40px] 2xl:w-full"></hr>
-        <div className="flex  flex-col items-center justify-center md:w-[730px] lg:w-[850px] xl:w-[972px] 2xl:w-[1215px]  ">
+        <div className="flex  flex-col items-center justify-center md:w-[329px] lg:w-[550px] xl:w-[772px] 2xl:w-[1215px]  ">
           <div className=" flex flex-col items-start">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Explore possibilites

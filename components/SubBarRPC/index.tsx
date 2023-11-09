@@ -24,6 +24,7 @@ const SubBarRPC = ({ onValueChange }) => {
       link: 'Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product/bb0fcfde-dbb6-4b06-ac1d-86d69cf5d39b',
       src: '/images/subNavBarRPC/validateCloud.svg',
       style: '2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]',
       isFree: false,
@@ -36,6 +37,7 @@ const SubBarRPC = ({ onValueChange }) => {
       link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product',
       src: '/images/subNavBarRPC/node.svg',
       style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
       isFree: false,
@@ -48,6 +50,7 @@ const SubBarRPC = ({ onValueChange }) => {
       link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product',
       src: '/images/subNavBarRPC/node.svg',
       style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
       isFree: false,
@@ -101,7 +104,9 @@ const SubBarRPC = ({ onValueChange }) => {
                     alt="image"
                     className={option.style} // Adicionando uma transição de 2 segundos
                   />
-                  <div className="font-semibold">{option.title}</div>
+                  <a href={option.pageRef}>
+                    <div className="font-semibold">{option.title}</div>
+                  </a>
                   {option.isFree && (
                     <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                       Free

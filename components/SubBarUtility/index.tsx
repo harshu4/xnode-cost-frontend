@@ -25,6 +25,7 @@ const SubBarUtility = ({ onValueChange }) => {
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
       src: '/images/subNavBarUtility/grafana.svg',
+      pageRef: '/data-product/574434a8-f2ff-4e66-b7ca-798def52725d',
       style: '2xl:w-[21px] xl:w-[17px] lg:w-[14.5px] md:w-[12.6px] w-[10.5px]',
       isFree: true,
       enabled: true,
@@ -37,6 +38,7 @@ const SubBarUtility = ({ onValueChange }) => {
       link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product/84db4ac6-1ebe-443c-b88d-6cb057c08c56',
       src: '/images/subNavBarUtility/prometheus.svg',
       style: '2xl:w-[20px] xl:w-[16px] lg:w-[14px] md:w-[12px] w-[10px]',
       isFree: true,
@@ -50,6 +52,7 @@ const SubBarUtility = ({ onValueChange }) => {
       link: 'Data Pipeline, Data Engineering,  Propagate Change',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product/45309a27-a618-4a7e-9321-f2d22a148832',
       src: '/images/subNavBarUtility/ascend.svg',
       style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px] md:w-[19px] w-[16px]',
       isFree: true,
@@ -63,6 +66,7 @@ const SubBarUtility = ({ onValueChange }) => {
       link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product/42cd6280-3c37-4cf2-b53e-ffa6dee2fac6',
       src: '/images/subNavBarAnalytics/databricks.svg',
       style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
       isFree: false,
@@ -76,6 +80,7 @@ const SubBarUtility = ({ onValueChange }) => {
       link: 'Ethereum, Polygon, Avalanche, BNB Chain, Optimism, Arbitrum, Solana',
       linkRef:
         'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+      pageRef: '/data-product',
       src: '/images/subNavBarAnalytics/databricks.svg',
       style: '2xl:w-[25px] xl:w-[20px] lg:w-[17.5px] md:w-[15px] w-[12.5px]',
       isFree: false,
@@ -130,7 +135,9 @@ const SubBarUtility = ({ onValueChange }) => {
                     alt="image"
                     className={option.style} // Adicionando uma transição de 2 segundos
                   />
-                  <div className="font-semibold">{option.title}</div>
+                  <a href={option.pageRef}>
+                    <div className="font-semibold">{option.title}</div>
+                  </a>
                   {option.isFree && (
                     <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                       Free

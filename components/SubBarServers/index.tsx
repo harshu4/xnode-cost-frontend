@@ -40,24 +40,29 @@ const SubBarServers = ({ onValueChange }) => {
       title: 'Equinix (Decentralized)',
       enabled: true,
       src: '/images/subNavBarServers/equinix.svg',
-      style: '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px]',
+      pageRef: '/data-product/93508535-ba9c-453e-af19-aa331e1d36f7',
+      style:
+        '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px] !-left-[10px]',
     },
     {
       title: 'AWS (Centralized)',
       enabled: true,
       src: '/images/subNavBarServers/aws.svg',
+      pageRef: '/data-product/2e762548-ec51-48c8-aa07-10b9eae87ee4',
       style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
     },
     {
       title: 'Azure (Centralized)',
       enabled: false,
       src: '/images/subNavBarServers/azure.svg',
+      pageRef: '/data-product',
       style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
     {
       title: 'GCP (Centralized)',
       enabled: false,
       src: '/images/subNavBarServers/gcp.svg',
+      pageRef: '/data-product',
       style: '2xl:w-[17px] xl:w-[13.5px] lg:w-[12px]  md:w-[10.2px] w-[8.5px]',
     },
   ]
@@ -254,13 +259,15 @@ const SubBarServers = ({ onValueChange }) => {
                   alt="image"
                   className={`absolute -left-[5px] top-[15px] my-auto ${option.style}`}
                 />
-                <div
-                  className={` ${
-                    option.enabled ? 'text-[#000]' : 'text-[#B1B1B1]'
-                  } ml-[25px] text-[8px] font-light   md:text-[10px] lg:text-[11px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]`}
-                >
-                  {option.title}
-                </div>
+                <a href={option.pageRef}>
+                  <div
+                    className={` ${
+                      option.enabled ? 'text-[#000]' : 'text-[#B1B1B1]'
+                    } ml-[25px] text-[8px] font-light   md:text-[10px] lg:text-[11px] lg:!leading-[300%] xl:text-[13px] 2xl:text-[16px]`}
+                  >
+                    {option.title}
+                  </div>
+                </a>
                 {option.title === 'Equinix (Decentralized)' && (
                   <div className="absolute text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:-top-[11.2px] xl:-right-[8px] xl:text-[11.2px] 2xl:-top-[14px] 2xl:-right-[10px] 2xl:text-[14px]">
                     Recommended
