@@ -1,10 +1,31 @@
+'use client'
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 
 import Footer from '../Footer'
 import CostSaving from './lp-components/CostSaving'
+import { useEffect, useState } from 'react'
 
 const LandingPage = () => {
+  const [isHRVisible, setHRVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const hrElement = document.getElementById('animated-hr')
+      if (hrElement) {
+        const rect = hrElement.getBoundingClientRect()
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0
+        setHRVisible(isVisible)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   return (
     <>
       <div className="flex w-full flex-col items-center rounded-[10px] bg-[#F9F9F9] p-[20px] pt-[45px] pb-[20px] md:pl-[102px] md:pr-[158px] md:pt-[54px] md:pb-[213px] lg:pl-[119px] lg:pr-[184px] lg:pt-[63px] lg:pb-[248px] xl:max-w-[1800px] xl:pl-[136px] xl:pr-[211px] xl:pt-[72px] xl:pb-[284px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[90px] 2xl:pb-[355px]">
@@ -49,7 +70,7 @@ const LandingPage = () => {
           </div>
         </div>
         <hr className="mt-[75px] mb-[25px] h-[2px] w-full bg-[#DFD6D6] md:mt-[90px] md:mb-[60px] md:w-3/5 lg:mt-[105px] lg:mb-[70px] lg:w-[70%] xl:mt-[120px] xl:mb-[80px] xl:w-4/5  2xl:mt-[150px] 2xl:mb-[100px] 2xl:w-full"></hr>
-        <div className="flex w-full flex-col items-start justify-center md:w-[329px] lg:w-[550px] xl:w-[772px] 2xl:w-[1215px]">
+        <div className="flex w-full flex-col items-start justify-center 2xl:max-w-[1215px]">
           <div className="mr-[10px] flex w-full flex-col items-start md:mr-[180px] md:w-[648px] lg:mr-[210px] lg:w-[756px] xl:mr-[240px] xl:w-[864px] 2xl:mr-[300px]  2xl:w-[1081px] ">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Data Cloud Management
@@ -75,10 +96,25 @@ const LandingPage = () => {
                   <br /> Speed to production <br />
                   Ongoing cost
                 </p>
-                <div className="ml-[20px] mt-[5px] flex flex-col gap-y-5 md:mt-0">
-                  <hr className="via-rgba to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#707070] md:w-[196px] lg:w-[230px] xl:w-[260px] 2xl:w-[327px]"></hr>
-                  <hr className="via-rgba to-opacity-33 to-opacity-33 h-[12px] w-[70px] rounded-xl bg-gradient-to-tl from-[#5A5A5A] via-[rgba(123,123,123,0.707391)] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]"></hr>
-                  <hr className="via-rgba to-opacity-33 via-rgba to-opacity-33 via-rgba-65-65-65-33 to-opacity-33 h-[12px] w-[25px] rounded-xl bg-gradient-to-tl from-[#CCCCCC] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px] "></hr>
+                <div
+                  id="animated-hr"
+                  className="ml-[20px] mt-[5px] flex flex-col gap-y-5 md:mt-0"
+                >
+                  <hr
+                    className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#707070] md:w-[196px] lg:w-[230px] xl:w-[260px] 2xl:w-[327px]`}
+                  ></hr>
+                  <hr
+                    className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba to-opacity-33 to-opacity-33 h-[12px] w-[70px] rounded-xl bg-gradient-to-tl from-[#5A5A5A] via-[rgba(123,123,123,0.707391)] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]`}
+                  ></hr>
+                  <hr
+                    className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba to-opacity-33 via-rgba to-opacity-33 via-rgba-65-65-65-33 to-opacity-33 h-[12px] w-[25px] rounded-xl bg-gradient-to-tl from-[#CCCCCC] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px]`}
+                  ></hr>
                 </div>
                 <div className="ml-[5px] flex flex-col gap-y-5 md:ml-[24px] lg:ml-[28px] xl:ml-[32px] 2xl:ml-[40px]">
                   <div className=" flex flex-row items-center ">
@@ -112,16 +148,28 @@ const LandingPage = () => {
                 </p>
 
                 <div className="ml-[20px] mt-[5px] flex flex-col gap-y-5 md:mt-0">
-                  <hr className=" via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[120px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]"></hr>
-                  <hr className="via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#FFCF96] md:w-[143px] lg:w-[166px] xl:w-[190px] 2xl:w-[238px]"></hr>
-                  <hr className=" via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[130px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px] "></hr>
+                  <hr
+                    className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[120px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]`}
+                  ></hr>
+                  <hr
+                    className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#FFCF96] md:w-[143px] lg:w-[166px] xl:w-[190px] 2xl:w-[238px]`}
+                  ></hr>
+                  <hr
+                    className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                    } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[130px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px]`}
+                  ></hr>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <hr className="mt-[20px] mb-[30px] h-[2px] w-full bg-[#DFD6D6] md:mt-[24px] md:w-3/5 lg:mt-[28px] lg:w-[70%] xl:mt-[32px]  xl:w-4/5 2xl:mt-[40px] 2xl:w-full"></hr>
-        <div className="flex  flex-col items-center justify-center md:w-[329px] lg:w-[550px] xl:w-[772px] 2xl:w-[1215px]  ">
+        <div className="flex  flex-col items-center justify-center  2xl:max-w-[1215px]  ">
           <div className=" flex flex-col items-start">
             <h1 className="text-[15px] font-bold leading-[36.31px] text-black md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30px]">
               Explore possibilites

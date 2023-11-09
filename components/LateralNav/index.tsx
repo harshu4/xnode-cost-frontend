@@ -115,6 +115,9 @@ const LateralNav = ({ onValueChange }) => {
   ]
 
   function handleButtonClick(title: string) {
+    if (title === 'Docs') {
+      push('/docs')
+    }
     if (title === 'Home') {
       setNextFromScratch(false)
       setNext(false)
