@@ -368,7 +368,7 @@ const Header = () => {
                 </div>
               </nav>
             </div>
-            <div className="mx-auto hidden h-full w-full max-w-[1800px] items-start justify-between  xl:flex">
+            <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between  xl:flex">
               <div className="flex items-center">
                 <img
                   src={`/images/header/user.svg`}
@@ -446,13 +446,13 @@ const Header = () => {
                   ))}
                 </div>
                 <div className="grid gap-y-[12px] font-medium">
-                  <div className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] border-[1px] border-[#0354EC] bg-[#fff] py-[6.2px] px-[11px] text-center  text-[#0354EC] hover:text-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]">
+                  <div className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]">
                     <img
                       src={`${
                         process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                           ? process.env.NEXT_PUBLIC_BASE_PATH
                           : ''
-                      }/images/header/new-storm.svg`}
+                      }/images/header/storm.svg`}
                       alt="image"
                       className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
                     />
@@ -583,12 +583,12 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="mx-auto hidden h-full w-full max-w-[1800px] items-start items-center justify-between px-[33px] xl:flex">
+        <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
           <div className="flex items-center">
             <img
               src={`/images/header/user.svg`}
               alt="image"
-              className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[32px]"
+              className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
             />
             {isEditing ? (
               <input
@@ -624,7 +624,7 @@ const Header = () => {
               className="ml-[7.5px] w-[8px] md:ml-[9px] md:w-[10.8px] lg:ml-[10.5px] lg:w-[12.6px] xl:ml-[12px] xl:w-[14.5px] 2xl:ml-[15px] 2xl:w-[18px]"
             />
           </div>
-          <div className="flex gap-x-[55px] text-[7px] md:gap-x-[66px] md:text-[8.4px] lg:gap-x-[77px]  lg:text-[10px]  xl:gap-x-[88px] xl:text-[11.2px] 2xl:gap-x-[110px] 2xl:text-[14px]">
+          <div className="flex items-center gap-x-[15px] font-medium text-[#000] md:gap-x-[18px] lg:gap-x-[21px] xl:gap-x-[24px] 2xl:gap-x-[30px]">
             {/* <div className="">
               <div className="text-[7px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                 Estimated monthly price*
@@ -643,7 +643,7 @@ const Header = () => {
                 />
               </div>
             </div> */}
-            <div className="flex items-center gap-x-[25px] font-normal md:gap-x-[30px] lg:gap-x-[35px] xl:gap-x-[40px] 2xl:gap-x-[50px]">
+            <div className="flex items-center gap-x-[15px] font-medium text-[#000] md:gap-x-[18px] lg:gap-x-[21px] xl:gap-x-[24px] 2xl:gap-x-[30px]">
               {headerItens.map((option, index) => (
                 <a key={index} href={option.href}>
                   <div className="hover:text-[#313131]">{option.label}</div>
