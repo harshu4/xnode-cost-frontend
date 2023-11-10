@@ -593,7 +593,7 @@ const DataProduct = (id: any) => {
           </div>
           <div className="mx-auto mt-[35px] grid max-w-[230px] justify-center rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#F9F9F9] py-[15px] px-[15px] text-center md:mt-[54px] md:py-[7px] md:px-[21px] lg:mt-[63px] lg:px-[24px] lg:py-[8px] xl:mt-[72px] 2xl:mt-[90px] 2xl:py-[10px] 2xl:px-[30px]">
             <img
-              src={`/images/dataset/pythia.svg`}
+              src={`/images/dataset/pythia.png`}
               alt="image"
               className=" mx-auto "
             />
