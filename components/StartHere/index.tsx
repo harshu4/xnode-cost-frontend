@@ -223,7 +223,7 @@ const StartHere = ({ onValueChange }) => {
   if (nextFromScratch) {
     return (
       <>
-        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+        <div className="h-[1300px] w-[750px] rounded-[10px] bg-[#F9F9F9] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px] ">
           <NodesFlow fromScratch={true} />
         </div>
       </>
@@ -233,7 +233,7 @@ const StartHere = ({ onValueChange }) => {
   if (next) {
     return (
       <>
-        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+        <div className="h-[1300px] w-[750px] rounded-[10px] bg-[#F9F9F9] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px] ">
           <NodesFlow fromScratch={false} />
         </div>
       </>

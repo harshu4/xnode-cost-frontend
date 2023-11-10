@@ -35,7 +35,7 @@ const LandingPage = () => {
               Revolution Has Started!
             </h1>
           </div>
-          <div className="mt-[20px] mb-[20px]  md:w-[426px] md:px-[12px] lg:w-[482px] lg:px-[14px]   xl:w-[568px]  xl:px-[16px]  2xl:w-[710px]  2xl:px-[20px]">
+          <div className="mt-[20px] mb-[20px]  md:w-[426px] md:px-[12px] lg:w-[482px] lg:px-[14px]   xl:w-[568px]  xl:px-[16px]  2xl:w-[810px]  2xl:px-[20px]">
             <p className="text-center text-[18px] leading-[36.31px] tracking-[-5%] text-[#444444] md:text-[22px] lg:text-[25px] xl:text-[29px] 2xl:text-[36px]">
               Build your own data clouds, infrastructure, data connectivity,
               APIs, analytics&nbsp;

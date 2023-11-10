@@ -291,7 +291,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   }, [nodes])
 
   return (
-    <div className="h-[1500px]">
+    <div className="relative h-[1500px] w-[750px] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px]">
       <ReactFlow
         nodes={nodes}
         edges={edgesWithUpdatedTypes}
@@ -303,8 +303,12 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         attributionPosition="top-right"
         nodeTypes={nodeTypes}
       >
-        <MiniMap style={minimapStyle} zoomable pannable />
-        <Controls />
+        <div className="absolute right-0 top-[75px] md:top-[90px] lg:top-[105px] xl:top-[120px] 2xl:top-[150px]">
+          <MiniMap style={minimapStyle} zoomable pannable />
+        </div>
+        <div className="absolute top-[80px] left-[25px] md:top-[96px] md:left-[30px] lg:top-[112px] lg:left-[35px] xl:top-[128px] xl:left-[40px] 2xl:top-[160px] 2xl:left-[50px]">
+          <Controls />
+        </div>
         <Background color="#aaa" gap={16} />
       </ReactFlow>
     </div>
