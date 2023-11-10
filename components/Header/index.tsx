@@ -446,7 +446,12 @@ const Header = () => {
                   ))}
                 </div>
                 <div className="grid gap-y-[12px] font-medium">
-                  <div className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]">
+                  <div
+                    onClick={() => {
+                      setReviewYourBuild(true)
+                    }}
+                    className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
+                  >
                     <img
                       src={`${
                         process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -456,14 +461,7 @@ const Header = () => {
                       alt="image"
                       className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
                     />
-                    <div
-                      onClick={() => {
-                        console.log(finalNodes)
-                        push('/start-here')
-                      }}
-                    >
-                      Create service and deploy
-                    </div>
+                    <div>Create service and deploy</div>
                   </div>
                 </div>
               </div>
