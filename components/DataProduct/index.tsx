@@ -1,227 +1,227 @@
 /* eslint-disable dot-notation */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-'use client'
+"use client";
 // import { useState } from 'react'
-import { useEffect, useState, ChangeEvent, FC, useContext } from 'react'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { Eye, EyeSlash } from 'phosphor-react'
-import * as Yup from 'yup'
-import axios from 'axios'
-import Checkbox from '@material-ui/core/Checkbox'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import 'react-quill/dist/quill.snow.css' // import styles
-import 'react-datepicker/dist/react-datepicker.css'
-import { getData } from '@/utils/data'
-import { DataProvider } from '@/types/dataProvider'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { format } from 'sql-formatter'
-import Prism from 'prismjs'
-import 'prismjs/themes/prism.css'
-import { formatDistanceToNow, differenceInDays } from 'date-fns'
+import { useEffect, useState, ChangeEvent, FC, useContext } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Eye, EyeSlash } from "phosphor-react";
+import * as Yup from "yup";
+import axios from "axios";
+import Checkbox from "@material-ui/core/Checkbox";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-quill/dist/quill.snow.css"; // import styles
+import "react-datepicker/dist/react-datepicker.css";
+import { getData } from "@/utils/data";
+import { DataProvider } from "@/types/dataProvider";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { format } from "sql-formatter";
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import { formatDistanceToNow, differenceInDays } from "date-fns";
 
 const DataProduct = (id: any) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [data, setData] = useState<DataProvider>()
-  const [tasksSearchBar, setTasksSearchBar] = useState('')
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [data, setData] = useState<DataProvider>();
+  const [tasksSearchBar, setTasksSearchBar] = useState("");
 
-  const { push } = useRouter()
+  const { push } = useRouter();
 
   async function getDataInfo(id: any) {
     try {
-      const res = await getData(id)
-      setData(res)
-      console.log('DATA RECEIVED')
-      console.log(res)
+      const res = await getData(id);
+      setData(res);
+      console.log("DATA RECEIVED");
+      console.log(res);
     } catch (err) {
-      toast.error(`An error occurred`)
+      toast.error(`An error occurred`);
       //   push('/community')
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
-    })
+      behavior: "smooth",
+    });
     if (id) {
-      getDataInfo(id.id)
+      getDataInfo(id.id);
     } else {
-      push('/')
+      push("/");
     }
-  }, [id])
+  }, [id]);
 
-  let formattedSQL
-  let formattedCode
+  let formattedSQL;
+  let formattedCode;
   if (data?.sql) {
-    formattedSQL = format(data?.sql || '', {
+    formattedSQL = format(data?.sql || "", {
       tabWidth: 4,
       linesBetweenQueries: 4,
-    })
+    });
 
     formattedCode = Prism.highlight(
       data?.sql,
       Prism.languages.javascript,
-      'javascript',
-    )
+      "javascript"
+    );
   }
 
   function transformText(text) {
-    return text.replace(/\s+/g, ' ').trim()
+    return text.replace(/\s+/g, " ").trim();
   }
 
   function calculateUpdateTime(updatedAt: Date) {
     const timeAgo = formatDistanceToNow(new Date(updatedAt), {
       addSuffix: true,
-    })
-    return timeAgo
+    });
+    return timeAgo;
   }
 
   function isNew(createdAt: Date): boolean {
-    const today = new Date()
-    const difference = differenceInDays(today, new Date(createdAt))
-    return difference <= 7
+    const today = new Date();
+    const difference = differenceInDays(today, new Date(createdAt));
+    return difference <= 7;
   }
 
   const dataJson = {
-    'Established data': data?.createdAt,
-    'Size of the data': '124 TB',
-    Coverage: 'Spots, futures',
-    Size: '124 TB',
-    'File formats': 'JSON, CVS',
-    'Scheme type': 'JSON, CVS',
-  }
+    "Established data": data?.createdAt,
+    "Size of the data": "124 TB",
+    Coverage: "Spots, futures",
+    Size: "124 TB",
+    "File formats": "JSON, CVS",
+    "Scheme type": "JSON, CVS",
+  };
 
   const dataHelp = {
     Overview:
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
-    Github: 'https://github.com/L3A-Protocol',
-    'Supported Feeds and Symbols':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
-    'Schema Reference':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
-    'Query Service':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
-    'Data Flow':
-      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
-  }
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh",
+    Github: "https://github.com/L3A-Protocol",
+    "Supported Feeds and Symbols":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols",
+    "Schema Reference":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference",
+    "Query Service":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview",
+    "Data Flow":
+      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow",
+  };
 
   const dataJsonDetails = [
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
     [
-      'AAVE.USDT-PERP',
-      'L2 LOB, Ticker, Funding rate',
-      'HFDSAFHASFHASFHA#',
-      '23MB',
+      "AAVE.USDT-PERP",
+      "L2 LOB, Ticker, Funding rate",
+      "HFDSAFHASFHASFHA#",
+      "23MB",
     ],
-  ]
+  ];
 
   const dataJsonSimilarProducts = [
     [
-      '1213213213-213213213-12312312-3213123',
-      'Economy Data Atlas',
-      'Coinbase#',
+      "1213213213-213213213-12312312-3213123",
+      "Economy Data Atlas",
+      "Coinbase#",
     ],
     [
-      '1213213213-213213213-12312312-3213123',
-      'Economy Data Atlas',
-      'Coinbase#',
+      "1213213213-213213213-12312312-3213123",
+      "Economy Data Atlas",
+      "Coinbase#",
     ],
     [
-      '1213213213-213213213-12312312-3213123',
-      'Economy Data Atlas',
-      'Coinbase#',
+      "1213213213-213213213-12312312-3213123",
+      "Economy Data Atlas",
+      "Coinbase#",
     ],
-  ]
+  ];
 
   const customStyle = {
     ...solarizedlight,
     'pre[class*="language-"]': {
       ...solarizedlight['pre[class*="language-"]'],
-      backgroundColor: '#f8f8f8', // Cor de fundo preta
-      width: '100%', // Ajustando a largura para 100%
-      overflowX: 'auto', // Adicionando barra de rolagem se o conteúdo exceder a largura
-      border: '1px solid #d8d6d6',
+      backgroundColor: "#f8f8f8", // Cor de fundo preta
+      width: "100%", // Ajustando a largura para 100%
+      overflowX: "auto", // Adicionando barra de rolagem se o conteúdo exceder a largura
+      border: "1px solid #d8d6d6",
     },
-  }
+  };
 
   const copyToClipboard = () => {
     if (data) {
-      navigator.clipboard.writeText(data.sql)
+      navigator.clipboard.writeText(data.sql);
     }
-  }
+  };
 
   const handleSearchBarInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const input = event.target
-    const value = input.value
+    const input = event.target;
+    const value = input.value;
 
     if (tasksSearchBar.length + value.length > 100) {
-      return
+      return;
     }
 
-    setTasksSearchBar(value)
+    setTasksSearchBar(value);
 
-    if (value === '') {
-      updateUrl('searchBar', value)
+    if (value === "") {
+      updateUrl("searchBar", value);
     }
-  }
+  };
 
   const updateUrl = (param: string, value: string | null) => {
-    console.log('update chamado com sucesso')
-    if (param !== 'page') {
-      if (typeof window !== 'undefined') {
-        const url = new URL(window.location.href)
-        url.searchParams.delete('page')
-        window.history.pushState({}, '', url.toString())
+    console.log("update chamado com sucesso");
+    if (param !== "page") {
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("page");
+        window.history.pushState({}, "", url.toString());
       }
     }
-    if (typeof window !== 'undefined') {
-      const url = new URL(window.location.href)
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
       if (value) {
-        url.searchParams.set(param, value)
-        push(`?searchBar=${value}`)
+        url.searchParams.set(param, value);
+        push(`?searchBar=${value}`);
       } else {
-        url.searchParams.delete(param)
+        url.searchParams.delete(param);
       }
 
-      window.history.pushState({}, '', url.toString())
+      window.history.pushState({}, "", url.toString());
     }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -236,23 +236,23 @@ const DataProduct = (id: any) => {
           <div className="mt-[20px] h-32 w-full animate-pulse bg-[#dfdfdf]"></div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
     <>
-      <section className="mx-auto  px-[30px] pb-[100px] text-[#000000] md:flex md:gap-x-[40px] md:pl-[50px]   md:pr-[50px] lg:gap-x-[100px] lg:px-[90px] xl:gap-x-[150px]  xl:px-[110px]  2xl:gap-x-[295px] 2xl:pl-[63px]  2xl:pr-[63px]">
+      <section className="sm:max-w-screen-sm sm:flex-col sm:pl-[25px] md:flex md:max-w-screen-4xl md:flex-row md:justify-between  md:gap-[500px] md:pl-[30px] xl:pl-[40px] 2xl:pl-[50px] ">
         <div>
           <div className="mt-[40px] flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white px-[5px] md:h-[40px] md:max-w-[500px] md:py-[10px] md:px-[15px] lg:!leading-[30px] 2xl:mt-[50px] 2xl:h-[50px] 2xl:max-w-[600px]">
             <img
               src={`${
-                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                process.env.NEXT_PUBLIC_ENVIRONMENT === "PROD"
                   ? process.env.NEXT_PUBLIC_BASE_PATH
-                  : ''
+                  : ""
               }/images/hero/searchVector.svg`}
               alt="image"
               onClick={() => {
-                updateUrl('searchBar', tasksSearchBar)
+                updateUrl("searchBar", tasksSearchBar);
               }}
               className={`my-auto mr-[10px] transform cursor-pointer transition-transform hover:scale-110 md:h-[18px] md:w-[18px]`}
             />
@@ -261,8 +261,8 @@ const DataProduct = (id: any) => {
               placeholder="Search Data Products"
               onInput={handleSearchBarInput}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  updateUrl('searchBar', tasksSearchBar)
+                if (e.key === "Enter") {
+                  updateUrl("searchBar", tasksSearchBar);
                 }
               }}
               className=" w-full bg-white text-[8px] font-medium text-[#000000] placeholder-[#737373] outline-none md:text-[14px] 2xl:text-[16px]"
@@ -288,9 +288,9 @@ const DataProduct = (id: any) => {
                   <div className="mx-auto mt-[7px] flex justify-center xl:mt-[12px] 2xl:mt-[15px]">
                     <img
                       src={`${
-                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === "PROD"
                           ? process.env.NEXT_PUBLIC_BASE_PATH
-                          : ''
+                          : ""
                       }/images/dataset/third.svg`}
                       alt="image"
                       className={`w-[46.5] 2xl:w-[58px]`}
@@ -364,8 +364,8 @@ const DataProduct = (id: any) => {
                         <div
                           className={
                             index === array.length - 1
-                              ? 'border border-r-0 border-[#D9D9D9] p-[20px] py-[10px]  pl-[8px] text-left md:py-[20px] md:pr-[120px]'
-                              : 'border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] py-[10px] pl-[8px] text-left md:py-[20px] md:pr-[120px]'
+                              ? "border border-r-0 border-[#D9D9D9] p-[20px] py-[10px]  pl-[8px] text-left md:py-[20px] md:pr-[120px]"
+                              : "border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[20px] py-[10px] pl-[8px] text-left md:py-[20px] md:pr-[120px]"
                           }
                         >
                           {key}
@@ -373,14 +373,14 @@ const DataProduct = (id: any) => {
                         <div
                           className={
                             index === array.length - 1
-                              ? 'border border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
-                              : 'border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]'
+                              ? "border border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]"
+                              : "border-b-0 border-r border-t border-l border-[#D9D9D9] p-[20px] py-[10px] text-left md:py-[20px] md:pl-[30px]"
                           }
                         >
                           {String(value)}
                         </div>
                       </>
-                    ),
+                    )
                   )}
                 </div>
               </>
@@ -397,8 +397,8 @@ const DataProduct = (id: any) => {
                         <div
                           className={
                             index === array.length - 1
-                              ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
-                              : 'min-w-[100px] border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]'
+                              ? "min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]"
+                              : "min-w-[100px] border-b-0 border-r-0 border-t border-l border-[#D9D9D9] p-[10px] pl-[8px] text-left md:p-[20px] md:pr-[60px]"
                           }
                         >
                           {value1}
@@ -406,8 +406,8 @@ const DataProduct = (id: any) => {
                         <div
                           className={
                             index === array.length - 1
-                              ? 'min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
-                              : 'min-w-[100px]  border-b-0 border-t border-l border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]'
+                              ? "min-w-[100px] border border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]"
+                              : "min-w-[100px]  border-b-0 border-t border-l border-r-0 border-[#D9D9D9] p-[10px] text-left md:p-[20px] md:pl-[30px] md:pr-[60px]"
                           }
                         >
                           {value2}
@@ -415,15 +415,15 @@ const DataProduct = (id: any) => {
                         <div
                           className={
                             index === array.length - 1
-                              ? 'min-w-[150px] justify-between border border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
-                              : 'min-w-[150px] justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]'
+                              ? "min-w-[150px] justify-between border border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]"
+                              : "min-w-[150px] justify-between border-b-0 border-r border-t border-l border-[#D9D9D9] p-[10px] text-left md:flex md:p-[20px] md:pl-[30px]"
                           }
                         >
                           <div>{value3}</div>
                           <div>{value4}</div>
                         </div>
                       </>
-                    ),
+                    )
                   )}
                 </div>
               </>
@@ -484,7 +484,7 @@ const DataProduct = (id: any) => {
                 <div className="text-[7px] font-semibold text-[#B7B7B7]  md:text-[10px]  lg:text-[12px] lg:!leading-[17px] 2xl:text-[14px]">
                   3rd Party Intergration
                 </div>
-                {data.addToXnodeMessage === 'Add to Xnode' ? (
+                {data.addToXnodeMessage === "Add to Xnode" ? (
                   <a
                     href={data?.liveLink}
                     target="_blank"
@@ -620,7 +620,7 @@ const DataProduct = (id: any) => {
             <div className="font-bold ">Help</div>
             <div className="mt-[5px] grid gap-y-[12px] font-normal">
               {Object.entries(dataHelp).map(([key, value], index, array) =>
-                key === 'Overview' ? (
+                key === "Overview" ? (
                   <a
                     href={data?.relevantDocs}
                     target="_blank"
@@ -646,7 +646,7 @@ const DataProduct = (id: any) => {
                       {key}
                     </div>
                   </a>
-                ),
+                )
               )}
             </div>
           </div>
@@ -685,7 +685,7 @@ const DataProduct = (id: any) => {
                       </div>
                     </a>
                   </>
-                ),
+                )
               )}
             </div>
           </div>
@@ -696,7 +696,7 @@ const DataProduct = (id: any) => {
               </div>
               <div className=" lg:!leading-[150%]">
                 <a
-                  href={'https://www.openmesh.network/oec/register'}
+                  href={"https://www.openmesh.network/oec/register"}
                   target="_blank"
                   className="border-b-[1px] font-medium text-[#0354EC]"
                   rel="noreferrer"
@@ -710,9 +710,9 @@ const DataProduct = (id: any) => {
                 Encounter any issue?
               </div>
               <div className=" lg:!leading-[150%]">
-                {' '}
+                {" "}
                 <a
-                  href={'https://calendly.com/openmesh/30min'}
+                  href={"https://calendly.com/openmesh/30min"}
                   target="_blank"
                   className="border-b-[1px] font-medium text-[#0354EC]"
                   rel="noreferrer"
@@ -725,7 +725,7 @@ const DataProduct = (id: any) => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default DataProduct
+export default DataProduct;
