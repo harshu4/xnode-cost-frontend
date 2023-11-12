@@ -37,6 +37,7 @@ export const nodes = [
       },
       defaultValueServerType: 'Small c3.x86 x 1',
       defaultValueLocation: 'US East',
+      defaultValueCloudProvider: 'Equinix (Decentralized)',
     },
     targetPosition: Position.Left,
     sourcePosition: Position.Right,

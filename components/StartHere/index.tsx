@@ -213,7 +213,7 @@ const StartHere = ({ onValueChange }) => {
   if (reviewYourBuild) {
     return (
       <>
-        <div className="h-[1300px] w-[1300px] rounded-[10px] bg-[#F9F9F9] ">
+        <div className="rounded-[10px] xl:w-[1200px] 2xl:w-[1500px] ">
           <ReviewYourBuild />
         </div>
       </>
