@@ -150,7 +150,7 @@ const ReviewYourBuild = () => {
               coreServicesData={coreServicesData}
               onValueChange={() => setReviewYourBuild(false)}
             />
-            <AddOns onValueChange={() => setReviewYourBuild(false)} />
+            {/* <AddOns onValueChange={() => setReviewYourBuild(false)} /> */}
           </div>
           <div
             onClick={() => {
