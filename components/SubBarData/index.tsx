@@ -16,6 +16,7 @@ const SubBarData = ({ onValueChange }) => {
     setChangeNodes,
   } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
+  const [category, setCategory] = useState<string>('')
 
   const categoriesOptions = [
     {

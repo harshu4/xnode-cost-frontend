@@ -58,7 +58,7 @@ const YourCore = ({ ...data }: ModalProps) => {
                   className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
                 />
               </div>
-              <div className="font-normal text-[#505050] 2xl:pl-[20px] 2xl:text-[14px]">
+              <div className="pl-[15px] text-[7px] font-normal text-[#505050] md:pl-[18px] md:text-[8.4px] lg:pl-[21px] lg:text-[9.8px] xl:pl-[24px] xl:text-[11.2px] 2xl:pl-[30px] 2xl:text-[14px]">
                 {option.description}
               </div>
             </div>
