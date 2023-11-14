@@ -119,7 +119,7 @@ export const nodes = [
   {
     id: '17',
     type: 'openmesh',
-    position: { x: 150, y: 150 },
+    position: { x: 500, y: -100 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -173,6 +173,14 @@ export const edges = [
     id: 'e16-e11',
     source: '16',
     target: '11',
+    animated: true,
+    style: { stroke: '#000' },
+  },
+  {
+    id: 'e17-e11',
+    source: '17', // ID do openmesh
+    target: '11', // ID do serverNode
+    targetHandle: '4', // ID do Handle no topo do serverNode
     animated: true,
     style: { stroke: '#000' },
   },
