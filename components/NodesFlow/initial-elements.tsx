@@ -116,6 +116,28 @@ export const nodes = [
       icon: '/images/subNavBarAnalytics/pythia-logo.svg',
     },
   },
+  {
+    id: '17',
+    type: 'openmesh',
+    position: { x: 150, y: 150 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'Crypto Exchanges',
+      lists: [
+        {
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
+        },
+        {
+          icon: '/images/subNavBarData/coinbase.svg',
+          title: 'Coinbase',
+        },
+      ],
+    },
+  },
 ]
 
 export const edges = [

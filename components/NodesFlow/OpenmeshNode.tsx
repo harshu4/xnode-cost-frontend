@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useContext } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
+import { AccountContext } from '@/contexts/AccountContext'
 import withProps from './withProps'
 
 const options = [
@@ -85,13 +86,16 @@ function Options({ handleId, name, optionsSelection }) {
   )
 }
 
-function AnalyticsNode({ id, data, handleNodeRemove }) {
+function OpenmeshNode({ id, data, handleNodeRemove }) {
+  const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true)
+  const { selectionSideNavBar, setSelectionSideNavBar } =
+    useContext(AccountContext)
   const handleClick = () => {
     handleNodeRemove(id)
   }
   return (
     <>
-      <div className="relative rounded-[20px] border-[0.5px] border-[#C1C1C1] bg-[#fff] py-[7px]  px-[10px]  pb-[23px] pr-[17px] text-[8px]  text-[#000] md:py-[8.4px] md:px-[12px] md:pb-[15.6px] md:pr-[20.4px] md:text-[9.6px] lg:py-[10px] lg:px-[14px] lg:pb-[18px] lg:pr-[23px] lg:text-[11.2px] xl:py-[11.2px] xl:px-[16px] xl:pb-[21px] xl:pr-[27px] xl:text-[12.8px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[46px] 2xl:pr-[34px] 2xl:text-[16px]">
+      <div className="relative rounded-[10px] border-[0.5px] border-[#C1C1C1] bg-[#fff] py-[7px] px-[10px] pb-[10px] pr-[22.5px] text-[8px]  text-[#000]  md:rounded-[12px] md:py-[8.4px] md:px-[12px]  md:pb-[12px] md:pr-[27px] md:text-[9.6px] lg:rounded-[14px] lg:py-[10px] lg:px-[14px] lg:pb-[14px] lg:pr-[31.5px] lg:text-[11.2px] xl:rounded-[16px] xl:py-[11.2px] xl:px-[16px] xl:pb-[16px] xl:pr-[36px] xl:text-[12.8px] 2xl:rounded-[20px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[20px] 2xl:pr-[45px] 2xl:text-[16px]">
         <button
           onClick={() => {
             handleClick()
@@ -100,31 +104,51 @@ function AnalyticsNode({ id, data, handleNodeRemove }) {
         >
           X
         </button>
-        <div className="flex w-full flex-row items-start gap-[10px] ">
+        <div className="flex items-center gap-x-[5px]">
           <img
-            src={'/images/lateralNavBar/bolas.svg'}
+            src={'/images/nodesFlow/openmesh-new.svg'}
             alt="image"
             className={
-              'w-[16px] md:w-[19px] lg:w-[22.5px] xl:w-[25px] 2xl:w-[32px]'
+              'w-[16px] md:w-[20px] lg:w-[22.5px] xl:w-[25.5px] 2xl:w-[32px]'
             }
           />
-
-          <div className="mt-[5px] font-medium md:mt-[6px] lg:mt-[7px] lg:!leading-[19px] xl:mt-[8px] 2xl:mt-[10px]">
-            Analytics
+          <div className="font-normal text-[#000000]  lg:!leading-[19px]">
+            Openmesh Core
           </div>
         </div>
+
         <div className="absolute left-0 h-[0.5px] w-full bg-[#C1C1C1] lg:mt-[10px] 2xl:mt-[12px]"></div>
-        <div className="mt-[7px] flex gap-x-[9px] text-[7.5px] font-normal hover:font-normal  md:text-[8.5px] lg:mt-[20px]  lg:text-[10px] xl:mt-[24px]  xl:text-[11.2px] 2xl:mt-[30px] 2xl:text-[14px]">
-          <img
-            src={data.icon}
-            alt="image"
-            className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
-          />
-          <div className="cursor-pointer">{data.name}</div>
+        <div className="mt-[10px] max-w-[90px] text-[7px] md:mt-[12px] md:max-w-[108px] md:text-[8.4px] lg:mt-[14px] lg:max-w-[126px] lg:text-[9.8px] xl:mt-[16px] xl:max-w-[144px] xl:text-[11.2px] 2xl:mt-[20px] 2xl:max-w-[180px] 2xl:text-[14px]">
+          <a
+            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div>Openmesh Consensus Client</div>{' '}
+          </a>
+          <a
+            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="mt-[10px] md:mt-[12px] lg:mt-[14px] xl:mt-[16px] 2xl:mt-[20px]">
+              BitTorrent Filesharing Protocol
+            </div>
+          </a>
+          <a
+            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="mt-[7px] text-[6px] text-[#0354EC] md:mt-[8.4px] md:text-[7.2px] lg:mt-[10px] lg:text-[8.4px] xl:mt-[11.2px] xl:text-[9.6px] 2xl:mt-[14px] 2xl:text-[12px]">
+              Why I can’t remove this?
+            </div>
+          </a>
         </div>
-        <Handle type="source" position={Position.Right} id={'1'} />
+        <Handle type="source" position={Position.Bottom} id={'1'} />
       </div>
     </>
   )
 }
-export default withProps(AnalyticsNode, ['handleNodeRemove'])
+
+export default withProps(OpenmeshNode, ['handleNodeRemove'])
