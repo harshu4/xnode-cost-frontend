@@ -270,7 +270,7 @@ const SubBarData = ({ onValueChange }) => {
               setCurrentDataMenuSelect(e.target.innerText)
             }}
             className={`  p-[10px] ${
-              currentDataMenuSelect == 'Streaming Data'
+              currentDataMenuSelect === 'Streaming Data'
                 ? `bg-[#E0E0E0]`
                 : `bg-[#F5F5F5]`
             }`}
@@ -283,7 +283,7 @@ const SubBarData = ({ onValueChange }) => {
               setCurrentDataMenuSelect(e.target.innerText)
             }}
             className={`  p-[10px] ${
-              currentDataMenuSelect == 'Historical Data'
+              currentDataMenuSelect === 'Historical Data'
                 ? `bg-[#E0E0E0]`
                 : `bg-[#F5F5F5]`
             }`}

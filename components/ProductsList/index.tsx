@@ -1,94 +1,94 @@
-"use client";
+'use client'
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import SingleCard from "./SingleCard";
-import { getDatasets } from "@/utils/data";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { DataProvider } from "@/types/dataProvider";
-import { SmileySad } from "phosphor-react";
-import Filter from "@/components/Filter";
-import { TextField, Autocomplete } from "@mui/material";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from 'react'
+import SingleCard from './SingleCard'
+import { getDatasets } from '@/utils/data'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { DataProvider } from '@/types/dataProvider'
+import { SmileySad } from 'phosphor-react'
+import Filter from '@/components/Filter'
+import { TextField, Autocomplete } from '@mui/material'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
 type ProductsListProps = {
-  dataTestimonial: DataProvider[];
-};
+  dataTestimonial: DataProvider[]
+}
 
 const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
-  const [testimonial, setTestimonial] = useState<DataProvider[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [viewAll, setViewAll] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedUseCases, setSelectedUseCases] = useState<string[]>([]);
-  const [selectedOrderBy, setSelectedOrderBy] = useState<string>("");
-  const pathname = usePathname();
+  const [testimonial, setTestimonial] = useState<DataProvider[]>([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [viewAll, setViewAll] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedUseCases, setSelectedUseCases] = useState<string[]>([])
+  const [selectedOrderBy, setSelectedOrderBy] = useState<string>('')
+  const pathname = usePathname()
 
   const categoriesOptions = [
-    "Analytics",
-    "Servers",
-    "RPC",
-    "Compute",
-    "Utility",
-    "Data",
-    "Trading",
-    "Storage",
-    "Streaming Data",
-  ];
+    'Analytics',
+    'Servers',
+    'RPC',
+    'Compute',
+    'Utility',
+    'Data',
+    'Trading',
+    'Storage',
+    'Streaming Data',
+  ]
 
   const useCasesOptions = [
-    "Financial Analysis",
-    "Blockchain Transactions",
-    "DEXs and CEXs",
-    "Gas Optimization",
-    "Crypto Liquidity",
-  ];
+    'Financial Analysis',
+    'Blockchain Transactions',
+    'DEXs and CEXs',
+    'Gas Optimization',
+    'Crypto Liquidity',
+  ]
 
-  const orderByOptions = ["Most Popular", "Recently Added"];
+  const orderByOptions = ['Most Popular', 'Recently Added']
 
-  const tagsOptions = ["Free", "Paid"];
+  const tagsOptions = ['Free', 'Paid']
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      const categories = url.searchParams.get("category")?.split(",") || [];
-      setSelectedCategories(categories);
-      const useCases = url.searchParams.get("useCase")?.split(",") || [];
-      setSelectedUseCases(useCases);
-      const orderBy = url.searchParams.get("orderBy");
-      console.log(orderBy);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      const categories = url.searchParams.get('category')?.split(',') || []
+      setSelectedCategories(categories)
+      const useCases = url.searchParams.get('useCase')?.split(',') || []
+      setSelectedUseCases(useCases)
+      const orderBy = url.searchParams.get('orderBy')
+      console.log(orderBy)
       if (orderBy && orderByOptions.includes(orderBy)) {
-        setSelectedOrderBy(orderBy);
+        setSelectedOrderBy(orderBy)
       }
     }
-    setTestimonial(dataTestimonial);
-  }, [dataTestimonial]);
+    setTestimonial(dataTestimonial)
+  }, [dataTestimonial])
 
   const handleUpdate = () => {
     // setIsLoading(true)
     // the body that will be passed to call the getTasksFiltered() endpoint
-    const dataBody = {};
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
+    const dataBody = {}
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
 
-      const categories = url.searchParams.get("category")?.split(",") || [];
-      setSelectedCategories(categories);
+      const categories = url.searchParams.get('category')?.split(',') || []
+      setSelectedCategories(categories)
 
-      const useCases = url.searchParams.get("useCase")?.split(",") || [];
-      setSelectedUseCases(useCases);
+      const useCases = url.searchParams.get('useCase')?.split(',') || []
+      setSelectedUseCases(useCases)
 
-      const orderBy = url.searchParams.get("orderBy");
-      console.log(orderBy);
+      const orderBy = url.searchParams.get('orderBy')
+      console.log(orderBy)
       if (orderBy && orderByOptions.includes(orderBy)) {
-        setSelectedOrderBy(orderBy);
+        setSelectedOrderBy(orderBy)
       }
     }
-  };
+  }
 
   const filteredTestimonials = testimonial?.filter((t) => {
-    console.log("the categories hereee");
-    console.log(t);
+    console.log('the categories hereee')
+    console.log(t)
     return (
       (selectedCategories.length === 0 ||
         selectedCategories.some((category) => category === t.category)) &&
@@ -96,45 +96,45 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
         selectedUseCases.some((useCase) => t.useCases.includes(useCase))) &&
       (t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         t.description.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-  });
-  let sortedTestimonials = filteredTestimonials;
-  if (selectedOrderBy === "Most Popular") {
+    )
+  })
+  let sortedTestimonials = filteredTestimonials
+  if (selectedOrderBy === 'Most Popular') {
     sortedTestimonials = filteredTestimonials.sort(
       (a, b) =>
-        (b.popularity ? b.popularity : 0) - (a.popularity ? a.popularity : 0)
-    );
-  } else if (selectedOrderBy === "Recently Added") {
+        (b.popularity ? b.popularity : 0) - (a.popularity ? a.popularity : 0),
+    )
+  } else if (selectedOrderBy === 'Recently Added') {
     sortedTestimonials = filteredTestimonials.sort(
       (a, b) =>
-        new Date(b.createdAt || "").getTime() -
-        new Date(a.createdAt || "").getTime()
-    );
+        new Date(b.createdAt || '').getTime() -
+        new Date(a.createdAt || '').getTime(),
+    )
   }
   const testimonialsToShow = viewAll
     ? sortedTestimonials
-    : sortedTestimonials?.slice(0, 10);
+    : sortedTestimonials?.slice(0, 10)
 
   const groupByCategory = (testimonials) => {
     return testimonials.reduce((groups, testimonial) => {
-      const category = testimonial.category;
+      const category = testimonial.category
       if (!groups[category]) {
-        groups[category] = [];
+        groups[category] = []
       }
-      groups[category].push(testimonial);
-      return groups;
-    }, {});
-  };
+      groups[category].push(testimonial)
+      return groups
+    }, {})
+  }
 
-  const groupedTestimonials = groupByCategory(filteredTestimonials);
+  const groupedTestimonials = groupByCategory(filteredTestimonials)
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      const searchBar = url.searchParams.get("searchBar");
-      if (searchBar && searchBar.length <= 100) setSearchTerm(searchBar);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      const searchBar = url.searchParams.get('searchBar')
+      if (searchBar && searchBar.length <= 100) setSearchTerm(searchBar)
     }
-  }, [pathname]);
+  }, [pathname])
 
   if (isLoading) {
     return (
@@ -149,7 +149,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
           <div className="mt-[20px] h-32 w-full animate-pulse bg-[#dfdfdf]"></div>
         </div>
       </section>
-    );
+    )
   }
 
   return (
@@ -161,9 +161,9 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
         <div className="flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white px-[5px] md:h-[40px] md:max-w-[500px] md:py-[10px] md:px-[15px] lg:!leading-[30px] 2xl:h-[50px] 2xl:max-w-[600px]">
           <img
             src={`${
-              process.env.NEXT_PUBLIC_ENVIRONMENT === "PROD"
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                 ? process.env.NEXT_PUBLIC_BASE_PATH
-                : ""
+                : ''
             }/images/hero/searchVector.svg`}
             alt="image"
             className={`my-auto mr-[10px] md:h-[18px] md:w-[18px]`}
@@ -187,14 +187,14 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
               getOptionLabel={(option) => `${option}`}
               filterOptions={(options, state) =>
                 options.filter((option) =>
-                  option.toLowerCase().includes(state.inputValue.toLowerCase())
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
                 )
               }
               onChange={(e, newValue) => {
-                setSelectedCategories([...newValue]);
+                setSelectedCategories([...newValue])
               }}
               renderOption={(props, option, { selected }) => (
-                <li {...props} style={{ fontSize: "10px" }}>
+                <li {...props} style={{ fontSize: '10px' }}>
                   {option}
                 </li>
               )}
@@ -204,9 +204,9 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                     key={index}
                     {...getTagProps({ index })}
                     style={{
-                      fontSize: "10px",
-                      display: "flex",
-                      alignItems: "center",
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
                     }}
                   >
                     {option}
@@ -219,19 +219,19 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                   variant="outlined"
                   placeholder="Categories"
                   sx={{
-                    width: "250px",
-                    minHeight: "30px", // Defina um minHeight adequado
-                    fontSize: "10px",
+                    width: '250px',
+                    minHeight: '30px', // Defina um minHeight adequado
+                    fontSize: '10px',
                     fieldset: {
-                      borderColor: "#D4D4D4",
-                      borderRadius: "3px",
+                      borderColor: '#D4D4D4',
+                      borderRadius: '3px',
                     },
                     input: {
-                      color: "black",
-                      fontSize: "10px",
-                      display: "flex",
-                      alignItems: "center",
-                      flexWrap: "wrap", // Permite que o conteúdo do input se ajuste à altura
+                      color: 'black',
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexWrap: 'wrap', // Permite que o conteúdo do input se ajuste à altura
                     },
                   }}
                 />
@@ -248,14 +248,14 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
               getOptionLabel={(option) => `${option}`}
               filterOptions={(options, state) =>
                 options.filter((option) =>
-                  option.toLowerCase().includes(state.inputValue.toLowerCase())
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
                 )
               }
               onChange={(e, newValue) => {
-                setSelectedUseCases([...newValue]);
+                setSelectedUseCases([...newValue])
               }}
               renderOption={(props, option, { selected }) => (
-                <li {...props} style={{ fontSize: "10px" }}>
+                <li {...props} style={{ fontSize: '10px' }}>
                   {option}
                 </li>
               )}
@@ -265,9 +265,9 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                     key={index}
                     {...getTagProps({ index })}
                     style={{
-                      fontSize: "10px",
-                      display: "flex",
-                      alignItems: "center",
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
                     }}
                   >
                     {option}
@@ -280,19 +280,19 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
                   variant="outlined"
                   placeholder="Use cases"
                   sx={{
-                    width: "250px",
-                    minHeight: "30px", // Defina um minHeight adequado
-                    fontSize: "10px",
+                    width: '250px',
+                    minHeight: '30px', // Defina um minHeight adequado
+                    fontSize: '10px',
                     fieldset: {
-                      borderColor: "#D4D4D4",
-                      borderRadius: "3px",
+                      borderColor: '#D4D4D4',
+                      borderRadius: '3px',
                     },
                     input: {
-                      color: "black",
-                      fontSize: "10px",
-                      display: "flex",
-                      alignItems: "center",
-                      flexWrap: "wrap", // Permite que o conteúdo do input se ajuste à altura
+                      color: 'black',
+                      fontSize: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexWrap: 'wrap', // Permite que o conteúdo do input se ajuste à altura
                     },
                   }}
                 />
@@ -359,16 +359,16 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {" "}
+              {' '}
               <a className="border-b-[1px] font-medium text-[#0354EC]">
-                Run an Xnode today{" "}
+                Run an Xnode today{' '}
               </a>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProductsList;
+export default ProductsList

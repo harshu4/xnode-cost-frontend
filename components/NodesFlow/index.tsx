@@ -90,6 +90,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     changeNodes,
     setFinalNodes,
     finalNodes,
+    setIsWorkspace,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
     !dataM.fromScratch ? initialNodes : initialNodesScratch,
@@ -97,6 +98,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(
     !dataM.fromScratch ? initialEdges : initialEdgesScratch,
   )
+  const [isInitialized, setIsInitialized] = useState(false)
 
   const onConnect = useCallback(
     (params) =>
@@ -295,9 +297,6 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     }
   }, [changeNodes])
 
-  useEffect(() => {
-    setFinalNodes(nodes)
-  }, [nodes])
   const nodesToAdd = [...nodes]
 
   // verify node type and node amount for the selected nodes and return an array with the max node amount,
@@ -334,6 +333,29 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     [],
   )
 
+  useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem('nodes', JSON.stringify(nodes))
+      localStorage.setItem('edges', JSON.stringify(edges))
+    }
+  }, [nodes, edges, isInitialized])
+
+  useEffect(() => {
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+
+    if (savedNodes) {
+      setNodes(JSON.parse(savedNodes))
+      setIsWorkspace(true)
+    } else setNodes(!dataM.fromScratch ? initialNodes : initialNodesScratch)
+
+    if (savedEdges) {
+      setEdges(JSON.parse(savedEdges))
+      setIsWorkspace(true)
+    } else setEdges(!dataM.fromScratch ? initialEdges : initialEdgesScratch)
+
+    setIsInitialized(true)
+  }, [])
   return (
     <div className="relative h-[1500px] w-[750px] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px]">
       <ReactFlow

@@ -2,7 +2,21 @@
 'use client'
 import { DataProvider } from '@/types/dataProvider'
 import { formatDistanceToNow } from 'date-fns'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AccountContext } from '@/contexts/AccountContext'
+
+export const categoriesOptionsRPC = {
+  ValidationCloud: '/images/subNavBarRPC/validateCloud.svg',
+  NodeReal: '/images/subNavBarRPC/node.svg',
+}
+
+export const categoriesOptionsUtility = {
+  Grafana: '/images/subNavBarUtility/grafana.svg',
+  Prometheus: '/images/subNavBarUtility/prometheus.svg',
+  Ascend: '/images/subNavBarUtility/ascend.svg',
+  Databricks: '/images/subNavBarUtility/prometheus.svg',
+  InfraAdmin: '/images/subNavBarAnalytics/databricks.svg',
+}
 
 const SingleCard = ({
   id,
@@ -23,6 +37,43 @@ const SingleCard = ({
   timeAgo = timeAgo.replace('about', '').trim()
 
   const [addVisible, setAddVisible] = useState<Boolean>(false)
+
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    setChangeNodes,
+  } = useContext(AccountContext)
+
+  const serverOptions = ['Equinix', 'AWS']
+  const rpcOptions = ['Validationcloud', 'NodeReal']
+
+  function handleAddProduct(title: string) {
+    if (serverOptions.includes(title)) {
+      setChangeNodes({
+        type: 'server',
+        defaultValueServerType: `Medium c2.x86 x 1`,
+        defaultValueLocation: 'Us East',
+        defaultValueCloudProvider: title,
+      })
+      return
+    }
+    if (rpcOptions.includes(title)) {
+      setChangeNodes({
+        type: 'rpc',
+        name: title,
+        icon: categoriesOptionsRPC[title],
+      })
+      return
+    }
+    setChangeNodes({
+      title: 'Data Pipeline Automation',
+      type: 'utility',
+      name: title,
+      icon: categoriesOptionsUtility[title],
+    })
+  }
 
   return (
     <div
@@ -80,7 +131,7 @@ const SingleCard = ({
             {addToXnodeMessage === 'Add to Xnode' ? (
               <div
                 onClick={() => {
-                  // setNext(true)
+                  handleAddProduct(name)
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
                 className={`ml-auto flex cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}

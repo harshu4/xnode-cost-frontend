@@ -37,6 +37,7 @@ const Header = () => {
     finalNodes,
     setReviewYourBuild,
     reviewYourBuild,
+    setIsWorkspace,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -137,6 +138,12 @@ const Header = () => {
       localStorage.removeItem('@scalable: user-state-1.0.0')
       destroyCookie(undefined, 'userSessionToken')
       setUser(null)
+    }
+
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+    if (savedNodes && savedEdges) {
+      setIsWorkspace(true)
     }
   }, [])
 
