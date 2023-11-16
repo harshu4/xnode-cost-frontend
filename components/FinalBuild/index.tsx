@@ -180,16 +180,15 @@ const ReviewYourBuild = () => {
   }, [])
 
   if (!isDeploying) {
-    ;<>
+    return (
       <section
         id="home"
-        className={`w-full  px-[30px] pb-[200px] pt-[25px] md:px-[36px] md:pt-[30px] lg:px-[42px] lg:pt-[35px] xl:px-[48px] xl:pt-[40px] 2xl:px-[60px] 2xl:pt-[50px]`}
+        className={`mx-auto w-full  px-[30px] pb-[200px] pt-[25px] md:px-[36px] md:pt-[30px] lg:px-[42px] lg:pt-[35px] xl:px-[48px] xl:pt-[40px] 2xl:px-[60px] 2xl:pt-[50px]`}
       >
-        <div className="">
-          <div className="w-[200px] animate-spin rounded-full  border-b-2 border-[#0354EC]"></div>
-        </div>
+        {' '}
+        <div className="mx-auto h-[200px] w-[200px] animate-spin rounded-full  border-b-2 border-[#0354EC]"></div>
       </section>
-    </>
+    )
   }
 
   return (
