@@ -1,38 +1,66 @@
 'use client'
 import { CoreServices } from '@/types/node'
 import { thirds } from '@/utils/third'
+import { useEffect, useState } from 'react'
+
 interface ModalProps {
   onValueChange(): void
   coreServices: CoreServices[]
+  isLoadingFeatures: boolean
 }
 
-const AddOns2 = ({ ...data }: ModalProps) => {
+const AddOns2 = ({ coreServices, isLoadingFeatures, ...data }: ModalProps) => {
+  const [serviceIcons, setServiceIcons] = useState<string[]>([])
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+
+  useEffect(() => {
+    if (coreServices && coreServices.length > 0) {
+      setServiceIcons(
+        coreServices.map(() => '/images/reviewYourBuild/bola.svg'),
+      )
+    }
+  }, [coreServices])
+
+  useEffect(() => {
+    const updateIcon = () => {
+      if (currentServiceIndex < coreServices.length) {
+        setServiceIcons((prevIcons) =>
+          prevIcons.map((icon, index) =>
+            index === currentServiceIndex
+              ? '/images/reviewYourBuild/checkGreen.svg'
+              : icon,
+          ),
+        )
+        setCurrentServiceIndex(currentServiceIndex + 1)
+      }
+    }
+    if (isLoadingFeatures && currentServiceIndex <= coreServices.length + 1) {
+      const timeout = setTimeout(updateIcon, 2000)
+      return () => clearTimeout(timeout)
+    }
+  }, [isLoadingFeatures, currentServiceIndex, coreServices.length])
+
   return (
     <div className="relative flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] xl:pb-[360px] 2xl:px-[20px] 2xl:py-[15px] 2xl:pb-[100px]">
       <div className="relative flex gap-x-[10px]">
         <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
-          AddOns
+          Add-ons
         </div>
       </div>
       <div className="ml-[47.5px]  gap-x-[25px] md:ml-[57px]  md:gap-x-[30px] lg:ml-[66.5px] lg:gap-x-[35px] xl:ml-[136px] xl:gap-x-[40px] 2xl:ml-[170px] 2xl:gap-x-[50px]">
         <div className="flex items-center gap-x-[7px] lg:gap-x-[15px]">
           <div
-            className={`h-[10px] w-[10px] cursor-pointer rounded-[5px] border-[1px] border-[#D9D9D9] bg-[#0354EC] hover:bg-[#0354EC] md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] `}
+            className={`h-[10px] w-[10px] rounded-[5px] bg-transparent md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] `}
           ></div>
-          <div className="flex 2xl:gap-x-[10px]">
-            <div className="text-[10px] font-medium  md:text-[12px]  lg:text-[14px]  lg:!leading-[24px] xl:text-[16px] 2xl:text-[20px]">
-              Building a decentralized data infrastructure
-            </div>
-          </div>
         </div>
         <div className="mt-[14px]  grid gap-y-[11px] md:mt-[16.8px] md:gap-y-[13.2px] lg:mt-[19.6px] lg:gap-y-[15.4px] xl:mt-[22.4px] xl:gap-y-[17.6px] 2xl:mt-[28px] 2xl:gap-y-[22px]">
-          {data.coreServices
+          {coreServices
             .filter((service) => thirds.includes(service.name))
             .map((option, index) => (
               <div key={index}>
                 <div className="flex items-center gap-x-[8px] 2xl:gap-x-[10px]">
                   <img
-                    src="/images/reviewYourBuild/bola.svg"
+                    src={serviceIcons[index]}
                     alt="image"
                     className="w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]"
                   />

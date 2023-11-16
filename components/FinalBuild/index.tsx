@@ -19,6 +19,9 @@ import ServiceRegion from './ServiceRegion'
 import YourCore from './YourCore'
 import { CoreServices } from '@/types/node'
 import AddOns2 from './AddOns2'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 /* eslint-disable react/no-unescaped-entities */
 const ReviewYourBuild = () => {
@@ -27,6 +30,8 @@ const ReviewYourBuild = () => {
   const [coreServices, setCoreServices] = useState<CoreServices[]>([])
   const [coreServicesData, setCoreServicesData] = useState<string[]>([])
   const [coreServicesApi, setCoreServicesApi] = useState<string[]>([])
+  const [isDeploying, setIsDeploying] = useState<boolean>(false)
+  const [isLoadingFeatures, setIsLoadingFeatures] = useState<boolean>(false)
 
   const {
     selectionSideNavBar,
@@ -36,6 +41,10 @@ const ReviewYourBuild = () => {
     reviewYourBuild,
     setReviewYourBuild,
     finalNodes,
+    tagXnode,
+    user,
+    projectName,
+    setProjectName,
     setSignup,
   } = useContext(AccountContext)
 
@@ -68,6 +77,51 @@ const ReviewYourBuild = () => {
   }
 
   const { push } = useRouter()
+
+  async function createXnode() {
+    setIsDeploying(true)
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+
+    const finalData = {
+      name: projectName,
+      description: 'This is my xnode',
+      useCase: tagXnode,
+      status: 'Running',
+      consoleNodes: savedNodes,
+      consoleEdges: savedEdges,
+    }
+
+    if (user.sessionToken) {
+      const config = {
+        method: 'post' as 'post',
+        url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/createXnode`,
+        headers: {
+          'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+          'X-Parse-Session-Token': user.sessionToken,
+          'Content-Type': 'application/json',
+        },
+        data: finalData,
+      }
+
+      try {
+        await axios(config).then(function (response) {
+          if (response.data) {
+            console.log('deploy feito com sucesso')
+            console.log(response.data)
+            setIsLoadingFeatures(true)
+          }
+        })
+      } catch (err) {
+        toast.error(
+          `Error during Xnode deployment: ${err.response.data.message}`,
+        )
+      }
+    } else {
+      push('/start-here')
+    }
+    setIsDeploying(false)
+  }
 
   useEffect(() => {
     console.log('fui chamado meu mano brown')
@@ -120,8 +174,23 @@ const ReviewYourBuild = () => {
       console.log(coreServicesArray)
       console.log(coreServiceDataArray)
       console.log(coreServiceApiArray)
+
+      createXnode()
     }
   }, [])
+
+  if (!isDeploying) {
+    ;<>
+      <section
+        id="home"
+        className={`w-full  px-[30px] pb-[200px] pt-[25px] md:px-[36px] md:pt-[30px] lg:px-[42px] lg:pt-[35px] xl:px-[48px] xl:pt-[40px] 2xl:px-[60px] 2xl:pt-[50px]`}
+      >
+        <div className="">
+          <div className="w-[200px] animate-spin rounded-full  border-b-2 border-[#0354EC]"></div>
+        </div>
+      </section>
+    </>
+  }
 
   return (
     <>
@@ -149,11 +218,13 @@ const ReviewYourBuild = () => {
               coreServices={coreServices}
               coreServicesApi={coreServicesApi}
               coreServicesData={coreServicesData}
+              isLoadingFeatures={isLoadingFeatures}
               onValueChange={() => setReviewYourBuild(false)}
             />
             <AddOns2
               coreServices={coreServices}
               onValueChange={() => setReviewYourBuild(false)}
+              isLoadingFeatures={isLoadingFeatures}
             />
             {/* <AddOns onValueChange={() => setReviewYourBuild(false)} /> */}
           </div>

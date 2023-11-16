@@ -24,6 +24,7 @@ const StartHere = ({ onValueChange }) => {
     nextFromScratch,
     connections,
     finalBuild,
+    setFinalNodes,
     signup,
   } = useContext(AccountContext)
 
@@ -180,6 +181,22 @@ const StartHere = ({ onValueChange }) => {
     },
   ]
 
+  function handleNextUseCase() {
+    console.log('handl enext chamado')
+    setFinalNodes([])
+    localStorage.clear()
+    setNext(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handleNextFromScratch() {
+    console.log('handl enext chamado')
+    setFinalNodes([])
+    localStorage.clear()
+    setNextFromScratch(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   if (finalBuild) {
     return (
       <>
@@ -263,8 +280,7 @@ const StartHere = ({ onValueChange }) => {
               </div>
               <div
                 onClick={() => {
-                  setNextFromScratch(true)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  handleNextFromScratch()
                 }}
                 className="mt-[37px] cursor-pointer text-[10px] font-normal text-[#12AD50] hover:font-medium md:mt-[45px] md:text-[12px] lg:mt-[52px] lg:text-[14px] xl:mt-[60px] xl:text-[16px] 2xl:mt-[75px] 2xl:text-[20px]"
               >
@@ -333,7 +349,7 @@ const StartHere = ({ onValueChange }) => {
           </div>
         </div>
         <div className="mt-[75px] text-[20px] font-normal -tracking-[2%] text-[#000] md:mt-[82px] md:text-[24px] lg:mt-[96px] lg:text-[28px] lg:!leading-[48px] xl:mt-[110px] xl:text-[32px] 2xl:mt-[138px] 2xl:text-[40px]">
-          Get started with use cases
+          Get started with use cases2
         </div>
         <div className="relative mt-[35px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[42px] md:grid-cols-2 md:gap-x-[9px] md:gap-y-[18px] lg:mt-[49px] lg:grid-cols-2 lg:gap-x-[10.5px] lg:gap-y-[21px] xl:mt-[56px] xl:grid-cols-3 xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[70px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
           {preSetsOptions.map((option, index) => (
@@ -407,7 +423,7 @@ const StartHere = ({ onValueChange }) => {
         </div>
         <div
           onClick={() => {
-            setNext(true)
+            handleNextUseCase()
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
           className=" mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[54px] py-[6.25px]  text-[7px] font-medium text-[#fff] hover:bg-[#123981] md:mt-[65px] md:py-[5px] md:px-[39px] md:text-[8.5px] lg:mt-[75.5px] lg:py-[9px] lg:px-[45px] lg:text-[10px] lg:!leading-[19px] xl:mt-[86.5px] xl:py-[10px] xl:px-[51px] xl:text-[11px] 2xl:mt-[108px] 2xl:py-[12.5px] 2xl:px-[64px] 2xl:text-[14px]"

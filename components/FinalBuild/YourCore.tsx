@@ -1,17 +1,58 @@
 'use client'
 import { CoreServices } from '@/types/node'
 import { thirds } from '@/utils/third'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface ModalProps {
   onValueChange(): void
   coreServicesApi: string[]
   coreServicesData: string[]
   coreServices: CoreServices[]
+  isLoadingFeatures: boolean
 }
 
-const YourCore = ({ ...data }: ModalProps) => {
+const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
   const [viewAPI, setViewAPI] = useState<boolean>(true)
   const [viewData, setViewData] = useState<boolean>(true)
+  const [serviceIcons, setServiceIcons] = useState<string[]>([])
+  const [apiIcon, setApiIcon] = useState('/images/reviewYourBuild/bola.svg')
+  const [dataIcon, setDataIcon] = useState('/images/reviewYourBuild/bola.svg')
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+
+  useEffect(() => {
+    if (coreServices && coreServices.length > 0) {
+      setServiceIcons(
+        coreServices.map(() => '/images/reviewYourBuild/bola.svg'),
+      )
+    }
+  }, [coreServices])
+
+  useEffect(() => {
+    const updateIcon = () => {
+      if (currentServiceIndex < coreServices.length) {
+        setServiceIcons((prevIcons) =>
+          prevIcons.map((icon, index) =>
+            index === currentServiceIndex
+              ? '/images/reviewYourBuild/checkGreen.svg'
+              : icon,
+          ),
+        )
+        setCurrentServiceIndex(currentServiceIndex + 1)
+      } else if (currentServiceIndex === coreServices.length) {
+        setApiIcon('/images/reviewYourBuild/checkGreen.svg')
+        setCurrentServiceIndex(currentServiceIndex + 1)
+      } else if (currentServiceIndex === coreServices.length + 1) {
+        setDataIcon('/images/reviewYourBuild/checkGreen.svg')
+        toast.success('Success')
+      }
+    }
+
+    if (isLoadingFeatures && currentServiceIndex <= coreServices.length + 1) {
+      const timeout = setTimeout(updateIcon, 3000)
+      return () => clearTimeout(timeout)
+    }
+  }, [isLoadingFeatures, currentServiceIndex, coreServices.length])
 
   return (
     <div className="relative flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] xl:pb-[360px] 2xl:px-[20px] 2xl:py-[15px] 2xl:pb-[100px]">
@@ -32,14 +73,14 @@ const YourCore = ({ ...data }: ModalProps) => {
           </div>
         </div>
         <div className="mt-[14px]  grid gap-y-[11px] md:mt-[16.8px] md:gap-y-[13.2px] lg:mt-[19.6px] lg:gap-y-[15.4px] xl:mt-[22.4px] xl:gap-y-[17.6px] 2xl:mt-[28px] 2xl:gap-y-[22px]">
-          {data.coreServices
+          {coreServices
             .filter((service) => !thirds.includes(service.name))
             .map((option, index) => (
               <div key={index}>
                 <div className="flex items-center gap-x-[8px] 2xl:gap-x-[10px]">
                   <img
-                    src="/images/reviewYourBuild/bola.svg"
-                    alt="image"
+                    src={serviceIcons[index]}
+                    alt="service-icon"
                     className="w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]"
                   />
                   <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
@@ -71,8 +112,8 @@ const YourCore = ({ ...data }: ModalProps) => {
           <div className="mt-[11px] md:mt-[13.2px] lg:mt-[15.4px] xl:mt-[17.6px] 2xl:mt-[22px]">
             <div className="flex items-center gap-x-[8px] 2xl:gap-x-[10px]">
               <img
-                src="/images/reviewYourBuild/bola.svg"
-                alt="image"
+                src={apiIcon} // Usando a variável apiIcon aqui
+                alt="APIs & Connectivity"
                 className="w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]"
               />
               <div className="relative flex text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
@@ -133,8 +174,8 @@ const YourCore = ({ ...data }: ModalProps) => {
           <div className="mt-[11px] md:mt-[13.2px] lg:mt-[15.4px] xl:mt-[17.6px] 2xl:mt-[22px]">
             <div className="flex items-center gap-x-[8px] 2xl:gap-x-[10px]">
               <img
-                src="/images/reviewYourBuild/bola.svg"
-                alt="image"
+                src={dataIcon} // Usando a variável dataIcon aqui
+                alt="Data"
                 className="w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]"
               />
               <div className="relative flex text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">

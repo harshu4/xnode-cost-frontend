@@ -28,6 +28,9 @@ interface CreateUserContextProps {
   selectionSideNavBar: string
   setSelectionSideNavBar: (value: string) => void
 
+  projectName: string
+  setProjectName: (value: string) => void
+
   finalNodes: any
   setFinalNodes: (value: any) => void
 
@@ -71,6 +74,7 @@ export default function AccountContextProvider({
   const [changeNodes, setChangeNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
+  const [projectName, setProjectName] = useState('Project Name')
   const [isWorkspace, setIsWorkspace] = useState<boolean>(false)
   const [finalNodes, setFinalNodes] = useState<any>()
   const [next, setNext] = useState<boolean>(false)
@@ -88,6 +92,8 @@ export default function AccountContextProvider({
       value={{
         selectionSideNavBar,
         setSelectionSideNavBar,
+        projectName,
+        setProjectName,
         user,
         setUser,
         next,

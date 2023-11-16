@@ -138,6 +138,9 @@ const LateralNav = ({ onValueChange }) => {
     if (title === 'Home') {
       setNextFromScratch(false)
       setNext(false)
+      setReviewYourBuild(false)
+      setFinalBuild(false)
+      setSignup(false)
       push('/start-here')
       return
     }
