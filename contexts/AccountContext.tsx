@@ -52,6 +52,9 @@ interface CreateUserContextProps {
   connections: boolean
   setConnections: (value: boolean) => void
 
+  tagXnode: any
+  setTagXnode: (value: any) => void
+
   changeNodes: any
   setChangeNodes: (value: any) => void
 
@@ -76,6 +79,9 @@ export default function AccountContextProvider({
   const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false)
   const [connections, setConnections] = useState<boolean>(false)
   const [signup, setSignup] = useState<boolean>(false)
+  const [tagXnode, setTagXnode] = useState<string>(
+    'Decentralized data infrastructure',
+  )
 
   return (
     <AccountContext.Provider
@@ -92,6 +98,8 @@ export default function AccountContextProvider({
         setReviewYourBuild,
         signup,
         setSignup,
+        tagXnode,
+        setTagXnode,
         finalNodes,
         setFinalNodes,
         isWorkspace,

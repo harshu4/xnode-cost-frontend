@@ -1,5 +1,6 @@
 'use client'
 import { CoreServices } from '@/types/node'
+import { thirds } from '@/utils/third'
 import { useState } from 'react'
 interface ModalProps {
   onValueChange(): void
@@ -31,38 +32,40 @@ const YourCore = ({ ...data }: ModalProps) => {
           </div>
         </div>
         <div className="mt-[14px]  grid gap-y-[11px] md:mt-[16.8px] md:gap-y-[13.2px] lg:mt-[19.6px] lg:gap-y-[15.4px] xl:mt-[22.4px] xl:gap-y-[17.6px] 2xl:mt-[28px] 2xl:gap-y-[22px]">
-          {data.coreServices.map((option, index) => (
-            <div key={index}>
-              <div className="flex items-center gap-x-[4px]">
-                <img
-                  src="/images/reviewYourBuild/arrow-item.svg"
-                  alt="image"
-                  className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
-                />
-                <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
-                  {option.name}
+          {data.coreServices
+            .filter((service) => !thirds.includes(service.name))
+            .map((option, index) => (
+              <div key={index}>
+                <div className="flex items-center gap-x-[4px]">
                   <img
-                    src="/images/reviewYourBuild/question.svg"
+                    src="/images/reviewYourBuild/arrow-item.svg"
                     alt="image"
-                    className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
+                    className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
                   />
-                  {option.isFree && (
-                    <div className="absolute -right-[25px] -top-[7.5px] text-[7px] font-normal text-[#12AD50] md:-right-[30px] md:-top-[9px] md:text-[8.4px] lg:-right-[35px]  lg:-top-[10.5px] lg:text-[9.8px]  xl:-right-[40px] xl:-top-[12px]  xl:text-[11.2px] 2xl:-top-[15px] 2xl:-right-[50px] 2xl:text-[14px]">
-                      Free
-                    </div>
-                  )}
+                  <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
+                    {option.name}
+                    <img
+                      src="/images/reviewYourBuild/question.svg"
+                      alt="image"
+                      className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
+                    />
+                    {option.isFree && (
+                      <div className="absolute -right-[25px] -top-[7.5px] text-[7px] font-normal text-[#12AD50] md:-right-[30px] md:-top-[9px] md:text-[8.4px] lg:-right-[35px]  lg:-top-[10.5px] lg:text-[9.8px]  xl:-right-[40px] xl:-top-[12px]  xl:text-[11.2px] 2xl:-top-[15px] 2xl:-right-[50px] 2xl:text-[14px]">
+                        Free
+                      </div>
+                    )}
+                  </div>
+                  <img
+                    src="/images/reviewYourBuild/check.svg"
+                    alt="image"
+                    className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
+                  />
                 </div>
-                <img
-                  src="/images/reviewYourBuild/check.svg"
-                  alt="image"
-                  className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
-                />
+                <div className="pl-[15px] text-[7px] font-normal text-[#505050] md:pl-[18px] md:text-[8.4px] lg:pl-[21px] lg:text-[9.8px] xl:pl-[24px] xl:text-[11.2px] 2xl:pl-[30px] 2xl:text-[14px]">
+                  {option.description}
+                </div>
               </div>
-              <div className="pl-[15px] text-[7px] font-normal text-[#505050] md:pl-[18px] md:text-[8.4px] lg:pl-[21px] lg:text-[9.8px] xl:pl-[24px] xl:text-[11.2px] 2xl:pl-[30px] 2xl:text-[14px]">
-                {option.description}
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
         {data.coreServicesApi.length > 0 && (
           <div className="mt-[11px] md:mt-[13.2px] lg:mt-[15.4px] xl:mt-[17.6px] 2xl:mt-[22px]">

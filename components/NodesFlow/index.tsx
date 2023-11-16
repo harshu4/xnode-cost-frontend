@@ -338,6 +338,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       localStorage.setItem('nodes', JSON.stringify(nodes))
       localStorage.setItem('edges', JSON.stringify(edges))
     }
+    setFinalNodes(nodes)
   }, [nodes, edges, isInitialized])
 
   useEffect(() => {

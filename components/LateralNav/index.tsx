@@ -23,6 +23,9 @@ const LateralNav = ({ onValueChange }) => {
     setNext,
     nextFromScratch,
     setNextFromScratch,
+    setReviewYourBuild,
+    setFinalBuild,
+    setSignup,
   } = useContext(AccountContext)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [greenDotOpacity, setGreenDotOpacity] = useState(0)
@@ -122,7 +125,11 @@ const LateralNav = ({ onValueChange }) => {
   function handleButtonClick(title: string) {
     if (title === 'Workspace') {
       setNext(true)
+      setReviewYourBuild(false)
+      setFinalBuild(false)
+      setSignup(false)
       setSelectionSideNavBar('Workspace')
+      push('/start-here')
       return
     }
     if (title === 'Docs') {

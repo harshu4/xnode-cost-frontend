@@ -15,6 +15,9 @@ import { useRouter } from 'next/navigation'
 import { AccountContext } from '@/contexts/AccountContext'
 import LogIn from './LogIn'
 import ThirdParty from './ThirdParty'
+import nookies, { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 /* eslint-disable react/no-unescaped-entities */
 const Signup = () => {
@@ -27,7 +30,25 @@ const Signup = () => {
     setReviewYourBuild,
     setFinalBuild,
     finalNodes,
+    user,
+    setUser,
   } = useContext(AccountContext)
+
+  function handleFinalBuild() {
+    if (!user) {
+      toast.error('Please log in before proceeding')
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    } else {
+      setFinalBuild(true)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
+  }
 
   return (
     <>
@@ -51,9 +72,13 @@ const Signup = () => {
           <div
             onClick={() => {
               console.log(finalNodes)
-              setFinalBuild(true)
+              handleFinalBuild()
             }}
-            className="mt-[41px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#0e2e69] md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px]  lg:px-[14.5px] lg:text-[10px]   xl:mt-[65px] xl:py-[10px]    xl:px-[17px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]"
+            className={`mt-[41px] flex h-fit w-fit justify-center gap-x-[8px] rounded-[5px] ${
+              !user
+                ? 'bg-[#578ae9]'
+                : 'cursor-pointer bg-[#0354EC] hover:bg-[#0e2e69] '
+            } py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px]  lg:px-[14.5px] lg:text-[10px]   xl:mt-[65px] xl:py-[10px]    xl:px-[17px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]`}
           >
             <img
               src={`${

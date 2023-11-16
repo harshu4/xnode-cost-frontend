@@ -28,6 +28,14 @@ const Header = () => {
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
 
+  const tagsOptions = [
+    'Decentralized data infrastructure',
+    'Dapps',
+    'Analysis engine',
+    'Research and development',
+    'Validator',
+  ]
+
   const {
     user,
     setUser,
@@ -38,6 +46,8 @@ const Header = () => {
     setReviewYourBuild,
     reviewYourBuild,
     setIsWorkspace,
+    tagXnode,
+    setTagXnode,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -383,13 +393,25 @@ const Header = () => {
                   className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
                 />
                 {isEditing ? (
-                  <input
-                    value={projectName}
-                    onChange={(e) => setProjectName(e.target.value)}
-                    onBlur={() => setIsEditing(false)}
-                    className="ml-[5px] bg-[#fff]"
-                    autoFocus
-                  />
+                  <div className="flex gap-x-[10px]">
+                    <input
+                      value={projectName}
+                      onChange={(e) => setProjectName(e.target.value)}
+                      className="ml-[5px] bg-[#fff]"
+                      autoFocus
+                    />
+                    <select
+                      className="nodrag min-w-[104px] rounded-[6px] bg-[#fff] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
+                      onChange={(option) => setTagXnode(option.target.value)}
+                      value={tagXnode}
+                    >
+                      {tagsOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 ) : (
                   <div className="ml-[5px] text-[8px] font-bold text-[#313131] md:ml-[6px] md:text-[9.6px] lg:ml-[7px] lg:text-[11.2px] xl:ml-[8px] xl:text-[13px] 2xl:ml-[10px] 2xl:text-[16px]">
                     {projectName}
@@ -485,11 +507,14 @@ const Header = () => {
           </div>
           {isViewing && (
             <div className="pl-[17px]  md:pl-[20px] lg:pl-[23px] xl:pl-[26.4px] 2xl:pl-[33px] ">
-              <div className="flex justify-between">
+              <div className="base:text-[7px] mt-[5px] md:text-[8.4px] lg:text-[9.8px] xl:text-[11.2px] 2xl:text-[14px]">
+                {tagXnode}
+              </div>
+              <div className="mt-[10px] flex justify-between">
                 <div className="text-[6px] font-medium text-[#8D8D8D] md:text-[7.2px]  lg:text-[8.4px]  xl:text-[9.6px] 2xl:text-[12px]">
                   Here you can view the pre-components of your X-node.
                 </div>
-                <div className="mt-[5px] md:mt-[6px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[10px]">
+                <div className="mt-[5px] md:mt-[6px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[1px]">
                   <div className="text-[9px] font-medium text-[#000] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                     Est. $<span className="font-bold">40</span> / month
                   </div>

@@ -18,6 +18,7 @@ import { AccountContext } from '@/contexts/AccountContext'
 import ServiceRegion from './ServiceRegion'
 import YourCore from './YourCore'
 import { CoreServices } from '@/types/node'
+import AddOns2 from './AddOns2'
 
 /* eslint-disable react/no-unescaped-entities */
 const ReviewYourBuild = () => {
@@ -148,6 +149,10 @@ const ReviewYourBuild = () => {
               coreServices={coreServices}
               coreServicesApi={coreServicesApi}
               coreServicesData={coreServicesData}
+              onValueChange={() => setReviewYourBuild(false)}
+            />
+            <AddOns2
+              coreServices={coreServices}
               onValueChange={() => setReviewYourBuild(false)}
             />
             {/* <AddOns onValueChange={() => setReviewYourBuild(false)} /> */}
