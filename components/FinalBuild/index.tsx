@@ -120,7 +120,7 @@ const ReviewYourBuild = () => {
     } else {
       push('/start-here')
     }
-    setIsDeploying(false)
+    // setIsDeploying(false)
   }
 
   useEffect(() => {

@@ -13,10 +13,42 @@ import ProductsList from '../ProductsList'
 import { AccountContext } from '@/contexts/AccountContext'
 import axios from 'axios'
 import { Xnode } from '../../types/node'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from 'recharts'
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [xnodesData, setXnodesData] = useState<Xnode[] | []>([])
+
+  const generateFakeData = () => {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ]
+    return months.map((month) => ({
+      name: month,
+      uptime: Math.floor(Math.random() * 100),
+    }))
+  }
+
+  const [chartData, setChartData] = useState(generateFakeData())
 
   const {
     selectionSideNavBar,
@@ -68,41 +100,41 @@ const Dashboard = () => {
   }
 
   const commonClasses =
-    'pb-[17.5px] whitespace-nowrap font-normal text-[8px] md:pb-[21px] lg:pb-[24.5px] xl:pb-[28px] 2xl:pb-[35px] 2xl:text-[16px]  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px]'
+    'pb-[17.5px] whitespace-nowrap font-normal text-[8px] md:pb-[21px] lg:pb-[24.5px] xl:pb-[28px] 2xl:pb-[35px] 2xl:text-[16px] md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px]'
 
   const renderTable = () => {
     return (
-      <div className="overflow-x-auto text-[#000]">
-        <table className="min-w-full">
+      <div className=" mx-auto flex  text-[#000]">
+        <table className="mx-auto w-full">
           <thead className="">
             <tr>
               <th
                 scope="col"
-                className="text-left text-[8px] font-bold uppercase tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
+                className="text-left text-[8px] font-bold  tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
               >
                 Deployment summary{' '}
               </th>
               <th
                 scope="col"
-                className="text-left text-[8px] font-bold uppercase tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
+                className="text-left text-[8px] font-bold  tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
               >
                 Use Case
               </th>
               <th
                 scope="col"
-                className="text-left text-[8px] font-bold uppercase tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
+                className="text-left text-[8px] font-bold tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
               >
                 Creation Date
               </th>
               <th
                 scope="col"
-                className="text-left  text-[8px] font-bold uppercase tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
+                className="text-left  text-[8px] font-bold  tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
               >
                 Average Cost
               </th>
               <th
                 scope="col"
-                className="text-left  text-[8px] font-bold uppercase tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
+                className="text-left  text-[8px] font-bold  tracking-wider  md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]"
               >
                 Status
               </th>
@@ -127,6 +159,9 @@ const Dashboard = () => {
                 </td>
                 <td className={commonClasses}>381.89 P/m</td>
                 <td className={commonClasses}>{node.status}</td>
+                <td className="pb-[17.5px] text-[7px] font-medium text-[#0354EC] underline underline-offset-2  md:pb-[21px] md:text-[8.4px]  lg:pb-[24.5px] lg:text-[9.8px] xl:pb-[28px] xl:text-[11.2px] 2xl:pb-[35px] 2xl:text-[14px]">
+                  <a href="/dashboard">Edit</a>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -161,11 +196,45 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="w-[750px] rounded-[10px] bg-[#F9F9F9] pl-[85px] pr-[132px] pt-[30px] pb-[172px] md:w-[900px] md:pt-[36px] md:pl-[102px] md:pr-[158px] md:pb-[213px] lg:w-[1050px]  lg:pt-[42px] lg:pl-[119px] lg:pr-[184px] lg:pb-[248px]  xl:w-[1200px] xl:pt-[48px] xl:pl-[136px] xl:pr-[211px]  xl:pb-[284px] 2xl:w-[1500px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[60px] 2xl:pb-[355px]  ">
+      <div className="w-[750px] rounded-[10px] bg-[#F9F9F9] px-[50px]  pt-[30px] pb-[172px] shadow-[1px_1px_6px_0px_rgba(124,124,124,0.20)] md:w-[900px] md:px-[60px] md:pt-[36px] md:pb-[213px] lg:w-[1050px] lg:px-[70px]  lg:pt-[42px] lg:pb-[248px]  xl:w-[1200px] xl:px-[80px]  xl:pt-[48px] xl:pb-[284px] 2xl:w-[1500px] 2xl:px-[100px] 2xl:pt-[60px] 2xl:pb-[355px]  ">
         <div className="text-[10px] font-bold text-[#313131] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
           Your deployments
         </div>
-        <div> {renderTable()}</div>
+        <div className="mt-[22.5px] md:mt-[27px] lg:mt-[31.5px] xl:mt-[36px] 2xl:mt-[45px]">
+          {' '}
+          {renderTable()}
+        </div>
+        <div className="mt-[40px] text-[10px] font-bold text-[#313131] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
+          Dashboards to display{' '}
+        </div>
+        <div className="mt-[50px]">
+          <h2 className="ml-[50px] mb-[20px] text-lg font-semibold text-[#000]">
+            Xnode Uptime
+          </h2>
+          <LineChart
+            width={500}
+            height={300}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="uptime"
+              stroke="#0354EC"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </div>
       </div>
     </>
   )
