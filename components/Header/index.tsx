@@ -10,10 +10,14 @@ import { parseCookies, destroyCookie } from 'nookies'
 import axios from 'axios'
 import { AccountContext } from '../../contexts/AccountContext'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [userNavbarOpen, setUserNavbarOpen] = useState(false)
+  const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
   const [userConnected, setUserConnected] = useState()
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
@@ -49,6 +53,10 @@ const Header = () => {
     projectName,
     setProjectName,
     setTagXnode,
+    isEditingXnode,
+    setIsEditingXnode,
+    setNextFromScratch,
+    projectDescription,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -108,6 +116,57 @@ const Header = () => {
     },
   ]
 
+  async function saveEditingXnode() {
+    setIsLoadingUpdate(true)
+
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+    const nodeId = localStorage.getItem('editingNode')
+
+    const finalData = {
+      xnodeId: nodeId,
+      name: projectName,
+      description: 'This is my xnode',
+      useCase: tagXnode,
+      status: 'Running',
+      consoleNodes: savedNodes,
+      consoleEdges: savedEdges,
+    }
+
+    if (user.sessionToken) {
+      const config = {
+        method: 'put' as 'put',
+        url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/updateXnode`,
+        headers: {
+          'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+          'X-Parse-Session-Token': user.sessionToken,
+          'Content-Type': 'application/json',
+        },
+        data: finalData,
+      }
+
+      try {
+        await axios(config).then(function (response) {
+          if (response.data) {
+            console.log(response.data)
+            setNext(false)
+            setNextFromScratch(false)
+            toast.success(`Success`)
+            push('/dashboard')
+          }
+        })
+      } catch (err) {
+        toast.error(
+          `Error during Xnode deployment: ${err.response.data.message}`,
+        )
+      }
+    } else {
+      toast.error(`User nor found`)
+      push('/start-here')
+    }
+    setIsLoadingUpdate(false)
+  }
+
   async function getUserData() {
     const { userSessionToken } = parseCookies()
     console.log('no user data')
@@ -155,6 +214,11 @@ const Header = () => {
     const savedEdges = localStorage.getItem('edges')
     if (savedNodes && savedEdges) {
       setIsWorkspace(true)
+    }
+
+    const isEditingX = localStorage.getItem('editingNode')
+    if (isEditingX) {
+      setIsEditingXnode(true)
     }
   }, [])
 
@@ -476,23 +540,49 @@ const Header = () => {
                   ))}
                 </div>
                 <div className="grid gap-y-[12px] font-medium">
-                  <div
-                    onClick={() => {
-                      setReviewYourBuild(true)
-                    }}
-                    className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
-                  >
-                    <img
-                      src={`${
-                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                          ? process.env.NEXT_PUBLIC_BASE_PATH
-                          : ''
-                      }/images/header/storm.svg`}
-                      alt="image"
-                      className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
-                    />
-                    <div>Create service and deploy</div>
-                  </div>
+                  {isEditingXnode ? (
+                    <div
+                      onClick={async () => {
+                        if (!isLoadingUpdate) {
+                          await saveEditingXnode()
+                        }
+                      }}
+                      className={`flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] ${
+                        isLoadingUpdate
+                          ? 'bg-[#3c78e9]'
+                          : 'bg-[#0354EC] hover:bg-[#203b6e]'
+                      }  py-[6.2px] px-[11px] text-center  text-[#fff]    md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]`}
+                    >
+                      <img
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/storm.svg`}
+                        alt="image"
+                        className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+                      />
+                      <div>Save updates</div>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => {
+                        setReviewYourBuild(true)
+                      }}
+                      className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
+                    >
+                      <img
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/storm.svg`}
+                        alt="image"
+                        className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+                      />
+                      <div>Create service and deploy</div>
+                    </div>
+                  )}
                 </div>
                 {user?.sessionToken ? (
                   <div>
@@ -566,7 +656,7 @@ const Header = () => {
               </div>
               <div className="mt-[10px] flex justify-between">
                 <div className="text-[6px] font-medium text-[#8D8D8D] md:text-[7.2px]  lg:text-[8.4px]  xl:text-[9.6px] 2xl:text-[12px]">
-                  Here you can view the pre-components of your X-node.
+                  {projectDescription}
                 </div>
                 <div className="mt-[5px] md:mt-[6px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[1px]">
                   <div className="text-[9px] font-medium text-[#000] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">

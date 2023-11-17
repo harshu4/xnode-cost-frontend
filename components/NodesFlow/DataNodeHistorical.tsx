@@ -1,34 +1,34 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState, useContext } from "react";
-import { Handle, useReactFlow, useStoreApi, Position } from "reactflow";
-import { AccountContext } from "@/contexts/AccountContext";
-import withProps from "./withProps";
+import React, { memo, useState, useContext } from 'react'
+import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
+import { AccountContext } from '@/contexts/AccountContext'
+import withProps from './withProps'
 
 const options = [
   {
-    value: "smoothstep",
-    label: "Smoothstep",
+    value: 'smoothstep',
+    label: 'Smoothstep',
   },
   {
-    value: "step",
-    label: "Step",
+    value: 'step',
+    label: 'Step',
   },
   {
-    value: "default",
-    label: "Bezier (default)",
+    value: 'default',
+    label: 'Bezier (default)',
   },
   {
-    value: "straight",
-    label: "Straight",
+    value: 'straight',
+    label: 'Straight',
   },
-];
+]
 
 function Select({ value, handleId, nodeId }) {
-  const { setNodes } = useReactFlow();
-  const store = useStoreApi();
+  const { setNodes } = useReactFlow()
+  const store = useStoreApi()
 
   const onChange = (evt) => {
-    const { nodeInternals } = store.getState();
+    const { nodeInternals } = store.getState()
     setNodes(
       Array.from(nodeInternals.values()).map((node) => {
         if (node.id === nodeId) {
@@ -38,12 +38,12 @@ function Select({ value, handleId, nodeId }) {
               ...node.data.selects,
               [handleId]: evt.target.value,
             },
-          };
+          }
         }
-        return node;
-      })
-    );
-  };
+        return node
+      }),
+    )
+  }
 
   return (
     <div className="custom-node__select">
@@ -61,13 +61,13 @@ function Select({ value, handleId, nodeId }) {
       </select>
       <Handle type="source" position={Position.Right} id={handleId} />
     </div>
-  );
+  )
 }
 
 function Options({ handleId, name, optionsSelection }) {
-  const { setNodes } = useReactFlow();
-  const store = useStoreApi();
-  const [selected, setSelected] = useState<any>();
+  const { setNodes } = useReactFlow()
+  const store = useStoreApi()
+  const [selected, setSelected] = useState<any>()
 
   return (
     <div className="">
@@ -83,28 +83,28 @@ function Options({ handleId, name, optionsSelection }) {
         ))}
       </select>
     </div>
-  );
+  )
 }
 
 function DataNodeHistorical({ id, data, handleNodeRemove }) {
-  const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true);
+  const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true)
   const { selectionSideNavBar, setSelectionSideNavBar, changeNodes } =
-    useContext(AccountContext);
+    useContext(AccountContext)
   const handleClick = () => {
-    handleNodeRemove(id);
-  };
+    handleNodeRemove(id)
+  }
 
-  const selectedItems = data.lists;
+  const selectedItems = data.lists
 
   /* This is for rendering pourposes, use data.lists for real data as it shows the correct amount of items but uncategorized. You can see some duplicated items in multiple categories because of the current mockupdata,
    it will be different as we add real data.
    */
-  const categoriesDictionary = changeNodes?.dictionary;
+  const categoriesDictionary = changeNodes?.dictionary
   const listOfCategorizedItems = categoriesDictionary?.map((category) => {
     const selectedCategoryItems =
       selectedItems.filter((item) =>
-        category?.dataOptions?.some((option) => option.title === item.title)
-      ) || [];
+        category?.dataOptions?.some((option) => option.title === item.title),
+      ) || []
     if (selectedCategoryItems.length > 0) {
       return (
         <div key={category.title}>
@@ -128,16 +128,16 @@ function DataNodeHistorical({ id, data, handleNodeRemove }) {
             </div>
           ))}
         </div>
-      );
+      )
     }
-    return null;
-  });
+    return null
+  })
   return (
     <>
       <div className="relative rounded-[20px] border-[0.5px] border-[#C1C1C1] bg-[#fff] py-[7px]  px-[10px]  pb-[23px] pr-[33px] text-[8px]  text-[#000] md:py-[8.4px] md:px-[12px] md:pb-[15.6px] md:pr-[46px] md:text-[9.6px] lg:py-[10px] lg:px-[14px] lg:pb-[18px] lg:pr-[53px] lg:text-[11.2px] xl:py-[11.2px] xl:px-[16px] xl:pb-[21px] xl:pr-[61px] xl:text-[12.8px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[46px] 2xl:pr-[77px] 2xl:text-[16px]">
         <button
           onClick={() => {
-            handleClick();
+            handleClick()
           }}
           className="absolute top-5 right-[5px] font-bold md:right-[6px] lg:right-[7px] xl:right-[8px] 2xl:right-[10px]"
         >
@@ -145,10 +145,10 @@ function DataNodeHistorical({ id, data, handleNodeRemove }) {
         </button>
         <div className="flex w-full flex-row items-start gap-[10px] ">
           <img
-            src={"/images/nodesFlow/databaseHistorical.svg"}
+            src={'/images/nodesFlow/databaseHistorical.svg'}
             alt="image"
             className={
-              "w-[32  px] md:w-[29px] lg:w-[36.5px] xl:w-[39px] 2xl:w-[45px]"
+              'w-[32  px] md:w-[29px] lg:w-[36.5px] xl:w-[39px] 2xl:w-[45px]'
             }
           />
           <div className="mt-[5px] text-[16px] font-bold md:mt-[6px] lg:mt-[7px] lg:!leading-[19px] xl:mt-[8px] 2xl:mt-[10px]">
@@ -177,17 +177,17 @@ function DataNodeHistorical({ id, data, handleNodeRemove }) {
         {listOfCategorizedItems}
         <div
           onClick={() => {
-            setSelectionSideNavBar("Data");
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            setSelectionSideNavBar('Data')
+            window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
           className="mt-[20px] cursor-pointer pl-[5px] text-[7.5px] font-medium text-[#0354EC] md:mt-[24px] md:text-[8.5px] lg:mt-[28px] lg:text-[10px] xl:mt-[32px] xl:text-[11.2px] 2xl:mt-[40px] 2xl:text-[14px]"
         >
           Add
         </div>
-        <Handle type="source" position={Position.Right} id={"1"} />
+        <Handle type="source" position={Position.Right} id={'1'} />
       </div>
     </>
-  );
+  )
 }
 
-export default withProps(DataNodeHistorical, ["handleNodeRemove"]);
+export default withProps(DataNodeHistorical, ['handleNodeRemove'])

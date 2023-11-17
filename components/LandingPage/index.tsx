@@ -1,30 +1,30 @@
-"use client";
+'use client'
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 
-import Footer from "../Footer";
-import CostSaving from "./lp-components/CostSaving";
-import { useEffect, useState } from "react";
+import Footer from '../Footer'
+import CostSaving from './lp-components/CostSaving'
+import { useEffect, useState } from 'react'
 
 const LandingPage = () => {
-  const [isHRVisible, setHRVisible] = useState(false);
+  const [isHRVisible, setHRVisible] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
-      const hrElement = document.getElementById("animated-hr");
+      const hrElement = document.getElementById('animated-hr')
       if (hrElement) {
-        const rect = hrElement.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-        setHRVisible(isVisible);
+        const rect = hrElement.getBoundingClientRect()
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0
+        setHRVisible(isVisible)
       }
-    };
+    }
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll)
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
   return (
     <>
@@ -105,17 +105,17 @@ const LandingPage = () => {
                 >
                   <hr
                     className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#707070] md:w-[196px] lg:w-[230px] xl:w-[260px] 2xl:w-[327px]`}
                   ></hr>
                   <hr
                     className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba to-opacity-33 to-opacity-33 h-[12px] w-[70px] rounded-xl bg-gradient-to-tl from-[#5A5A5A] via-[rgba(123,123,123,0.707391)] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]`}
                   ></hr>
                   <hr
                     className={`origin-left transform transition-transform duration-[2000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba to-opacity-33 via-rgba to-opacity-33 via-rgba-65-65-65-33 to-opacity-33 h-[12px] w-[25px] rounded-xl bg-gradient-to-tl from-[#CCCCCC] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px]`}
                   ></hr>
                 </div>
@@ -153,17 +153,17 @@ const LandingPage = () => {
                 <div className="ml-[20px] mt-[5px] flex flex-col gap-y-5 md:mt-0">
                   <hr
                     className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[120px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[408px] lg:w-[476px] xl:w-[544px] 2xl:w-[679px]`}
                   ></hr>
                   <hr
                     className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[20px] rounded-xl bg-gradient-to-tl from-[#FFCF96] md:w-[143px] lg:w-[166px] xl:w-[190px] 2xl:w-[238px]`}
                   ></hr>
                   <hr
                     className={`origin-left transform transition-transform duration-[4000ms] ease-out ${
-                      isHRVisible ? "scale-x-100" : "scale-x-0"
+                      isHRVisible ? 'scale-x-100' : 'scale-x-0'
                     } via-rgba-255-164-164-33 to-opacity-33 h-[12px] w-[130px] rounded-xl bg-gradient-to-tl from-[#FD003D] md:w-[261px] lg:w-[304px] xl:w-[348px] 2xl:w-[435px]`}
                   ></hr>
                 </div>
@@ -277,7 +277,7 @@ const LandingPage = () => {
       </div>
       <Footer></Footer>
     </>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

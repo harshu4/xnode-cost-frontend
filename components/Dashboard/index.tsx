@@ -13,6 +13,7 @@ import ProductsList from '../ProductsList'
 import { AccountContext } from '@/contexts/AccountContext'
 import axios from 'axios'
 import { Xnode } from '../../types/node'
+import { parseCookies, destroyCookie } from 'nookies'
 import {
   LineChart,
   Line,
@@ -26,6 +27,9 @@ import {
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [xnodesData, setXnodesData] = useState<Xnode[] | []>([])
+
+  const cookies = parseCookies()
+  const userHasAnyCookie = cookies.userSessionToken
 
   const generateFakeData = () => {
     const months = [
@@ -62,10 +66,31 @@ const Dashboard = () => {
     user,
     projectName,
     setProjectName,
+    setProjectDescription,
     setSignup,
+    setNextFromScratch,
+    setConnections,
+    setFinalBuild,
+    setTagXnode,
   } = useContext(AccountContext)
 
   const { push } = useRouter()
+
+  function handleEdit(id: string, nodes, edges, tag, projectName, description) {
+    localStorage.setItem('editingNode', id)
+    localStorage.setItem('nodes', JSON.stringify(nodes))
+    localStorage.setItem('edges', JSON.stringify(edges))
+    setTagXnode(tag)
+    setProjectName(projectName)
+    setProjectDescription(description)
+    setNextFromScratch(false)
+    setReviewYourBuild(false)
+    setSignup(false)
+    setConnections(false)
+    setFinalBuild(false)
+    setNext(true)
+    push('/start-here')
+  }
 
   async function getData() {
     console.log('get data')
@@ -98,6 +123,12 @@ const Dashboard = () => {
     }
     setIsLoading(false)
   }
+
+  useEffect(() => {
+    if (!userHasAnyCookie) {
+      push('/')
+    }
+  }, [])
 
   const commonClasses =
     'pb-[17.5px] whitespace-nowrap font-normal text-[8px] md:pb-[21px] lg:pb-[24.5px] xl:pb-[28px] 2xl:pb-[35px] 2xl:text-[16px] md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px]'
@@ -149,7 +180,19 @@ const Dashboard = () => {
                   <div className="mt-[2px] text-[6px] text-[#8D8D8D] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]">
                     {node.description}
                   </div>
-                  <div className="mt-[4px] text-[6px] text-[#0354EC] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]">
+                  <div
+                    onClick={() => {
+                      handleEdit(
+                        node.id,
+                        JSON.parse(node.consoleNodes),
+                        JSON.parse(node.consoleEdges),
+                        node.useCase,
+                        node.name,
+                        node.description,
+                      )
+                    }}
+                    className="mt-[4px] text-[6px] text-[#0354EC] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]"
+                  >
                     More
                   </div>
                 </td>
@@ -160,7 +203,21 @@ const Dashboard = () => {
                 <td className={commonClasses}>381.89 P/m</td>
                 <td className={commonClasses}>{node.status}</td>
                 <td className="pb-[17.5px] text-[7px] font-medium text-[#0354EC] underline underline-offset-2  md:pb-[21px] md:text-[8.4px]  lg:pb-[24.5px] lg:text-[9.8px] xl:pb-[28px] xl:text-[11.2px] 2xl:pb-[35px] 2xl:text-[14px]">
-                  <a href="/dashboard">Edit</a>
+                  <div
+                    className=" cursor-pointer "
+                    onClick={() => {
+                      handleEdit(
+                        node.id,
+                        JSON.parse(node.consoleNodes),
+                        JSON.parse(node.consoleEdges),
+                        node.useCase,
+                        node.name,
+                        node.description,
+                      )
+                    }}
+                  >
+                    Edit
+                  </div>
                 </td>
               </tr>
             ))}
@@ -173,6 +230,19 @@ const Dashboard = () => {
   useEffect(() => {
     getData()
   }, [user])
+
+  if (xnodesData.length > 0) {
+    return (
+      <div>
+        <div className="mt-[64px] mb-[100px]  flex items-center justify-center text-[#000]">
+          <div className="">
+            <SmileySad size={32} className="mx-auto mb-2" />
+            <div>No Xnodes found</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (

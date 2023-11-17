@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState } from "react";
-import { Handle, useReactFlow, useStoreApi, Position } from "reactflow";
-import withProps from "./withProps";
+import React, { memo, useState } from 'react'
+import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
+import withProps from './withProps'
 
 const options = [
   {
-    value: "smoothstep",
-    label: "Smoothstep",
+    value: 'smoothstep',
+    label: 'Smoothstep',
   },
   {
-    value: "step",
-    label: "Step",
+    value: 'step',
+    label: 'Step',
   },
   {
-    value: "default",
-    label: "Bezier (default)",
+    value: 'default',
+    label: 'Bezier (default)',
   },
   {
-    value: "straight",
-    label: "Straight",
+    value: 'straight',
+    label: 'Straight',
   },
-];
+]
 
 function Select({ value, handleId, nodeId }) {
-  const { setNodes } = useReactFlow();
-  const store = useStoreApi();
+  const { setNodes } = useReactFlow()
+  const store = useStoreApi()
 
   const onChange = (evt) => {
-    const { nodeInternals } = store.getState();
+    const { nodeInternals } = store.getState()
     setNodes(
       Array.from(nodeInternals.values()).map((node) => {
         if (node.id === nodeId) {
@@ -37,12 +37,12 @@ function Select({ value, handleId, nodeId }) {
               ...node.data.selects,
               [handleId]: evt.target.value,
             },
-          };
+          }
         }
-        return node;
-      })
-    );
-  };
+        return node
+      }),
+    )
+  }
 
   return (
     <div className="custom-node__select">
@@ -56,13 +56,13 @@ function Select({ value, handleId, nodeId }) {
       </select>
       <Handle type="source" position={Position.Right} id={handleId} />
     </div>
-  );
+  )
 }
 
 function Options({ handleId, name, optionsSelection }) {
-  const { setNodes } = useReactFlow();
-  const store = useStoreApi();
-  const [selected, setSelected] = useState<any>();
+  const { setNodes } = useReactFlow()
+  const store = useStoreApi()
+  const [selected, setSelected] = useState<any>()
 
   return (
     <div className="custom-node__select">
@@ -79,13 +79,13 @@ function Options({ handleId, name, optionsSelection }) {
         ))}
       </select>
     </div>
-  );
+  )
 }
 
 function CustomNode({ id, data, handleNodeRemove }) {
   const handleClick = () => {
-    handleNodeRemove(id);
-  };
+    handleNodeRemove(id)
+  }
 
   return (
     <>
@@ -94,7 +94,7 @@ function CustomNode({ id, data, handleNodeRemove }) {
       </div>
       <button
         onClick={() => {
-          handleClick();
+          handleClick()
         }}
         className="absolute top-2 right-3"
       >
@@ -103,23 +103,23 @@ function CustomNode({ id, data, handleNodeRemove }) {
       <div className="grid gap-x-[10px] p-[10px]">
         <Options
           handleId={1}
-          name={"Cloud provider"}
-          optionsSelection={["Equinix", "AWS"]}
+          name={'Cloud provider'}
+          optionsSelection={['Equinix', 'AWS']}
         />
         <Options
           handleId={1}
-          name={"Service region"}
-          optionsSelection={["US East", "US West", "Asia Pacific"]}
+          name={'Service region'}
+          optionsSelection={['US East', 'US West', 'Asia Pacific']}
         />
         <Options
           handleId={1}
-          name={"Latency preference"}
-          optionsSelection={["Low", "Med", "High"]}
+          name={'Latency preference'}
+          optionsSelection={['Low', 'Med', 'High']}
         />
       </div>
-      <Handle type="source" position={Position.Right} id={"1"} />
+      <Handle type="source" position={Position.Right} id={'1'} />
     </>
-  );
+  )
 }
 
-export default withProps(CustomNode, ["handleNodeRemove"]);
+export default withProps(CustomNode, ['handleNodeRemove'])

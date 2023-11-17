@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 'use client'
 import { CoreServices } from '@/types/node'
 import { thirds } from '@/utils/third'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import 'react-toastify/dist/ReactToastify.css'
 interface ModalProps {
   onValueChange(): void
@@ -19,6 +21,8 @@ const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
   const [apiIcon, setApiIcon] = useState('/images/reviewYourBuild/bola.svg')
   const [dataIcon, setDataIcon] = useState('/images/reviewYourBuild/bola.svg')
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+
+  const { push } = useRouter()
 
   useEffect(() => {
     if (coreServices && coreServices.length > 0) {
@@ -45,6 +49,7 @@ const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
       } else if (currentServiceIndex === coreServices.length + 1) {
         setDataIcon('/images/reviewYourBuild/checkGreen.svg')
         toast.success('Success')
+        push('/dashboard')
       }
     }
 

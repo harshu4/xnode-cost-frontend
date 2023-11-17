@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from "react";
-import Dropdown from "../Dropdown";
-import LatencySelector from "../LatencySelector";
-import { title } from "process";
-import { AccountContext } from "@/contexts/AccountContext";
+import { useContext, useEffect, useState } from 'react'
+import Dropdown from '../Dropdown'
+import LatencySelector from '../LatencySelector'
+import { title } from 'process'
+import { AccountContext } from '@/contexts/AccountContext'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarData = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0);
+  const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
@@ -15,212 +15,212 @@ const SubBarData = ({ onValueChange }) => {
     setNext,
     setChangeNodes,
     setselectCurrentMenuDataType,
-  } = useContext(AccountContext);
-  const [selectionSubBar, setSelectionSubBar] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  } = useContext(AccountContext)
+  const [selectionSubBar, setSelectionSubBar] = useState<string>('')
+  const [category, setCategory] = useState<string>('')
   const [currentDataMenuSelect, setCurrentDataMenuSelect] =
-    useState<string>("Streaming Data");
+    useState<string>('Streaming Data')
 
   const categoriesOptions = [
     {
-      title: "Crypto Exchanges",
+      title: 'Crypto Exchanges',
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: "/images/subNavBarData/binance.svg",
-          title: "Binance",
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
         },
         {
-          icon: "/images/subNavBarData/coinbase.svg",
-          title: "Coinbase",
+          icon: '/images/subNavBarData/coinbase.svg',
+          title: 'Coinbase',
         },
         {
-          icon: "/images/subNavBarData/bybit.svg",
-          title: "Bybit",
+          icon: '/images/subNavBarData/bybit.svg',
+          title: 'Bybit',
         },
         {
-          icon: "/images/subNavBarData/okx.svg",
-          title: "OKX",
+          icon: '/images/subNavBarData/okx.svg',
+          title: 'OKX',
         },
         {
-          icon: "/images/subNavBarData/krakan.svg",
-          title: "Krakan",
+          icon: '/images/subNavBarData/krakan.svg',
+          title: 'Krakan',
         },
         {
-          icon: "/images/subNavBarData/hubai.svg",
-          title: "Hubai",
+          icon: '/images/subNavBarData/hubai.svg',
+          title: 'Hubai',
         },
         {
-          icon: "/images/subNavBarData/gateio.svg",
-          title: "Gate.io",
+          icon: '/images/subNavBarData/gateio.svg',
+          title: 'Gate.io',
         },
         {
-          icon: "/images/subNavBarData/kucoin.svg",
-          title: "Kucoin",
+          icon: '/images/subNavBarData/kucoin.svg',
+          title: 'Kucoin',
         },
       ],
     },
     {
-      title: "Public Blockchains",
+      title: 'Public Blockchains',
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: "/images/subNavBarData/bitcoin.svg",
-          title: "Bitcoin",
+          icon: '/images/subNavBarData/bitcoin.svg',
+          title: 'Bitcoin',
         },
         {
-          icon: "/images/subNavBarData/ethereum.svg",
-          title: "Ethereum",
+          icon: '/images/subNavBarData/ethereum.svg',
+          title: 'Ethereum',
         },
         {
-          icon: "/images/subNavBarData/polygon.svg",
-          title: "Polygon",
+          icon: '/images/subNavBarData/polygon.svg',
+          title: 'Polygon',
         },
         {
-          icon: "/images/subNavBarData/avalanche.svg",
-          title: "Avalanche",
+          icon: '/images/subNavBarData/avalanche.svg',
+          title: 'Avalanche',
         },
         {
-          icon: "/images/subNavBarData/binance.svg",
-          title: "BNB",
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'BNB',
         },
         {
-          icon: "/images/subNavBarData/aptos.svg",
-          title: "Aptos",
+          icon: '/images/subNavBarData/aptos.svg',
+          title: 'Aptos',
         },
         {
-          icon: "/images/subNavBarData/hedera.svg",
-          title: "Hedera",
+          icon: '/images/subNavBarData/hedera.svg',
+          title: 'Hedera',
         },
       ],
     },
     {
-      title: "Descentralized Finance (DeFi)",
+      title: 'Descentralized Finance (DeFi)',
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: "/images/subNavBarData/binance.svg",
-          title: "Binance",
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
         },
         {
-          icon: "/images/subNavBarData/aave.svg",
-          title: "Aave",
+          icon: '/images/subNavBarData/aave.svg',
+          title: 'Aave',
         },
         {
-          icon: "/images/subNavBarData/yfi.svg",
-          title: "Yearn Finance",
+          icon: '/images/subNavBarData/yfi.svg',
+          title: 'Yearn Finance',
         },
         {
-          icon: "/images/subNavBarData/curve.svg",
-          title: "Curve",
+          icon: '/images/subNavBarData/curve.svg',
+          title: 'Curve',
         },
         {
-          icon: "/images/subNavBarData/gala.svg",
-          title: "Gala",
+          icon: '/images/subNavBarData/gala.svg',
+          title: 'Gala',
         },
         {
-          icon: "/images/subNavBarData/aavegotchi.svg",
-          title: "Aavegotchi",
+          icon: '/images/subNavBarData/aavegotchi.svg',
+          title: 'Aavegotchi',
         },
         {
-          icon: "/images/subNavBarData/opensea.svg",
-          title: "OpenSea",
+          icon: '/images/subNavBarData/opensea.svg',
+          title: 'OpenSea',
         },
       ],
     },
     {
-      title: "GameFi & Metaverses",
+      title: 'GameFi & Metaverses',
       isFree: true,
       enabled: true,
       dataOptions: [
         {
-          icon: "/images/subNavBarData/binance.svg",
-          title: "Binance",
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
         },
         {
-          icon: "/images/subNavBarData/coinbase.svg",
-          title: "Coinbase",
+          icon: '/images/subNavBarData/coinbase.svg',
+          title: 'Coinbase',
         },
         {
-          icon: "/images/subNavBarData/bybit.svg",
-          title: "Bybit",
+          icon: '/images/subNavBarData/bybit.svg',
+          title: 'Bybit',
         },
         {
-          icon: "/images/subNavBarData/okx.svg",
-          title: "OKX",
+          icon: '/images/subNavBarData/okx.svg',
+          title: 'OKX',
         },
         {
-          icon: "/images/subNavBarData/krakan.svg",
-          title: "Krakan",
+          icon: '/images/subNavBarData/krakan.svg',
+          title: 'Krakan',
         },
         {
-          icon: "/images/subNavBarData/hubai.svg",
-          title: "Hubai",
+          icon: '/images/subNavBarData/hubai.svg',
+          title: 'Hubai',
         },
         {
-          icon: "/images/subNavBarData/gateio.svg",
-          title: "Gate.io",
+          icon: '/images/subNavBarData/gateio.svg',
+          title: 'Gate.io',
         },
         {
-          icon: "/images/subNavBarData/kucoin.svg",
-          title: "Kucoin",
+          icon: '/images/subNavBarData/kucoin.svg',
+          title: 'Kucoin',
         },
       ],
     },
     {
-      title: "Public Medical Research",
+      title: 'Public Medical Research',
       enabled: false,
       isFree: false,
     },
     {
-      title: "Financial Data",
+      title: 'Financial Data',
       enabled: false,
       isFree: false,
     },
     {
-      title: "Weather Report",
+      title: 'Weather Report',
       enabled: false,
       isFree: false,
     },
     {
-      title: "Scientific Data",
+      title: 'Scientific Data',
       enabled: false,
       isFree: false,
     },
     {
-      title: "Cancer Research",
+      title: 'Cancer Research',
       enabled: false,
       isFree: false,
     },
     {
-      title: "Agricultural",
+      title: 'Agricultural',
       enabled: false,
       isFree: false,
     },
-  ];
+  ]
 
   const dataUseCase = {
-    "Financial Analysis":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh",
-    Github: "https://github.com/L3A-Protocol",
-    "Blockchain Transactions":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols",
-    "DEXs and CEXs":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference",
-    "Gas Optimization":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview",
-    "Crypto Liquidity":
-      "https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow",
-  };
+    'Financial Analysis':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/dV24UPM1pxtu3arLSfCk/getting-started/about-openmesh',
+    Github: 'https://github.com/L3A-Protocol',
+    'Blockchain Transactions':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/supported-feeds-and-symbols',
+    'DEXs and CEXs':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/streaming-service/schema-reference',
+    'Gas Optimization':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/query-service/overview',
+    'Crypto Liquidity':
+      'https://app.gitbook.com/o/7CcuVeAus8lBlwxastky/s/OErOpMfD3LOGh2v4NZot/infrastructure/data-flow',
+  }
 
   function handleButtonClick(title: string) {
     if (title === selectionSubBar) {
-      setSelectionSubBar("");
+      setSelectionSubBar('')
     } else {
-      setSelectionSubBar(title);
+      setSelectionSubBar(title)
     }
   }
 
@@ -245,14 +245,14 @@ const SubBarData = ({ onValueChange }) => {
               onClick={() => {
                 setChangeNodes({
                   type:
-                    currentDataMenuSelect === "Historical Data"
-                      ? "dataHistorical"
-                      : "dataStreaming",
+                    currentDataMenuSelect === 'Historical Data'
+                      ? 'dataHistorical'
+                      : 'dataStreaming',
                   name: dataOption.title,
                   icon: dataOption.icon,
                   categorie: option.title,
                   dictionary: categoriesOptions,
-                });
+                })
               }}
               className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
             >
@@ -261,11 +261,11 @@ const SubBarData = ({ onValueChange }) => {
           </div>
         ))}
       </div>
-    );
+    )
   }
   useEffect(() => {
-    setselectCurrentMenuDataType(currentDataMenuSelect);
-  }, [currentDataMenuSelect]);
+    setselectCurrentMenuDataType(currentDataMenuSelect)
+  }, [currentDataMenuSelect])
   return (
     <>
       <div className="z-100 relative bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
@@ -276,11 +276,11 @@ const SubBarData = ({ onValueChange }) => {
           <button
             onClick={(e) => {
               if (e.target instanceof HTMLElement) {
-                setCurrentDataMenuSelect(e.target.innerText);
+                setCurrentDataMenuSelect(e.target.innerText)
               }
             }}
             className={`  p-[10px] ${
-              currentDataMenuSelect === "Streaming Data"
+              currentDataMenuSelect === 'Streaming Data'
                 ? `bg-[#E0E0E0]`
                 : `bg-[#F5F5F5]`
             }`}
@@ -290,10 +290,12 @@ const SubBarData = ({ onValueChange }) => {
 
           <button
             onClick={(e) => {
-              setCurrentDataMenuSelect(e.target.innerText);
+              if (e.target instanceof HTMLElement) {
+                setCurrentDataMenuSelect(e.target.innerText)
+              }
             }}
             className={`  p-[10px] ${
-              currentDataMenuSelect === "Historical Data"
+              currentDataMenuSelect === 'Historical Data'
                 ? `bg-[#E0E0E0]`
                 : `bg-[#F5F5F5]`
             }`}
@@ -302,24 +304,24 @@ const SubBarData = ({ onValueChange }) => {
           </button>
         </div>
         <>
-          {currentDataMenuSelect === "Streaming Data" && (
+          {currentDataMenuSelect === 'Streaming Data' && (
             <div className="">
               {categoriesOptions.map((option, index) => (
                 <div key={index}>
                   <div
                     onClick={() => {
                       if (option.enabled) {
-                        handleButtonClick(option.title);
+                        handleButtonClick(option.title)
                       }
                     }}
                     className={`relative mt-[14px] flex w-fit ${
                       option.enabled
-                        ? "cursor-pointer hover:text-[#5b5b5b]"
-                        : "text-[#959595]"
+                        ? 'cursor-pointer hover:text-[#5b5b5b]'
+                        : 'text-[#959595]'
                     } ${
                       selectionSubBar === option.title
-                        ? "underline underline-offset-[3px]"
-                        : ""
+                        ? 'underline underline-offset-[3px]'
+                        : ''
                     }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
                   >
                     {selectionSubBar === option.title ? (
@@ -348,24 +350,24 @@ const SubBarData = ({ onValueChange }) => {
               ))}
             </div>
           )}
-          {currentDataMenuSelect === "Historical Data" && (
+          {currentDataMenuSelect === 'Historical Data' && (
             <div className="">
               {categoriesOptions.map((option, index) => (
                 <div key={index}>
                   <div
                     onClick={() => {
                       if (option.enabled) {
-                        handleButtonClick(option.title);
+                        handleButtonClick(option.title)
                       }
                     }}
                     className={`relative mt-[14px] flex w-fit ${
                       option.enabled
-                        ? "cursor-pointer hover:text-[#5b5b5b]"
-                        : "text-[#959595]"
+                        ? 'cursor-pointer hover:text-[#5b5b5b]'
+                        : 'text-[#959595]'
                     } ${
                       selectionSubBar === option.title
-                        ? "underline underline-offset-[3px]"
-                        : ""
+                        ? 'underline underline-offset-[3px]'
+                        : ''
                     }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
                   >
                     {selectionSubBar === option.title ? (
@@ -425,7 +427,7 @@ const SubBarData = ({ onValueChange }) => {
             </div>
             <div className=" lg:!leading-[150%]">
               <a
-                href={"https://www.openmesh.network/oec/register"}
+                href={'https://www.openmesh.network/oec/register'}
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
@@ -439,23 +441,23 @@ const SubBarData = ({ onValueChange }) => {
               Provide a data source
             </div>
             <div className=" lg:!leading-[150%]">
-              {" "}
+              {' '}
               <a
                 href={
-                  "https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases"
+                  'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases'
                 }
                 target="_blank"
                 className="border-b-[1px] font-medium text-[#0354EC]"
                 rel="noreferrer"
               >
-                Run an Xnode today{" "}
+                Run an Xnode today{' '}
               </a>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SubBarData;
+export default SubBarData
