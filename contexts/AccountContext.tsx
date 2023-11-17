@@ -1,91 +1,96 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState } from "react";
 
 export interface UserProps {
-  firstName: string
-  lastName: string
-  email: string
-  companyName: string
-  foundingYear: number
-  location: string
-  website: string
-  tags: string[]
-  description: string
-  password: string
-  confirmPassword: string
-  profilePictureHash: string
-  calendly: string
-  sessionToken: string
-  createdAt: string
-  updatedAt: string
+  firstName: string;
+  lastName: string;
+  email: string;
+  companyName: string;
+  foundingYear: number;
+  location: string;
+  website: string;
+  tags: string[];
+  description: string;
+  password: string;
+  confirmPassword: string;
+  profilePictureHash: string;
+  calendly: string;
+  sessionToken: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface CreateContextProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 interface CreateUserContextProps {
-  selectionSideNavBar: string
-  setSelectionSideNavBar: (value: string) => void
+  selectionSideNavBar: string;
+  setSelectionSideNavBar: (value: string) => void;
 
-  projectName: string
-  setProjectName: (value: string) => void
+  selectCurrentMenuDataType: string;
+  setselectCurrentMenuDataType: (value: string) => void;
 
-  finalNodes: any
-  setFinalNodes: (value: any) => void
+  projectName: string;
+  setProjectName: (value: string) => void;
 
-  next: boolean
-  setNext: (value: boolean) => void
+  finalNodes: any;
+  setFinalNodes: (value: any) => void;
 
-  nextFromScratch: boolean
-  setNextFromScratch: (value: boolean) => void
+  next: boolean;
+  setNext: (value: boolean) => void;
 
-  reviewYourBuild: boolean
-  setReviewYourBuild: (value: boolean) => void
+  nextFromScratch: boolean;
+  setNextFromScratch: (value: boolean) => void;
 
-  finalBuild: boolean
-  setFinalBuild: (value: boolean) => void
+  reviewYourBuild: boolean;
+  setReviewYourBuild: (value: boolean) => void;
 
-  isWorkspace: boolean
-  setIsWorkspace: (value: boolean) => void
+  finalBuild: boolean;
+  setFinalBuild: (value: boolean) => void;
 
-  signup: boolean
-  setSignup: (value: boolean) => void
+  isWorkspace: boolean;
+  setIsWorkspace: (value: boolean) => void;
 
-  connections: boolean
-  setConnections: (value: boolean) => void
+  signup: boolean;
+  setSignup: (value: boolean) => void;
 
-  tagXnode: any
-  setTagXnode: (value: any) => void
+  connections: boolean;
+  setConnections: (value: boolean) => void;
 
-  changeNodes: any
-  setChangeNodes: (value: any) => void
+  tagXnode: any;
+  setTagXnode: (value: any) => void;
 
-  user: UserProps | undefined
-  setUser: (user: UserProps | undefined) => void
+  changeNodes: any;
+  setChangeNodes: (value: any) => void;
+
+  user: UserProps | undefined;
+  setUser: (user: UserProps | undefined) => void;
 }
 
-export const AccountContext = createContext({} as CreateUserContextProps)
+export const AccountContext = createContext({} as CreateUserContextProps);
 
 export default function AccountContextProvider({
   children,
 }: CreateContextProps) {
-  const [user, setUser] = useState<UserProps>()
-  const [changeNodes, setChangeNodes] = useState()
+  const [user, setUser] = useState<UserProps>();
+  const [changeNodes, setChangeNodes] = useState();
   const [selectionSideNavBar, setSelectionSideNavBar] =
-    useState<string>('Start here')
-  const [projectName, setProjectName] = useState('Project Name')
-  const [isWorkspace, setIsWorkspace] = useState<boolean>(false)
-  const [finalNodes, setFinalNodes] = useState<any>()
-  const [next, setNext] = useState<boolean>(false)
-  const [finalBuild, setFinalBuild] = useState<boolean>(false)
-  const [nextFromScratch, setNextFromScratch] = useState<boolean>(false)
-  const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false)
-  const [connections, setConnections] = useState<boolean>(false)
-  const [signup, setSignup] = useState<boolean>(false)
+    useState<string>("Start here");
+  const [projectName, setProjectName] = useState("Project Name");
+  const [selectCurrentMenuDataType, setselectCurrentMenuDataType] =
+    useState<string>("");
+  const [isWorkspace, setIsWorkspace] = useState<boolean>(false);
+  const [finalNodes, setFinalNodes] = useState<any>();
+  const [next, setNext] = useState<boolean>(false);
+  const [finalBuild, setFinalBuild] = useState<boolean>(false);
+  const [nextFromScratch, setNextFromScratch] = useState<boolean>(false);
+  const [reviewYourBuild, setReviewYourBuild] = useState<boolean>(false);
+  const [connections, setConnections] = useState<boolean>(false);
+  const [signup, setSignup] = useState<boolean>(false);
   const [tagXnode, setTagXnode] = useState<string>(
-    'Decentralized data infrastructure',
-  )
+    "Decentralized data infrastructure"
+  );
 
   return (
     <AccountContext.Provider
@@ -94,6 +99,8 @@ export default function AccountContextProvider({
         setSelectionSideNavBar,
         projectName,
         setProjectName,
+        selectCurrentMenuDataType,
+        setselectCurrentMenuDataType,
         user,
         setUser,
         next,
@@ -120,5 +127,5 @@ export default function AccountContextProvider({
     >
       {children}
     </AccountContext.Provider>
-  )
+  );
 }

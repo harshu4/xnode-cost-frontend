@@ -1,7 +1,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-'use client'
+"use client";
 
 import {
   useEffect,
@@ -11,10 +11,10 @@ import {
   FC,
   useContext,
   useMemo,
-} from 'react'
-import { v4 as uuidv4 } from 'uuid'
-import { AccountContext } from '@/contexts/AccountContext'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+} from "react";
+import { v4 as uuidv4 } from "uuid";
+import { AccountContext } from "@/contexts/AccountContext";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import ReactFlow, {
   Controls,
   Background,
@@ -25,27 +25,29 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   NodeTypes,
-} from 'reactflow'
-import 'reactflow/dist/style.css'
+} from "reactflow";
+import "reactflow/dist/style.css";
 import {
   nodes as initialNodes,
   edges as initialEdges,
-} from './initial-elements'
+} from "./initial-elements";
 import {
   nodes as initialNodesScratch,
   edges as initialEdgesScratch,
-} from './initial-elements-fromscratch'
-import CustomNode from './CustomNode'
+} from "./initial-elements-fromscratch";
+import CustomNode from "./CustomNode";
 
-import './overview.css'
-import ServerNode from './ServerNode'
-import APINode from './APINode'
-import DataNode from './DataNodeHistorical'
-import UtilityNode from './UtilityNode'
-import RPCNode from './RPCNode'
-import AnalyticsNode from './AnalyticsNode'
-import OpenmeshNode from './OpenmeshNode'
-import withProps from './withProps'
+import "./overview.css";
+import ServerNode from "./ServerNode";
+import APINode from "./APINode";
+import DataNode from "./DataNodeHistorical";
+import UtilityNode from "./UtilityNode";
+import RPCNode from "./RPCNode";
+import AnalyticsNode from "./AnalyticsNode";
+import OpenmeshNode from "./OpenmeshNode";
+import withProps from "./withProps";
+import DataNodeStreaming from "./DataNodeStreaming";
+import DataNodeHistorical from "./DataNodeHistorical";
 
 // const getNodeTypes = (handleNodeRemove): NodeTypes => ({
 //   custom: CustomNode,
@@ -57,30 +59,31 @@ import withProps from './withProps'
 //   analytics: withProps(AnalyticsNode, { handleNodeRemove }),
 // });
 const nodeAmount = [
-  { type: 'server', amount: 1 },
-  { type: 'data', amount: 1 },
-  { type: 'api', amount: 1 },
-  { type: 'utility', amount: 1 },
-  { type: 'rpc', amount: 1 },
-  { type: 'analytics', amount: 1 },
-  { type: 'openmesh', amount: 1 },
-]
+  { type: "server", amount: 1 },
+  { type: "dataStreaming", amount: 1 },
+  { type: "dataHistorical", amount: 1 },
+  { type: "api", amount: 1 },
+  { type: "utility", amount: 1 },
+  { type: "rpc", amount: 1 },
+  { type: "analytics", amount: 1 },
+  { type: "openmesh", amount: 1 },
+];
 const minimapStyle = {
   height: 120,
-}
+};
 interface ModalProps {
-  fromScratch: boolean
+  fromScratch: boolean;
 }
 
 const onInit = (reactFlowInstance) =>
-  console.log('flow loaded:', reactFlowInstance)
+  console.log("flow loaded:", reactFlowInstance);
 
 const NodesFlow = ({ ...dataM }: ModalProps) => {
   const handleNodeRemove = (nodeIdToRemove) => {
     setNodes((prevNodes) =>
-      prevNodes.filter((node) => node.id !== nodeIdToRemove),
-    )
-  }
+      prevNodes.filter((node) => node.id !== nodeIdToRemove)
+    );
+  };
 
   const {
     selectionSideNavBar,
@@ -91,174 +94,235 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setFinalNodes,
     finalNodes,
     setIsWorkspace,
-  } = useContext(AccountContext)
+    selectCurrentMenuDataType,
+  } = useContext(AccountContext);
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
-    !dataM.fromScratch ? initialNodes : initialNodesScratch,
-  )
+    !dataM.fromScratch ? initialNodes : initialNodesScratch
+  );
   const [edges, setEdges, onEdgesChange] = useEdgesState(
-    !dataM.fromScratch ? initialEdges : initialEdgesScratch,
-  )
-  const [isInitialized, setIsInitialized] = useState(false)
+    !dataM.fromScratch ? initialEdges : initialEdgesScratch
+  );
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
-        addEdge({ ...params, animated: true, style: { stroke: '#000' } }, eds),
+        addEdge({ ...params, animated: true, style: { stroke: "#000" } }, eds)
       ),
-    [],
-  )
+    []
+  );
 
   // we are using a bit of a shortcut here to adjust the edge type
   // this could also be done with a custom edge for example
   const edgesWithUpdatedTypes = edges.map((edge) => {
     if (edge.sourceHandle) {
-      const edgeType = nodes.find((node) => node.type === 'server').data
-        .selects[edge.sourceHandle]
-      edge.type = edgeType
+      const edgeType = nodes.find((node) => node.type === "server").data
+        .selects[edge.sourceHandle];
+      edge.type = edgeType;
     }
 
-    return edge
-  })
+    return edge;
+  });
 
   useEffect(() => {
-    if (changeNodes?.type === 'api') {
+    if (changeNodes?.type === "api") {
       const nodeExists = nodes.some(
-        (node) => node.data.name === changeNodes?.name,
-      )
+        (node) => node.data.name === changeNodes?.name
+      );
 
       if (!nodeExists) {
         const newNode = {
           id: uuidv4(),
-          type: 'api',
+          type: "api",
           position: { x: 670, y: 550 },
           data: {
             selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
             },
             name: changeNodes?.name,
           },
-        }
-        setNodes((prevNodes) => [...prevNodes, newNode])
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
       }
     }
 
-    if (changeNodes?.type === 'rpc') {
+    if (changeNodes?.type === "rpc") {
       const nodeExists = nodes.some(
-        (node) => node.data.name === changeNodes?.name,
-      )
+        (node) => node.data.name === changeNodes?.name
+      );
 
       if (!nodeExists) {
         const newNode = {
           id: uuidv4(),
-          type: 'rpc',
+          type: "rpc",
           position: { x: 670, y: 500 },
           data: {
             selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
-            },
-            name: changeNodes?.name,
-            icon: changeNodes?.icon,
-          },
-        }
-        setNodes((prevNodes) => [...prevNodes, newNode])
-      }
-    }
-
-    if (changeNodes?.type === 'analytics') {
-      const nodeExists = nodes.some(
-        (node) => node.data.name === changeNodes?.name,
-      )
-
-      if (!nodeExists) {
-        const newNode = {
-          id: uuidv4(),
-          type: 'analytics',
-          position: { x: 670, y: 500 },
-          data: {
-            selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
             },
             name: changeNodes?.name,
             icon: changeNodes?.icon,
           },
-        }
-        setNodes((prevNodes) => [...prevNodes, newNode])
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
       }
     }
 
-    if (changeNodes?.type === 'utility') {
+    if (changeNodes?.type === "analytics") {
       const nodeExists = nodes.some(
-        (node) => node.data.name === changeNodes?.name,
-      )
+        (node) => node.data.name === changeNodes?.name
+      );
 
       if (!nodeExists) {
         const newNode = {
           id: uuidv4(),
-          type: 'utility',
+          type: "analytics",
           position: { x: 670, y: 500 },
           data: {
             selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
+      }
+    }
+
+    if (changeNodes?.type === "utility") {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name
+      );
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: "utility",
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
             },
             title: changeNodes?.title,
             name: changeNodes?.name,
             icon: changeNodes?.icon,
           },
-        }
-        setNodes((prevNodes) => [...prevNodes, newNode])
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
       }
     }
-    if (changeNodes?.type === 'data') {
-      console.log('entrei no data')
+    // if (changeNodes?.type === "data") {
+    //   const existingNodeIndex = nodes.findIndex(
+    //     (node) =>
+    //       node.type === "data" && node.data.lists && node.data.lists.length > 0
+    //   );
+
+    //   if (existingNodeIndex !== -1) {
+    //     const existingNode = nodes[existingNodeIndex];
+
+    //     const existsTitle = existingNode.data.lists.some(
+    //       (data) => data.title === changeNodes?.name
+    //     );
+
+    //     if (existsTitle) {
+    //       return;
+    //     }
+
+    //     existingNode.data.lists.push({
+    //       icon: changeNodes?.icon,
+    //       title: changeNodes?.name,
+    //     });
+
+    //     const updatedNodes = [...nodes];
+    //     updatedNodes[existingNodeIndex] = existingNode;
+
+    //     setNodes((nds) =>
+    //       nds.map((node) => {
+    //         if (node.type === "data") {
+    //           node.data = {
+    //             ...node.data,
+    //             lists: existingNode.data.lists,
+    //           };
+    //         }
+
+    //         return node;
+    //       })
+    //     );
+    //   } else {
+    //     const newNode = {
+    //       id: uuidv4(),
+    //       type: "data",
+    //       position: { x: 670, y: 500 },
+    //       data: {
+    //         selects: {
+    //           "handle-0": "smoothstep",
+    //           "handle-1": "smoothstep",
+    //         },
+    //         lists: [
+    //           {
+    //             title: changeNodes?.name,
+    //             icon: changeNodes?.icon,
+    //           },
+    //         ],
+    //       },
+    //     };
+    //     setNodes((prevNodes) => [...prevNodes, newNode]);
+    //   }
+    // }
+    //for historical
+    if (changeNodes?.type === "dataHistorical") {
       const existingNodeIndex = nodes.findIndex(
         (node) =>
-          node.type === 'data' && node.data.lists && node.data.lists.length > 0,
-      )
+          node.type === "dataHistorical" &&
+          node.data.lists &&
+          node.data.lists.length > 0
+      );
 
       if (existingNodeIndex !== -1) {
-        const existingNode = nodes[existingNodeIndex]
+        const existingNode = nodes[existingNodeIndex];
 
         const existsTitle = existingNode.data.lists.some(
-          (data) => data.title === changeNodes?.name,
-        )
+          (data) => data.title === changeNodes?.name
+        );
 
         if (existsTitle) {
-          return
+          return;
         }
 
         existingNode.data.lists.push({
           icon: changeNodes?.icon,
           title: changeNodes?.name,
-        })
+        });
 
-        const updatedNodes = [...nodes]
-        updatedNodes[existingNodeIndex] = existingNode
+        const updatedNodes = [...nodes];
+        updatedNodes[existingNodeIndex] = existingNode;
 
         setNodes((nds) =>
           nds.map((node) => {
-            if (node.type === 'data') {
+            if (node.type === "dataHistorical") {
               node.data = {
                 ...node.data,
                 lists: existingNode.data.lists,
-              }
+              };
             }
 
-            return node
-          }),
-        )
+            return node;
+          })
+        );
       } else {
         const newNode = {
           id: uuidv4(),
-          type: 'data',
+          type: "dataHistorical",
           position: { x: 670, y: 500 },
           data: {
             selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
             },
             lists: [
               {
@@ -267,96 +331,157 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
               },
             ],
           },
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
+      }
+    }
+    //for streaming
+    if (changeNodes?.type === "dataStreaming") {
+      const existingNodeIndex = nodes.findIndex(
+        (node) =>
+          node.type === "dataStreaming" &&
+          node.data.lists &&
+          node.data.lists.length > 0
+      );
+
+      if (existingNodeIndex !== -1) {
+        const existingNode = nodes[existingNodeIndex];
+
+        const existsTitle = existingNode.data.lists.some(
+          (data) => data.title === changeNodes?.name
+        );
+
+        if (existsTitle) {
+          return;
         }
-        setNodes((prevNodes) => [...prevNodes, newNode])
+
+        existingNode.data.lists.push({
+          icon: changeNodes?.icon,
+          title: changeNodes?.name,
+        });
+
+        const updatedNodes = [...nodes];
+        updatedNodes[existingNodeIndex] = existingNode;
+
+        setNodes((nds) =>
+          nds.map((node) => {
+            if (node.type === "dataStreaming") {
+              node.data = {
+                ...node.data,
+                lists: existingNode.data.lists,
+              };
+            }
+
+            return node;
+          })
+        );
+      } else {
+        const newNode = {
+          id: uuidv4(),
+          type: "dataStreaming",
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
+            },
+            lists: [
+              {
+                title: changeNodes?.name,
+                icon: changeNodes?.icon,
+              },
+            ],
+          },
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
       }
     }
 
-    if (changeNodes?.type === 'server') {
-      const nodeExists = nodes.some((node) => node.type === 'server')
-      console.log('existe um log')
-      console.log(changeNodes)
+    if (changeNodes?.type === "server") {
+      const nodeExists = nodes.some((node) => node.type === "server");
 
       if (!nodeExists) {
         const newNode = {
           id: uuidv4(),
-          type: 'server',
+          type: "server",
           position: { x: 670, y: 500 },
           data: {
             selects: {
-              'handle-0': 'smoothstep',
-              'handle-1': 'smoothstep',
+              "handle-0": "smoothstep",
+              "handle-1": "smoothstep",
             },
             defaultValueServerType: changeNodes?.defaultValueServerType,
             defaultValueLocation: changeNodes?.defaultValueLocation,
             defaultValueCloudProvider: changeNodes?.defaultValueCloudProvider,
           },
-        }
-        setNodes((prevNodes) => [...prevNodes, newNode])
+        };
+        setNodes((prevNodes) => [...prevNodes, newNode]);
       }
     }
-  }, [changeNodes])
+  }, [changeNodes]);
 
-  const nodesToAdd = [...nodes]
+  const nodesToAdd = [...nodes];
 
   // verify node type and node amount for the selected nodes and return an array with the max node amount,
   const createNewArray = (nodesToAdd, nodeAmount) => {
-    const nodeCount = {}
+    const nodeCount = {};
     for (const { type, amount } of nodeAmount) {
-      nodeCount[type] = amount
+      nodeCount[type] = amount;
     }
     const newArray = nodesToAdd.filter((node) => {
-      const type = node.type
+      const type = node.type;
       if (nodeCount[type] > 0) {
-        nodeCount[type]--
+        nodeCount[type]--;
 
-        return true
+        return true;
       }
-      return false
-    })
-    return newArray
-  }
+      return false;
+    });
+    return newArray;
+  };
 
-  const nodesAmounts = createNewArray(nodesToAdd, nodeAmount)
+  const nodesAmounts = createNewArray(nodesToAdd, nodeAmount);
 
   const nodeTypes = useMemo(
     () => ({
       custom: withProps(CustomNode, { handleNodeRemove }),
       server: withProps(ServerNode, { handleNodeRemove }),
       api: withProps(APINode, { handleNodeRemove }),
-      data: withProps(DataNode, { handleNodeRemove }),
+      dataStreaming: withProps(DataNodeStreaming, { handleNodeRemove }),
+      dataHistorical: withProps(DataNodeHistorical, { handleNodeRemove }),
       utility: withProps(UtilityNode, { handleNodeRemove }),
       rpc: withProps(RPCNode, { handleNodeRemove }),
       analytics: withProps(AnalyticsNode, { handleNodeRemove }),
       openmesh: withProps(OpenmeshNode, { handleNodeRemove }),
     }),
-    [],
-  )
+    []
+  );
 
   useEffect(() => {
     if (isInitialized) {
-      localStorage.setItem('nodes', JSON.stringify(nodes))
-      localStorage.setItem('edges', JSON.stringify(edges))
+      localStorage.setItem("nodes", JSON.stringify(nodes));
+      localStorage.setItem("edges", JSON.stringify(edges));
     }
-    setFinalNodes(nodes)
-  }, [nodes, edges, isInitialized])
+    setFinalNodes(nodes);
+  }, [nodes, edges, isInitialized]);
 
   useEffect(() => {
-    const savedNodes = localStorage.getItem('nodes')
-    const savedEdges = localStorage.getItem('edges')
+    const savedNodes = localStorage.getItem("nodes");
+    const savedEdges = localStorage.getItem("edges");
 
     if (savedNodes) {
-      setNodes(JSON.parse(savedNodes))
-      setIsWorkspace(true)
-    } else setNodes(!dataM.fromScratch ? initialNodes : initialNodesScratch)
+      setNodes(JSON.parse(savedNodes));
+      setIsWorkspace(true);
+    } else setNodes(!dataM.fromScratch ? initialNodes : initialNodesScratch);
 
     if (savedEdges) {
-      setEdges(JSON.parse(savedEdges))
-      setIsWorkspace(true)
-    } else setEdges(!dataM.fromScratch ? initialEdges : initialEdgesScratch)
+      setEdges(JSON.parse(savedEdges));
+      setIsWorkspace(true);
+    } else setEdges(!dataM.fromScratch ? initialEdges : initialEdgesScratch);
 
-    setIsInitialized(true)
-  }, [])
+    setIsInitialized(true);
+  }, []);
+
   return (
     <div className="relative h-[1500px] w-[750px] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px]">
       <ReactFlow
@@ -379,7 +504,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         <Background color="#aaa" gap={16} />
       </ReactFlow>
     </div>
-  )
-}
+  );
+};
 
-export default NodesFlow
+export default NodesFlow;

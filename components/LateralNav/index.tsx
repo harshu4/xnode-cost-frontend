@@ -1,21 +1,22 @@
 /* eslint-disable no-useless-return */
 /* eslint-disable no-unused-vars */
-import { useContext, useState, useEffect } from 'react'
-import Dropdown from '../Dropdown'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import LatencySelector from '../LatencySelector'
-import { title } from 'process'
-import { AccountContext } from '@/contexts/AccountContext'
-import SubBarData from '../SubBarData'
-import SubBarServers from '../SubBarServers'
-import SubBarAPIs from '../SubBarAPIs'
-import SubBarAnalytics from '../SubBarAnalytics'
-import SubBarRPC from '../SubBarRPC'
-import SubBarUtility from '../SubBarUtility'
+import { useContext, useState, useEffect } from "react";
+import Dropdown from "../Dropdown";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import LatencySelector from "../LatencySelector";
+import { title } from "process";
+import { AccountContext } from "@/contexts/AccountContext";
+import SubBarData from "../SubBarData";
+import SubBarServers from "../SubBarServers";
+import SubBarAPIs from "../SubBarAPIs";
+import SubBarAnalytics from "../SubBarAnalytics";
+import SubBarRPC from "../SubBarRPC";
+import SubBarUtility from "../SubBarUtility";
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
-  const [presetId, setPresetId] = useState(0)
+  const [categoriesOptions, setCategoriesOptions] = useState([]);
+  const [presetId, setPresetId] = useState(0);
   const {
     selectionSideNavBar,
     setSelectionSideNavBar,
@@ -26,138 +27,138 @@ const LateralNav = ({ onValueChange }) => {
     setReviewYourBuild,
     setFinalBuild,
     setSignup,
-  } = useContext(AccountContext)
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [greenDotOpacity, setGreenDotOpacity] = useState(0)
-  const { push } = useRouter()
-  const [hoveredIcon, setHoveredIcon] = useState(null)
+  } = useContext(AccountContext);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [greenDotOpacity, setGreenDotOpacity] = useState(0);
+  const { push } = useRouter();
+  const [hoveredIcon, setHoveredIcon] = useState(null);
 
   const preSetsOptions = [
     {
-      icon: '/images/lateralNavBar/new-home.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Home',
+      icon: "/images/lateralNavBar/new-home.png",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Home",
     },
     {
-      icon: '/images/lateralNavBar/workspace.svg',
-      iconStyle: 'w-[12px] md:w-[14.5px] lg:w-[17px] xl:w-[20px] 2xl:w-[20px]',
-      title: 'Workspace',
+      icon: "/images/lateralNavBar/workspace.svg",
+      iconStyle: "w-[12px] md:w-[14.5px] lg:w-[17px] xl:w-[20px] 2xl:w-[20px]",
+      title: "Workspace",
     },
     {
-      icon: '/images/lateralNavBar/new-dashboard.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Dashboard',
+      icon: "/images/lateralNavBar/new-dashboard.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Dashboard",
     },
     {
-      icon: '/images/lateralNavBar/new-servers.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Servers',
+      icon: "/images/lateralNavBar/new-servers.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Servers",
     },
     {
-      icon: '/images/lateralNavBar/new-data.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data',
+      icon: "/images/lateralNavBar/new-data.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Data",
     },
     {
-      icon: '/images/lateralNavBar/new-apis.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'APIs',
+      icon: "/images/lateralNavBar/new-apis.png",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "APIs",
     },
     {
-      icon: '/images/lateralNavBar/new-rpc.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'RPC',
+      icon: "/images/lateralNavBar/new-rpc.png",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "RPC",
     },
     {
-      icon: '/images/lateralNavBar/new-analytics.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Analytics',
+      icon: "/images/lateralNavBar/new-analytics.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Analytics",
     },
     {
-      icon: '/images/lateralNavBar/new-data-management.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data management',
+      icon: "/images/lateralNavBar/new-data-management.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Data management",
     },
     {
-      icon: '/images/lateralNavBar/new-storage.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Storage',
+      icon: "/images/lateralNavBar/new-storage.svg",
+      iconStyle: "w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Storage",
     },
     {
-      icon: '/images/lateralNavBar/new-compute.svg',
+      icon: "/images/lateralNavBar/new-compute.svg",
       iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
-      title: 'Compute',
+        "w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]",
+      title: "Compute",
     },
     {
-      icon: '/images/lateralNavBar/new-trading.svg',
-      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]',
-      title: 'Trading',
+      icon: "/images/lateralNavBar/new-trading.svg",
+      iconStyle: "w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]",
+      title: "Trading",
     },
     {
-      icon: '/images/lateralNavBar/new-ai.svg',
+      icon: "/images/lateralNavBar/new-ai.svg",
       iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]',
-      title: 'ML/LLMs',
+        "w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]",
+      title: "ML/LLMs",
     },
     {
-      icon: '/images/lateralNavBar/new-apps.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Apps',
+      icon: "/images/lateralNavBar/new-apps.svg",
+      iconStyle: "w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Apps",
     },
     {
-      icon: '/images/lateralNavBar/new-utility.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Utility',
+      icon: "/images/lateralNavBar/new-utility.svg",
+      iconStyle: "w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Utility",
     },
     {
-      icon: '/images/lateralNavBar/new-docs.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Docs',
+      icon: "/images/lateralNavBar/new-docs.svg",
+      iconStyle: "w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Docs",
     },
     {
-      icon: '/images/lateralNavBar/new-profile.png',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Profile',
+      icon: "/images/lateralNavBar/new-profile.png",
+      iconStyle: "w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]",
+      title: "Profile",
     },
-  ]
+  ];
 
   function handleButtonClick(title: string) {
-    if (title === 'Workspace') {
-      setNext(true)
-      setReviewYourBuild(false)
-      setFinalBuild(false)
-      setSignup(false)
-      setSelectionSideNavBar('Workspace')
-      push('/start-here')
-      return
+    if (title === "Workspace") {
+      setNext(true);
+      setReviewYourBuild(false);
+      setFinalBuild(false);
+      setSignup(false);
+      setSelectionSideNavBar("Workspace");
+      push("/start-here");
+      return;
     }
-    if (title === 'Docs') {
-      push('/docs')
+    if (title === "Docs") {
+      push("/docs");
     }
-    if (title === 'Home') {
-      setNextFromScratch(false)
-      setNext(false)
-      setReviewYourBuild(false)
-      setFinalBuild(false)
-      setSignup(false)
-      push('/start-here')
-      return
+    if (title === "Home") {
+      setNextFromScratch(false);
+      setNext(false);
+      setReviewYourBuild(false);
+      setFinalBuild(false);
+      setSignup(false);
+      push("/start-here");
+      return;
     }
-    if (!next && !nextFromScratch && title !== 'Home') {
-      setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
-      setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
+    if (!next && !nextFromScratch && title !== "Home") {
+      setGreenDotOpacity(1); // Mostrar a bolinha verde com opacidade total
+      setTimeout(() => setGreenDotOpacity(0), 1000); // Esconder a bolinha verde após 5 segundos
     } else {
-      setSelectionSideNavBar(title)
+      setSelectionSideNavBar(title);
     }
-    setHoveredIcon(title)
+    setHoveredIcon(title);
   }
 
   function handleButtonHover(title: string) {
-    if (!next && !nextFromScratch && title !== 'Home') {
-      return
+    if (!next && !nextFromScratch && title !== "Home") {
+      return;
     } else {
-      setHoveredIcon(title)
+      setHoveredIcon(title);
     }
   }
 
@@ -190,11 +191,11 @@ const LateralNav = ({ onValueChange }) => {
                     src="/images/lateralNavBar/new-arrow.svg"
                     alt="image"
                     className={` ${
-                      option.title === 'Home' ||
-                      option.title === 'Dashboard' ||
-                      option.title === 'Workspace'
-                        ? 'hidden'
-                        : ''
+                      option.title === "Home" ||
+                      option.title === "Dashboard" ||
+                      option.title === "Workspace"
+                        ? "hidden"
+                        : ""
                     } absolute top-[2.5px] right-[14px] w-[4px] md:top-[3px] md:right-[16.8px] md:w-[4.8px] lg:top-[3.5px] lg:right-[19.6px] lg:w-[5.6px] xl:top-[4px] xl:right-[22.4px] xl:w-[6.4px] 2xl:top-[5px] 2xl:right-[28px] 2xl:w-[8px]`}
                   />
                 </li>
@@ -203,7 +204,7 @@ const LateralNav = ({ onValueChange }) => {
           </div>
         </div>
       </>
-    )
+    );
   }
 
   return (
@@ -221,7 +222,7 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
               />
               <a
-                href={'/'}
+                href={"/"}
                 className="absolute -top-[8px] left-[25px] flex w-[50px] cursor-pointer flex-col items-center md:-top-[9.6px] md:left-[30px] md:w-[60px] lg:-top-[11.2px]  lg:left-[35px] lg:w-[70px] xl:-top-[12.8px] xl:left-[40px] xl:w-[80px] 2xl:-top-[16px] 2xl:left-[50px] 2xl:w-[100px] "
               >
                 <img src="/images/logo/xnode-logo.svg" alt="image" />
@@ -233,24 +234,24 @@ const LateralNav = ({ onValueChange }) => {
               key={index}
               onMouseEnter={() => handleButtonHover(option.title)}
               onClick={() => {
-                handleButtonClick(option.title)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
+                handleButtonClick(option.title);
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className={`relative flex w-full flex-row items-center justify-between gap-[7.5px] px-[13px] py-[10px] md:gap-[9px] md:px-[20px]  md:py-[12px]  lg:gap-[10.5px] lg:px-[23px] lg:py-[14px] xl:gap-[12px] xl:px-[26.4px] xl:py-[16px] 2xl:gap-[15px] 2xl:px-[33px]  2xl:py-[20px] ${
                 !next &&
                 !nextFromScratch &&
-                option.title !== 'Home' &&
-                option.title !== 'Workspace'
-                  ? 'w-full opacity-50 hover:bg-[#fff]'
-                  : 'cursor-pointer hover:bg-[#F4F4F4]'
-              } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
+                option.title !== "Home" &&
+                option.title !== "Workspace"
+                  ? "w-full opacity-50 hover:bg-[#fff]"
+                  : "cursor-pointer hover:bg-[#F4F4F4]"
+              } ${selectionSideNavBar === option.title ? "bg-[#F4F4F4]" : ""}`}
             >
               <img
                 src={option.icon}
                 alt="image"
                 className={`${option.iconStyle}  mx-auto`}
               />
-              {option.title === 'Home' && (
+              {option.title === "Home" && (
                 <img
                   src="/images/lateralNavBar/green-ellipse.svg"
                   alt="green dot"
@@ -265,55 +266,55 @@ const LateralNav = ({ onValueChange }) => {
                 src="/images/lateralNavBar/new-arrow.svg"
                 alt="image"
                 className={` ${
-                  option.title === 'Home' ||
-                  option.title === 'Dashboard' ||
-                  option.title === 'Workspace'
-                    ? 'hidden'
-                    : ''
+                  option.title === "Home" ||
+                  option.title === "Dashboard" ||
+                  option.title === "Workspace"
+                    ? "hidden"
+                    : ""
                 } absolute top-[12.5px] left-[7px] w-[4px] md:top-[15px] md:left-[10.2px] md:w-[4.8px] lg:top-[17.5px] lg:left-[12px] lg:w-[5.6px] xl:top-[20px] xl:left-[13.6px] xl:w-[6.4px] 2xl:top-[25px] 2xl:left-[17px] 2xl:w-[8px]`}
               />
             </div>
           ))}
         </div>
-        {hoveredIcon === 'Data' && (
+        {hoveredIcon === "Data" && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarData onValueChange={console.log('hello')} />
+            <SubBarData onValueChange={console.log("onvaluechange")} />
           </div>
         )}
-        {hoveredIcon === 'Servers' && (
+        {hoveredIcon === "Servers" && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarServers onValueChange={console.log('hello')} />
+            <SubBarServers onValueChange={console.log("hello")} />
           </div>
         )}
-        {hoveredIcon === 'APIs' && (
+        {hoveredIcon === "APIs" && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarAPIs onValueChange={console.log('hello')} />
+            <SubBarAPIs onValueChange={console.log("hello")} />
           </div>
         )}
-        {hoveredIcon === 'Analytics' && (
+        {hoveredIcon === "Analytics" && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarAnalytics onValueChange={console.log('hello')} />
+            <SubBarAnalytics onValueChange={console.log("hello")} />
           </div>
         )}
-        {hoveredIcon === 'RPC' && (
+        {hoveredIcon === "RPC" && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarRPC onValueChange={console.log('hello')} />
+            <SubBarRPC onValueChange={console.log("hello")} />
           </div>
         )}
-        {hoveredIcon === 'Utility' ? (
+        {hoveredIcon === "Utility" ? (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarUtility onValueChange={console.log('valueChanged')} />
+            <SubBarUtility onValueChange={console.log("valueChanged")} />
           </div>
         ) : null}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LateralNav
+export default LateralNav;

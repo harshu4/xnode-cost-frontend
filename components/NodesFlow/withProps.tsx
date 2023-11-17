@@ -1,16 +1,14 @@
-import React, { createElement } from 'react'
+import React, { createElement } from "react";
 
 const withProps = (WrappedComponent, additionalProps = {}) => {
   const WithProps = React.memo((props) => {
     return createElement(WrappedComponent, {
       ...props,
       ...additionalProps,
-    })
-  })
+    });
+  });
 
-  WithProps.whyDidYouRender = true
+  return WithProps;
+};
 
-  return WithProps
-}
-
-export default withProps
+export default withProps;
