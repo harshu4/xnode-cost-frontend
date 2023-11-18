@@ -349,7 +349,7 @@ const StartHere = ({ onValueChange }) => {
           </div>
         </div>
         <div className="mt-[75px] text-[20px] font-normal -tracking-[2%] text-[#000] md:mt-[82px] md:text-[24px] lg:mt-[96px] lg:text-[28px] lg:!leading-[48px] xl:mt-[110px] xl:text-[32px] 2xl:mt-[138px] 2xl:text-[40px]">
-          Get started with use cases2
+          Get started with use cases
         </div>
         <div className="relative mt-[35px] grid justify-between gap-x-[8px] gap-y-[15px] md:mt-[42px] md:grid-cols-2 md:gap-x-[9px] md:gap-y-[18px] lg:mt-[49px] lg:grid-cols-2 lg:gap-x-[10.5px] lg:gap-y-[21px] xl:mt-[56px] xl:grid-cols-3 xl:gap-x-[12px] xl:gap-y-[24px] 2xl:mt-[70px] 2xl:grid-cols-3 2xl:gap-x-[15px] 2xl:gap-y-[30px]">
           {preSetsOptions.map((option, index) => (
