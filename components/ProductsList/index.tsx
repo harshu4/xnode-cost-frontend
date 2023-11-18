@@ -153,7 +153,7 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   }
 
   return (
-    <section className="flex pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[32px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
+    <section className="flex  pt-[40px] pl-[30px] pr-[30px] pb-[55px] text-[#000] md:pt-[40px] lg:gap-x-[80px] lg:pr-[120px] lg:pl-[32px] 2xl:gap-x-[100px] 2xl:pt-[46px] 2xl:pr-[150px] 2xl:pb-[70px]">
       <div className="hidden md:block">
         <Filter onUpdate={handleUpdate} />
       </div>

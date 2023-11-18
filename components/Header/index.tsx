@@ -10,15 +10,18 @@ import { parseCookies, destroyCookie } from 'nookies'
 import axios from 'axios'
 import { AccountContext } from '../../contexts/AccountContext'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [userNavbarOpen, setUserNavbarOpen] = useState(false)
+  const [isLoadingUpdate, setIsLoadingUpdate] = useState(false)
   const [userConnected, setUserConnected] = useState()
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen)
   }
-  const [projectName, setProjectName] = useState('Project Name')
   const [isEditing, setIsEditing] = useState(false)
   const [isViewing, setIsViewing] = useState(false)
   const pathname = usePathname()
@@ -27,6 +30,14 @@ const Header = () => {
 
   const cookies = parseCookies()
   const userHasAnyCookie = cookies.userSessionToken
+
+  const tagsOptions = [
+    'Decentralized data infrastructure',
+    'Dapps',
+    'Analysis engine',
+    'Research and development',
+    'Validator',
+  ]
 
   const {
     user,
@@ -37,6 +48,15 @@ const Header = () => {
     finalNodes,
     setReviewYourBuild,
     reviewYourBuild,
+    setIsWorkspace,
+    tagXnode,
+    projectName,
+    setProjectName,
+    setTagXnode,
+    isEditingXnode,
+    setIsEditingXnode,
+    setNextFromScratch,
+    projectDescription,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -96,6 +116,57 @@ const Header = () => {
     },
   ]
 
+  async function saveEditingXnode() {
+    setIsLoadingUpdate(true)
+
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+    const nodeId = localStorage.getItem('editingNode')
+
+    const finalData = {
+      xnodeId: nodeId,
+      name: projectName,
+      description: 'This is my xnode',
+      useCase: tagXnode,
+      status: 'Running',
+      consoleNodes: savedNodes,
+      consoleEdges: savedEdges,
+    }
+
+    if (user.sessionToken) {
+      const config = {
+        method: 'put' as 'put',
+        url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/updateXnode`,
+        headers: {
+          'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+          'X-Parse-Session-Token': user.sessionToken,
+          'Content-Type': 'application/json',
+        },
+        data: finalData,
+      }
+
+      try {
+        await axios(config).then(function (response) {
+          if (response.data) {
+            console.log(response.data)
+            setNext(false)
+            setNextFromScratch(false)
+            toast.success(`Success`)
+            push('/dashboard')
+          }
+        })
+      } catch (err) {
+        toast.error(
+          `Error during Xnode deployment: ${err.response.data.message}`,
+        )
+      }
+    } else {
+      toast.error(`User nor found`)
+      push('/start-here')
+    }
+    setIsLoadingUpdate(false)
+  }
+
   async function getUserData() {
     const { userSessionToken } = parseCookies()
     console.log('no user data')
@@ -137,6 +208,17 @@ const Header = () => {
       localStorage.removeItem('@scalable: user-state-1.0.0')
       destroyCookie(undefined, 'userSessionToken')
       setUser(null)
+    }
+
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+    if (savedNodes && savedEdges) {
+      setIsWorkspace(true)
+    }
+
+    const isEditingX = localStorage.getItem('editingNode')
+    if (isEditingX) {
+      setIsEditingXnode(true)
     }
   }, [])
 
@@ -368,7 +450,7 @@ const Header = () => {
                 </div>
               </nav>
             </div>
-            <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between  xl:flex">
+            <div className="relative mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between  xl:flex">
               <div className="flex items-center">
                 <img
                   src={`/images/header/user.svg`}
@@ -376,13 +458,25 @@ const Header = () => {
                   className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
                 />
                 {isEditing ? (
-                  <input
-                    value={projectName}
-                    onChange={(e) => setProjectName(e.target.value)}
-                    onBlur={() => setIsEditing(false)}
-                    className="ml-[5px] bg-[#fff]"
-                    autoFocus
-                  />
+                  <div className="flex gap-x-[10px]">
+                    <input
+                      value={projectName}
+                      onChange={(e) => setProjectName(e.target.value)}
+                      className="ml-[5px] bg-[#fff]"
+                      autoFocus
+                    />
+                    <select
+                      className="nodrag min-w-[104px] rounded-[6px] bg-[#fff] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
+                      onChange={(option) => setTagXnode(option.target.value)}
+                      value={tagXnode}
+                    >
+                      {tagsOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 ) : (
                   <div className="ml-[5px] text-[8px] font-bold text-[#313131] md:ml-[6px] md:text-[9.6px] lg:ml-[7px] lg:text-[11.2px] xl:ml-[8px] xl:text-[13px] 2xl:ml-[10px] 2xl:text-[16px]">
                     {projectName}
@@ -419,7 +513,7 @@ const Header = () => {
                   </div>
                 )}
               </div>
-              <div className="flex gap-x-[25px] text-[7px] md:gap-x-[30px] md:text-[8.4px] lg:gap-x-[35px]  lg:text-[10px]  xl:gap-x-[40px] xl:text-[11.2px] 2xl:gap-x-[50px] 2xl:text-[14px]">
+              <div className="relative flex gap-x-[25px] text-[7px] md:gap-x-[30px] md:text-[8.4px] lg:gap-x-[35px]  lg:text-[10px]  xl:gap-x-[40px] xl:text-[11.2px] 2xl:gap-x-[50px] 2xl:text-[14px]">
                 {/* <div className="">
                 <div className="text-[7px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                   Estimated monthly price*
@@ -446,24 +540,103 @@ const Header = () => {
                   ))}
                 </div>
                 <div className="grid gap-y-[12px] font-medium">
-                  <div
-                    onClick={() => {
-                      setReviewYourBuild(true)
-                    }}
-                    className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
-                  >
-                    <img
-                      src={`${
-                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                          ? process.env.NEXT_PUBLIC_BASE_PATH
-                          : ''
-                      }/images/header/storm.svg`}
-                      alt="image"
-                      className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
-                    />
-                    <div>Create service and deploy</div>
-                  </div>
+                  {isEditingXnode ? (
+                    <div
+                      onClick={async () => {
+                        if (!isLoadingUpdate) {
+                          await saveEditingXnode()
+                        }
+                      }}
+                      className={`flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] ${
+                        isLoadingUpdate
+                          ? 'bg-[#3c78e9]'
+                          : 'bg-[#0354EC] hover:bg-[#203b6e]'
+                      }  py-[6.2px] px-[11px] text-center  text-[#fff]    md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]`}
+                    >
+                      <img
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/storm.svg`}
+                        alt="image"
+                        className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+                      />
+                      <div>Save updates</div>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => {
+                        setReviewYourBuild(true)
+                      }}
+                      className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
+                    >
+                      <img
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/storm.svg`}
+                        alt="image"
+                        className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+                      />
+                      <div>Create service and deploy</div>
+                    </div>
+                  )}
                 </div>
+                {user?.sessionToken ? (
+                  <div>
+                    <img
+                      src={
+                        !user.profilePictureHash
+                          ? `${
+                              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                                ? process.env.NEXT_PUBLIC_BASE_PATH
+                                : ''
+                            }/images/header/user-circle.svg`
+                          : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
+                      }
+                      alt="image"
+                      onClick={() => {
+                        setUserNavbarOpen(!userNavbarOpen)
+                      }}
+                      className={`mr-[15px] h-[50px] w-[50px] cursor-pointer rounded-[100%] 2xl:mr-[15px]`}
+                    />
+                    <nav
+                      className={`navbar absolute right-[100px] z-50 flex w-[150px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-1 pl-[15px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
+                        userNavbarOpen
+                          ? 'visibility top-20 -right-[50px] opacity-100'
+                          : 'invisible top-20 opacity-0'
+                      }`}
+                    >
+                      <div className="mt-[10px]">
+                        <div className="mt-[25px]">
+                          <a
+                            onClick={signOutUser}
+                            className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[6px] px-[18px] text-[12px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
+                          >
+                            Sign out
+                          </a>
+                        </div>
+                      </div>
+                      <div
+                        onClick={() => {
+                          setUserNavbarOpen(false)
+                        }}
+                        className="ml-[20px]  flex cursor-pointer justify-end text-[16px] font-bold text-[#000] hover:text-[#313131]"
+                      >
+                        x
+                      </div>
+                    </nav>
+                  </div>
+                ) : (
+                  <a
+                    href={`${'/login'}`}
+                    className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
+                  >
+                    Login
+                  </a>
+                )}
               </div>
 
               {/* <div className="lg:hidden">
@@ -478,11 +651,14 @@ const Header = () => {
           </div>
           {isViewing && (
             <div className="pl-[17px]  md:pl-[20px] lg:pl-[23px] xl:pl-[26.4px] 2xl:pl-[33px] ">
-              <div className="flex justify-between">
+              <div className="base:text-[7px] mt-[5px] md:text-[8.4px] lg:text-[9.8px] xl:text-[11.2px] 2xl:text-[14px]">
+                {tagXnode}
+              </div>
+              <div className="mt-[10px] flex justify-between">
                 <div className="text-[6px] font-medium text-[#8D8D8D] md:text-[7.2px]  lg:text-[8.4px]  xl:text-[9.6px] 2xl:text-[12px]">
-                  Here you can view the pre-components of your X-node.
+                  {projectDescription}
                 </div>
-                <div className="mt-[5px] md:mt-[6px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[10px]">
+                <div className="mt-[5px] md:mt-[6px] lg:mt-[7px] xl:mt-[8px] 2xl:mt-[1px]">
                   <div className="text-[9px] font-medium text-[#000] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                     Est. $<span className="font-bold">40</span> / month
                   </div>
@@ -581,47 +757,8 @@ const Header = () => {
             </div>
           </nav>
         </div>
-        <div className="mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
-          <div className="flex items-center">
-            <img
-              src={`/images/header/user.svg`}
-              alt="image"
-              className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
-            />
-            {isEditing ? (
-              <input
-                value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
-                onBlur={() => setIsEditing(false)}
-                className="ml-[5px] bg-[#fff]"
-                autoFocus
-              />
-            ) : (
-              <div className="ml-[5px] text-[8px] font-bold text-[#313131] md:ml-[6px] md:text-[9.6px] lg:ml-[7px] lg:text-[11.2px] xl:ml-[8px] xl:text-[13px] 2xl:ml-[10px] 2xl:text-[16px]">
-                {projectName}
-              </div>
-            )}
-            {isEditing ? (
-              <div
-                onClick={() => setIsEditing(false)}
-                className="ml-[5px] cursor-pointer text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]"
-              >
-                Save
-              </div>
-            ) : (
-              <div
-                onClick={() => setIsEditing(true)}
-                className="ml-[5px] cursor-pointer text-[7.5px] font-medium text-[#0354EC] md:ml-[6px] md:text-[8.5px] lg:ml-[7px] lg:text-[10px] xl:ml-[8px] xl:text-[11.2px] 2xl:ml-[10px] 2xl:text-[14px]"
-              >
-                Edit
-              </div>
-            )}
-            <img
-              src={`/images/header/config.svg`}
-              alt="image"
-              className="ml-[7.5px] w-[8px] md:ml-[9px] md:w-[10.8px] lg:ml-[10.5px] lg:w-[12.6px] xl:ml-[12px] xl:w-[14.5px] 2xl:ml-[15px] 2xl:w-[18px]"
-            />
-          </div>
+        <div className="relative mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between px-[33px] xl:flex">
+          <div></div>
           <div className="flex items-center gap-x-[15px] font-medium text-[#000] md:gap-x-[18px] lg:gap-x-[21px] xl:gap-x-[24px] 2xl:gap-x-[30px]">
             {/* <div className="">
               <div className="text-[7px] font-light md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
@@ -669,6 +806,64 @@ const Header = () => {
                 </div>
               </div>
             </div>
+
+            {user?.sessionToken ? (
+              <div>
+                <img
+                  src={
+                    !user.profilePictureHash
+                      ? `${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/header/user-circle.svg`
+                      : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
+                  }
+                  alt="image"
+                  onClick={() => {
+                    setUserNavbarOpen(!userNavbarOpen)
+                  }}
+                  className={`mr-[15px] h-[50px] w-[50px] cursor-pointer rounded-[100%] 2xl:mr-[15px]`}
+                />
+                <nav
+                  className={`navbar absolute right-[100px] z-50 flex w-[150px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-1 pl-[15px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
+                    userNavbarOpen
+                      ? 'visibility top-20 opacity-100'
+                      : 'invisible top-20 opacity-0'
+                  }`}
+                >
+                  <div className="mt-[10px]">
+                    <div className="mt-[25px]">
+                      <a
+                        onClick={signOutUser}
+                        className=" cursor-pointer items-center rounded-[5px] border  border-[#000] bg-transparent py-[6px] px-[18px] text-[12px] font-bold !leading-[19px] text-[#575757] hover:bg-[#ececec]"
+                      >
+                        Sign out
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setUserNavbarOpen(false)
+                    }}
+                    className="ml-[20px]  flex cursor-pointer justify-end text-[16px] font-bold text-[#000] hover:text-[#313131]"
+                  >
+                    x
+                  </div>
+                </nav>
+              </div>
+            ) : (
+              <a
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `/oec/login`
+                    : '/login'
+                }`}
+                className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
+              >
+                Login
+              </a>
+            )}
           </div>
 
           {/* <div className="lg:hidden">

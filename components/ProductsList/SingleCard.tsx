@@ -2,7 +2,25 @@
 'use client'
 import { DataProvider } from '@/types/dataProvider'
 import { formatDistanceToNow } from 'date-fns'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AccountContext } from '@/contexts/AccountContext'
+import { v4 as uuidv4 } from 'uuid'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+
+export const categoriesOptionsRPC = {
+  ValidationCloud: '/images/subNavBarRPC/validateCloud.svg',
+  NodeReal: '/images/subNavBarRPC/node.svg',
+}
+
+export const categoriesOptionsUtility = {
+  Grafana: '/images/subNavBarUtility/grafana.svg',
+  Prometheus: '/images/subNavBarUtility/prometheus.svg',
+  Ascend: '/images/subNavBarUtility/ascend.svg',
+  Databricks: '/images/subNavBarUtility/prometheus.svg',
+  InfraAdmin: '/images/subNavBarAnalytics/databricks.svg',
+}
 
 const SingleCard = ({
   id,
@@ -23,6 +41,108 @@ const SingleCard = ({
   timeAgo = timeAgo.replace('about', '').trim()
 
   const [addVisible, setAddVisible] = useState<Boolean>(false)
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
+
+  const {
+    selectionSideNavBar,
+    setSelectionSideNavBar,
+    next,
+    setNext,
+    setChangeNodes,
+  } = useContext(AccountContext)
+
+  const { push } = useRouter()
+
+  const serverOptions = ['Equinix', 'AWS']
+  const rpcOptions = ['Validationcloud', 'NodeReal']
+
+  // Implement workflwo to add a product into the workspace, first check if already has a localstorage with savedNodes, then add the new node
+  function handleAddProduct(title: string) {
+    setIsLoading(true)
+    let finalNodes = []
+    const savedNodes = localStorage.getItem('nodes')
+
+    if (savedNodes) {
+      finalNodes = JSON.parse(savedNodes)
+    }
+
+    if (serverOptions.includes(title)) {
+      const nodeExists = finalNodes.some((node) => node.type === 'server')
+
+      if (!nodeExists) {
+        const productToAdd = {
+          id: uuidv4(),
+          type: 'server',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            defaultValueServerType: `Medium c2.x86 x 1`,
+            defaultValueLocation: 'Us East',
+            defaultValueCloudProvider: title,
+          },
+        }
+        finalNodes.push(productToAdd)
+        localStorage.setItem('nodes', JSON.stringify(finalNodes))
+        setNext(true)
+        push('/start-here')
+      } else {
+        toast.error('You cannot add more than one server per x-node')
+      }
+    } else if (rpcOptions.includes(title)) {
+      const nodeExists = finalNodes.some((node) => node.data.name === title)
+
+      if (!nodeExists) {
+        const productToAdd = {
+          id: uuidv4(),
+          type: 'rpc',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: title,
+            icon: categoriesOptionsRPC[title],
+          },
+        }
+        finalNodes.push(productToAdd)
+        localStorage.setItem('nodes', JSON.stringify(finalNodes))
+        setNext(true)
+        push('/start-here')
+      } else {
+        toast.error('You already have this product in your x-node')
+      }
+    } else {
+      const nodeExists = finalNodes.some((node) => node.data.name === title)
+
+      if (!nodeExists) {
+        const productToAdd = {
+          id: uuidv4(),
+          type: 'utility',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            title: 'Data Pipeline Automation',
+            name: title,
+            icon: categoriesOptionsUtility[title],
+          },
+        }
+        finalNodes.push(productToAdd)
+        localStorage.setItem('nodes', JSON.stringify(finalNodes))
+        setNext(true)
+        push('/start-here')
+      } else {
+        toast.error('You already have this product in your x-node')
+      }
+    }
+    setIsLoading(false)
+  }
 
   return (
     <div
@@ -78,20 +198,28 @@ const SingleCard = ({
               NEW!
             </div>
             {addToXnodeMessage === 'Add to Xnode' ? (
-              <div
-                onClick={() => {
-                  // setNext(true)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                }}
-                className={`ml-auto flex cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
-              >
-                <div>Add</div>
+              <div className="ml-auto flex">
+                {isLoading ? (
+                  <div className="">
+                    <div className="h-8 w-8 animate-spin rounded-full  border-b-2 border-[#0354EC]"></div>
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => {
+                      handleAddProduct(name)
+                      // window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }}
+                    className={`ml-auto flex cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
+                  >
+                    <div>Add</div>
+                  </div>
+                )}
               </div>
             ) : (
               <div
                 onClick={() => {
                   // setNext(true)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  // window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
                 className={`ml-auto flex rounded-[5px] bg-[#B4B7BB] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
               >

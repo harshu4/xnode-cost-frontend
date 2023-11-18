@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { memo, useState } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
+import withProps from './withProps'
 
 const options = [
   {
@@ -81,12 +82,24 @@ function Options({ handleId, name, optionsSelection }) {
   )
 }
 
-function CustomNode({ id, data }) {
+function CustomNode({ id, data, handleNodeRemove }) {
+  const handleClick = () => {
+    handleNodeRemove(id)
+  }
+
   return (
     <>
       <div className="custom-node__header">
         Set your <strong>Xnode</strong>
       </div>
+      <button
+        onClick={() => {
+          handleClick()
+        }}
+        className="absolute top-2 right-3"
+      >
+        X
+      </button>
       <div className="grid gap-x-[10px] p-[10px]">
         <Options
           handleId={1}
@@ -109,4 +122,4 @@ function CustomNode({ id, data }) {
   )
 }
 
-export default memo(CustomNode)
+export default withProps(CustomNode, ['handleNodeRemove'])

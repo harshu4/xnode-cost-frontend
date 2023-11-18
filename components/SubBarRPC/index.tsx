@@ -5,6 +5,48 @@ import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 
+export const categoriesOptionsRPC = [
+  {
+    title: 'ValidationCloud',
+    desc: 'Enterprise-grade staking and node infrastructure',
+    link: 'Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.',
+    linkRef:
+      'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+    pageRef: '/data-product/bb0fcfde-dbb6-4b06-ac1d-86d69cf5d39b',
+    src: '/images/subNavBarRPC/validateCloud.svg',
+    style: '2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]',
+    isFree: false,
+    enabled: true,
+    thirdParty: true,
+  },
+  {
+    title: 'NodeReal',
+    desc: 'One-stop blockchain infrastructure and service provider.',
+    link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
+    linkRef:
+      'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+    pageRef: '/data-product',
+    src: '/images/subNavBarRPC/node.svg',
+    style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
+    isFree: false,
+    enabled: true,
+    thirdParty: true,
+  },
+  {
+    title: 'NodeReal',
+    desc: 'One-stop blockchain infrastructure and service provider.',
+    link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
+    linkRef:
+      'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
+    pageRef: '/data-product',
+    src: '/images/subNavBarRPC/node.svg',
+    style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
+    isFree: false,
+    enabled: true,
+    thirdParty: true,
+  },
+]
+
 /* eslint-disable react/no-unescaped-entities */
 const SubBarRPC = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
@@ -16,48 +58,6 @@ const SubBarRPC = ({ onValueChange }) => {
     setChangeNodes,
   } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
-
-  const categoriesOptions = [
-    {
-      title: 'ValidationCloud',
-      desc: 'Enterprise-grade staking and node infrastructure',
-      link: 'Validation Cloud is a Web3 infrastructure platform that delivers elite, high-performance node and staking infrastructure.',
-      linkRef:
-        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      pageRef: '/data-product/bb0fcfde-dbb6-4b06-ac1d-86d69cf5d39b',
-      src: '/images/subNavBarRPC/validateCloud.svg',
-      style: '2xl:w-[42px] xl:w-[34px] lg:w-[30px] md:w-[25px] w-[21px]',
-      isFree: false,
-      enabled: true,
-      thirdParty: true,
-    },
-    {
-      title: 'NodeReal',
-      desc: 'One-stop blockchain infrastructure and service provider.',
-      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
-      linkRef:
-        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      pageRef: '/data-product',
-      src: '/images/subNavBarRPC/node.svg',
-      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
-      isFree: false,
-      enabled: true,
-      thirdParty: true,
-    },
-    {
-      title: 'NodeReal',
-      desc: 'One-stop blockchain infrastructure and service provider.',
-      link: 'Arbitrum, BNB Chain, Ethereum, Polygon, Multichain, Solana',
-      linkRef:
-        'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/use-cases',
-      pageRef: '/data-product',
-      src: '/images/subNavBarRPC/node.svg',
-      style: '2xl:w-[24px] xl:w-[19.2px] lg:w-[16.8px] md:w-[14.4px] w-[13px]',
-      isFree: false,
-      enabled: true,
-      thirdParty: true,
-    },
-  ]
 
   const dataUseCase = {
     'Financial Analysis':
@@ -80,7 +80,7 @@ const SubBarRPC = ({ onValueChange }) => {
   function renderOptions(type: boolean) {
     return (
       <div className="mt-[40px] grid gap-y-[39px] md:mt-[48px] md:gap-y-[48px] lg:mt-[56px] lg:gap-y-[44px] xl:mt-[64px] xl:gap-y-[51px] 2xl:mt-[80px] 2xl:gap-y-[64px]">
-        {categoriesOptions
+        {categoriesOptionsRPC
           .filter((option) => option.thirdParty === type)
           .map((option, index) => (
             <div key={index}>

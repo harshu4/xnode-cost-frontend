@@ -93,11 +93,9 @@ const Console = () => {
 
   return (
     <>
-      <div className="flex pl-[8px] pr-[30px] md:pr-[36px] lg:pr-[42px] xl:pr-[48px] 2xl:pr-[60px]">
+      <div className="flex">
         <section id="home" className={`w-full`}>
-          <div>
-            <StartHere onValueChange={console.log('teste')} />
-          </div>
+          <StartHere onValueChange={console.log('teste')} />
         </section>
       </div>
 

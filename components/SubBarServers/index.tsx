@@ -137,6 +137,7 @@ const SubBarServers = ({ onValueChange }) => {
         type: 'server',
         defaultValueServerType: `${option.title} x ${numberServer}`,
         defaultValueLocation: serviceRegion,
+        defaultValueCloudProvider: cloudProvider,
       })
     }
   }

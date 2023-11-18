@@ -37,6 +37,7 @@ export const nodes = [
       },
       defaultValueServerType: 'Small c3.x86 x 1',
       defaultValueLocation: 'US East',
+      defaultValueCloudProvider: 'Equinix (Decentralized)',
     },
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
@@ -115,6 +116,28 @@ export const nodes = [
       icon: '/images/subNavBarAnalytics/pythia-logo.svg',
     },
   },
+  {
+    id: '17',
+    type: 'openmesh',
+    position: { x: 500, y: -100 },
+    data: {
+      selects: {
+        'handle-0': 'smoothstep',
+        'handle-1': 'smoothstep',
+      },
+      name: 'Crypto Exchanges',
+      lists: [
+        {
+          icon: '/images/subNavBarData/binance.svg',
+          title: 'Binance',
+        },
+        {
+          icon: '/images/subNavBarData/coinbase.svg',
+          title: 'Coinbase',
+        },
+      ],
+    },
+  },
 ]
 
 export const edges = [
@@ -150,6 +173,14 @@ export const edges = [
     id: 'e16-e11',
     source: '16',
     target: '11',
+    animated: true,
+    style: { stroke: '#000' },
+  },
+  {
+    id: 'e17-e11',
+    source: '17', // ID do openmesh
+    target: '11', // ID do serverNode
+    targetHandle: '4', // ID do Handle no topo do serverNode
     animated: true,
     style: { stroke: '#000' },
   },

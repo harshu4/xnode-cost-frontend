@@ -241,7 +241,7 @@ const DataProduct = (id: any) => {
 
   return (
     <>
-      <section className="mx-auto  px-[30px] pb-[100px] text-[#000000] md:flex md:gap-x-[40px] md:pl-[50px]   md:pr-[50px] lg:gap-x-[100px] lg:px-[90px] xl:gap-x-[150px]  xl:px-[110px]  2xl:gap-x-[295px] 2xl:pl-[63px]  2xl:pr-[63px]">
+      <section className="sm:max-w-screen-sm sm:flex-col sm:pl-[25px] md:flex md:max-w-screen-4xl md:flex-row md:justify-between  md:gap-[500px] md:pl-[30px] xl:pl-[40px] 2xl:pl-[50px] ">
         <div>
           <div className="mt-[40px] flex h-[32px] min-w-[150px] max-w-[250px] rounded-[5px] border border-[#D9D9D9] bg-white px-[5px] md:h-[40px] md:max-w-[500px] md:py-[10px] md:px-[15px] lg:!leading-[30px] 2xl:mt-[50px] 2xl:h-[50px] 2xl:max-w-[600px]">
             <img

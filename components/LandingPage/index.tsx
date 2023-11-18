@@ -64,9 +64,12 @@ const LandingPage = () => {
             <h2 className="text-[20px] font-normal leading-[110px] text-[#000] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[40px]">
               Play around it now
             </h2>
-            <button className="w-[132px] rounded-[50px] bg-gradient-to-r from-[#4255FF] via-[#6069EC] to-[#4023B5] p-[10px] text-center text-[15px] font-normal text-[#FFFFFF] md:h-[59px] md:w-[159px] md:text-[12px] lg:w-[185.5px] lg:text-[14px] xl:w-[212px] xl:text-[16px] 2xl:w-[265px] 2xl:text-[20px]">
-              <a href="/start-here">Launch</a>
-            </button>
+            <a
+              href="/start-here"
+              className="w-[132px] rounded-[50px] bg-gradient-to-r from-[#4255FF] via-[#6069EC] to-[#4023B5] p-[10px] text-center text-[15px] font-normal text-[#FFFFFF] md:h-[59px] md:w-[159px] md:text-[12px] lg:w-[185.5px] lg:text-[14px] xl:w-[212px] xl:text-[16px] 2xl:w-[265px] 2xl:text-[20px]"
+            >
+              Launch
+            </a>
           </div>
         </div>
         <hr className="mt-[75px] mb-[25px] h-[2px] w-full bg-[#DFD6D6] md:mt-[90px] md:mb-[60px] md:w-3/5 lg:mt-[105px] lg:mb-[70px] lg:w-[70%] xl:mt-[120px] xl:mb-[80px] xl:w-4/5  2xl:mt-[150px] 2xl:mb-[100px] 2xl:w-full"></hr>

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Dropdown from '../Dropdown'
 import LatencySelector from '../LatencySelector'
 import { title } from 'process'
@@ -14,8 +14,12 @@ const SubBarData = ({ onValueChange }) => {
     next,
     setNext,
     setChangeNodes,
+    setselectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
+  const [category, setCategory] = useState<string>('')
+  const [currentDataMenuSelect, setCurrentDataMenuSelect] =
+    useState<string>('Streaming Data')
 
   const categoriesOptions = [
     {
@@ -223,26 +227,31 @@ const SubBarData = ({ onValueChange }) => {
   function renderSubOptions(option: any) {
     return (
       <div className="mt-[6.5px] mb-[25px] grid gap-y-[15px] pl-[19px] md:mt-[7.5px] md:mb-[30px] md:gap-y-[18px] md:pl-[22px] lg:mt-[8.5px] lg:mb-[35px] lg:gap-y-[21px] lg:pl-[27px] xl:mt-[10px] xl:mb-[40px] xl:gap-y-[24px] xl:pl-[30px]  2xl:mt-[12px]  2xl:mb-[50px]  2xl:gap-y-[30px] 2xl:pl-[38px]">
-        {option.dataOptions.map((option, index) => (
+        {option.dataOptions.map((dataOption, index) => (
           <div key={index} className="relative flex text-[#000]">
             <div className="flex gap-x-[9px]">
               <img
-                src={option.icon}
+                src={dataOption.icon}
                 alt="image"
                 className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
               />
               <a href="/data-products">
-                <div className="cursor-pointer text-[7.5px] font-light underline underline-offset-[2.5px] hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
-                  {option.title}
+                <div className="cursor-pointer text-[7.5px] font-light text-[#0354EC] underline underline-offset-[2.5px] hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                  {dataOption.title}
                 </div>
               </a>
             </div>
             <div
               onClick={() => {
                 setChangeNodes({
-                  type: 'data',
-                  name: option.title,
-                  icon: option.icon,
+                  type:
+                    currentDataMenuSelect === 'Historical Data'
+                      ? 'dataHistorical'
+                      : 'dataStreaming',
+                  name: dataOption.title,
+                  icon: dataOption.icon,
+                  categorie: option.title,
+                  dictionary: categoriesOptions,
                 })
               }}
               className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
@@ -254,63 +263,141 @@ const SubBarData = ({ onValueChange }) => {
       </div>
     )
   }
-
+  useEffect(() => {
+    setselectCurrentMenuDataType(currentDataMenuSelect)
+  }, [currentDataMenuSelect])
   return (
     <>
       <div className="z-100 relative bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
-        <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
+        {/* <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Categories
-        </div>
-        {/* <img
-          src="/images/lateralNavBar/close.svg"
-          onClick={() => setSelectionSideNavBar("")}
-          alt="image"
-          className="absolute top-[15px] flex w-[8px] cursor-pointer items-center lg:right-[24px] lg:w-[9px] 2xl:right-[30px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-        /> */}
-        <div className="">
-          {categoriesOptions.map((option, index) => (
-            <div key={index}>
-              <div
-                onClick={() => {
-                  if (option.enabled) {
-                    handleButtonClick(option.title)
-                  }
-                }}
-                className={`relative mt-[14px] flex w-fit ${
-                  option.enabled
-                    ? 'cursor-pointer hover:text-[#5b5b5b]'
-                    : 'text-[#959595]'
-                } ${
-                  selectionSubBar === option.title
-                    ? 'underline underline-offset-[3px]'
-                    : ''
-                }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
-              >
-                {selectionSubBar === option.title ? (
-                  <img
-                    src="/images/lateralNavBar/seta-baixo.svg"
-                    alt="image"
-                    className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
-                  />
-                ) : (
-                  <img
-                    src="/images/lateralNavBar/seta-lado.svg"
-                    alt="image"
-                    className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
-                  />
-                )}
-                <div>{option.title}</div>
-                {option.isFree && (
-                  <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
-                    Free
-                  </div>
-                )}
-              </div>
+        </div> */}
+        <div className="flex h-[40px] w-full flex-row  ">
+          <button
+            onClick={(e) => {
+              if (e.target instanceof HTMLElement) {
+                setCurrentDataMenuSelect(e.target.innerText)
+              }
+            }}
+            className={`  p-[10px] ${
+              currentDataMenuSelect === 'Streaming Data'
+                ? `bg-[#E0E0E0]`
+                : `bg-[#F5F5F5]`
+            }`}
+          >
+            Streaming Data
+          </button>
 
-              {selectionSubBar === option.title && renderSubOptions(option)}
-            </div>
-          ))}
+          <button
+            onClick={(e) => {
+              if (e.target instanceof HTMLElement) {
+                setCurrentDataMenuSelect(e.target.innerText)
+              }
+            }}
+            className={`  p-[10px] ${
+              currentDataMenuSelect === 'Historical Data'
+                ? `bg-[#E0E0E0]`
+                : `bg-[#F5F5F5]`
+            }`}
+          >
+            Historical Data
+          </button>
         </div>
+        <>
+          {currentDataMenuSelect === 'Streaming Data' && (
+            <div className="">
+              {categoriesOptions.map((option, index) => (
+                <div key={index}>
+                  <div
+                    onClick={() => {
+                      if (option.enabled) {
+                        handleButtonClick(option.title)
+                      }
+                    }}
+                    className={`relative mt-[14px] flex w-fit ${
+                      option.enabled
+                        ? 'cursor-pointer hover:text-[#5b5b5b]'
+                        : 'text-[#959595]'
+                    } ${
+                      selectionSubBar === option.title
+                        ? 'underline underline-offset-[3px]'
+                        : ''
+                    }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
+                  >
+                    {selectionSubBar === option.title ? (
+                      <img
+                        src="/images/lateralNavBar/seta-baixo.svg"
+                        alt="image"
+                        className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
+                      />
+                    ) : (
+                      <img
+                        src="/images/lateralNavBar/seta-lado.svg"
+                        alt="image"
+                        className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
+                      />
+                    )}
+                    <div>{option.title}</div>
+                    {option.isFree && (
+                      <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                        Free
+                      </div>
+                    )}
+                  </div>
+
+                  {selectionSubBar === option.title && renderSubOptions(option)}
+                </div>
+              ))}
+            </div>
+          )}
+          {currentDataMenuSelect === 'Historical Data' && (
+            <div className="">
+              {categoriesOptions.map((option, index) => (
+                <div key={index}>
+                  <div
+                    onClick={() => {
+                      if (option.enabled) {
+                        handleButtonClick(option.title)
+                      }
+                    }}
+                    className={`relative mt-[14px] flex w-fit ${
+                      option.enabled
+                        ? 'cursor-pointer hover:text-[#5b5b5b]'
+                        : 'text-[#959595]'
+                    } ${
+                      selectionSubBar === option.title
+                        ? 'underline underline-offset-[3px]'
+                        : ''
+                    }  gap-x-[9px] text-[9px] font-normal  md:mt-[17px] md:text-[10px] lg:mt-[19.5px] lg:text-[11px] lg:!leading-[300%] xl:mt-[22.5px] xl:text-[13px] 2xl:mt-[28px] 2xl:text-[16px]`}
+                  >
+                    {selectionSubBar === option.title ? (
+                      <img
+                        src="/images/lateralNavBar/seta-baixo.svg"
+                        alt="image"
+                        className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
+                      />
+                    ) : (
+                      <img
+                        src="/images/lateralNavBar/seta-lado.svg"
+                        alt="image"
+                        className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
+                      />
+                    )}
+                    <div>{option.title}</div>
+                    {option.isFree && (
+                      <div className="absolute -top-[14px] -right-[27px] text-[7.5px] font-normal text-[#12AD50] md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                        Free
+                      </div>
+                    )}
+                  </div>
+
+                  {selectionSubBar === option.title && renderSubOptions(option)}
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+
         <a href="/data-products?category=Data">
           <div className="mt-[35px] flex w-full justify-center  text-[8px] font-medium hover:text-[#3a3a3a] md:mt-[41px] md:text-[9.6px] lg:mt-[48px]  lg:text-[11.5px] lg:!leading-[300%] xl:mt-[55px] xl:text-[13px] 2xl:mt-[69px] 2xl:text-[16px]">
             View More
