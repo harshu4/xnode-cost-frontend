@@ -79,7 +79,7 @@ export const nodes = [
   {
     id: '14',
     type: 'utility',
-    position: { x: 1000, y: 400 },
+    position: { x: 500, y: 700 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -93,7 +93,7 @@ export const nodes = [
   {
     id: '15',
     type: 'rpc',
-    position: { x: 150, y: 550 },
+    position: { x: 150, y: 150 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -106,7 +106,7 @@ export const nodes = [
   {
     id: '16',
     type: 'analytics',
-    position: { x: 450, y: 570 },
+    position: { x: 150, y: 570 },
     data: {
       selects: {
         'handle-0': 'smoothstep',
@@ -156,13 +156,6 @@ export const edges = [
     style: { stroke: '#000' },
   },
   {
-    id: 'e11-e14',
-    source: '11',
-    target: '14',
-    animated: true,
-    style: { stroke: '#000' },
-  },
-  {
     id: 'e15-e11',
     source: '15',
     target: '11',
@@ -181,6 +174,14 @@ export const edges = [
     source: '17', // ID do openmesh
     target: '11', // ID do serverNode
     targetHandle: '4', // ID do Handle no topo do serverNode
+    animated: true,
+    style: { stroke: '#000' },
+  },
+  {
+    id: 'e14-e11',
+    source: '14',
+    target: '11',
+    targetHandle: '3',
     animated: true,
     style: { stroke: '#000' },
   },

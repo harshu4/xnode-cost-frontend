@@ -121,7 +121,7 @@ function UtilityNode({ id, data, handleNodeRemove }) {
           />
           <div className="cursor-pointer">{data.name}</div>
         </div>
-        <Handle type="target" position={Position.Left} id={'1'} />
+        <Handle type="source" position={Position.Top} id={'1'} />
       </div>
     </>
   )
