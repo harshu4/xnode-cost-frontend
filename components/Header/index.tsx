@@ -57,6 +57,7 @@ const Header = () => {
     setIsEditingXnode,
     setNextFromScratch,
     projectDescription,
+    setProjectDescription,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -126,7 +127,7 @@ const Header = () => {
     const finalData = {
       xnodeId: nodeId,
       name: projectName,
-      description: 'This is my xnode',
+      description: projectDescription,
       useCase: tagXnode,
       status: 'Running',
       consoleNodes: savedNodes,
@@ -152,6 +153,7 @@ const Header = () => {
             setNext(false)
             setNextFromScratch(false)
             toast.success(`Success`)
+            localStorage.clear()
             push('/dashboard')
           }
         })
@@ -458,24 +460,35 @@ const Header = () => {
                   className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
                 />
                 {isEditing ? (
-                  <div className="flex gap-x-[10px]">
-                    <input
-                      value={projectName}
-                      onChange={(e) => setProjectName(e.target.value)}
-                      className="ml-[5px] bg-[#fff]"
-                      autoFocus
-                    />
-                    <select
-                      className="nodrag min-w-[104px] rounded-[6px] bg-[#fff] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
-                      onChange={(option) => setTagXnode(option.target.value)}
-                      value={tagXnode}
-                    >
-                      {tagsOptions.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                  <div className="mt-[20px]">
+                    <div className="flex gap-x-[10px]">
+                      <input
+                        value={projectName}
+                        onChange={(e) => setProjectName(e.target.value)}
+                        className="ml-[5px] bg-[#fff]"
+                        autoFocus
+                      />
+                      <select
+                        className="nodrag min-w-[104px] rounded-[6px] bg-[#fff] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
+                        onChange={(option) => setTagXnode(option.target.value)}
+                        value={tagXnode}
+                      >
+                        {tagsOptions.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="ml-[5px] mt-[10px] flex">
+                      <div> Description: </div>{' '}
+                      <input
+                        value={projectDescription}
+                        onChange={(e) => setProjectDescription(e.target.value)}
+                        className=" ml-[10px] bg-[#fff] text-[#999]"
+                        autoFocus
+                      />{' '}
+                    </div>
                   </div>
                 ) : (
                   <div className="ml-[5px] text-[8px] font-bold text-[#313131] md:ml-[6px] md:text-[9.6px] lg:ml-[7px] lg:text-[11.2px] xl:ml-[8px] xl:text-[13px] 2xl:ml-[10px] 2xl:text-[16px]">
