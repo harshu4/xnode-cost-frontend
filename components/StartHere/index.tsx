@@ -24,6 +24,7 @@ const StartHere = ({ onValueChange }) => {
     nextFromScratch,
     connections,
     finalBuild,
+    setIsEditingXnode,
     setFinalNodes,
     signup,
   } = useContext(AccountContext)
@@ -185,6 +186,7 @@ const StartHere = ({ onValueChange }) => {
     console.log('handl enext chamado')
     setFinalNodes([])
     localStorage.clear()
+    setIsEditingXnode(false)
     setNext(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -193,6 +195,7 @@ const StartHere = ({ onValueChange }) => {
     console.log('handl enext chamado')
     setFinalNodes([])
     localStorage.clear()
+    setIsEditingXnode(false)
     setNextFromScratch(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
