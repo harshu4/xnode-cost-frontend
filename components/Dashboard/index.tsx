@@ -231,7 +231,7 @@ const Dashboard = () => {
     getData()
   }, [user])
 
-  if (xnodesData.length > 0) {
+  if (xnodesData.length === 0) {
     return (
       <div>
         <div className="mt-[64px] mb-[100px]  flex items-center justify-center text-[#000]">
