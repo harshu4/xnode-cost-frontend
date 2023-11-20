@@ -12,6 +12,10 @@ import SubBarAPIs from '../SubBarAPIs'
 import SubBarAnalytics from '../SubBarAnalytics'
 import SubBarRPC from '../SubBarRPC'
 import SubBarUtility from '../SubBarUtility'
+import SubBarML from '../SubBarML'
+import SubBarStorage from '../SubBarStorage'
+import SubBarDataManagement from '../SubBarDataManagement'
+import SubBarCompute from '../SubBarCompute'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -34,7 +38,7 @@ const LateralNav = ({ onValueChange }) => {
   const { push } = useRouter()
   const [hoveredIcon, setHoveredIcon] = useState(null)
 
-  const preSetsOptions = [
+  const preSetsOptionsUser = [
     {
       icon: '/images/lateralNavBar/new-home.png',
       iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
@@ -124,6 +128,88 @@ const LateralNav = ({ onValueChange }) => {
     },
   ]
 
+  const preSetsOptions = [
+    {
+      icon: '/images/lateralNavBar/new-home.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Home',
+    },
+    {
+      icon: '/images/lateralNavBar/workspace.svg',
+      iconStyle: 'w-[12px] md:w-[14.5px] lg:w-[17px] xl:w-[20px] 2xl:w-[20px]',
+      title: 'Workspace',
+    },
+    {
+      icon: '/images/lateralNavBar/new-servers.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Servers',
+    },
+    {
+      icon: '/images/lateralNavBar/new-data.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Data',
+    },
+    {
+      icon: '/images/lateralNavBar/new-apis.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'APIs',
+    },
+    {
+      icon: '/images/lateralNavBar/new-rpc.png',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'RPC',
+    },
+    {
+      icon: '/images/lateralNavBar/new-analytics.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Analytics',
+    },
+    {
+      icon: '/images/lateralNavBar/new-data-management.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Data management',
+    },
+    {
+      icon: '/images/lateralNavBar/new-storage.svg',
+      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Storage',
+    },
+    {
+      icon: '/images/lateralNavBar/new-compute.svg',
+      iconStyle:
+        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
+      title: 'Compute',
+    },
+    {
+      icon: '/images/lateralNavBar/new-trading.svg',
+      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]',
+      title: 'Trading',
+    },
+    {
+      icon: '/images/lateralNavBar/new-ai.svg',
+      iconStyle:
+        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]',
+      title: 'ML/LLMs',
+    },
+    {
+      icon: '/images/lateralNavBar/new-apps.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Apps',
+    },
+    {
+      icon: '/images/lateralNavBar/new-utility.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Utility',
+    },
+    {
+      icon: '/images/lateralNavBar/new-docs.svg',
+      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
+      title: 'Docs',
+    },
+  ]
+
+  const [sideBarOptions, setSideBarOptions] = useState<any>(preSetsOptions)
+
   function handleButtonClick(title: string) {
     if (title === 'Workspace') {
       setNext(true)
@@ -169,6 +255,14 @@ const LateralNav = ({ onValueChange }) => {
     }
   }
 
+  useEffect(() => {
+    if (user) {
+      setSideBarOptions(preSetsOptionsUser)
+    } else {
+      setSideBarOptions(preSetsOptions)
+    }
+  }, [user])
+
   if (!isOpen) {
     return (
       <>
@@ -187,7 +281,7 @@ const LateralNav = ({ onValueChange }) => {
               />
             </div>
             <ul className="flex flex-col items-center gap-[20px] md:gap-[24px] lg:gap-[28px] xl:gap-[32px] 2xl:gap-[40px]">
-              {preSetsOptions.map((option, index) => (
+              {sideBarOptions.map((option, index) => (
                 <li className="relative" key={index}>
                   <img
                     src={option.icon}
@@ -236,7 +330,7 @@ const LateralNav = ({ onValueChange }) => {
               </a>
             </div>
           </div>
-          {preSetsOptions.map((option, index) => (
+          {sideBarOptions.map((option, index) => (
             <div
               key={index}
               onMouseEnter={() => handleButtonHover(option.title)}
@@ -313,6 +407,38 @@ const LateralNav = ({ onValueChange }) => {
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
             <SubBarRPC onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {hoveredIcon === 'ML/LLMs' && (
+          <div
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
+          >
+            <SubBarML onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {hoveredIcon === 'Storage' && (
+          <div
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
+          >
+            <SubBarStorage onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {hoveredIcon === 'Data management' && (
+          <div
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
+          >
+            <SubBarDataManagement onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {hoveredIcon === 'Compute' && (
+          <div
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
+          >
+            <SubBarCompute onValueChange={console.log('hello')} />
           </div>
         )}
         {hoveredIcon === 'Utility' ? (
