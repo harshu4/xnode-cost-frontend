@@ -47,7 +47,10 @@ import OpenmeshNode from './OpenmeshNode'
 import withProps from './withProps'
 import DataNodeStreaming from './DataNodeStreaming'
 import DataNodeHistorical from './DataNodeHistorical'
-
+import MLNode from './MLNode'
+import StorageNode from './StorageNode'
+import DataManagementNode from './DataManagementNode'
+import ComputeNode from './ComputeNode'
 // const getNodeTypes = (handleNodeRemove): NodeTypes => ({
 //   custom: CustomNode,
 //   server: ServerNode,
@@ -61,11 +64,15 @@ const nodeAmount = [
   { type: 'server', amount: 1 },
   { type: 'dataStreaming', amount: 1 },
   { type: 'dataHistorical', amount: 1 },
-  { type: 'api', amount: 1 },
-  { type: 'utility', amount: 1 },
-  { type: 'rpc', amount: 1 },
-  { type: 'analytics', amount: 1 },
-  { type: 'openmesh', amount: 1 },
+  { type: 'api', amount: 5 },
+  { type: 'utility', amount: 5 },
+  { type: 'rpc', amount: 5 },
+  { type: 'analytics', amount: 5 },
+  { type: 'openmesh', amount: 5 },
+  { type: 'ml', amount: 5 },
+  { type: 'storage', amount: 5 },
+  { type: 'dataManagement', amount: 5 },
+  { type: 'compute', amount: 5 },
 ]
 const minimapStyle = {
   height: 120,
@@ -156,6 +163,126 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
           id: uuidv4(),
           type: 'rpc',
           position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+
+    if (changeNodes?.type === 'ml') {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name,
+      )
+
+      console.log('nod exists?')
+      console.log(nodeExists)
+
+      console.log('nodes')
+      console.log(changeNodes?.name)
+      console.log(nodes)
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: 'ml',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+
+    if (changeNodes?.type === 'storage') {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name,
+      )
+
+      console.log('nod exists?')
+      console.log(nodeExists)
+
+      console.log('nodes')
+      console.log(changeNodes?.name)
+      console.log(nodes)
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: 'storage',
+          position: { x: 670, y: 500 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+
+    if (changeNodes?.type === 'compute') {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name,
+      )
+
+      console.log('nod exists?')
+      console.log(nodeExists)
+
+      console.log('nodes')
+      console.log(changeNodes?.name)
+      console.log(nodes)
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: 'compute',
+          position: { x: 670, y: 100 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+
+    if (changeNodes?.type === 'dataManagement') {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name,
+      )
+
+      console.log('nod exists?')
+      console.log(nodeExists)
+
+      console.log('nodes')
+      console.log(changeNodes?.name)
+      console.log(nodes)
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: 'dataManagement',
+          position: { x: 770, y: 100 },
           data: {
             selects: {
               'handle-0': 'smoothstep',
@@ -452,6 +579,10 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       rpc: withProps(RPCNode, { handleNodeRemove }),
       analytics: withProps(AnalyticsNode, { handleNodeRemove }),
       openmesh: withProps(OpenmeshNode, { handleNodeRemove }),
+      ml: withProps(MLNode, { handleNodeRemove }),
+      storage: withProps(StorageNode, { handleNodeRemove }),
+      dataManagement: withProps(DataManagementNode, { handleNodeRemove }),
+      compute: withProps(ComputeNode, { handleNodeRemove }),
     }),
     [],
   )
