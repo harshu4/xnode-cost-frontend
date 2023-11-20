@@ -51,6 +51,7 @@ import MLNode from './MLNode'
 import StorageNode from './StorageNode'
 import DataManagementNode from './DataManagementNode'
 import ComputeNode from './ComputeNode'
+import TradingNode from './TradingNode'
 // const getNodeTypes = (handleNodeRemove): NodeTypes => ({
 //   custom: CustomNode,
 //   server: ServerNode,
@@ -73,6 +74,7 @@ const nodeAmount = [
   { type: 'storage', amount: 5 },
   { type: 'dataManagement', amount: 5 },
   { type: 'compute', amount: 5 },
+  { type: 'trading', amount: 5 },
 ]
 const minimapStyle = {
   height: 120,
@@ -100,6 +102,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setFinalNodes,
     finalNodes,
     setIsWorkspace,
+    xnodeType,
+    setXnodeType,
     selectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
@@ -252,6 +256,36 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         const newNode = {
           id: uuidv4(),
           type: 'compute',
+          position: { x: 670, y: 100 },
+          data: {
+            selects: {
+              'handle-0': 'smoothstep',
+              'handle-1': 'smoothstep',
+            },
+            name: changeNodes?.name,
+            icon: changeNodes?.icon,
+          },
+        }
+        setNodes((prevNodes) => [...prevNodes, newNode])
+      }
+    }
+
+    if (changeNodes?.type === 'trading') {
+      const nodeExists = nodes.some(
+        (node) => node.data.name === changeNodes?.name,
+      )
+
+      console.log('nod exists?')
+      console.log(nodeExists)
+
+      console.log('nodes')
+      console.log(changeNodes?.name)
+      console.log(nodes)
+
+      if (!nodeExists) {
+        const newNode = {
+          id: uuidv4(),
+          type: 'trading',
           position: { x: 670, y: 100 },
           data: {
             selects: {
@@ -583,6 +617,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       storage: withProps(StorageNode, { handleNodeRemove }),
       dataManagement: withProps(DataManagementNode, { handleNodeRemove }),
       compute: withProps(ComputeNode, { handleNodeRemove }),
+      trading: withProps(TradingNode, { handleNodeRemove }),
     }),
     [],
   )
@@ -598,6 +633,9 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   useEffect(() => {
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
+    const savedXnodeType = localStorage.getItem('xnodeType')
+
+    setXnodeType(savedXnodeType)
 
     if (savedNodes) {
       setNodes(JSON.parse(savedNodes))
@@ -617,10 +655,21 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       <ReactFlow
         nodes={nodesAmounts}
         edges={edgesWithUpdatedTypes}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
+        onNodesChange={(value) => {
+          // validator type of nodes cannot be edited
+          if (xnodeType !== 'validator') {
+            onNodesChange(value)
+          }
+        }}
+        onEdgesChange={(value) => {
+          // validator type of nodes cannot be edited
+          if (xnodeType !== 'validator') {
+            onEdgesChange(value)
+          }
+        }}
         onConnect={onConnect}
         onInit={onInit}
+        contentEditable={false}
         fitView
         attributionPosition="top-right"
         nodeTypes={nodeTypes}

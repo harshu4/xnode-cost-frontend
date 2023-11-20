@@ -11,7 +11,7 @@ export const categoriesOptionsRPC = [
     desc: 'Eta X is an Unbiased DeFi Smart Order Router & Search Engine for DeFi',
     link: 'Machine learning.',
     linkRef: 'https://etax4.deeplink.network/',
-    pageRef: '/data-product/bb0fcfde-dbb6-4b06-ac1d-86d69cf5d39b',
+    pageRef: '/data-product/c1b27028-5ac4-4789-ad5f-1040c466b731',
     src: '/images/subNavBarML/etaX.svg',
     style:
       '2xl:w-[32px] xl:w-[25.6px] lg:w-[22.4px] md:w-[19.2px] base:w-[16px]',

@@ -7,25 +7,13 @@ import { AccountContext } from '@/contexts/AccountContext'
 
 export const categoriesOptionsRPC = [
   {
-    title: 'Akash Network',
-    desc: 'Akash is open-source Supercloud that lets users buy and sell computing resources securely and efficiently. Purpose-built for public utility.',
-    link: 'Decentralized Cloud Computing, Blockchain-Based Marketplace, Container Deployment, Serverless Hosting, Peer-to-Peer Cloud Services',
-    linkRef: 'https://akash.network/',
-    pageRef: '/data-product/08b18145-2384-45e3-906a-8c5dd88f76e9',
-    src: '/images/subNavBarCompute/akash.png',
+    title: 'Mintify',
+    desc: 'Mintify is a non-fungible token (NFT) multi-chain aggregator, analytics platform, and trading terminal for deploying NFT investment strategies.',
+    link: 'Trading',
+    linkRef: 'https://mintify.xyz/',
+    pageRef: '/data-product/07e80051-5c02-4667-9b81-664ba06202b7',
+    src: '/images/subNavBarTrading/mintify.png',
     style: '2xl:w-[32px] xl:w-[25.6px] lg:w-[22.4px] md:w-[19.2px] w-[16px]',
-    isFree: false,
-    enabled: true,
-    thirdParty: true,
-  },
-  {
-    title: 'Nebula AI',
-    desc: 'A pioneering technology company that specializes in integrating Artificial Intelligence (AI) with decentralized computing and blockchain technology.',
-    link: 'Decentralized Cloud Computing, Blockchain-Based Marketplace, Container Deployment, Serverless Hosting, Peer-to-Peer Cloud Services',
-    linkRef: 'https://nebula-ai.com/#/',
-    pageRef: '/data-product/4ef5fc57-1b52-407a-9224-b20b5b2d36cd',
-    src: '/images/subNavBarCompute/nebula.jpg',
-    style: '2xl:w-[36px] xl:w-[28.8px] lg:w-[25.2px] md:w-[21.6px] w-[18px]',
     isFree: false,
     enabled: true,
     thirdParty: true,
@@ -33,7 +21,7 @@ export const categoriesOptionsRPC = [
 ]
 
 /* eslint-disable react/no-unescaped-entities */
-const SubBarCompute = ({ onValueChange }) => {
+const SubBarTrading = ({ onValueChange }) => {
   const [presetId, setPresetId] = useState(0)
   const {
     selectionSideNavBar,
@@ -126,7 +114,7 @@ const SubBarCompute = ({ onValueChange }) => {
                 <div
                   onClick={() => {
                     setChangeNodes({
-                      type: 'compute',
+                      type: 'trading',
                       name: option.title,
                       icon: option.src,
                     })
@@ -150,7 +138,7 @@ const SubBarCompute = ({ onValueChange }) => {
     <>
       <div className="z-100 relative bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
         <img
-          src="/images/subNavBarCompute/compute.svg"
+          src="/images/subNavBarTrading/trading.svg"
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="w-[20px] md:w-[24px] lg:w-[28px] xl:w-[32px] 2xl:w-[40px]"
@@ -213,4 +201,4 @@ const SubBarCompute = ({ onValueChange }) => {
   )
 }
 
-export default SubBarCompute
+export default SubBarTrading
