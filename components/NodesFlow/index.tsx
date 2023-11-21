@@ -633,9 +633,6 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   useEffect(() => {
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
-    const savedXnodeType = localStorage.getItem('xnodeType')
-
-    setXnodeType(savedXnodeType)
 
     if (savedNodes) {
       setNodes(JSON.parse(savedNodes))

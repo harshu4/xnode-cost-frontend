@@ -46,6 +46,7 @@ const ReviewYourBuild = () => {
     projectName,
     setProjectName,
     setSignup,
+    xnodeType,
   } = useContext(AccountContext)
 
   const coreServicesType = ['utility', 'rpc', 'analytics']
@@ -90,6 +91,7 @@ const ReviewYourBuild = () => {
       status: 'Running',
       consoleNodes: savedNodes,
       consoleEdges: savedEdges,
+      type: xnodeType,
     }
 
     if (user.sessionToken) {

@@ -72,14 +72,26 @@ const Dashboard = () => {
     setConnections,
     setFinalBuild,
     setTagXnode,
+    setXnodeType,
+    xnodeType,
   } = useContext(AccountContext)
 
   const { push } = useRouter()
 
-  function handleEdit(id: string, nodes, edges, tag, projectName, description) {
+  function handleEdit(
+    id: string,
+    nodes,
+    edges,
+    tag,
+    projectName,
+    description,
+    type,
+  ) {
     localStorage.setItem('editingNode', id)
     localStorage.setItem('nodes', JSON.stringify(nodes))
     localStorage.setItem('edges', JSON.stringify(edges))
+    localStorage.setItem('xnodeType', type)
+    setXnodeType(type)
     setTagXnode(tag)
     setProjectName(projectName)
     setProjectDescription(description)
@@ -89,7 +101,11 @@ const Dashboard = () => {
     setConnections(false)
     setFinalBuild(false)
     setNext(true)
-    push('/start-here')
+    if (xnodeType === 'validator') {
+      push(`/validator/${id}`)
+    } else {
+      push('/start-here')
+    }
   }
 
   async function getData() {
@@ -189,6 +205,7 @@ const Dashboard = () => {
                         node.useCase,
                         node.name,
                         node.description,
+                        node.type,
                       )
                     }}
                     className="mt-[4px] text-[6px] text-[#0354EC] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]"
@@ -213,6 +230,7 @@ const Dashboard = () => {
                         node.useCase,
                         node.name,
                         node.description,
+                        node.type,
                       )
                     }}
                   >
