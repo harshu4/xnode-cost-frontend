@@ -135,7 +135,6 @@ const Profile = () => {
 
   const handlePreFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      console.log('fazendo a chamada do file')
       const newFiles = Array.from(event.target.files)
       let validFiles = true
       const allowedMimeTypes = ['image/jpeg', 'image/png']
@@ -160,7 +159,6 @@ const Profile = () => {
         const combinedFiles = [...selectedFiles, ...newFiles].slice(0, 15)
         setSelectedFiles(combinedFiles)
         const imageURL = URL.createObjectURL(event.target.files[0])
-        console.log('here the url')
         console.log(imageURL)
         setImagePreview(imageURL)
       })
@@ -169,7 +167,6 @@ const Profile = () => {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      console.log('fazendo a chamada do file')
       const newFiles = Array.from(event.target.files)
       let validFiles = true
       const allowedMimeTypes = ['image/jpeg', 'image/png']
@@ -194,7 +191,6 @@ const Profile = () => {
         const combinedFiles = [...selectedFiles, ...newFiles].slice(0, 15)
         setSelectedFiles(combinedFiles)
         const imageURL = URL.createObjectURL(event.target.files[0])
-        console.log('here the url')
         console.log(imageURL)
         setImagePreview(imageURL)
         setLogoProfileHadChange(true)
@@ -255,7 +251,6 @@ const Profile = () => {
   }
 
   async function onSubmit(data: RegisterForm) {
-    console.log('submitt update called')
     setIsLoading(true)
 
     let finalData
@@ -616,7 +611,6 @@ const Profile = () => {
                               if (newValue.length <= 5) {
                                 field.onChange(newValue)
                               } else {
-                                console.log('not aloweed')
                                 toast.error('Only 5 tags', {
                                   position: toast.POSITION.TOP_RIGHT,
                                 })

@@ -109,11 +109,8 @@ const Dashboard = () => {
   }
 
   async function getData() {
-    console.log('get data')
     setIsLoading(true)
-    console.log(user)
     if (user?.sessionToken) {
-      console.log('tem user session token')
       const config = {
         method: 'get' as 'get',
         url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/getXnodes`,
@@ -127,7 +124,6 @@ const Dashboard = () => {
       try {
         await axios(config).then(function (response) {
           if (response.data) {
-            console.log(response.data)
             setXnodesData(response.data)
           }
         })

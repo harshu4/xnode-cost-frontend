@@ -14,7 +14,6 @@ export async function getDataXnodeValidatorsInfo() {
   await axios(config).then(function (response) {
     if (response.data) {
       dado = response.data
-      console.log(dado)
     }
   })
   return dado
@@ -25,8 +24,6 @@ export async function getXnodeWithNodesValidatorsStats(id: any) {
     id,
   }
 
-  console.log('vou realizar a chamada xnode')
-  console.log(data)
   const config = {
     method: 'post' as 'post',
     url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/getXnodeWithNodesValidatorsStats`,
@@ -41,7 +38,6 @@ export async function getXnodeWithNodesValidatorsStats(id: any) {
   await axios(config).then(function (response) {
     if (response.data) {
       dado = response.data
-      console.log(dado)
     }
   })
   return dado

@@ -95,7 +95,7 @@ const Console = () => {
     <>
       <div className="flex">
         <section id="home" className={`w-full`}>
-          <StartHere onValueChange={console.log('teste')} />
+          <StartHere onValueChange={console.log('')} />
         </section>
       </div>
 

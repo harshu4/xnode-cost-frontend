@@ -46,7 +46,6 @@ const Validator = (id: any) => {
     try {
       const res = await getXnodeWithNodesValidatorsStats(id)
       setData(res)
-      console.log('DATA RECEIVED')
       console.log(res)
     } catch (err) {
       toast.error(`An error occurred`)

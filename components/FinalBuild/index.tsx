@@ -111,8 +111,6 @@ const ReviewYourBuild = () => {
       try {
         await axios(config).then(function (response) {
           if (response.data) {
-            console.log('deploy feito com sucesso')
-            console.log(response.data)
             setIsLoadingFeatures(true)
             setNewXnodeId(response.data.id)
           }
@@ -129,15 +127,11 @@ const ReviewYourBuild = () => {
   }
 
   useEffect(() => {
-    console.log('fui chamado meu mano brown')
-    console.log(finalNodes)
-
     if (finalNodes) {
       // Setting the server flow
       const existingServerIndex = finalNodes.findIndex(
         (node) => node.type === 'server',
       )
-      console.log(existingServerIndex)
       if (existingServerIndex !== -1) {
         setServiceRegion(
           finalNodes[existingServerIndex].data.defaultValueLocation,
@@ -156,8 +150,6 @@ const ReviewYourBuild = () => {
         const node = finalNodes[i]
 
         if (coreServicesType.includes(node.type)) {
-          console.log('includes sim')
-          console.log(node.data)
           coreServicesArray.push({
             name: node.data.name,
             description: nameToDesc[node.data.name] || '',
@@ -174,11 +166,6 @@ const ReviewYourBuild = () => {
       setCoreServices(coreServicesArray)
       setCoreServicesData(coreServiceDataArray)
       setCoreServicesApi(coreServiceApiArray)
-
-      console.log('final arrays here')
-      console.log(coreServicesArray)
-      console.log(coreServiceDataArray)
-      console.log(coreServiceApiArray)
 
       createXnode()
     }

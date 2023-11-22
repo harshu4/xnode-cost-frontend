@@ -87,7 +87,6 @@ const ProductsList = ({ dataTestimonial }: ProductsListProps) => {
   }
 
   const filteredTestimonials = testimonial?.filter((t) => {
-    console.log('the categories hereee')
     console.log(t)
     return (
       (selectedCategories.length === 0 ||
