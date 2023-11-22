@@ -15,8 +15,6 @@ export async function getDatasets(type?: string) {
   await axios(config).then(function (response) {
     if (response.data) {
       dado = response.data
-      console.log('api response')
-      console.log(dado)
     }
   })
 
@@ -27,7 +25,6 @@ export async function getData(id: any) {
   const data = {
     id,
   }
-  console.log(data)
   const config = {
     method: 'post' as 'post',
     url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/openmesh-data/functions/getDataset`,
@@ -42,7 +39,6 @@ export async function getData(id: any) {
   await axios(config).then(function (response) {
     if (response.data) {
       dado = response.data
-      console.log(dado)
     }
   })
   return dado

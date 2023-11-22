@@ -385,17 +385,17 @@ const LateralNav = ({ onValueChange }) => {
         </div>
         {hoveredIcon === 'Data' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarData onValueChange={console.log('onvaluechange')} />
+            <SubBarData onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Servers' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarServers onValueChange={console.log('hello')} />
+            <SubBarServers onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'APIs' && (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarAPIs onValueChange={console.log('hello')} />
+            <SubBarAPIs onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Analytics' && (
@@ -403,7 +403,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarAnalytics onValueChange={console.log('hello')} />
+            <SubBarAnalytics onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'RPC' && (
@@ -411,7 +411,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarRPC onValueChange={console.log('hello')} />
+            <SubBarRPC onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'ML/LLMs' && (
@@ -419,7 +419,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarML onValueChange={console.log('hello')} />
+            <SubBarML onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Storage' && (
@@ -427,7 +427,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarStorage onValueChange={console.log('hello')} />
+            <SubBarStorage onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Data management' && (
@@ -435,7 +435,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarDataManagement onValueChange={console.log('hello')} />
+            <SubBarDataManagement onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Compute' && (
@@ -443,7 +443,7 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarCompute onValueChange={console.log('hello')} />
+            <SubBarCompute onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Trading' && (
@@ -451,12 +451,12 @@ const LateralNav = ({ onValueChange }) => {
             onMouseLeave={() => setHoveredIcon(null)}
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
-            <SubBarTrading onValueChange={console.log('hello')} />
+            <SubBarTrading onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Utility' ? (
           <div className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]">
-            <SubBarUtility onValueChange={console.log('valueChanged')} />
+            <SubBarUtility onValueChange={console.log('')} />
           </div>
         ) : null}
       </div>

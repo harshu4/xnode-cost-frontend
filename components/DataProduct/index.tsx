@@ -35,8 +35,6 @@ const DataProduct = (id: any) => {
     try {
       const res = await getData(id)
       setData(res)
-      console.log('DATA RECEIVED')
-      console.log(res)
     } catch (err) {
       toast.error(`An error occurred`)
       //   push('/community')
@@ -202,7 +200,6 @@ const DataProduct = (id: any) => {
   }
 
   const updateUrl = (param: string, value: string | null) => {
-    console.log('update chamado com sucesso')
     if (param !== 'page') {
       if (typeof window !== 'undefined') {
         const url = new URL(window.location.href)

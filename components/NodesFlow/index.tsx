@@ -185,10 +185,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         (node) => node.data.name === changeNodes?.name,
       )
 
-      console.log('nod exists?')
       console.log(nodeExists)
 
-      console.log('nodes')
       console.log(changeNodes?.name)
       console.log(nodes)
 
@@ -215,10 +213,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         (node) => node.data.name === changeNodes?.name,
       )
 
-      console.log('nod exists?')
       console.log(nodeExists)
 
-      console.log('nodes')
       console.log(changeNodes?.name)
       console.log(nodes)
 
@@ -245,10 +241,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         (node) => node.data.name === changeNodes?.name,
       )
 
-      console.log('nod exists?')
       console.log(nodeExists)
 
-      console.log('nodes')
       console.log(changeNodes?.name)
       console.log(nodes)
 
@@ -275,10 +269,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         (node) => node.data.name === changeNodes?.name,
       )
 
-      console.log('nod exists?')
       console.log(nodeExists)
 
-      console.log('nodes')
       console.log(changeNodes?.name)
       console.log(nodes)
 
@@ -305,7 +297,6 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         (node) => node.data.name === changeNodes?.name,
       )
 
-      console.log('nod exists?')
       console.log(nodeExists)
 
       console.log('nodes')

@@ -70,7 +70,6 @@ const ReviewYourBuild = () => {
   const { push } = useRouter()
 
   useEffect(() => {
-    console.log('fui chamado meu mano brown')
     console.log(finalNodes)
 
     if (finalNodes) {
@@ -97,7 +96,6 @@ const ReviewYourBuild = () => {
         const node = finalNodes[i]
 
         if (coreServicesType.includes(node.type)) {
-          console.log('includes sim')
           console.log(node.data)
           coreServicesArray.push({
             name: node.data.name,
@@ -116,7 +114,6 @@ const ReviewYourBuild = () => {
       setCoreServicesData(coreServiceDataArray)
       setCoreServicesApi(coreServiceApiArray)
 
-      console.log('final arrays here')
       console.log(coreServicesArray)
       console.log(coreServiceDataArray)
       console.log(coreServiceApiArray)

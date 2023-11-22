@@ -188,14 +188,12 @@ const NodesFlow = (fromScratch: boolean) => {
       }
     }
     if (changeNodes?.type === 'data') {
-      console.log('entrei no data')
       const existingNodeIndex = nodes.findIndex(
         (node) =>
           node.type === 'data' && node.data.lists && node.data.lists.length > 0,
       )
 
       if (existingNodeIndex !== -1) {
-        console.log('node existe')
         // O nó 'data' já existe, então vamos adicionar o novo objeto a ele
         // antes verificar se nao existe o title, se existir nao prosseguimos
         const existingNode = nodes[existingNodeIndex]
@@ -216,7 +214,6 @@ const NodesFlow = (fromScratch: boolean) => {
         // Atualize o array de nós
         const updatedNodes = [...nodes]
         updatedNodes[existingNodeIndex] = existingNode
-        console.log('o updated node')
         console.log(existingNode)
         setNodes((nds) =>
           nds.map((node) => {
@@ -232,7 +229,6 @@ const NodesFlow = (fromScratch: boolean) => {
           }),
         )
       } else {
-        console.log('node nao existe, vamos criar um')
         // O nó 'data' não existe, então vamos criar um novo nó
         const newNode = {
           id: uuidv4(),
@@ -258,7 +254,6 @@ const NodesFlow = (fromScratch: boolean) => {
       const nodeExists = nodes.some((node) => node.type === 'server')
       console.log(nodes)
       if (!nodeExists) {
-        console.log('vou inputar o server')
         console.log(changeNodes?.defaultValueServerType)
         console.log(changeNodes?.defaultValueLocation)
         const newNode = {

@@ -184,7 +184,6 @@ const StartHere = ({ onValueChange }) => {
   ]
 
   function handleNextUseCase() {
-    console.log('handl enext chamado')
     setFinalNodes([])
     localStorage.clear()
     setIsEditingXnode(false)
@@ -199,7 +198,6 @@ const StartHere = ({ onValueChange }) => {
   }
 
   function handleNextFromScratch() {
-    console.log('handl enext chamado')
     setFinalNodes([])
     localStorage.clear()
     setIsEditingXnode(false)

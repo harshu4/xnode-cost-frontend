@@ -151,7 +151,6 @@ const Header = () => {
       try {
         await axios(config).then(function (response) {
           if (response.data) {
-            console.log(response.data)
             setNext(false)
             setNextFromScratch(false)
             toast.success(`Success`)
@@ -173,8 +172,6 @@ const Header = () => {
 
   async function getUserData() {
     const { userSessionToken } = parseCookies()
-    console.log('no user data')
-    console.log(userSessionToken)
     if (userSessionToken) {
       const config = {
         method: 'post' as 'post',
@@ -190,7 +187,6 @@ const Header = () => {
       await axios(config).then(function (response) {
         if (response.data) {
           dado = response.data
-          console.log(dado)
           setUser(dado)
         }
       })
@@ -199,9 +195,6 @@ const Header = () => {
 
   useEffect(() => {
     if (userHasAnyCookie) {
-      console.log('user has cookis')
-      console.log(userHasAnyCookie)
-      console.log(cookies.userSessionToken)
       try {
         getUserData()
       } catch (err) {

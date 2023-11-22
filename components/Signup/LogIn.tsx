@@ -58,8 +58,6 @@ const LogIn = () => {
     await axios(config).then(function (response) {
       if (response.data) {
         dado = response.data
-        console.log('api response')
-        console.log(dado)
       }
     })
 
@@ -68,23 +66,17 @@ const LogIn = () => {
 
   async function onSubmit(data: LoginForm) {
     setIsLoading(true)
-    console.log('called login')
     const finalData = {
       ...data,
     }
     try {
       const res = await loginUser(finalData)
-      console.log(res)
-      console.log('setting the cookies')
       setCookie(null, 'userSessionToken', res.sessionToken)
       nookies.set(null, 'userSessionToken', res.sessionToken)
       toast.success('Success')
-      console.log('setting user')
       setUser(res)
-      console.log('setting false')
       setIsLoading(false)
     } catch (err) {
-      console.log(err)
       if (err.response.data.message === 'Unconfirmed Email') {
         toast.error('Unconfirmed email')
       } else if (err.response.data.message === 'User disabled') {
@@ -96,7 +88,6 @@ const LogIn = () => {
       }
       const element = document.getElementById('emailId')
       element.scrollIntoView({ behavior: 'smooth' })
-      console.log('the error')
       console.log(err.response.data.message)
       setIsLoading(false)
     }

@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="max-w-screen w-full bg-white">
         <Providers>
           <div className="flex">
-            <LateralNav onValueChange={console.log('teste')} />
+            <LateralNav onValueChange={console.log('')} />
             <div className="mx-auto">
               <Header />
               {children}
