@@ -58,6 +58,8 @@ const Header = () => {
     setNextFromScratch,
     projectDescription,
     setProjectDescription,
+    setXnodeType,
+    xnodeType,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -217,6 +219,10 @@ const Header = () => {
     if (savedNodes && savedEdges) {
       setIsWorkspace(true)
     }
+
+    const savedXnodeType = localStorage.getItem('xnodeType')
+
+    setXnodeType(savedXnodeType)
 
     const isEditingX = localStorage.getItem('editingNode')
     if (isEditingX) {
@@ -472,6 +478,7 @@ const Header = () => {
                         className="nodrag min-w-[104px] rounded-[6px] bg-[#fff] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
                         onChange={(option) => setTagXnode(option.target.value)}
                         value={tagXnode}
+                        disabled={xnodeType === 'validator'}
                       >
                         {tagsOptions.map((option) => (
                           <option key={option} value={option}>

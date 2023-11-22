@@ -25,6 +25,7 @@ const StartHere = ({ onValueChange }) => {
     connections,
     finalBuild,
     setIsEditingXnode,
+    setXnodeType,
     setFinalNodes,
     signup,
   } = useContext(AccountContext)
@@ -188,6 +189,12 @@ const StartHere = ({ onValueChange }) => {
     localStorage.clear()
     setIsEditingXnode(false)
     setNext(true)
+
+    // if its index 4, its a validator
+    if (presetId === 4) {
+      localStorage.setItem('xnodeType', 'validator')
+      setXnodeType('validator')
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

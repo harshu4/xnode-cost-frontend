@@ -16,6 +16,7 @@ import SubBarML from '../SubBarML'
 import SubBarStorage from '../SubBarStorage'
 import SubBarDataManagement from '../SubBarDataManagement'
 import SubBarCompute from '../SubBarCompute'
+import SubBarTrading from '../SubBarTrading'
 
 /* eslint-disable react/no-unescaped-entities */
 const LateralNav = ({ onValueChange }) => {
@@ -223,6 +224,10 @@ const LateralNav = ({ onValueChange }) => {
     if (title === 'Docs') {
       push('/docs')
       setSelectionSideNavBar('Docs')
+    }
+    if (title === 'Profile') {
+      push('/profile')
+      setSelectionSideNavBar('Profile')
     }
     if (title === 'Dashboard') {
       push('/dashboard')
@@ -439,6 +444,14 @@ const LateralNav = ({ onValueChange }) => {
             className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
           >
             <SubBarCompute onValueChange={console.log('hello')} />
+          </div>
+        )}
+        {hoveredIcon === 'Trading' && (
+          <div
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="absolute top-[80px] -right-[277px] 2xl:top-[105px] 2xl:-right-[340px]"
+          >
+            <SubBarTrading onValueChange={console.log('hello')} />
           </div>
         )}
         {hoveredIcon === 'Utility' ? (

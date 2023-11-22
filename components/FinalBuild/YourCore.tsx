@@ -12,6 +12,8 @@ interface ModalProps {
   coreServicesData: string[]
   coreServices: CoreServices[]
   isLoadingFeatures: boolean
+  xnodeId: string
+  xnodeType: string
 }
 
 const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
@@ -49,7 +51,11 @@ const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
       } else if (currentServiceIndex === coreServices.length + 1) {
         setDataIcon('/images/reviewYourBuild/checkGreen.svg')
         toast.success('Success')
-        push('/dashboard')
+        if (data.xnodeType === 'validator') {
+          push(`/validator/${data.xnodeId}?newDeploy=true`)
+        } else {
+          push('/dashboard')
+        }
       }
     }
 

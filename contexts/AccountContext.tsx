@@ -11,8 +11,11 @@ export interface UserProps {
   website: string
   tags: string[]
   description: string
+  isCompany: boolean
   password: string
   confirmPassword: string
+  githubLink: string
+  personalBlog: string
   profilePictureHash: string
   calendly: string
   sessionToken: string
@@ -36,6 +39,9 @@ interface CreateUserContextProps {
 
   projectDescription: string
   setProjectDescription: (value: string) => void
+
+  xnodeType: string
+  setXnodeType: (value: string) => void
 
   finalNodes: any
   setFinalNodes: (value: any) => void
@@ -83,6 +89,7 @@ export default function AccountContextProvider({
   const [changeNodes, setChangeNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
+  const [xnodeType, setXnodeType] = useState<string>()
   const [projectName, setProjectName] = useState('Project Name')
   const [selectCurrentMenuDataType, setselectCurrentMenuDataType] =
     useState<string>('')
@@ -114,6 +121,8 @@ export default function AccountContextProvider({
         isEditingXnode,
         setIsEditingXnode,
         setselectCurrentMenuDataType,
+        xnodeType,
+        setXnodeType,
         user,
         setUser,
         next,
