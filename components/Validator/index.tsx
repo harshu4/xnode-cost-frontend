@@ -29,6 +29,8 @@ import {
 } from '@/utils/xnode'
 import { XnodeValidatorsStats, XnodeWithValidatorsStats } from '@/types/node'
 import Congratulations from './Congratulations'
+import Stats from './Stats'
+import Node from './Node'
 
 const Validator = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -84,21 +86,52 @@ const Validator = (id: any) => {
 
   if (newDeploy === 'true' && data && !nextCongrats) {
     return (
-      <Congratulations
-        createdAt={data.node.createdAt}
-        nodeId={data.node.id}
-        onValueChange={() => {
-          setNextCongrats(true)
-        }}
-      />
+      <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
+        {' '}
+        <Congratulations
+          createdAt={data.node.createdAt}
+          nodeId={data.node.id}
+          onValueChange={() => {
+            setNextCongrats(true)
+          }}
+        />
+        <div className="mt-[130px] md:mt-[156px] lg:mt-[182px] xl:mt-[208px] 2xl:mt-[260px]">
+          <Stats
+            averagePayoutPeriod={data.stats.averagePayoutPeriod}
+            nodes={data.nodes}
+            totalAverageReward={data.stats.totalAverageReward}
+            totalStakeAmount={data.stats.totalStakeAmount}
+            totalValidators={data.stats.totalValidators}
+          />
+        </div>
+      </section>
     )
   }
 
-  return (
-    <>
-      <section className="sm:max-w-screen-sm sm:flex-col sm:pl-[25px] md:flex md:max-w-screen-4xl md:flex-row md:justify-between  md:gap-[500px] md:pl-[30px] xl:pl-[40px] 2xl:pl-[50px] "></section>
-    </>
-  )
+  if (data) {
+    return (
+      <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
+        {' '}
+        <Node
+          averagePayoutPeriod={data.stats.averagePayoutPeriod}
+          nodes={data.nodes}
+          totalAverageReward={data.stats.totalAverageReward}
+          totalStakeAmount={data.stats.totalStakeAmount}
+          totalValidators={data.stats.totalValidators}
+          node={data.node}
+        />
+        <div className="mt-[130px] md:mt-[156px] lg:mt-[182px] xl:mt-[208px] 2xl:mt-[260px]">
+          <Stats
+            averagePayoutPeriod={data.stats.averagePayoutPeriod}
+            nodes={data.nodes}
+            totalAverageReward={data.stats.totalAverageReward}
+            totalStakeAmount={data.stats.totalStakeAmount}
+            totalValidators={data.stats.totalValidators}
+          />
+        </div>
+      </section>
+    )
+  }
 }
 
 export default Validator

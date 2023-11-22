@@ -11,9 +11,9 @@ interface ModalProps {
 }
 
 const Congratulations = ({ ...data }: ModalProps) => {
-  function formatDeadline(date: string) {
-    if (date) {
-      const date = new Date()
+  function formatDeadline(dateReceived: string) {
+    if (dateReceived) {
+      const date = new Date(dateReceived)
       let difference = formatDistanceToNow(date)
 
       // Aqui estamos tratando a frase para exibir 'today' se a task foi criada no mesmo dia
@@ -27,7 +27,7 @@ const Congratulations = ({ ...data }: ModalProps) => {
   }
 
   return (
-    <section className="text-center text-[#000] xl:max-w-[605.6px] 2xl:max-w-[757px]">
+    <section className="mx-auto text-center text-[#000] xl:max-w-[605.6px] 2xl:max-w-[757px]">
       <img
         src={`${
           process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -55,6 +55,12 @@ const Congratulations = ({ ...data }: ModalProps) => {
           for a middleman. We thank you for supporting our mission to
           democratize data and address information asymmetry.
         </div>
+      </div>
+      <div
+        onClick={data.onValueChange}
+        className="mx-auto mt-[33px] w-fit cursor-pointer rounded-[5px] bg-[#0354EC] py-[8.25px] px-[30px] text-[8px] text-[#fff] hover:bg-[#033797] md:mt-[39.6px] md:py-[9.9px] md:px-[36px] md:text-[9.6px] lg:mt-[46.2px] lg:py-[11.55px] lg:px-[42px] lg:text-[11.2px] xl:mt-[52.8px] xl:py-[12px] xl:px-[48px] xl:text-[12.8px] 2xl:mt-[66px] 2xl:py-[14px] 2xl:px-[60px] 2xl:text-[16px]"
+      >
+        Initiate Staking
       </div>
     </section>
   )

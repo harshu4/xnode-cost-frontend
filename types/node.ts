@@ -14,6 +14,7 @@ export type Xnode = {
   consoleEdges: string
   openmeshExpertUserId: string
   createdAt: string
+  location: string
   updatedAt: string
 }
 

@@ -26,7 +26,8 @@ import 'react-toastify/dist/ReactToastify.css'
 /* eslint-disable react/no-unescaped-entities */
 const ReviewYourBuild = () => {
   const [cloudProvider, setCloudProvider] = useState<string>()
-  const [serviceRegion, setServiceRegion] = useState<string>()
+  const [serviceRegion, setServiceRegion] = useState<string>('US, East')
+  const [newXnodeId, setNewXnodeId] = useState<string>()
   const [coreServices, setCoreServices] = useState<CoreServices[]>([])
   const [coreServicesData, setCoreServicesData] = useState<string[]>([])
   const [coreServicesApi, setCoreServicesApi] = useState<string[]>([])
@@ -89,6 +90,7 @@ const ReviewYourBuild = () => {
       description: 'This is my xnode',
       useCase: tagXnode,
       status: 'Running',
+      location: serviceRegion,
       consoleNodes: savedNodes,
       consoleEdges: savedEdges,
       type: xnodeType,
@@ -112,6 +114,7 @@ const ReviewYourBuild = () => {
             console.log('deploy feito com sucesso')
             console.log(response.data)
             setIsLoadingFeatures(true)
+            setNewXnodeId(response.data.id)
           }
         })
       } catch (err) {
@@ -220,6 +223,8 @@ const ReviewYourBuild = () => {
               coreServicesApi={coreServicesApi}
               coreServicesData={coreServicesData}
               isLoadingFeatures={isLoadingFeatures}
+              xnodeType={xnodeType}
+              xnodeId={newXnodeId}
               onValueChange={() => setReviewYourBuild(false)}
             />
             <AddOns2
