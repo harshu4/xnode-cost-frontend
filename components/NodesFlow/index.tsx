@@ -88,9 +88,11 @@ const onInit = (reactFlowInstance) =>
 
 const NodesFlow = ({ ...dataM }: ModalProps) => {
   const handleNodeRemove = (nodeIdToRemove) => {
-    setNodes((prevNodes) =>
-      prevNodes.filter((node) => node.id !== nodeIdToRemove),
-    )
+    if (xnodeType === 'validator') {
+      setNodes((prevNodes) =>
+        prevNodes.filter((node) => node.id !== nodeIdToRemove),
+      )
+    }
   }
 
   const {
@@ -104,6 +106,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setIsWorkspace,
     xnodeType,
     setXnodeType,
+    setTagXnode,
     selectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
@@ -624,6 +627,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   useEffect(() => {
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
+    const savedXnodeType = localStorage.getItem('xnodeType')
 
     if (savedNodes) {
       setNodes(JSON.parse(savedNodes))
@@ -635,6 +639,13 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       setIsWorkspace(true)
     } else setEdges(!dataM.fromScratch ? initialEdges : initialEdgesScratch)
 
+    if (savedXnodeType === 'validator') {
+      setXnodeType('validator')
+      setTagXnode('Validator')
+    } else {
+      setXnodeType('')
+    }
+
     setIsInitialized(true)
   }, [])
 
@@ -644,20 +655,23 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         nodes={nodesAmounts}
         edges={edgesWithUpdatedTypes}
         onNodesChange={(value) => {
+          console.log('chamado fuii')
           // validator type of nodes cannot be edited
           if (xnodeType !== 'validator') {
+            console.log('entrei nao')
             onNodesChange(value)
           }
         }}
         onEdgesChange={(value) => {
           // validator type of nodes cannot be edited
+          console.log('chamado fuii')
           if (xnodeType !== 'validator') {
+            console.log('entrei nao')
             onEdgesChange(value)
           }
         }}
         onConnect={onConnect}
         onInit={onInit}
-        contentEditable={false}
         fitView
         attributionPosition="top-right"
         nodeTypes={nodeTypes}

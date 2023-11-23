@@ -101,7 +101,7 @@ const Dashboard = () => {
     setConnections(false)
     setFinalBuild(false)
     setNext(true)
-    if (xnodeType === 'validator') {
+    if (type === 'validator') {
       push(`/validator/${id}`)
     } else {
       push('/start-here')
