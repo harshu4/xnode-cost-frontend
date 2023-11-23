@@ -102,7 +102,11 @@ function ServerNode({ id, data, handleNodeRemove }) {
           X
         </button>
         <img
-          src={'/images/nodesFlow/server.svg'}
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/nodesFlow/server.svg`}
           alt="image"
           className={
             'w-[19px] md:w-[22px] lg:w-[26px] xl:w-[30px] 2xl:w-[37px]'
@@ -111,7 +115,11 @@ function ServerNode({ id, data, handleNodeRemove }) {
 
         <img
           onClick={() => setIsHelpOpen(!isHelpOpen)}
-          src={'/images/nodesFlow/arrow.svg'}
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/nodesFlow/arrow.svg`}
           alt="image"
           className={`absolute top-[8px] right-[8px] cursor-pointer xl:w-[7px] 2xl:w-[9px] ${
             isHelpOpen ? 'rotate-90 transform' : ''

@@ -75,7 +75,11 @@ const Connections = () => {
               <div>
                 {' '}
                 <img
-                  src={option.image}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }${option.image}`}
                   alt="image"
                   className={`${option.icon} xl:mt-[30px] 2xl:mt-[38px]`}
                 />

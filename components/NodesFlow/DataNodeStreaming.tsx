@@ -116,7 +116,11 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
             >
               <div className="mt-[10px] ml-[10px] mb-[10px] flex gap-x-[9px] text-[7.5px] font-normal hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                 <img
-                  src={item.icon}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }${item.icon}`}
                   alt="image"
                   className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
                 />
@@ -145,7 +149,11 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
         </button>
         <div className="flex w-full flex-row items-start gap-[10px] ">
           <img
-            src={'/images/nodesFlow/databaseStreaming.svg'}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/nodesFlow/databaseStreaming.svg`}
             alt="image"
             className={
               'w-[32  px] md:w-[29px] lg:w-[36.5px] xl:w-[39px] 2xl:w-[45px]'

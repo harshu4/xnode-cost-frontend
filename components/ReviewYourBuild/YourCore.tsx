@@ -38,14 +38,22 @@ const YourCore = ({ ...data }: ModalProps) => {
               <div key={index}>
                 <div className="flex items-center gap-x-[4px]">
                   <img
-                    src="/images/reviewYourBuild/arrow-item.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow-item.svg`}
                     alt="image"
                     className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
                   />
                   <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                     {option.name}
                     <img
-                      src="/images/reviewYourBuild/question.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/reviewYourBuild/question.svg`}
                       alt="image"
                       className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
                     />
@@ -56,7 +64,11 @@ const YourCore = ({ ...data }: ModalProps) => {
                     )}
                   </div>
                   <img
-                    src="/images/reviewYourBuild/check.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/check.svg`}
                     alt="image"
                     className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
                   />
@@ -71,14 +83,22 @@ const YourCore = ({ ...data }: ModalProps) => {
           <div className="mt-[11px] md:mt-[13.2px] lg:mt-[15.4px] xl:mt-[17.6px] 2xl:mt-[22px]">
             <div className="flex items-center gap-x-[4px]">
               <img
-                src="/images/reviewYourBuild/arrow-item.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/reviewYourBuild/arrow-item.svg`}
                 alt="image"
                 className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
               />
               <div className="relative flex text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                 APIs & Connectivity
                 <img
-                  src="/images/reviewYourBuild/question.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/reviewYourBuild/question.svg`}
                   alt="image"
                   className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
                 />
@@ -87,7 +107,11 @@ const YourCore = ({ ...data }: ModalProps) => {
                     onClick={() => {
                       setViewAPI(!viewAPI)
                     }}
-                    src="/images/reviewYourBuild/arrow.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow.svg`}
                     alt="image"
                     className="ml-[5px] w-[4.5px] cursor-pointer md:w-[5.4px] lg:w-[6.3px] xl:w-[7.2px] 2xl:w-[9px]"
                   />
@@ -97,14 +121,22 @@ const YourCore = ({ ...data }: ModalProps) => {
                     onClick={() => {
                       setViewAPI(!viewAPI)
                     }}
-                    src="/images/reviewYourBuild/arrow-up.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow-up.svg`}
                     alt="image"
                     className="ml-[5px] w-[4.5px] cursor-pointer md:w-[5.4px] lg:w-[6.3px] xl:w-[7.2px] 2xl:w-[9px]"
                   />
                 )}
               </div>
               <img
-                src="/images/reviewYourBuild/check.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/reviewYourBuild/check.svg`}
                 alt="image"
                 className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
               />
@@ -117,7 +149,11 @@ const YourCore = ({ ...data }: ModalProps) => {
                       <div className="flex gap-x-[7.5px] text-[7px]  font-normal text-[#505050] md:gap-x-[9px] md:text-[8.4px] lg:gap-x-[10.5px] lg:text-[10px] xl:gap-x-[12px] xl:text-[11.2px] 2xl:gap-x-[15px] 2xl:text-[14px]">
                         <div> {option}</div>
                         <img
-                          src="/images/reviewYourBuild/check.svg"
+                          src={`${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? process.env.NEXT_PUBLIC_BASE_PATH
+                              : ''
+                          }/images/reviewYourBuild/check.svg`}
                           alt="image"
                           className="ml-auto w-[8.5px] md:w-[10.2px]  lg:w-[11.9px] xl:w-[13.6px] 2xl:w-[17px]"
                         />
@@ -133,14 +169,22 @@ const YourCore = ({ ...data }: ModalProps) => {
           <div className="mt-[11px] md:mt-[13.2px] lg:mt-[15.4px] xl:mt-[17.6px] 2xl:mt-[22px]">
             <div className="flex items-center gap-x-[4px]">
               <img
-                src="/images/reviewYourBuild/arrow-item.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/reviewYourBuild/arrow-item.svg`}
                 alt="image"
                 className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
               />
               <div className="relative flex text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                 Data
                 <img
-                  src="/images/reviewYourBuild/question.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/reviewYourBuild/question.svg`}
                   alt="image"
                   className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
                 />
@@ -149,7 +193,11 @@ const YourCore = ({ ...data }: ModalProps) => {
                     onClick={() => {
                       setViewData(!viewData)
                     }}
-                    src="/images/reviewYourBuild/arrow.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow.svg`}
                     alt="image"
                     className="ml-[5px] w-[4.5px] cursor-pointer md:w-[5.4px] lg:w-[6.3px] xl:w-[7.2px] 2xl:w-[9px]"
                   />
@@ -159,14 +207,22 @@ const YourCore = ({ ...data }: ModalProps) => {
                     onClick={() => {
                       setViewData(!viewData)
                     }}
-                    src="/images/reviewYourBuild/arrow-up.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow-up.svg`}
                     alt="image"
                     className="ml-[5px] w-[4.5px] cursor-pointer md:w-[5.4px] lg:w-[6.3px] xl:w-[7.2px] 2xl:w-[9px]"
                   />
                 )}
               </div>
               <img
-                src="/images/reviewYourBuild/check.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/reviewYourBuild/check.svg`}
                 alt="image"
                 className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
               />
@@ -179,7 +235,11 @@ const YourCore = ({ ...data }: ModalProps) => {
                       <div className="flex gap-x-[7.5px] text-[7px]  font-normal text-[#505050] md:gap-x-[9px] md:text-[8.4px] lg:gap-x-[10.5px] lg:text-[10px] xl:gap-x-[12px] xl:text-[11.2px] 2xl:gap-x-[15px] 2xl:text-[14px]">
                         <div> {option}</div>
                         <img
-                          src="/images/reviewYourBuild/check.svg"
+                          src={`${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? process.env.NEXT_PUBLIC_BASE_PATH
+                              : ''
+                          }/images/reviewYourBuild/check.svg`}
                           alt="image"
                           className="ml-auto w-[8.5px] md:w-[10.2px]  lg:w-[11.9px] xl:w-[13.6px] 2xl:w-[17px]"
                         />

@@ -274,7 +274,11 @@ const DataProductEquinix = (id: any) => {
           <div className="flex gap-x-[11px] pt-[40px] md:gap-x-[13px] md:pt-[56px] lg:gap-x-[16px] lg:pt-[65px] xl:gap-x-[18px] xl:pt-[74px] 2xl:gap-x-[23px] 2xl:pt-[94px]">
             <div className="">
               <img
-                src={`/images/dataset/equinix.svg`}
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/dataset/equinix.svg`}
                 alt="image"
                 className={`mx-auto flex h-[30px] w-[30px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[40px] lg:w-[40px] lg:p-[7px] 2xl:h-[77px] 2xl:w-[77px]`}
               />
@@ -347,7 +351,14 @@ const DataProductEquinix = (id: any) => {
             {data.download && (
               <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[27px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[10px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[40px] xl:pb-[52px] 2xl:px-[58px] 2xl:pt-[30px] 2xl:pb-[66px]">
                 <div className="flex justify-center gap-x-[7px]">
-                  <img src={`/images/dataset/ellipse-grey.svg`} alt="image" />
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/dataset/ellipse-grey.svg`}
+                    alt="image"
+                  />
                   <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
                     Historical
                   </div>
@@ -365,7 +376,14 @@ const DataProductEquinix = (id: any) => {
                 >
                   <div className="mx-auto mt-[12.5px] flex w-fit cursor-pointer justify-center gap-x-[10px] rounded-[5px]  bg-[#000000] px-[9px] py-[8px] text-[9px]  font-medium text-[#fff] hover:bg-[#1f1f1f] md:mt-[17.5px] md:w-full md:py-[11px] md:px-[13px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[14.5px] 2xl:px-[17px] 2xl:text-[16px]">
                     <div>Download .csv </div>
-                    <img src={`/images/dataset/download.svg`} alt="image" />
+                    <img
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/dataset/download.svg`}
+                      alt="image"
+                    />
                   </div>
                 </a>
               </div>
@@ -383,7 +401,11 @@ const DataProductEquinix = (id: any) => {
                   <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
                     <div>Add to Xnode</div>
                     <img
-                      src={`/images/dataset/bolas.svg`}
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/dataset/bolas.svg`}
                       alt="image"
                       className="my-auto w-[12px] xl:w-[13.6px] 2xl:w-[17px]"
                     />
@@ -397,7 +419,14 @@ const DataProductEquinix = (id: any) => {
             {data.live && (
               <div className="items-center rounded-[5px] border-[0.5px] border-[#D9D9D9] px-[15px] pt-[15px] pb-[16px] text-center shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:px-[21px] md:pt-[21px] md:pb-[26px] lg:px-[20px] lg:pt-[24px] lg:pb-[32px] xl:px-[40px] xl:pb-[52px]  2xl:px-[30px] 2xl:pt-[30px] 2xl:pb-[66px]">
                 <div className="flex justify-center gap-x-[7px]">
-                  <img src={`/images/dataset/ellipse-green.svg`} alt="image" />
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/dataset/ellipse-green.svg`}
+                    alt="image"
+                  />
                   <div className="text-[9px] font-medium text-[#2E2E2E] md:text-[12px] lg:text-[14px] lg:!leading-[22px] 2xl:text-[18px]">
                     Live
                   </div>
@@ -416,7 +445,11 @@ const DataProductEquinix = (id: any) => {
                   <div className="mx-auto mt-[12.5px] flex w-fit max-w-[179px] cursor-pointer justify-center gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[5px] text-[8px]  font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[17.5px] md:w-full md:py-[7px] md:px-[11px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[19px] xl:text-[14px] 2xl:mt-[25px] 2xl:py-[10px] 2xl:px-[15px] 2xl:text-[16px]">
                     <div>Free to Access </div>
                     <img
-                      src={`/images/dataset/arrow.svg`}
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/dataset/arrow.svg`}
                       alt="image"
                       className="my-auto h-[9px] w-[9px] md:h-[15px] md:w-[15.4px]"
                     />
@@ -433,7 +466,14 @@ const DataProductEquinix = (id: any) => {
               className="hover:text-[#0354EC]"
             >
               <div className="flex items-center justify-center gap-x-[15px]">
-                <img src={`/images/dataset/cloud.svg`} alt="image" />
+                <img
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/dataset/cloud.svg`}
+                  alt="image"
+                />
                 <div>{data?.dataCloudName}</div>
               </div>
             </a>
@@ -444,14 +484,25 @@ const DataProductEquinix = (id: any) => {
               className="hover:text-[#0354EC]"
             >
               <div className="mt-[12px] flex items-center justify-center gap-x-[15px] md:mt-[16px] 2xl:mt-[24px]">
-                <img src={`/images/dataset/github.svg`} alt="image" />
+                <img
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/dataset/github.svg`}
+                  alt="image"
+                />
                 <div>{data?.dataGithubName}</div>
               </div>
             </a>
           </div>
           <div className="mx-auto mt-[35px] grid max-w-[230px] justify-center rounded-[5px] border-[0.5px] border-[#D9D9D9] bg-[#F9F9F9] py-[15px] px-[15px] text-center md:mt-[54px] md:py-[7px] md:px-[21px] lg:mt-[63px] lg:px-[24px] lg:py-[8px] xl:mt-[72px] 2xl:mt-[90px] 2xl:py-[10px] 2xl:px-[30px]">
             <img
-              src={`/images/dataset/pythia.svg`}
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/dataset/pythia.svg`}
               alt="image"
               className=" mx-auto "
             />
@@ -467,7 +518,11 @@ const DataProductEquinix = (id: any) => {
               <div className="mx-auto mt-[12px] flex w-fit cursor-pointer gap-x-[10px] rounded-[5px] bg-[#0354EC] px-[8px] py-[3px]  text-[8px] font-medium text-[#fff] hover:bg-[#2061d8] md:mt-[10px] md:py-[4px] md:px-[11px] md:text-[7px] lg:mt-[12px] lg:text-[8px] lg:!leading-[19px] 2xl:mt-[15px] 2xl:py-[6.5px] 2xl:px-[15px] 2xl:text-[10px]">
                 <div>Try Now</div>
                 <img
-                  src={`/images/dataset/arrow.svg`}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/dataset/arrow.svg`}
                   alt="image"
                   className="my-auto h-[9px] w-[9px] md:h-[15px] md:w-[15.4px]"
                 />
@@ -508,7 +563,11 @@ const DataProductEquinix = (id: any) => {
                       <div className="flex gap-x-[6px]  lg:gap-x-[8px] 2xl:gap-x-[12px] ">
                         <div className="">
                           <img
-                            src={`${value4}`}
+                            src={`${
+                              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                                ? process.env.NEXT_PUBLIC_BASE_PATH
+                                : ''
+                            }${value4}`}
                             alt="image"
                             className={`mx-auto flex rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:p-[7px] ${value5}`}
                           />

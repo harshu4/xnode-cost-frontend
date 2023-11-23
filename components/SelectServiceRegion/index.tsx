@@ -25,7 +25,11 @@ const SelectServiceRegion = ({ ...data }: ModalProps) => {
             2. Select service region
           </div>
           <img
-            src={`/images/firstStep/question-mark.svg`}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/firstStep/question-mark.svg`}
             alt="image"
             className="h-[9px] w-[9px] transform cursor-pointer transition-transform hover:scale-105 md:h-[11px] md:w-[11px]  lg:h-[12px] lg:w-[12px] xl:h-[14px] xl:w-[14px] 2xl:h-[18px] 2xl:w-[18px]"
             onMouseEnter={() => setShowTooltipServiceRegion(true)}
@@ -63,7 +67,11 @@ const SelectServiceRegion = ({ ...data }: ModalProps) => {
           2. Select service region
         </div>
         <img
-          src={`/images/firstStep/question-mark.svg`}
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/firstStep/question-mark.svg`}
           alt="image"
           className="h-[9px] w-[9px] transform cursor-pointer transition-transform hover:scale-105 md:h-[11px] md:w-[11px]  lg:h-[12px] lg:w-[12px] xl:h-[14px] xl:w-[14px] 2xl:h-[18px] 2xl:w-[18px]"
           onMouseEnter={() => setShowTooltipServiceRegion(true)}

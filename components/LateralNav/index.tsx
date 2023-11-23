@@ -281,7 +281,11 @@ const LateralNav = ({ onValueChange }) => {
             >
               <img
                 onClick={() => setIsOpen(true)}
-                src="/images/lateralNavBar/nav.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/lateralNavBar/nav.svg`}
                 alt="image"
               />
             </div>
@@ -289,12 +293,20 @@ const LateralNav = ({ onValueChange }) => {
               {sideBarOptions.map((option, index) => (
                 <li className="relative" key={index}>
                   <img
-                    src={option.icon}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }${option.icon}`}
                     alt="image"
                     className={`${option.iconStyle}`}
                   />
                   <img
-                    src="/images/lateralNavBar/new-arrow.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/lateralNavBar/new-arrow.svg`}
                     alt="image"
                     className={` ${
                       option.title === 'Home' ||
@@ -324,14 +336,25 @@ const LateralNav = ({ onValueChange }) => {
             <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center md:top-[16.8px] md:w-[12.9px] lg:top-[19.6px] lg:w-[15.05px] xl:top-[22.4px]  xl:w-[17.2px] 2xl:top-[28px] 2xl:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(false)}
-                src="/images/lateralNavBar/nav.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/lateralNavBar/nav.svg`}
                 alt="image"
               />
               <a
                 href={'/'}
                 className="absolute -top-[8px] left-[25px] flex w-[50px] cursor-pointer flex-col items-center md:-top-[9.6px] md:left-[30px] md:w-[60px] lg:-top-[11.2px]  lg:left-[35px] lg:w-[70px] xl:-top-[12.8px] xl:left-[40px] xl:w-[80px] 2xl:-top-[16px] 2xl:left-[50px] 2xl:w-[100px] "
               >
-                <img src="/images/logo/xnode-logo.svg" alt="image" />
+                <img
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/logo/xnode-logo.svg`}
+                  alt="image"
+                />
               </a>
             </div>
           </div>
@@ -354,13 +377,21 @@ const LateralNav = ({ onValueChange }) => {
               } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
             >
               <img
-                src={option.icon}
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }${option.icon}`}
                 alt="image"
                 className={`${option.iconStyle}  mx-auto`}
               />
               {option.title === 'Home' && (
                 <img
-                  src="/images/lateralNavBar/green-ellipse.svg"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/lateralNavBar/green-ellipse.svg`}
                   alt="green dot"
                   style={{ opacity: greenDotOpacity }}
                   className="absolute top-2 right-2 h-3 w-3 transition-opacity duration-500"
@@ -370,7 +401,11 @@ const LateralNav = ({ onValueChange }) => {
                 {option.title}
               </div>
               <img
-                src="/images/lateralNavBar/new-arrow.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/lateralNavBar/new-arrow.svg`}
                 alt="image"
                 className={` ${
                   option.title === 'Home' ||

@@ -103,7 +103,11 @@ function APINode({ id, data, handleNodeRemove }) {
         </button>
         <div className="flex w-full flex-row items-start gap-[10px] ">
           <img
-            src={'/images/nodesFlow/api.svg'}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/nodesFlow/api.svg`}
             alt="image"
             className={
               'w-[21  px] mt-[10px] h-[20px] md:w-[21px] lg:w-[24.5px] xl:w-[28px] 2xl:w-[35px]'

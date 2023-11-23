@@ -46,7 +46,11 @@ const IncludedServices = ({ ...data }: ModalProps) => {
               Added to deployment
             </div>
             <img
-              src={`/images/includedServices/rectangle.svg`}
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/includedServices/rectangle.svg`}
               alt="image"
               className="h-[10px] w-[10px] md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px]"
             />
@@ -76,7 +80,11 @@ const IncludedServices = ({ ...data }: ModalProps) => {
                 {data.includedServicesArray.includes(option.title) && (
                   <div className="absolute top-[1px] right-0">
                     <img
-                      src="/images/presets/check-gray.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/presets/check-gray.svg`}
                       alt="image"
                       className={
                         'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'

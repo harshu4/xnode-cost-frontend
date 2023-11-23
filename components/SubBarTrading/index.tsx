@@ -73,7 +73,11 @@ const SubBarTrading = ({ onValueChange }) => {
                   } relative flex w-fit gap-x-[7px] md:gap-x-[8.5px] lg:gap-x-[10px] xl:gap-x-[11.2px] 2xl:gap-x-[14px]`}
                 >
                   <img
-                    src={option.src}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }${option.src}`}
                     alt="image"
                     className={option.style} // Adicionando uma transição de 2 segundos
                   />
@@ -106,7 +110,11 @@ const SubBarTrading = ({ onValueChange }) => {
                 </a>
                 {option.thirdParty && (
                   <img
-                    src="/images/subNavBarAnalytics/third.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/subNavBarAnalytics/third.svg`}
                     alt="image"
                     className="mt-[4.5px] w-[35px] md:w-[105px] lg:w-[40px] xl:mt-[9px] xl:w-[47px] 2xl:w-[58px]"
                   />
@@ -138,7 +146,11 @@ const SubBarTrading = ({ onValueChange }) => {
     <>
       <div className="z-100 relative bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
         <img
-          src="/images/subNavBarTrading/trading.svg"
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/subNavBarTrading/trading.svg`}
           onClick={() => setSelectionSideNavBar('')}
           alt="image"
           className="w-[20px] md:w-[24px] lg:w-[28px] xl:w-[32px] 2xl:w-[40px]"

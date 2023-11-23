@@ -191,7 +191,11 @@ const FirstStep = () => {
                       >
                         <div>Next</div>
                         <img
-                          src={`/images/dataset/arrow.svg`}
+                          src={`${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? process.env.NEXT_PUBLIC_BASE_PATH
+                              : ''
+                          }/images/dataset/arrow.svg`}
                           alt="image"
                           className="my-auto h-[7.5px] w-[8px] md:h-[9px] md:w-[9.4px] lg:h-[10.5px] lg:w-[11px] xl:h-[12px] xl:w-[12.3px] 2xl:h-[15px] 2xl:w-[15.4px]"
                         />
