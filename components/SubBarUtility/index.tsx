@@ -131,7 +131,11 @@ const SubBarUtility = ({ onValueChange }) => {
                   } relative flex w-fit gap-x-[7px] md:gap-x-[8.5px] lg:gap-x-[10px] xl:gap-x-[11.2px] 2xl:gap-x-[14px]`}
                 >
                   <img
-                    src={option.src}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }${option.src}`}
                     alt="image"
                     className={option.style} // Adicionando uma transição de 2 segundos
                   />
@@ -164,7 +168,11 @@ const SubBarUtility = ({ onValueChange }) => {
                 </a>
                 {option.thirdParty && (
                   <img
-                    src="/images/subNavBarAnalytics/third.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/subNavBarAnalytics/third.svg`}
                     alt="image"
                     className="mt-[4.5px] w-[35px] md:w-[105px] lg:w-[40px] xl:mt-[9px] xl:w-[47px] 2xl:w-[58px]"
                   />

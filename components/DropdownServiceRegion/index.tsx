@@ -60,7 +60,11 @@ const DropdownServiceRegion = ({ onValueChange }) => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <img
-            src={getSrcForValue(value)}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }${getSrcForValue(value)}`}
             alt="image"
             className={`my-auto w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
           />
@@ -95,7 +99,11 @@ const DropdownServiceRegion = ({ onValueChange }) => {
                 className="flex cursor-pointer gap-x-[7.5px] px-4 py-2 hover:bg-[#f7f5f5] md:gap-x-[9px]  lg:gap-x-[10.5px] xl:gap-x-[12px] 2xl:gap-x-[15px] "
               >
                 <img
-                  src={option.src}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }${option.src}`}
                   alt="image"
                   className={`my-auto w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
                 />
@@ -104,7 +112,11 @@ const DropdownServiceRegion = ({ onValueChange }) => {
                 </div>
                 {option.title === value && (
                   <img
-                    src={`/images/dropdown/check.svg`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/dropdown/check.svg`}
                     alt="image"
                     className="ml-auto w-[20px]"
                   />

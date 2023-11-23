@@ -27,25 +27,41 @@ const YourCore = ({ ...data }: ModalProps) => {
               <div key={index}>
                 <div className="flex items-center gap-x-[4px]">
                   <img
-                    src="/images/reviewYourBuild/arrow-item.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/arrow-item.svg`}
                     alt="image"
                     className="w-[8px] md:w-[9.6px] lg:w-[11.2px] xl:w-[12.8px] 2xl:w-[16px]"
                   />
                   <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                     {option.name}
                     <img
-                      src="/images/reviewYourBuild/question.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/reviewYourBuild/question.svg`}
                       alt="image"
                       className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
                     />
                     <img
-                      src="/images/reviewYourBuild/third.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/reviewYourBuild/third.svg`}
                       alt="image"
                       className="base:w-[29px] absolute -top-[7.5px] -right-[40px]  md:-top-[9px]  md:-right-[48px]  md:w-[34px]  lg:-top-[10.5px] lg:-right-[56px] lg:w-[40px] xl:-top-[12px] xl:-right-[64px] xl:w-[46px] 2xl:-top-[15px] 2xl:-right-[80px] 2xl:-right-[80px] 2xl:w-[58px]"
                     />
                   </div>
                   <img
-                    src="/images/reviewYourBuild/check.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/check.svg`}
                     alt="image"
                     className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
                   />

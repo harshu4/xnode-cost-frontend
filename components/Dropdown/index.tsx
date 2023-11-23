@@ -79,7 +79,11 @@ const Dropdown = ({ onValueChange }) => {
                 </div>
                 {option === value && (
                   <img
-                    src={`/images/dropdown/check.svg`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/dropdown/check.svg`}
                     alt="image"
                     className="ml-auto w-[20px]"
                   />

@@ -231,7 +231,11 @@ const SubBarData = ({ onValueChange }) => {
           <div key={index} className="relative flex text-[#000]">
             <div className="flex gap-x-[9px]">
               <img
-                src={dataOption.icon}
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }${dataOption.icon}`}
                 alt="image"
                 className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
               />
@@ -326,13 +330,21 @@ const SubBarData = ({ onValueChange }) => {
                   >
                     {selectionSubBar === option.title ? (
                       <img
-                        src="/images/lateralNavBar/seta-baixo.svg"
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/lateralNavBar/seta-baixo.svg`}
                         alt="image"
                         className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
                       />
                     ) : (
                       <img
-                        src="/images/lateralNavBar/seta-lado.svg"
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/lateralNavBar/seta-lado.svg`}
                         alt="image"
                         className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
                       />
@@ -372,13 +384,21 @@ const SubBarData = ({ onValueChange }) => {
                   >
                     {selectionSubBar === option.title ? (
                       <img
-                        src="/images/lateralNavBar/seta-baixo.svg"
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/lateralNavBar/seta-baixo.svg`}
                         alt="image"
                         className="flex w-[8px] items-center lg:w-[9px] 2xl:w-[11px]" // Adicionando uma transição de 2 segundos
                       />
                     ) : (
                       <img
-                        src="/images/lateralNavBar/seta-lado.svg"
+                        src={`${
+                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                            ? process.env.NEXT_PUBLIC_BASE_PATH
+                            : ''
+                        }/images/lateralNavBar/seta-lado.svg`}
                         alt="image"
                         className="flex w-[7px] items-center lg:w-[7px] 2xl:w-[9px]" // Adicionando uma transição de 2 segundos
                       />

@@ -53,7 +53,11 @@ const AddOns = ({ ...data }: ModalProps) => {
         <div className="mt-[15px] flex w-full max-w-[1053px] justify-start gap-x-[12.5px] rounded-[5px] border-[0.5px] border-[#D9D9D9] p-[15px] shadow-[0_5px_8px_0px_rgba(0,0,0,0.10)] md:mt-[18px] md:gap-x-[15px] md:p-[18px] lg:mt-[21px] lg:gap-x-[17.5px] lg:p-[21px] xl:gap-x-[20px] xl:p-[24px] 2xl:mt-[30px] 2xl:gap-x-[25px] 2xl:p-[30px]">
           <div className="h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
             <img
-              src={`/images/addOns/pythia.png`}
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/addOns/pythia.png`}
               alt="image"
               className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px]`}
             />
@@ -94,7 +98,11 @@ const AddOns = ({ ...data }: ModalProps) => {
                     no setup fees{' '}
                   </div>
                   <img
-                    src={`/images/addOns/arrow-up.svg`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/addOns/arrow-up.svg`}
                     alt="image"
                     onClick={() => {
                       setIsPythiaDescOpen(!isPythiaDescOpen)
@@ -106,7 +114,11 @@ const AddOns = ({ ...data }: ModalProps) => {
               {!isPythiaDescOpen && (
                 <div className="flex w-full justify-between">
                   <img
-                    src={`/images/addOns/arrow-down.svg`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/addOns/arrow-down.svg`}
                     alt="image"
                     onClick={() => {
                       setIsPythiaDescOpen(!isPythiaDescOpen)
@@ -142,7 +154,11 @@ const AddOns = ({ ...data }: ModalProps) => {
                 {data.includedAddOnsArray.includes(option.title) && (
                   <div className="absolute top-[1px] right-0">
                     <img
-                      src="/images/presets/check.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/presets/check.svg`}
                       alt="image"
                       className={
                         'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'
@@ -178,7 +194,11 @@ const AddOns = ({ ...data }: ModalProps) => {
                 {data.includedAddOnsArray.includes(option.title) && (
                   <div className="absolute top-[1px] right-0">
                     <img
-                      src="/images/presets/check.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/presets/check.svg`}
                       alt="image"
                       className={
                         'h-[21px] w-[25px] md:h-[25px] md:w-[30px] lg:h-[29.5px] lg:w-[35px] xl:h-[33px] xl:w-[40px] 2xl:h-[42px] 2xl:w-[50px]'

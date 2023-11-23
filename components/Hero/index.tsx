@@ -9,7 +9,11 @@ const Hero = () => {
         <div className="grid justify-center gap-x-[40px] md:flex md:gap-x-[68px] lg:gap-x-[79px] xl:gap-x-[90px] 2xl:gap-x-[140px]">
           <div className="pb-[25px]">
             <img
-              src={`/images/logo/xnode-logo.svg`}
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }/images/logo/xnode-logo.svg`}
               alt="image"
               className="h-[35px] w-[90px] md:h-[42px] md:w-[108px]  lg:h-[49px] lg:w-[126px] xl:h-[56px] xl:w-[144px] 2xl:h-[70px] 2xl:w-[180px]"
             />

@@ -84,7 +84,11 @@ const SelectUseCase = ({ presetValueFromParent, ...data }: ModalProps) => {
         </div>
         <div className="ml-[121px]  flex  gap-x-[7.5px]  md:ml-[145px] md:gap-x-[10.5px] lg:ml-[170px] lg:gap-x-[9px] xl:ml-[195px] xl:gap-x-[12px] 2xl:ml-[243px] 2xl:gap-x-[15px]">
           <img
-            src={presetIndexToName[preset].icon}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }${presetIndexToName[preset].icon}`}
             alt="image"
             className={`transform cursor-pointer transition-transform hover:scale-105 ${presetIndexToName[preset].iconStyle}`}
           />

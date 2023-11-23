@@ -115,7 +115,11 @@ const Profile = () => {
         {files.map((file, index) => (
           <li key={`selected-${index}`} className="mb-2 mr-2 ml-4 flex">
             <img
-              src={imagePreview}
+              src={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? process.env.NEXT_PUBLIC_BASE_PATH
+                  : ''
+              }${imagePreview}`}
               alt="Preview"
               className={`h-[150px] w-[150px] cursor-pointer rounded-[100%] `}
             />

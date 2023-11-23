@@ -13,7 +13,11 @@ const ThirdParty = () => {
           You will also need to connect to 3rd party services by integrations{' '}
         </div>
         <img
-          src={`/images/firstStep/question-mark.svg`}
+          src={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? process.env.NEXT_PUBLIC_BASE_PATH
+              : ''
+          }/images/firstStep/question-mark.svg`}
           alt="image"
           className="h-[9px] w-[9px] transform cursor-pointer transition-transform hover:scale-105 md:h-[11px] md:w-[11px]  lg:h-[12px] lg:w-[12px] xl:h-[14px] xl:w-[14px] 2xl:h-[18px] 2xl:w-[18px]"
           onMouseEnter={() => setShowTooltipCloudProvider(true)}
@@ -28,7 +32,11 @@ const ThirdParty = () => {
       <div className="mt-[56px] ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
         <div>
           <img
-            src={`/images/header/connections-data.svg`}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/header/connections-data.svg`}
             alt="image"
             className="w-[187px] md:w-[224px] lg:w-[260px] xl:w-[300px] 2xl:w-[374px]"
           />{' '}

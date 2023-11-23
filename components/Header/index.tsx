@@ -454,7 +454,11 @@ const Header = () => {
             <div className="relative mx-auto hidden h-full w-full max-w-[1800px] items-center justify-between  xl:flex">
               <div className="flex items-center">
                 <img
-                  src={`/images/header/user.svg`}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/header/user.svg`}
                   alt="image"
                   className="w-[16px] md:w-[19.2px] lg:w-[22.4px] xl:w-[25.5px] 2xl:w-[23px]"
                 />
@@ -680,7 +684,11 @@ const Header = () => {
                       ~$13,000 savings
                     </div>
                     <img
-                      src={`/images/header/question.svg`}
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/header/question.svg`}
                       alt="image"
                       className="absolute top-0 -right-[10px] w-[4px]  md:w-[4.8px]  lg:w-[5.6px] xl:w-[6.4px] 2xl:w-[8px]"
                     />

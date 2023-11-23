@@ -153,13 +153,21 @@ const SingleCard = ({
       <div className="flex-grow-1 h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
         {logoURL ? (
           <img
-            src={logoURL}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }${logoURL}`}
             alt="image"
             className={`mx-auto flex rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`}
           />
         ) : (
           <img
-            src={`/openmesh-ico-logo.png`}
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/openmesh-ico-logo.png`}
             alt="image"
             className={`mx-auto flex h-[25px] w-[25px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[30px] lg:w-[30px] lg:p-[7px] xl:h-[40px] xl:w-[40px]`}
           />

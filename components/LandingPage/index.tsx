@@ -45,13 +45,27 @@ const LandingPage = () => {
             </p>
             <div className="mt-[30px] flex flex-col items-center text-[13px] font-medium md:text-[15.6px] lg:text-[18px] xl:text-[21px] 2xl:text-[26px]">
               <div className="flex flex-row gap-4">
-                <img alt="image" src="/images/landingPage/aproved.svg"></img>
+                <img
+                  alt="image"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/landingPage/aproved.svg`}
+                ></img>
                 <span className=" leading-[31.47px] tracking-[1%] text-[#2656D6]">
                   Pay only for bare metal servers.
                 </span>
               </div>
               <div className="flex flex-row gap-4">
-                <img alt="image" src="/images/landingPage/aproved.svg"></img>
+                <img
+                  alt="image"
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/landingPage/aproved.svg`}
+                ></img>
                 <span className="leading-[31.47px] tracking-[1%] text-[#2656D6]">
                   No license, no setup fees.
                 </span>
@@ -90,7 +104,11 @@ const LandingPage = () => {
             <div className="mt-[30px] w-full  flex-row items-center justify-start md:flex">
               <img
                 className="mb-[10px] h-[39] w-[99px] md:mb-0"
-                src="/images/logo/xnode-logo.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/logo/xnode-logo.svg`}
                 alt="images"
               ></img>
               <div className="flex">
@@ -190,7 +208,11 @@ const LandingPage = () => {
               <img
                 alt="images"
                 className="h-[48.5px] w-[44.06px]"
-                src="/images/landingPage/cube.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/landingPage/cube.svg`}
               ></img>
               <p className="text-[9px] font-normal leading-[30px] text-black md:text-[10.8px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
                 Blockchain and Smart Contracts
@@ -203,7 +225,11 @@ const LandingPage = () => {
               <img
                 alt="images"
                 className="h-[48.5px] w-[44.06px]"
-                src="/images/landingPage/cube.svg"
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/landingPage/cube.svg`}
               ></img>
               <p className="text-[9px] font-normal leading-[30px] text-black md:text-[10.8px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
                 Blockchain and Smart Contracts

@@ -60,14 +60,22 @@ const AddOns2 = ({ coreServices, isLoadingFeatures, ...data }: ModalProps) => {
               <div key={index}>
                 <div className="flex items-center gap-x-[8px] 2xl:gap-x-[10px]">
                   <img
-                    src={serviceIcons[index]}
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }${serviceIcons[index]}`}
                     alt="image"
                     className="w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]"
                   />
                   <div className="relative text-[9px] font-bold text-[#313131] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
                     {option.name}
                     <img
-                      src="/images/reviewYourBuild/question.svg"
+                      src={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? process.env.NEXT_PUBLIC_BASE_PATH
+                          : ''
+                      }/images/reviewYourBuild/question.svg`}
                       alt="image"
                       className="absolute top-0 -right-[6px] w-[4px] md:-right-[7.2px] md:w-[4.8px] lg:-right-[8.4px] lg:w-[5.6px] xl:-right-[9.6px] xl:w-[6.4px] 2xl:-right-[12px] 2xl:w-[8px]"
                     />
@@ -78,7 +86,11 @@ const AddOns2 = ({ coreServices, isLoadingFeatures, ...data }: ModalProps) => {
                     )}
                   </div>
                   <img
-                    src="/images/reviewYourBuild/check.svg"
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }/images/reviewYourBuild/check.svg`}
                     alt="image"
                     className="absolute right-[37.5px] ml-auto w-[8.5px] md:right-[45px] md:w-[10.2px] lg:right-[52.5px] lg:w-[11.9px] xl:right-[60px] xl:w-[13.6px] 2xl:right-[75px] 2xl:w-[17px]"
                   />

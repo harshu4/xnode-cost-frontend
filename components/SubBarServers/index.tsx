@@ -256,7 +256,11 @@ const SubBarServers = ({ onValueChange }) => {
             <div key={index} className="relative flex">
               <div className="flex gap-x-[4px]">
                 <img
-                  src={option.src}
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }${option.src}`}
                   alt="image"
                   className={`absolute -left-[5px] top-[15px] my-auto ${option.style}`}
                 />
