@@ -121,7 +121,13 @@ const ReviewYourBuild = () => {
         )
       }
     } else {
-      push('/start-here')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/start-here`
+            : `/start-here`
+        }`,
+      )
     }
     // setIsDeploying(false)
   }

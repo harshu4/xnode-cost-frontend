@@ -218,19 +218,43 @@ const LateralNav = ({ onValueChange }) => {
       setFinalBuild(false)
       setSignup(false)
       setSelectionSideNavBar('Workspace')
-      push('/start-here')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/start-here`
+            : `/start-here`
+        }`,
+      )
       return
     }
     if (title === 'Docs') {
-      push('/docs')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/docs`
+            : `/docs`
+        }`,
+      )
       setSelectionSideNavBar('Docs')
     }
     if (title === 'Profile') {
-      push('/profile')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/profile`
+            : `/profile`
+        }`,
+      )
       setSelectionSideNavBar('Profile')
     }
     if (title === 'Dashboard') {
-      push('/dashboard')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/dashboard`
+            : `/dashboard`
+        }`,
+      )
       setSelectionSideNavBar('Dashboard')
     }
     if (title === 'Home') {
@@ -240,7 +264,13 @@ const LateralNav = ({ onValueChange }) => {
       setSelectionSideNavBar('Home')
       setFinalBuild(false)
       setSignup(false)
-      push('/start-here')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/start-here`
+            : `/start-here`
+        }`,
+      )
       return
     }
     if (!next && !nextFromScratch && title !== 'Home' && !user) {

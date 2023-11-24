@@ -52,9 +52,21 @@ const YourCore = ({ isLoadingFeatures, coreServices, ...data }: ModalProps) => {
         setDataIcon('/images/reviewYourBuild/checkGreen.svg')
         toast.success('Success')
         if (data.xnodeType === 'validator') {
-          push(`/validator/${data.xnodeId}?newDeploy=true`)
+          push(
+            `${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? `/xnode/validator/${data.xnodeId}?newDeploy=true`
+                : `/validator/${data.xnodeId}?newDeploy=true`
+            }`,
+          )
         } else {
-          push('/dashboard')
+          push(
+            `${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? `/xnode/dashboard`
+                : `/dashboard`
+            }`,
+          )
         }
       }
     }

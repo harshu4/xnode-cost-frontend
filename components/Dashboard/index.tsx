@@ -102,9 +102,21 @@ const Dashboard = () => {
     setFinalBuild(false)
     setNext(true)
     if (type === 'validator') {
-      push(`/validator/${id}`)
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/validator/${id}`
+            : `/validator/${id}`
+        }`,
+      )
     } else {
-      push('/start-here')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/start-here`
+            : `/start-here`
+        }`,
+      )
     }
   }
 
@@ -138,7 +150,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!userHasAnyCookie) {
-      push('/')
+      push(
+        `${process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/` : `/`}`,
+      )
     }
   }, [])
 
