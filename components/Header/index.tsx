@@ -115,7 +115,7 @@ const Header = () => {
     },
     {
       label: 'Docs',
-      href: `/docs`,
+      href: `https://openmesh.network/xnode/docs`,
     },
   ]
 
@@ -563,7 +563,14 @@ const Header = () => {
               </div> */}
                 <div className="flex items-center gap-x-[15px] font-medium text-[#000] md:gap-x-[18px] lg:gap-x-[21px] xl:gap-x-[24px] 2xl:gap-x-[30px]">
                   {headerItens.map((option, index) => (
-                    <a key={index} href={option.href}>
+                    <a
+                      key={index}
+                      href={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? `/xnode${option.href}`
+                          : `${option.href}`
+                      }`}
+                    >
                       <div className="hover:text-[#313131]">{option.label}</div>
                     </a>
                   ))}
@@ -660,7 +667,11 @@ const Header = () => {
                   </div>
                 ) : (
                   <a
-                    href={`${'/login'}`}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/login`
+                        : `${'/login'}`
+                    }`}
                     className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
                   >
                     Login
@@ -719,7 +730,11 @@ const Header = () => {
                 />
                 <div className=" mt-auto mb-[5px]">
                   <a
-                    href="/data-products"
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/data-products`
+                        : `${'/data-products'}`
+                    }`}
                     className=" cursor-pointer text-[6px] font-medium  text-[#0354EC] hover:text-[#023ba5] md:text-[7.2px]  lg:text-[8.4px] xl:text-[11.2px] 2xl:text-[12px]"
                   >
                     More
@@ -895,7 +910,7 @@ const Header = () => {
               <a
                 href={`${
                   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? `/oec/login`
+                    ? `/xnode/login`
                     : '/login'
                 }`}
                 className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
