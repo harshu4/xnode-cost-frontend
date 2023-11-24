@@ -79,7 +79,11 @@ const LandingPage = () => {
               Play around it now
             </h2>
             <a
-              href="/start-here"
+              href={`${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? `/xnode/start-here`
+                  : '/start-here'
+              }`}
               className="w-[132px] rounded-[50px] bg-gradient-to-r from-[#4255FF] via-[#6069EC] to-[#4023B5] p-[10px] text-center text-[15px] font-normal text-[#FFFFFF] md:h-[59px] md:w-[159px] md:text-[12px] lg:w-[185.5px] lg:text-[14px] xl:w-[212px] xl:text-[16px] 2xl:w-[265px] 2xl:text-[20px]"
             >
               Launch

@@ -264,7 +264,13 @@ const SubBarServers = ({ onValueChange }) => {
                   alt="image"
                   className={`absolute -left-[5px] top-[15px] my-auto ${option.style}`}
                 />
-                <a href={option.pageRef}>
+                <a
+                  href={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? `/xnode${option.pageRef}`
+                      : `${option.pageRef}`
+                  }`}
+                >
                   <div
                     className={` ${
                       option.enabled ? 'text-[#000]' : 'text-[#B1B1B1]'
@@ -310,7 +316,13 @@ const SubBarServers = ({ onValueChange }) => {
           Choose your server{' '}
         </div>
         <div>{renderChooseYourServerOptions()}</div>
-        <a href="/data-products?category=Servers">
+        <a
+          href={`${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? `/xnode/data-products?category=Servers`
+              : `/data-products?category=Servers`
+          }`}
+        >
           <div className="mt-[35px] flex w-full justify-center  text-[8px] font-medium hover:text-[#3a3a3a] md:mt-[41px] md:text-[9.6px] lg:mt-[48px]  lg:text-[11.5px] lg:!leading-[300%] xl:mt-[55px] xl:text-[13px] 2xl:mt-[69px] 2xl:text-[16px]">
             View More
           </div>

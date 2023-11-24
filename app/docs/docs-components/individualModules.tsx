@@ -1,13 +1,13 @@
 interface IndividualModulesProps {
-  title: string;
-  strongTitle: string;
-  subTitle: string;
-  listItem: { title: string; href: string }[];
-  icon: string;
+  title: string
+  strongTitle: string
+  subTitle: string
+  listItem: { title: string; href: string }[]
+  icon: string
 }
 
 export default function IndividualModules(props: IndividualModulesProps) {
-  const { title, strongTitle, subTitle, listItem, icon } = props;
+  const { title, strongTitle, subTitle, listItem, icon } = props
   return (
     <>
       <div>
@@ -32,7 +32,11 @@ export default function IndividualModules(props: IndividualModulesProps) {
               {listItem.map((item, index) => (
                 <li key={index}>
                   <a
-                    href={item.href}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/${item.href}`
+                        : `${item.href}`
+                    }`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-justify font-inter text-[16px] font-medium leading-[24px]"
@@ -46,5 +50,5 @@ export default function IndividualModules(props: IndividualModulesProps) {
         </div>
       </div>
     </>
-  );
+  )
 }

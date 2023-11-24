@@ -374,7 +374,11 @@ const LateralNav = ({ onValueChange }) => {
                 alt="image"
               />
               <a
-                href={'/'}
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `/xnode/`
+                    : '/'
+                }`}
                 className="absolute -top-[8px] left-[25px] flex w-[50px] cursor-pointer flex-col items-center md:-top-[9.6px] md:left-[30px] md:w-[60px] lg:-top-[11.2px]  lg:left-[35px] lg:w-[70px] xl:-top-[12.8px] xl:left-[40px] xl:w-[80px] 2xl:-top-[16px] 2xl:left-[50px] 2xl:w-[100px] "
               >
                 <img

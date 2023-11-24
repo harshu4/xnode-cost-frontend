@@ -492,7 +492,11 @@ const DataProduct = (id: any) => {
                   {data?.dataSpace}
                 </div>
                 <a
-                  href={data?.downloadCSVLink}
+                  href={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? `/xnode/${data?.downloadCSVLink}`
+                      : `${data?.downloadCSVLink}`
+                  }`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -517,7 +521,11 @@ const DataProduct = (id: any) => {
                 </div>
                 {data.addToXnodeMessage === 'Add to Xnode' ? (
                   <a
-                    href={data?.liveLink}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/${data?.liveLink}`
+                        : `${data?.liveLink}`
+                    }`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -540,7 +548,15 @@ const DataProduct = (id: any) => {
                   </div>
                 )}
 
-                <a href={data.website} target="_blank" rel="noreferrer">
+                <a
+                  href={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? `/xnode/${data.website}`
+                      : `${data.website}`
+                  }`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] underline underline-offset-1 hover:text-[#a3a3a3] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
                     Website
                   </div>
@@ -569,7 +585,11 @@ const DataProduct = (id: any) => {
                   {data?.liveLink}
                 </div>
                 <a
-                  href={data?.liveLink}
+                  href={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? `/xnode/${data?.liveLink}`
+                      : `${data?.liveLink}`
+                  }`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -592,7 +612,11 @@ const DataProduct = (id: any) => {
           <div className="mt-[35px] justify-center text-[7px] font-medium text-[#959595] md:mt-[35px] md:text-[10px] lg:mt-[40px] lg:text-[11px] lg:!leading-[17px] 2xl:mt-[51px] 2xl:text-[14px]">
             {data.dataCloudName && data.dataCloudName && (
               <a
-                href={data?.dataCloudLink}
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `/xnode/${data?.dataCloudLink}`
+                    : `${data?.dataCloudLink}`
+                }`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#0354EC]"
@@ -612,7 +636,11 @@ const DataProduct = (id: any) => {
             )}
             {data?.dataGithubLink && data?.dataGithubName && (
               <a
-                href={data?.dataGithubLink}
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `/xnode/${data?.dataGithubLink}`
+                    : `${data?.dataGithubLink}`
+                }`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#0354EC]"
@@ -698,7 +726,11 @@ const DataProduct = (id: any) => {
               {Object.entries(dataHelp).map(([key, value], index, array) =>
                 key === 'Overview' ? (
                   <a
-                    href={data?.relevantDocs}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/${data?.relevantDocs}`
+                        : `${data?.relevantDocs}`
+                    }`}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={index}
@@ -711,7 +743,11 @@ const DataProduct = (id: any) => {
                   </a>
                 ) : (
                   <a
-                    href={value}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/${value}`
+                        : `${value}`
+                    }`}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={index}
@@ -735,7 +771,11 @@ const DataProduct = (id: any) => {
                 ([value1, value2, value3], index, array) => (
                   <>
                     <a
-                      href={`/dataset/${value1}`}
+                      href={`${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? `/xnode/dataset/${value1}`
+                          : `/dataset/${value1}`
+                      }`}
                       className="transform transition-transform hover:scale-105"
                     >
                       <div className="flex gap-x-[6px]  lg:gap-x-[8px] 2xl:gap-x-[12px] ">
