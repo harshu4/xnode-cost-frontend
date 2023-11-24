@@ -51,7 +51,9 @@ const DataProduct = (id: any) => {
     if (id) {
       getDataInfo(id.id)
     } else {
-      push('/')
+      push(
+        `${process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/` : `/`}`,
+      )
     }
   }, [id])
 
@@ -211,7 +213,13 @@ const DataProduct = (id: any) => {
       const url = new URL(window.location.href)
       if (value) {
         url.searchParams.set(param, value)
-        push(`?searchBar=${value}`)
+        push(
+          `${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? `/xnode?searchBar=${value}`
+              : `?searchBar=${value}`
+          }`,
+        )
       } else {
         url.searchParams.delete(param)
       }

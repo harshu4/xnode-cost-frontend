@@ -93,7 +93,9 @@ const Login = () => {
       nookies.set(null, 'userSessionToken', res.sessionToken)
       setUser(res)
       setIsLoading(false)
-      push('/')
+      push(
+        `${process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/` : `/`}`,
+      )
     } catch (err) {
       if (err.response.data.message === 'Unconfirmed Email') {
         toast.error('Unconfirmed email')

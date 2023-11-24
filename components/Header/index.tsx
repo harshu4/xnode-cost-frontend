@@ -155,7 +155,13 @@ const Header = () => {
             setNextFromScratch(false)
             toast.success(`Success`)
             localStorage.clear()
-            push('/dashboard')
+            push(
+              `${
+                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                  ? `/xnode/dashboard`
+                  : `/dashboard`
+              }`,
+            )
           }
         })
       } catch (err) {
@@ -165,7 +171,13 @@ const Header = () => {
       }
     } else {
       toast.error(`User nor found`)
-      push('/start-here')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/start-here`
+            : `/start-here`
+        }`,
+      )
     }
     setIsLoadingUpdate(false)
   }
@@ -820,7 +832,13 @@ const Header = () => {
                 <div
                   onClick={() => {
                     console.log(finalNodes)
-                    push('/start-here')
+                    push(
+                      `${
+                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                          ? `/xnode/start-here`
+                          : `/start-here`
+                      }`,
+                    )
                   }}
                 >
                   Create service and deploy

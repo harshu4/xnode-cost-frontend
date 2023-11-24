@@ -87,7 +87,13 @@ const SingleCard = ({
         finalNodes.push(productToAdd)
         localStorage.setItem('nodes', JSON.stringify(finalNodes))
         setNext(true)
-        push('/start-here')
+        push(
+          `${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? `/xnode/start-here`
+              : `/start-here`
+          }`,
+        )
       } else {
         toast.error('You cannot add more than one server per x-node')
       }
@@ -111,7 +117,13 @@ const SingleCard = ({
         finalNodes.push(productToAdd)
         localStorage.setItem('nodes', JSON.stringify(finalNodes))
         setNext(true)
-        push('/start-here')
+        push(
+          `${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? `/xnode/start-here`
+              : `/start-here`
+          }`,
+        )
       } else {
         toast.error('You already have this product in your x-node')
       }
@@ -136,7 +148,13 @@ const SingleCard = ({
         finalNodes.push(productToAdd)
         localStorage.setItem('nodes', JSON.stringify(finalNodes))
         setNext(true)
-        push('/start-here')
+        push(
+          `${
+            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+              ? `/xnode/start-here`
+              : `/start-here`
+          }`,
+        )
       } else {
         toast.error('You already have this product in your x-node')
       }

@@ -285,7 +285,11 @@ const Profile = () => {
       toast.success('Account updated succesfully')
       await new Promise((resolve) => setTimeout(resolve, 2500))
       setIsLoading(false)
-      push('/oec')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/oec` : `/oec`
+        }`,
+      )
     } catch (err) {
       console.log(err)
       if (err.response.data.message === 'Email already in use') {
@@ -350,7 +354,11 @@ const Profile = () => {
         }
       }
     } else {
-      push('/oec')
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/oec` : `/oec`
+        }`,
+      )
     }
 
     setIsPageLoading(false)

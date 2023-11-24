@@ -64,6 +64,9 @@ const Validator = (id: any) => {
       getData(id.id)
     } else {
       push('/')
+      push(
+        `${process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/` : `/`}`,
+      )
     }
   }, [id])
 
