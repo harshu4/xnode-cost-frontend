@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { optionServerLocation } from '@/utils/constants'
 import React, { memo, useEffect, useState } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
 
@@ -164,7 +165,7 @@ function ServerNode({ id, data }) {
           <Options
             handleId={1}
             name={'Location'}
-            optionsSelection={['US East', 'US West', 'Sydney']}
+            optionsSelection={optionServerLocation}
             defaultValue={data.defaultValueLocation}
           />
           <Options

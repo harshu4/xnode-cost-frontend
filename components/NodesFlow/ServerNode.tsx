@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState, useContext } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
 import withProps from './withProps'
+import { optionServerLocation } from '@/utils/constants'
+import { AccountContext } from '@/contexts/AccountContext'
 
 const options = [
   {
@@ -63,15 +65,59 @@ function Select({ value, handleId, nodeId }) {
   )
 }
 
+function updateServerNumber(nodes, newType) {
+  const updatedNodes = nodes.map((node) => {
+    if (node.type === 'server') {
+      return {
+        ...node,
+        data: {
+          ...node.data,
+          defaultValueServerType: newType,
+        },
+      }
+    }
+    return node
+  })
+  localStorage.setItem('nodes', JSON.stringify(updatedNodes))
+}
+
 function Options({ handleId, name, optionsSelection, defaultValue }) {
   const [selected, setSelected] = useState<any>(defaultValue)
+  const { finalNodes, setFinalNodes } = useContext(AccountContext)
+
+  function updateServerLocation(nodes, newLocation) {
+    const updatedNodes = nodes.map((node) => {
+      if (node.type === 'server') {
+        return {
+          ...node,
+          data: {
+            ...node.data,
+            defaultValueLocation: newLocation,
+          },
+        }
+      }
+      return node
+    })
+    localStorage.setItem('nodes', JSON.stringify(updatedNodes))
+    setFinalNodes(updatedNodes)
+  }
 
   return (
     <div className="">
       <div className="font-bold">{name}</div>
       <select
         className="nodrag min-w-[104px] rounded-[6px] bg-[#D9D9D9] font-normal md:min-w-[124px] lg:min-w-[145px] xl:min-w-[167px] 2xl:min-w-[208px]"
-        onChange={(option) => setSelected(option.target.value)}
+        onChange={(option) => {
+          setSelected(option.target.value)
+          if (name === 'Location') {
+            const savedNodes = JSON.parse(localStorage.getItem('nodes') || '[]')
+            updateServerLocation(savedNodes, option.target.value)
+          }
+          if (name === 'Server') {
+            const savedNodes = JSON.parse(localStorage.getItem('nodes') || '[]')
+            updateServerNumber(savedNodes, option.target.value)
+          }
+        }}
         value={selected}
       >
         {optionsSelection.map((option) => (
@@ -176,7 +222,7 @@ function ServerNode({ id, data, handleNodeRemove }) {
           <Options
             handleId={1}
             name={'Location'}
-            optionsSelection={['US East', 'US West', 'Sydney']}
+            optionsSelection={optionServerLocation}
             defaultValue={data.defaultValueLocation}
           />
           <Options

@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-vars */
+import {
+  optionServerLocation,
+  valueOptionsServerLocation,
+} from '@/utils/constants'
 import { useEffect, useRef, useState } from 'react'
 
 const DropdownServiceRegion = ({ onValueChange }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState('US East')
+  const [value, setValue] = useState(optionServerLocation[0])
   const dropdownRef = useRef(null)
 
   const valueOptions = [
@@ -59,7 +64,7 @@ const DropdownServiceRegion = ({ onValueChange }) => {
           aria-expanded="true"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <img
+          {/* <img
             src={`${
               process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                 ? process.env.NEXT_PUBLIC_BASE_PATH
@@ -67,7 +72,7 @@ const DropdownServiceRegion = ({ onValueChange }) => {
             }${getSrcForValue(value)}`}
             alt="image"
             className={`my-auto w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
-          />
+          /> */}
           {value}
           <svg
             className="my-auto ml-auto w-[6px] lg:w-[9px]"
@@ -88,7 +93,7 @@ const DropdownServiceRegion = ({ onValueChange }) => {
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {valueOptions.map((option, index) => (
+            {valueOptionsServerLocation.map((option, index) => (
               <div
                 key={index}
                 onClick={() => {
@@ -98,7 +103,7 @@ const DropdownServiceRegion = ({ onValueChange }) => {
                 }}
                 className="flex cursor-pointer gap-x-[7.5px] px-4 py-2 hover:bg-[#f7f5f5] md:gap-x-[9px]  lg:gap-x-[10.5px] xl:gap-x-[12px] 2xl:gap-x-[15px] "
               >
-                <img
+                {/* <img
                   src={`${
                     process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                       ? process.env.NEXT_PUBLIC_BASE_PATH
@@ -106,7 +111,7 @@ const DropdownServiceRegion = ({ onValueChange }) => {
                   }${option.src}`}
                   alt="image"
                   className={`my-auto w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
-                />
+                /> */}
                 <div className=" transition" role="menuitem">
                   {option.title}
                 </div>

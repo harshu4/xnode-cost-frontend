@@ -22,6 +22,10 @@ import AddOns2 from './AddOns2'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import {
+  optionsServerLocationToValue,
+  optionsServerNumberToValue,
+} from '@/utils/constants'
 
 /* eslint-disable react/no-unescaped-entities */
 const ReviewYourBuild = () => {
@@ -80,20 +84,61 @@ const ReviewYourBuild = () => {
 
   const { push } = useRouter()
 
+  function findServerDefaultType(array) {
+    console.log('o server aqui')
+    const serverObject = array.find((item) => item.type === 'server')
+    console.log(serverObject)
+    return serverObject?.data?.defaultValueServerType || null
+  }
+
+  function findServerDefaultValueLocation(array) {
+    console.log('o server aqui')
+    const serverObject = array.find((item) => item.type === 'server')
+    console.log(serverObject)
+    return serverObject?.data?.defaultValueLocation || null
+  }
+
+  function findAPIisWebsocket(array) {
+    const apiObject = array.find((item) => item.type === 'api')
+    if (apiObject?.data?.name === 'WebSocket API') {
+      return true
+    } else {
+      return false
+    }
+  }
+
   async function createXnode() {
     setIsDeploying(true)
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
 
+    console.log('o service region')
+    console.log(serviceRegion)
+    console.log(optionsServerLocationToValue)
+
+    const serverLoc =
+      optionsServerLocationToValue[
+        findServerDefaultValueLocation(JSON.parse(savedNodes))
+      ]
+    const serverNumber =
+      optionsServerNumberToValue[findServerDefaultType(JSON.parse(savedNodes))]
+
+    console.log('o retorno do server loc')
+    console.log(serverLoc)
+
+    const websocketEnabled = findAPIisWebsocket(JSON.parse(savedNodes))
     const finalData = {
       name: projectName,
       description: 'This is my xnode',
       useCase: tagXnode,
       status: 'Running',
-      location: serviceRegion,
+      location: findServerDefaultValueLocation(JSON.parse(savedNodes)),
       consoleNodes: savedNodes,
       consoleEdges: savedEdges,
       type: xnodeType,
+      serverLoc,
+      serverNumber,
+      websocketEnabled,
     }
 
     if (user.sessionToken) {
