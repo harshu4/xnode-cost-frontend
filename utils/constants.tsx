@@ -97,3 +97,19 @@ export const optionsServerNumberToValue = {
   'Large 23.x86 x 2': 2,
   'Large 23.x86 x 3': 3,
 }
+
+export const optionsFeature = [
+  'apollox',
+  'binance',
+  'binancefutures',
+  'bitfinex',
+  'bybit',
+  'coinbase',
+  'deribit',
+  'dydx',
+  'gemini',
+  'kraken',
+  'krakenfutures',
+  'phemex',
+  'ethereum',
+]

@@ -138,6 +138,11 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   })
 
   useEffect(() => {
+    const savedXnodeType = localStorage.getItem('xnodeType')
+    if (savedXnodeType === 'validator') {
+      // validators node cannot have changes
+      return
+    }
     if (changeNodes?.type === 'api') {
       const nodeExists = nodes.some(
         (node) => node.data.name === changeNodes?.name,

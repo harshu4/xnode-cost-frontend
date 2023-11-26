@@ -23,6 +23,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {
+  optionsFeature,
   optionsServerLocationToValue,
   optionsServerNumberToValue,
 } from '@/utils/constants'
@@ -107,6 +108,18 @@ const ReviewYourBuild = () => {
     }
   }
 
+  function findFeatures(array) {
+    const dataObject = array.find((item) => item.type === 'data')
+    const finalFeatures = []
+    for (let i = 0; i < dataObject?.data?.lists?.length; i++) {
+      // eslint-disable-next-line prettier/prettier
+      if (optionsFeature.includes(dataObject?.data?.lists[i]?.title?.toLowerCase())) {
+        finalFeatures.push(dataObject?.data?.lists[i]?.title?.toLowerCase())
+      }
+    }
+    return finalFeatures
+  }
+
   async function createXnode() {
     setIsDeploying(true)
     const savedNodes = localStorage.getItem('nodes')
@@ -122,6 +135,8 @@ const ReviewYourBuild = () => {
       ]
     const serverNumber =
       optionsServerNumberToValue[findServerDefaultType(JSON.parse(savedNodes))]
+
+    const features = findFeatures(JSON.parse(savedNodes))
 
     console.log('o retorno do server loc')
     console.log(serverLoc)
@@ -139,7 +154,10 @@ const ReviewYourBuild = () => {
       serverLoc,
       serverNumber,
       websocketEnabled,
+      features,
     }
+    console.log('final data aq')
+    console.log(finalData)
 
     if (user.sessionToken) {
       const config = {

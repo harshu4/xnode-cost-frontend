@@ -117,11 +117,6 @@ const SubBarData = ({ onValueChange }) => {
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-          enabled: false,
-        },
-        {
           icon: '/images/subNavBarData/aave.svg',
           title: 'Aave',
           enabled: false,
@@ -158,38 +153,38 @@ const SubBarData = ({ onValueChange }) => {
       isFree: true,
       enabled: false,
       dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
+        // {
+        //   icon: '/images/subNavBarData/binance.svg',
+        //   title: 'Binance',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/coinbase.svg',
+        //   title: 'Coinbase',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/bybit.svg',
+        //   title: 'Bybit',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/okx.svg',
+        //   title: 'OKX',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/krakan.svg',
+        //   title: 'Krakan',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/hubai.svg',
+        //   title: 'Hubai',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/gateio.svg',
+        //   title: 'Gate.io',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/kucoin.svg',
+        //   title: 'Kucoin',
+        // },
       ],
     },
     {
