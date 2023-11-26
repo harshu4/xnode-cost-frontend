@@ -105,11 +105,11 @@ export const optionsFeature = [
   'bitfinex',
   'bybit',
   'coinbase',
-  'deribit',
+  // 'deribit',
   'dydx',
   'gemini',
   'kraken',
   'krakenfutures',
-  'phemex',
+  // 'phemex',
   'ethereum',
 ]

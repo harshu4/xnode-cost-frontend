@@ -43,29 +43,34 @@ const SubBarData = ({ onValueChange }) => {
           enabled: true,
         },
         {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
+          icon: '/images/subNavBarData/bitfinex.svg',
+          title: 'Bitfinex',
           enabled: true,
         },
         {
+          icon: '/images/subNavBarData/okx.svg',
+          title: 'OKX',
+          enabled: false,
+        },
+        {
           icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          title: 'Kraken',
           enabled: true,
         },
         {
           icon: '/images/subNavBarData/hubai.svg',
           title: 'Hubai',
-          enabled: true,
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/gateio.svg',
           title: 'Gate.io',
-          enabled: true,
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/kucoin.svg',
           title: 'Kucoin',
-          enabled: true,
+          enabled: false,
         },
       ],
     },
@@ -116,6 +121,16 @@ const SubBarData = ({ onValueChange }) => {
       isFree: true,
       enabled: true,
       dataOptions: [
+        {
+          icon: '/images/subNavBarData/dydx-logo.svg',
+          title: 'DyDx',
+          enabled: true,
+        },
+        {
+          icon: '/images/subNavBarData/apollox.svg',
+          title: 'ApolloX',
+          enabled: true,
+        },
         {
           icon: '/images/subNavBarData/aave.svg',
           title: 'Aave',
