@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { optionServerLocation } from '@/utils/constants'
 import React from 'react'
 import { MarkerType, Position } from 'reactflow'
 
@@ -36,7 +37,7 @@ export const nodes = [
         'handle-1': 'smoothstep',
       },
       defaultValueServerType: 'Small c3.x86 x 1',
-      defaultValueLocation: 'US East',
+      defaultValueLocation: optionServerLocation[0],
       defaultValueCloudProvider: 'Equinix (Decentralized)',
     },
     targetPosition: Position.Left,

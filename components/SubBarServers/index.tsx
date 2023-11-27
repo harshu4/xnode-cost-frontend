@@ -5,6 +5,7 @@ import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 import DropdownServiceRegion from '../DropdownServiceRegion'
+import { optionServerLocation } from '@/utils/constants'
 
 /* eslint-disable react/no-unescaped-entities */
 const SubBarServers = ({ onValueChange }) => {
@@ -25,7 +26,9 @@ const SubBarServers = ({ onValueChange }) => {
   const [mediumServerNumber, setMediumServerNumber] = useState<number>(0)
   const [largeServerNumber, setLargeServerNumber] = useState<number>(0)
 
-  const [serviceRegion, setServiceRegion] = useState<string>('Us East')
+  const [serviceRegion, setServiceRegion] = useState<string>(
+    optionServerLocation[0],
+  )
 
   const optionsServiceRegionSelection = [
     {

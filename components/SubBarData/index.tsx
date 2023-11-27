@@ -30,34 +30,47 @@ const SubBarData = ({ onValueChange }) => {
         {
           icon: '/images/subNavBarData/binance.svg',
           title: 'Binance',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/coinbase.svg',
           title: 'Coinbase',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/bybit.svg',
           title: 'Bybit',
+          enabled: true,
+        },
+        {
+          icon: '/images/subNavBarData/bitfinex.svg',
+          title: 'Bitfinex',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/okx.svg',
           title: 'OKX',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
+          title: 'Kraken',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/hubai.svg',
           title: 'Hubai',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/gateio.svg',
           title: 'Gate.io',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/kucoin.svg',
           title: 'Kucoin',
+          enabled: false,
         },
       ],
     },
@@ -69,30 +82,37 @@ const SubBarData = ({ onValueChange }) => {
         {
           icon: '/images/subNavBarData/bitcoin.svg',
           title: 'Bitcoin',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/ethereum.svg',
           title: 'Ethereum',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/polygon.svg',
           title: 'Polygon',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/avalanche.svg',
           title: 'Avalanche',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/binance.svg',
           title: 'BNB',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/aptos.svg',
           title: 'Aptos',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/hedera.svg',
           title: 'Hedera',
+          enabled: false,
         },
       ],
     },
@@ -102,72 +122,84 @@ const SubBarData = ({ onValueChange }) => {
       enabled: true,
       dataOptions: [
         {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
+          icon: '/images/subNavBarData/dydx-logo.svg',
+          title: 'DyDx',
+          enabled: true,
+        },
+        {
+          icon: '/images/subNavBarData/apollox.svg',
+          title: 'ApolloX',
+          enabled: true,
         },
         {
           icon: '/images/subNavBarData/aave.svg',
           title: 'Aave',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/yfi.svg',
           title: 'Yearn Finance',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/curve.svg',
           title: 'Curve',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/gala.svg',
           title: 'Gala',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/aavegotchi.svg',
           title: 'Aavegotchi',
+          enabled: false,
         },
         {
           icon: '/images/subNavBarData/opensea.svg',
           title: 'OpenSea',
+          enabled: false,
         },
       ],
     },
     {
       title: 'GameFi & Metaverses',
       isFree: true,
-      enabled: true,
+      enabled: false,
       dataOptions: [
-        {
-          icon: '/images/subNavBarData/binance.svg',
-          title: 'Binance',
-        },
-        {
-          icon: '/images/subNavBarData/coinbase.svg',
-          title: 'Coinbase',
-        },
-        {
-          icon: '/images/subNavBarData/bybit.svg',
-          title: 'Bybit',
-        },
-        {
-          icon: '/images/subNavBarData/okx.svg',
-          title: 'OKX',
-        },
-        {
-          icon: '/images/subNavBarData/krakan.svg',
-          title: 'Krakan',
-        },
-        {
-          icon: '/images/subNavBarData/hubai.svg',
-          title: 'Hubai',
-        },
-        {
-          icon: '/images/subNavBarData/gateio.svg',
-          title: 'Gate.io',
-        },
-        {
-          icon: '/images/subNavBarData/kucoin.svg',
-          title: 'Kucoin',
-        },
+        // {
+        //   icon: '/images/subNavBarData/binance.svg',
+        //   title: 'Binance',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/coinbase.svg',
+        //   title: 'Coinbase',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/bybit.svg',
+        //   title: 'Bybit',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/okx.svg',
+        //   title: 'OKX',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/krakan.svg',
+        //   title: 'Krakan',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/hubai.svg',
+        //   title: 'Hubai',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/gateio.svg',
+        //   title: 'Gate.io',
+        // },
+        // {
+        //   icon: '/images/subNavBarData/kucoin.svg',
+        //   title: 'Kucoin',
+        // },
       ],
     },
     {
@@ -253,18 +285,24 @@ const SubBarData = ({ onValueChange }) => {
             </div>
             <div
               onClick={() => {
-                setChangeNodes({
-                  type:
-                    currentDataMenuSelect === 'Historical Data'
-                      ? 'dataHistorical'
-                      : 'dataStreaming',
-                  name: dataOption.title,
-                  icon: dataOption.icon,
-                  categorie: option.title,
-                  dictionary: categoriesOptions,
-                })
+                if (dataOption.enabled) {
+                  setChangeNodes({
+                    type:
+                      currentDataMenuSelect === 'Historical Data'
+                        ? 'dataHistorical'
+                        : 'dataStreaming',
+                    name: dataOption.title,
+                    icon: dataOption.icon,
+                    categorie: option.title,
+                    dictionary: categoriesOptions,
+                  })
+                }
               }}
-              className="absolute right-0 -top-[2px] cursor-pointer rounded-[5px] bg-[#0354EC] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff] hover:bg-[#123981]  md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]"
+              className={`absolute ${
+                dataOption.enabled
+                  ? 'cursor-pointer bg-[#0354EC] hover:bg-[#123981]'
+                  : 'bg-[#999999]'
+              } right-0 -top-[2px]  rounded-[5px] px-[7px] py-[3px]  text-[6.5px] font-medium text-[#fff]   md:text-[7px] lg:py-[2.8px] lg:px-[6px] lg:text-[8.5px] lg:!leading-[15px] xl:py-[3.2px] xl:px-[6.8px] xl:text-[9.5px]  2xl:py-[4px] 2xl:px-[8.5px] 2xl:text-[12px]`}
             >
               <div>Add</div>
             </div>

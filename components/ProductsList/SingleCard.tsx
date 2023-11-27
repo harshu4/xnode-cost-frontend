@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { optionServerLocation } from '@/utils/constants'
 
 export const categoriesOptionsRPC = {
   ValidationCloud: '/images/subNavBarRPC/validateCloud.svg',
@@ -80,7 +81,7 @@ const SingleCard = ({
               'handle-1': 'smoothstep',
             },
             defaultValueServerType: `Medium c2.x86 x 1`,
-            defaultValueLocation: 'Us East',
+            defaultValueLocation: optionServerLocation[0],
             defaultValueCloudProvider: title,
           },
         }
