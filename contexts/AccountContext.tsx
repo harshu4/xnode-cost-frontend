@@ -5,6 +5,7 @@ export interface UserProps {
   firstName: string
   lastName: string
   email: string
+  equinixAPIKey: string
   companyName: string
   foundingYear: number
   location: string
