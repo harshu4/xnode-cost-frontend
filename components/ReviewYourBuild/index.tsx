@@ -71,6 +71,7 @@ const ReviewYourBuild = () => {
 
   useEffect(() => {
     console.log(finalNodes)
+    const savedNodes = localStorage.getItem('nodes')
 
     if (finalNodes) {
       // Setting the server flow
@@ -94,6 +95,52 @@ const ReviewYourBuild = () => {
 
       for (let i = 0; i < finalNodes.length; i++) {
         const node = finalNodes[i]
+
+        if (coreServicesType.includes(node.type)) {
+          console.log(node.data)
+          coreServicesArray.push({
+            name: node.data.name,
+            description: nameToDesc[node.data.name] || '',
+            isFree: nameToFree[node.data.name] || false,
+          })
+        } else if (node.type === 'data') {
+          for (let j = 0; j < node.data?.lists.length; j++) {
+            coreServiceDataArray.push(node.data.lists[j].title)
+          }
+        } else if (node.type === 'api') {
+          coreServiceApiArray.push(node.data.name)
+        }
+      }
+      setCoreServices(coreServicesArray)
+      setCoreServicesData(coreServiceDataArray)
+      setCoreServicesApi(coreServiceApiArray)
+
+      console.log(coreServicesArray)
+      console.log(coreServiceDataArray)
+      console.log(coreServiceApiArray)
+    }
+
+    if (savedNodes) {
+      const final = JSON.parse(savedNodes)
+      // Setting the server flow
+      const existingServerIndex = final.findIndex(
+        (node) => node.type === 'server',
+      )
+      console.log(existingServerIndex)
+      if (existingServerIndex !== -1) {
+        setServiceRegion(final[existingServerIndex].data.defaultValueLocation)
+        setCloudProvider(
+          final[existingServerIndex].data.defaultValueCloudProvider,
+        )
+      }
+
+      // Setting the core services flow
+      const coreServicesArray = []
+      const coreServiceDataArray = []
+      const coreServiceApiArray = []
+
+      for (let i = 0; i < final.length; i++) {
+        const node = final[i]
 
         if (coreServicesType.includes(node.type)) {
           console.log(node.data)
