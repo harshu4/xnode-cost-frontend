@@ -107,6 +107,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     xnodeType,
     setXnodeType,
     setTagXnode,
+    setSignup,
+    setFinalBuild,
     selectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
@@ -630,6 +632,9 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   }, [nodes, edges, isInitialized])
 
   useEffect(() => {
+    setSignup(false)
+    setFinalBuild(false)
+    setIsWorkspace(true)
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
     const savedXnodeType = localStorage.getItem('xnodeType')
