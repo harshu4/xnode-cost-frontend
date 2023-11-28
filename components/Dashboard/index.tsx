@@ -88,7 +88,7 @@ const Dashboard = () => {
     description,
     type,
   ) {
-    localStorage.setItem('editingNode', id)
+    // localStorage.setItem('editingNode', id)
     localStorage.setItem('nodes', JSON.stringify(nodes))
     localStorage.setItem('edges', JSON.stringify(edges))
     localStorage.setItem('xnodeType', type)
