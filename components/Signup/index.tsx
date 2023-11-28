@@ -18,6 +18,7 @@ import ThirdParty from './ThirdParty'
 import nookies, { parseCookies, setCookie, destroyCookie } from 'nookies'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import EquinixConnection from './EquinixConnecton'
 
 /* eslint-disable react/no-unescaped-entities */
 const Signup = () => {
@@ -39,6 +40,12 @@ const Signup = () => {
       toast.error('Please log in before proceeding')
       window.scrollTo({
         top: 0,
+        behavior: 'smooth',
+      })
+    } else if (!user.equinixAPIKey) {
+      toast.error('Please connect your equinix api before proceeding')
+      window.scrollTo({
+        top: 40,
         behavior: 'smooth',
       })
     } else {
@@ -66,9 +73,12 @@ const Signup = () => {
           <div className="mt-[15px]">
             <LogIn />
           </div>
-          <div className="mt-[50px] md:mt-[60px] lg:mt-[70px] xl:mt-[80px] 2xl:mt-[100px]">
-            <ThirdParty />
-          </div>
+          {user && (
+            <div className="mt-[50px] md:mt-[60px] lg:mt-[70px] xl:mt-[80px] 2xl:mt-[100px]">
+              <EquinixConnection />
+            </div>
+          )}
+
           <div
             onClick={() => {
               console.log(finalNodes)

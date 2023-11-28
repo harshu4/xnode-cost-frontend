@@ -258,6 +258,7 @@ const LateralNav = ({ onValueChange }) => {
       setSelectionSideNavBar('Dashboard')
     }
     if (title === 'Home') {
+      console.log('enrtrei homee')
       setNextFromScratch(false)
       setNext(false)
       setReviewYourBuild(false)
