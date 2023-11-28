@@ -213,11 +213,6 @@ const LateralNav = ({ onValueChange }) => {
 
   function handleButtonClick(title: string) {
     if (title === 'Workspace') {
-      setNext(true)
-      setReviewYourBuild(false)
-      setFinalBuild(false)
-      setSignup(false)
-      setSelectionSideNavBar('Workspace')
       push(
         `${
           process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -225,6 +220,11 @@ const LateralNav = ({ onValueChange }) => {
             : `/start-here`
         }`,
       )
+      setNext(true)
+      setReviewYourBuild(false)
+      setFinalBuild(false)
+      setSignup(false)
+      setSelectionSideNavBar('Workspace')
       return
     }
     if (title === 'Docs') {
