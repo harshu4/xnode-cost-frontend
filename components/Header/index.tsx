@@ -60,6 +60,7 @@ const Header = () => {
     setProjectDescription,
     setXnodeType,
     xnodeType,
+    setFinalNodes,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -234,6 +235,8 @@ const Header = () => {
     if (isEditingX) {
       setIsEditingXnode(true)
     }
+
+    setFinalNodes(JSON.parse(savedNodes))
   }, [])
 
   // if ((next || nextFromScratch) && !reviewYourBuild) {
