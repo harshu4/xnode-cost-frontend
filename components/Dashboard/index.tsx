@@ -26,6 +26,7 @@ import {
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [isViewingMore, setIsViewingMore] = useState<any>('')
   const [xnodesData, setXnodesData] = useState<Xnode[] | []>([])
 
   const cookies = parseCookies()
@@ -91,16 +92,16 @@ const Dashboard = () => {
     localStorage.setItem('nodes', JSON.stringify(nodes))
     localStorage.setItem('edges', JSON.stringify(edges))
     localStorage.setItem('xnodeType', type)
-    setXnodeType(type)
-    setTagXnode(tag)
-    setProjectName(projectName)
-    setProjectDescription(description)
-    setNextFromScratch(false)
-    setReviewYourBuild(false)
-    setSignup(false)
-    setConnections(false)
-    setFinalBuild(false)
-    setNext(true)
+    // setXnodeType(type)
+    // setTagXnode(tag)
+    // setProjectName(projectName)
+    // setProjectDescription(description)
+    // setNextFromScratch(false)
+    // setReviewYourBuild(false)
+    // setSignup(false)
+    // setConnections(false)
+    // setFinalBuild(false)
+    // setNext(true)
     if (type === 'validator') {
       push(
         `${
@@ -110,14 +111,30 @@ const Dashboard = () => {
         }`,
       )
     } else {
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/start-here`
-            : `/start-here`
-        }`,
-      )
+      setIsViewingMore(id)
+      // push(
+      //   `${
+      //     process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+      //       ? `/xnode/start-here`
+      //       : `/start-here`
+      //   }`,
+      // )
     }
+  }
+
+  function renderURLsXnode(data: string[]) {
+    return (
+      <div className="grid  gap-y-[10px] text-[#0354EC]  underline-offset-1 md:gap-y-[12px] lg:gap-y-[14px] xl:gap-y-[16px] xl:text-[12px] 2xl:gap-y-[20px] 2xl:text-[14px]">
+        {data.map((url, index) => (
+          // eslint-disable-next-line react/jsx-key
+          <a href={url} target="_blank" rel="noreferrer">
+            <div className="cursor-pointer hover:text-[#031c49]" key={index}>
+              {url}
+            </div>
+          </a>
+        ))}
+      </div>
+    )
   }
 
   async function getData() {
@@ -206,22 +223,43 @@ const Dashboard = () => {
                   <div className="mt-[2px] text-[6px] text-[#8D8D8D] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]">
                     {node.description}
                   </div>
-                  <div
-                    onClick={() => {
-                      handleEdit(
-                        node.id,
-                        JSON.parse(node.consoleNodes),
-                        JSON.parse(node.consoleEdges),
-                        node.useCase,
-                        node.name,
-                        node.description,
-                        node.type,
-                      )
-                    }}
-                    className="mt-[4px] text-[6px] text-[#0354EC] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]"
-                  >
-                    More
-                  </div>
+                  {isViewingMore === node.id ? (
+                    <>
+                      <div className="mt-[20px]">
+                        {renderURLsXnode([
+                          node.url1,
+                          node.url2,
+                          node.url3,
+                          node.url4,
+                        ])}
+                      </div>
+                      <div
+                        onClick={() => {
+                          setIsViewingMore('')
+                        }}
+                        className="mt-[10px] cursor-pointer text-[6px] text-[#0354EC] hover:text-[#758ebe] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]"
+                      >
+                        Less
+                      </div>
+                    </>
+                  ) : (
+                    <div
+                      onClick={() => {
+                        handleEdit(
+                          node.id,
+                          JSON.parse(node.consoleNodes),
+                          JSON.parse(node.consoleEdges),
+                          node.useCase,
+                          node.name,
+                          node.description,
+                          node.type,
+                        )
+                      }}
+                      className="mt-[4px] cursor-pointer text-[6px] text-[#0354EC] hover:text-[#758ebe] md:text-[7.2px] lg:text-[8.4px] xl:text-[9.6px] 2xl:text-[12px]"
+                    >
+                      More
+                    </div>
+                  )}
                 </td>
                 <td className={commonClasses}>{node.useCase}</td>
                 <td className={commonClasses}>
@@ -230,7 +268,7 @@ const Dashboard = () => {
                 <td className={commonClasses}>381.89 P/m</td>
                 <td className={commonClasses}>{node.status}</td>
                 <td className="pb-[17.5px] text-[7px] font-medium text-[#0354EC] underline underline-offset-2  md:pb-[21px] md:text-[8.4px]  lg:pb-[24.5px] lg:text-[9.8px] xl:pb-[28px] xl:text-[11.2px] 2xl:pb-[35px] 2xl:text-[14px]">
-                  <div
+                  {/* <div
                     className=" cursor-pointer "
                     onClick={() => {
                       handleEdit(
@@ -245,7 +283,7 @@ const Dashboard = () => {
                     }}
                   >
                     Edit
-                  </div>
+                  </div> */}
                 </td>
               </tr>
             ))}
