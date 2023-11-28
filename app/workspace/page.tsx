@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import ScrollUp from '@/components/Common/ScrollUp'
-import Testing from '@/components/Testing'
+import Login from '@/components/Login'
+import Workspace from '@/components/Workspace'
 import { Inter } from '@next/font/google'
 // import NewTask from '@/components/NewTask'
 
@@ -10,7 +11,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Tasks() {
   return (
     <>
-      <Testing />
+      <ScrollUp />
+      <Workspace />
     </>
   )
 }

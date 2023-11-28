@@ -216,8 +216,8 @@ const LateralNav = ({ onValueChange }) => {
       push(
         `${
           process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/start-here`
-            : `/start-here`
+            ? `/xnode/workspace`
+            : `/workspace`
         }`,
       )
       setNext(true)
