@@ -405,7 +405,7 @@ const Header = () => {
   //   )
   // }
 
-  if ((next || nextFromScratch) && !reviewYourBuild) {
+  if (pathname.includes('/workspace') && !reviewYourBuild) {
     return (
       <>
         <header className="top-0 left-0 z-40 mx-0 w-full items-center bg-[#fff] px-[17px] pt-[7px]  text-[#000000] md:px-[20px] md:pt-[8px]  lg:px-[23px] lg:pt-[9px] xl:px-[26px] xl:pt-[10.5px] xl:pb-[27.8px] 2xl:px-[33px] 2xl:pt-[13px] 2xl:pb-[46px]">
@@ -604,7 +604,13 @@ const Header = () => {
                   ) : (
                     <div
                       onClick={() => {
-                        setReviewYourBuild(true)
+                        push(
+                          `${
+                            process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                              ? `/xnode/review-your-build`
+                              : `/review-your-build`
+                          }`,
+                        )
                       }}
                       className="flex h-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center  text-[#fff] hover:bg-[#203b6e]   md:py-[7.5px] md:px-[12.5px]    lg:py-[8.75px]  lg:px-[14.5px]  xl:py-[10px] xl:px-[17px]  2xl:gap-x-[10px] 2xl:py-[10px] 2xl:px-[21px]"
                     >

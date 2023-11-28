@@ -9,6 +9,7 @@ import ReviewYourBuild from '../ReviewYourBuild'
 import Signup from '../Signup'
 import Connections from '../Connections'
 import FinalBuild from '../FinalBuild'
+import { useRouter } from 'next/navigation'
 
 /* eslint-disable react/no-unescaped-entities */
 const StartHere = ({ onValueChange }) => {
@@ -29,6 +30,7 @@ const StartHere = ({ onValueChange }) => {
     setFinalNodes,
     signup,
   } = useContext(AccountContext)
+  const { push } = useRouter()
 
   const preSetsOptions = [
     {
@@ -195,6 +197,13 @@ const StartHere = ({ onValueChange }) => {
       setXnodeType('validator')
     }
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    push(
+      `${
+        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+          ? `/xnode/workspace`
+          : `/workspace`
+      }`,
+    )
   }
 
   function handleNextFromScratch() {
