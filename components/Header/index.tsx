@@ -667,11 +667,14 @@ const Header = () => {
                   </div>
                 ) : (
                   <a
-                    href={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `/xnode/login`
-                        : `${'/login'}`
-                    }`}
+                    // href={`${
+                    //   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    //     ? `/xnode/login`
+                    //     : `${'/login'}`
+                    // }`}
+                    onClick={() => {
+                      console.log(next)
+                    }}
                     className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
                   >
                     Login
@@ -908,11 +911,14 @@ const Header = () => {
               </div>
             ) : (
               <a
-                href={`${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? `/xnode/login`
-                    : '/login'
-                }`}
+                // href={`${
+                //   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                //     ? `/xnode/login`
+                //     : '/login'
+                // }`}
+                onClick={() => {
+                  console.log(next)
+                }}
                 className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
               >
                 Login
