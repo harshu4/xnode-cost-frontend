@@ -151,6 +151,7 @@ const Header = () => {
       try {
         await axios(config).then(function (response) {
           if (response.data) {
+            console.log('set next false yes')
             setNext(false)
             setNextFromScratch(false)
             toast.success(`Success`)
@@ -667,14 +668,11 @@ const Header = () => {
                   </div>
                 ) : (
                   <a
-                    // href={`${
-                    //   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    //     ? `/xnode/login`
-                    //     : `${'/login'}`
-                    // }`}
-                    onClick={() => {
-                      console.log(next)
-                    }}
+                    href={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? `/xnode/login`
+                        : `${'/login'}`
+                    }`}
                     className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
                   >
                     Login
@@ -911,14 +909,11 @@ const Header = () => {
               </div>
             ) : (
               <a
-                // href={`${
-                //   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                //     ? `/xnode/login`
-                //     : '/login'
-                // }`}
-                onClick={() => {
-                  console.log(next)
-                }}
+                href={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? `/xnode/login`
+                    : '/login'
+                }`}
                 className=" my-auto h-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
               >
                 Login
