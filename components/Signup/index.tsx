@@ -31,6 +31,7 @@ const Signup = () => {
     setReviewYourBuild,
     setFinalBuild,
     finalNodes,
+    setSignup,
     user,
     setUser,
   } = useContext(AccountContext)
@@ -78,28 +79,48 @@ const Signup = () => {
               <EquinixConnection />
             </div>
           )}
+          <div className="flex gap-x-[25px]">
+            <div
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setSignup(false)
+              }}
+              className="mt-[41px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#787d86] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#5d6066] md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px]  lg:px-[14.5px] lg:text-[10px]   xl:mt-[65px] xl:py-[10px]    xl:px-[17px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]"
+            >
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/header/arrow-left-new.svg`}
+                alt="image"
+                className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[12px]`}
+              />
+              <div>Back</div>
+            </div>
 
-          <div
-            onClick={() => {
-              console.log(finalNodes)
-              handleFinalBuild()
-            }}
-            className={`mt-[41px] flex h-fit w-fit justify-center gap-x-[8px] rounded-[5px] ${
-              !user
-                ? 'bg-[#578ae9]'
-                : 'cursor-pointer bg-[#0354EC] hover:bg-[#0e2e69] '
-            } py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px]  lg:px-[14.5px] lg:text-[10px]   xl:mt-[65px] xl:py-[10px]    xl:px-[17px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]`}
-          >
-            <img
-              src={`${
-                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                  ? process.env.NEXT_PUBLIC_BASE_PATH
-                  : ''
-              }/images/header/storm.svg`}
-              alt="image"
-              className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
-            />
-            <div>Finalize the deployment</div>
+            <div
+              onClick={() => {
+                console.log(finalNodes)
+                handleFinalBuild()
+              }}
+              className={`mt-[41px] flex h-fit w-fit justify-center gap-x-[8px] rounded-[5px] ${
+                !user
+                  ? 'bg-[#578ae9]'
+                  : 'cursor-pointer bg-[#0354EC] hover:bg-[#0e2e69] '
+              } py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[49px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[57px] lg:py-[8.75px]  lg:px-[14.5px] lg:text-[10px]   xl:mt-[65px] xl:py-[10px]    xl:px-[17px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[21px] 2xl:text-[14px]`}
+            >
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/header/storm.svg`}
+                alt="image"
+                className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+              />
+              <div>Finalize the deployment</div>
+            </div>
           </div>
         </div>
       </section>

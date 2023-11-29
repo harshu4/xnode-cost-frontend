@@ -48,8 +48,15 @@ const SubBarServers = ({ onValueChange }) => {
         '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px] !-left-[10px]',
     },
     {
+      title: 'Local (Coming soon...)',
+      enabled: false,
+      src: '/images/subNavBarServers/local.svg',
+      pageRef: '/data-product/2e762548-ec51-48c8-aa07-10b9eae87ee4',
+      style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',
+    },
+    {
       title: 'AWS (Centralized)',
-      enabled: true,
+      enabled: false,
       src: '/images/subNavBarServers/aws.svg',
       pageRef: '/data-product/2e762548-ec51-48c8-aa07-10b9eae87ee4',
       style: '2xl:w-[22px] xl:w-[17.5px] lg:w-[15.5px]  md:w-[13.2px] w-[11px]',

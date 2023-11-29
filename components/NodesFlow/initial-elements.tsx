@@ -57,7 +57,7 @@ export const nodes = [
   },
   {
     id: '13',
-    type: 'data',
+    type: 'dataStreaming',
     position: { x: 150, y: 150 },
     data: {
       selects: {
@@ -91,19 +91,19 @@ export const nodes = [
       icon: '/images/subNavBarUtility/grafana.svg',
     },
   },
-  {
-    id: '15',
-    type: 'rpc',
-    position: { x: 150, y: 150 },
-    data: {
-      selects: {
-        'handle-0': 'smoothstep',
-        'handle-1': 'smoothstep',
-      },
-      name: 'ValidationCloud',
-      icon: '/images/subNavBarRPC/validateCloud.svg',
-    },
-  },
+  // {
+  //   id: '15',
+  //   type: 'rpc',
+  //   position: { x: 150, y: 150 },
+  //   data: {
+  //     selects: {
+  //       'handle-0': 'smoothstep',
+  //       'handle-1': 'smoothstep',
+  //     },
+  //     name: 'ValidationCloud',
+  //     icon: '/images/subNavBarRPC/validateCloud.svg',
+  //   },
+  // },
   {
     id: '16',
     type: 'analytics',

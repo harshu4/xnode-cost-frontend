@@ -183,7 +183,7 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
           ))}
         </div> */}
         {listOfCategorizedItems}
-        <div
+        {/* <div
           onClick={() => {
             setSelectionSideNavBar('Data')
             window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -191,7 +191,7 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
           className="mt-[20px] cursor-pointer pl-[5px] text-[7.5px] font-medium text-[#0354EC] md:mt-[24px] md:text-[8.5px] lg:mt-[28px] lg:text-[10px] xl:mt-[32px] xl:text-[11.2px] 2xl:mt-[40px] 2xl:text-[14px]"
         >
           Add
-        </div>
+        </div> */}
         <Handle type="source" position={Position.Right} id={'1'} />
       </div>
     </>
