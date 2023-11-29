@@ -874,20 +874,16 @@ const Header = () => {
             {user?.sessionToken ? (
               <div>
                 <img
-                  src={
-                    !user.profilePictureHash
-                      ? `${
-                          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                            ? process.env.NEXT_PUBLIC_BASE_PATH
-                            : ''
-                        }/images/header/user-circle.svg`
-                      : `https://cloudflare-ipfs.com/ipfs/${user.profilePictureHash}`
-                  }
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/lateralNavBar/profile2.svg`}
                   alt="image"
                   onClick={() => {
                     setUserNavbarOpen(!userNavbarOpen)
                   }}
-                  className={`mr-[15px] h-[50px] w-[50px] cursor-pointer rounded-[100%] 2xl:mr-[15px]`}
+                  className={`mr-[15px] w-[15px] cursor-pointer xl:w-[20px] 2xl:mr-[15px] 2xl:w-[25px]`}
                 />
                 <nav
                   className={`navbar absolute right-[100px] z-50 flex w-[150px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-1 pl-[15px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
