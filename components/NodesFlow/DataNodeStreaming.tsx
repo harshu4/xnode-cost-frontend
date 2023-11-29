@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { memo, useState, useContext } from 'react'
+import React, { memo, useState, useContext, useEffect } from 'react'
 import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow'
 import { AccountContext } from '@/contexts/AccountContext'
 import withProps from './withProps'
+import { categoriesOptions } from '@/utils/constants'
 
 const options = [
   {
@@ -88,54 +89,76 @@ function Options({ handleId, name, optionsSelection }) {
 
 function DataNodeStreaming({ id, data, handleNodeRemove }) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true)
-  const { selectionSideNavBar, setSelectionSideNavBar, changeNodes } =
+  const [selectedItemsS, setSelectedItemsS] = useState<any>(data.lists)
+  const { selectionSideNavBar, changeNodes, setChangeNodes } =
     useContext(AccountContext)
   const handleClick = () => {
     handleNodeRemove(id)
   }
 
-  const selectedItems = data.lists
+  useEffect(() => {
+    setSelectedItemsS(data.lists)
+    if (data.lists.length > 0 && data.lists[0].icon !== 'dataOption.icon') {
+      console.log('sim data lsit maior q zero')
+      console.log(data.lists)
+      console.log(data.lists[0])
+      setChangeNodes({
+        type: 'dataStreaming',
+        name: 'dataOption.title',
+        icon: 'dataOption.icon',
+        categorie: 'option.title',
+        dictionary: categoriesOptions,
+      })
+    }
+  }, [data.lists])
 
   /* This is for rendering pourposes, use data.lists for real data as it shows the correct amount of items but uncategorized. You can see some duplicated items in multiple categories because of the current mockupdata,
    it will be different as we add real data.
    */
-  const categoriesDictionary = changeNodes?.dictionary
-  const listOfCategorizedItems = categoriesDictionary?.map((category) => {
-    const selectedCategoryItems =
-      selectedItems.filter((item) =>
-        category?.dataOptions?.some((option) => option.title === item.title),
-      ) || []
-    if (selectedCategoryItems.length > 0) {
-      return (
-        <div key={category.title}>
-          <div>{category.title}</div>
-          {selectedCategoryItems.map((item) => (
-            <div
-              key={item.title}
-              className="relative  flex cursor-pointer text-[#000]"
-            >
-              <div className="mt-[10px] ml-[10px] mb-[10px] flex gap-x-[9px] text-[7.5px] font-normal hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
-                <img
-                  src={`${
-                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                      ? process.env.NEXT_PUBLIC_BASE_PATH
-                      : ''
-                  }${item.icon}`}
-                  alt="image"
-                  className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
-                />
-                <div className="cursor-pointer">{item.title}</div>
-                <div className="absolute top-[10px] font-medium text-[#0354EC] xl:-right-[35px] 2xl:-right-[45px]">
-                  Edit
+  function renderCategorizedItems() {
+    const selectedItems = data.lists
+
+    const categoriesDictionary = changeNodes?.dictionary
+    const listOfCategorizedItems = categoriesDictionary?.map((category) => {
+      const selectedCategoryItems =
+        selectedItems?.filter((item) =>
+          category?.dataOptions?.some((option) => option.title === item.title),
+        ) || []
+      if (selectedCategoryItems.length > 0) {
+        return (
+          <div key={category.title}>
+            <div>{category.title}</div>
+            {selectedCategoryItems.map((item) => (
+              <div
+                key={item.title}
+                className="relative  flex cursor-pointer text-[#000]"
+              >
+                <div className="mt-[10px] ml-[10px] mb-[10px] flex gap-x-[9px] text-[7.5px] font-normal hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
+                  <img
+                    src={`${
+                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                        ? process.env.NEXT_PUBLIC_BASE_PATH
+                        : ''
+                    }${item.icon}`}
+                    alt="image"
+                    className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
+                  />
+                  <div className="cursor-pointer">{item.title}</div>
+                  <div className="absolute top-[10px] font-medium text-[#0354EC] xl:-right-[35px] 2xl:-right-[45px]">
+                    Edit
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )
-    }
-    return null
-  })
+            ))}
+          </div>
+        )
+      }
+      // eslint-disable-next-line react/jsx-key
+      return <div></div>
+    })
+    return listOfCategorizedItems
+  }
+
   return (
     <>
       <div className="relative rounded-[20px] border-[0.5px] border-[#C1C1C1] bg-[#fff] py-[7px]  px-[10px]  pb-[23px] pr-[33px] text-[8px]  text-[#000] md:py-[8.4px] md:px-[12px] md:pb-[15.6px] md:pr-[46px] md:text-[9.6px] lg:py-[10px] lg:px-[14px] lg:pb-[18px] lg:pr-[53px] lg:text-[11.2px] xl:py-[11.2px] xl:px-[16px] xl:pb-[21px] xl:pr-[61px] xl:text-[12.8px] 2xl:py-[14px] 2xl:px-[20px] 2xl:pb-[46px] 2xl:pr-[77px] 2xl:text-[16px]">
@@ -162,6 +185,7 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
           <div className="mt-[5px] text-[16px] font-bold md:mt-[6px] lg:mt-[7px] lg:!leading-[19px] xl:mt-[8px] 2xl:mt-[10px]">
             Streaming Data
           </div>
+          {/* {JSON.stringify(data.lists)} */}
         </div>
         <div className="absolute left-0 h-[0.5px] w-full bg-[#C1C1C1] lg:mt-[10px] 2xl:mt-[12px]"></div>
         <div className="text-[7px] md:text-[8.4px] lg:mt-[20px] lg:text-[10px] xl:mt-[24px] xl:text-[11.2px] 2xl:mt-[30px] 2xl:text-[14px]"></div>
@@ -182,7 +206,7 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
             </div>
           ))}
         </div> */}
-        {listOfCategorizedItems}
+        {renderCategorizedItems()}
         {/* <div
           onClick={() => {
             setSelectionSideNavBar('Data')
