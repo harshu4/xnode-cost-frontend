@@ -52,6 +52,7 @@ import StorageNode from './StorageNode'
 import DataManagementNode from './DataManagementNode'
 import ComputeNode from './ComputeNode'
 import TradingNode from './TradingNode'
+import { categoriesOptions } from '@/utils/constants'
 // const getNodeTypes = (handleNodeRemove): NodeTypes => ({
 //   custom: CustomNode,
 //   server: ServerNode,
@@ -88,7 +89,7 @@ const onInit = (reactFlowInstance) =>
 
 const NodesFlow = ({ ...dataM }: ModalProps) => {
   const handleNodeRemove = (nodeIdToRemove) => {
-    if (xnodeType === 'validator') {
+    if (xnodeType !== 'validator') {
       setNodes((prevNodes) =>
         prevNodes.filter((node) => node.id !== nodeIdToRemove),
       )
@@ -109,6 +110,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setTagXnode,
     setSignup,
     setFinalBuild,
+    setChangeNodes,
     selectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [nodes, setNodes, onNodesChange] = useNodesState<any>(
@@ -666,6 +668,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
         edges={edgesWithUpdatedTypes}
         onNodesChange={(value) => {
           console.log('chamado fuii')
+          console.log(nodesAmounts)
           // validator type of nodes cannot be edited
           if (xnodeType !== 'validator') {
             console.log('entrei nao')
