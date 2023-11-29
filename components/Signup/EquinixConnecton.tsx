@@ -95,13 +95,13 @@ const EquinixConnection = () => {
             onMouseLeave={() => setShowTooltipCloudProvider(false)}
           />
           {showTooltipCloudProvider && (
-            <div className="absolute left-[130px] top-[0px] w-full max-w-[270px]  rounded-[10px] bg-[#000] px-[13px] py-[10px] text-[8px] font-medium text-[#fff] md:left-[162px] md:px-[15px] md:py-[12px] md:text-[9px] lg:left-[189px] lg:px-[17px] lg:py-[14px] lg:text-[11px] lg:!leading-[19px] xl:left-[216px] xl:px-[20px] xl:py-[16px] xl:text-[13px] 2xl:left-[270px] 2xl:px-[25px] 2xl:py-[20px] 2xl:text-[16px]">
+            <div className="absolute left-[0px] top-[40px] w-full max-w-[270px]  rounded-[10px] bg-[#000] px-[13px] py-[10px] text-[8px] font-medium text-[#fff] md:left-[162px] md:px-[15px] md:py-[12px] md:text-[9px] lg:left-[189px] lg:px-[17px] lg:py-[14px] lg:text-[11px] lg:!leading-[19px] xl:left-[216px] xl:px-[20px] xl:py-[16px] xl:text-[13px] 2xl:left-[500px] 2xl:px-[25px] 2xl:py-[20px] 2xl:text-[16px]">
               <div>If you have any third party that needs connection</div>
             </div>
           )}
         </div>
         <div className="mt-[56px] ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
-          <div>
+          <div className="flex gap-x-[50px]">
             <img
               src={`${
                 process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -111,7 +111,13 @@ const EquinixConnection = () => {
               alt="image"
               className="w-[145px] md:w-[174px] lg:w-[203px] xl:w-[232px] 2xl:w-[290px]"
             />{' '}
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+              <div className="cursor-pointer text-[10px] text-[#0354EC] hover:text-[#0243bb] xl:text-[12px]">
+                How to get my API key?
+              </div>
+            </a>
           </div>
+
           {isEditing && (
             <div>
               <div className="mt-[25px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">

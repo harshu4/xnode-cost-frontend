@@ -7,6 +7,12 @@ interface ModalProps {
 }
 
 const YourCore = ({ ...data }: ModalProps) => {
+  const finalData = data.coreServices.filter((service) =>
+    thirds.includes(service.name),
+  )
+  if (finalData.length === 0) {
+    return
+  }
   return (
     <div className="relative flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] xl:pb-[360px] 2xl:px-[20px] 2xl:py-[15px] 2xl:pb-[100px]">
       <div className="relative flex gap-x-[10px]">

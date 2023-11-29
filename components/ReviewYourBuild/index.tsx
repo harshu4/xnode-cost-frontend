@@ -103,7 +103,11 @@ const ReviewYourBuild = () => {
             description: nameToDesc[node.data.name] || '',
             isFree: nameToFree[node.data.name] || false,
           })
-        } else if (node.type === 'data') {
+        } else if (node.type === 'dataStreaming') {
+          for (let j = 0; j < node.data?.lists.length; j++) {
+            coreServiceDataArray.push(node.data.lists[j].title)
+          }
+        } else if (node.type === 'dataHistorical') {
           for (let j = 0; j < node.data?.lists.length; j++) {
             coreServiceDataArray.push(node.data.lists[j].title)
           }
@@ -111,6 +115,7 @@ const ReviewYourBuild = () => {
           coreServiceApiArray.push(node.data.name)
         }
       }
+
       setCoreServices(coreServicesArray)
       setCoreServicesData(coreServiceDataArray)
       setCoreServicesApi(coreServiceApiArray)
@@ -149,7 +154,11 @@ const ReviewYourBuild = () => {
             description: nameToDesc[node.data.name] || '',
             isFree: nameToFree[node.data.name] || false,
           })
-        } else if (node.type === 'data') {
+        } else if (node.type === 'dataStreaming') {
+          for (let j = 0; j < node.data?.lists.length; j++) {
+            coreServiceDataArray.push(node.data.lists[j].title)
+          }
+        } else if (node.type === 'dataHistorical') {
           for (let j = 0; j < node.data?.lists.length; j++) {
             coreServiceDataArray.push(node.data.lists[j].title)
           }
@@ -195,6 +204,7 @@ const ReviewYourBuild = () => {
               coreServicesData={coreServicesData}
               onValueChange={() => setReviewYourBuild(false)}
             />
+            {}
             <AddOns2
               coreServices={coreServices}
               onValueChange={() => setReviewYourBuild(false)}
