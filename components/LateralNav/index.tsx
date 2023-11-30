@@ -407,9 +407,9 @@ const LateralNav = ({ onValueChange }) => {
               className={`relative flex w-full flex-row items-center justify-between gap-[7.5px] px-[13px] py-[10px] md:gap-[9px] md:px-[20px]  md:py-[12px]  lg:gap-[10.5px] lg:px-[23px] lg:py-[14px] xl:gap-[12px] xl:px-[26.4px] xl:py-[16px] 2xl:gap-[15px] 2xl:px-[33px]  2xl:py-[20px] ${
                 // !next &&
                 // !nextFromScratch &&
-                option.title !== 'Home' && option.title !== 'Workspace' && !user
-                  ? 'w-full opacity-50 hover:bg-[#fff]'
-                  : 'cursor-pointer hover:bg-[#F4F4F4]'
+                // option.title !== 'Home' && option.title !== 'Workspace' && !user
+                //   ? 'w-full opacity-50 hover:bg-[#fff]':
+                'cursor-pointer hover:bg-[#F4F4F4]'
               } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
             >
               <img
