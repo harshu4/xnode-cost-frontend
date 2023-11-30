@@ -278,11 +278,7 @@ const DataProduct = (id: any) => {
               <div className="">
                 {data.logoURL ? (
                   <img
-                    src={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? process.env.NEXT_PUBLIC_BASE_PATH
-                        : ''
-                    }${data.logoURL}`}
+                    src={`${data.logoURL}`}
                     alt="image"
                     className={`mx-auto flex h-[30px] w-[30px] rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] lg:h-[40px] lg:w-[40px] lg:p-[7px] 2xl:h-[77px] 2xl:w-[77px]`}
                   />
@@ -548,15 +544,7 @@ const DataProduct = (id: any) => {
                   </div>
                 )}
 
-                <a
-                  href={`${
-                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                      ? `/xnode/${data.website}`
-                      : `${data.website}`
-                  }`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={`${data.website}`} target="_blank" rel="noreferrer">
                   <div className="mt-[12.5px] text-[7px] font-semibold text-[#B7B7B7] underline underline-offset-1 hover:text-[#a3a3a3] md:mt-[17.5px] md:text-[10px] lg:mt-[20px] lg:text-[12px] lg:!leading-[17px] 2xl:mt-[25px] 2xl:text-[14px]">
                     Website
                   </div>
