@@ -111,6 +111,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setSignup,
     updateDataNode,
     setFinalBuild,
+    removeNodes,
     setChangeNodes,
     selectCurrentMenuDataType,
   } = useContext(AccountContext)
@@ -697,6 +698,71 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
 
     setIsInitialized(true)
   }, [])
+
+  useEffect(() => {
+    if (removeNodes[1] === 'dataStreaming') {
+      const existingNodeIndex = nodes.findIndex(
+        (node) =>
+          node.type === 'dataStreaming' &&
+          node.data.lists &&
+          node.data.lists.length > 0,
+      )
+      if (existingNodeIndex !== -1) {
+        const existingNode = nodes[existingNodeIndex]
+        const filteredLists = existingNode.data.lists.filter(
+          (data) => data.title !== removeNodes[0],
+        )
+        if (filteredLists.length === existingNode.data.lists.length) {
+          return
+        }
+        const updatedNode = {
+          ...existingNode,
+          data: {
+            ...existingNode.data,
+            lists: filteredLists,
+          },
+        }
+        const updatedNodes = nodes.map((node, index) =>
+          index === existingNodeIndex ? updatedNode : node,
+        )
+        setNodes(updatedNodes)
+      }
+    }
+    if (removeNodes[1] === 'dataHistorical') {
+      const existingNodeIndex = nodes.findIndex(
+        (node) =>
+          node.type === 'dataHistorical' &&
+          node.data.lists &&
+          node.data.lists.length > 0,
+      )
+
+      if (existingNodeIndex !== -1) {
+        const existingNode = nodes[existingNodeIndex]
+
+        const filteredLists = existingNode.data.lists.filter(
+          (data) => data.title !== removeNodes[0],
+        )
+
+        if (filteredLists.length === existingNode.data.lists.length) {
+          return
+        }
+
+        const updatedNode = {
+          ...existingNode,
+          data: {
+            ...existingNode.data,
+            lists: filteredLists,
+          },
+        }
+
+        const updatedNodes = nodes.map((node, index) =>
+          index === existingNodeIndex ? updatedNode : node,
+        )
+
+        setNodes(updatedNodes)
+      }
+    }
+  }, [removeNodes])
 
   return (
     <div className="relative h-[1500px] w-[750px] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px]">

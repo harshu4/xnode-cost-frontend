@@ -90,7 +90,7 @@ function Options({ handleId, name, optionsSelection }) {
 function DataNodeHistorical({ id, data, handleNodeRemove }) {
   const [isHelpOpen, setIsHelpOpen] = useState<boolean>(true)
   const [selectedItemsS, setSelectedItemsS] = useState<any>(data.lists)
-  const { selectionSideNavBar, setChangeNodes, changeNodes } =
+  const { selectionSideNavBar, setChangeNodes, changeNodes, setRemoveNodes } =
     useContext(AccountContext)
   const handleClick = () => {
     handleNodeRemove(id)
@@ -139,8 +139,13 @@ function DataNodeHistorical({ id, data, handleNodeRemove }) {
                     className={`w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]`}
                   />
                   <div className="cursor-pointer">{item.title}</div>
-                  <div className="absolute top-[10px] font-medium text-[#0354EC] xl:-right-[35px] 2xl:-right-[45px]">
-                    Edit
+                  <div
+                    onClick={() => {
+                      setRemoveNodes([item.title, 'dataHistorical'])
+                    }}
+                    className="hover: absolute top-[10px] text-[8px] font-bold text-[#000] hover:text-[#686868] xl:-right-[35px] 2xl:-right-[45px] 2xl:text-[10px]"
+                  >
+                    X
                   </div>
                 </div>
               </div>

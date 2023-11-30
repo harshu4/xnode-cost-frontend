@@ -15,6 +15,7 @@ const SubBarData = ({ onValueChange }) => {
     next,
     setNext,
     setChangeNodes,
+    setRemoveNodes,
     setselectCurrentMenuDataType,
   } = useContext(AccountContext)
   const [selectionSubBar, setSelectionSubBar] = useState<string>('')
