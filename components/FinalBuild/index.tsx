@@ -227,9 +227,17 @@ const ReviewYourBuild = () => {
             description: nameToDesc[node.data.name] || '',
             isFree: nameToFree[node.data.name] || false,
           })
-        } else if (node.type === 'data') {
+        } else if (node.type === 'dataStreaming') {
           for (let j = 0; j < node.data?.lists.length; j++) {
-            coreServiceDataArray.push(node.data.lists[j].title)
+            if (node.data.lists[j].title !== 'dataOption.title') {
+              coreServiceDataArray.push(node.data.lists[j].title)
+            }
+          }
+        } else if (node.type === 'dataHistorical') {
+          for (let j = 0; j < node.data?.lists.length; j++) {
+            if (node.data.lists[j].title !== 'dataOption.title') {
+              coreServiceDataArray.push(node.data.lists[j].title)
+            }
           }
         } else if (node.type === 'api') {
           coreServiceApiArray.push(node.data.name)

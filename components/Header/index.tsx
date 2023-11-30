@@ -61,6 +61,7 @@ const Header = () => {
     setXnodeType,
     xnodeType,
     setFinalNodes,
+    setUpdateDataNode,
   } = useContext(AccountContext)
 
   // submenu handler
@@ -575,6 +576,7 @@ const Header = () => {
                             pathname.includes('/workspace') &&
                             !reviewYourBuild
                           ) {
+                            setUpdateDataNode('hey')
                             push(
                               `${
                                 process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'

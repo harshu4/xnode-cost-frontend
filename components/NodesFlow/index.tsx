@@ -109,6 +109,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setXnodeType,
     setTagXnode,
     setSignup,
+    updateDataNode,
     setFinalBuild,
     setChangeNodes,
     selectCurrentMenuDataType,
@@ -582,6 +583,42 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
       }
     }
   }, [changeNodes])
+
+  useEffect(() => {
+    console.log('heyyy chamado fui')
+    const existingNodeIndex = nodes.findIndex(
+      (node) =>
+        node.type === 'dataStreaming' &&
+        node.data.lists &&
+        node.data.lists.length > 0,
+    )
+
+    if (existingNodeIndex !== -1) {
+      const existingNode = nodes[existingNodeIndex]
+
+      const filteredLists = existingNode.data.lists.filter(
+        (data) => data.title !== 'dataOption.title',
+      )
+
+      if (filteredLists.length === existingNode.data.lists.length) {
+        return
+      }
+
+      const updatedNode = {
+        ...existingNode,
+        data: {
+          ...existingNode.data,
+          lists: filteredLists,
+        },
+      }
+
+      const updatedNodes = nodes.map((node, index) =>
+        index === existingNodeIndex ? updatedNode : node,
+      )
+
+      setNodes(updatedNodes)
+    }
+  }, [updateDataNode])
 
   const nodesToAdd = [...nodes]
 
