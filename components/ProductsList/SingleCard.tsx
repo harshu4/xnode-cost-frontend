@@ -59,6 +59,9 @@ const SingleCard = ({
 
   // Implement workflwo to add a product into the workspace, first check if already has a localstorage with savedNodes, then add the new node
   function handleAddProduct(title: string) {
+    console.log('aqui a minha url nmow')
+    console.log(logoURL)
+
     setIsLoading(true)
     let finalNodes = []
     const savedNodes = localStorage.getItem('nodes')
@@ -172,11 +175,7 @@ const SingleCard = ({
       <div className="flex-grow-1 h-[52px] w-[52px] 2xl:h-[64px] 2xl:w-[64px] ">
         {logoURL ? (
           <img
-            src={`${
-              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                ? process.env.NEXT_PUBLIC_BASE_PATH
-                : ''
-            }${logoURL}`}
+            src={`${logoURL}`}
             alt="image"
             className={`mx-auto flex rounded-[5px] p-[3px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]`}
           />
