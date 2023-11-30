@@ -116,12 +116,10 @@ function DataNodeStreaming({ id, data, handleNodeRemove }) {
    it will be different as we add real data.
    */
   function renderCategorizedItems() {
-    const selectedItems = data.lists
-
     const categoriesDictionary = changeNodes?.dictionary
     const listOfCategorizedItems = categoriesDictionary?.map((category) => {
       const selectedCategoryItems =
-        selectedItems?.filter((item) =>
+        selectedItemsS?.filter((item) =>
           category?.dataOptions?.some((option) => option.title === item.title),
         ) || []
       if (selectedCategoryItems.length > 0) {

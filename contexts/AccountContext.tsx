@@ -44,6 +44,9 @@ interface CreateUserContextProps {
   xnodeType: string
   setXnodeType: (value: string) => void
 
+  updateDataNode: string
+  setUpdateDataNode: (value: string) => void
+
   finalNodes: any
   setFinalNodes: (value: any) => void
 
@@ -91,6 +94,7 @@ export default function AccountContextProvider({
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
   const [xnodeType, setXnodeType] = useState<string>()
+  const [updateDataNode, setUpdateDataNode] = useState<string>('')
   const [projectName, setProjectName] = useState('Project Name')
   const [selectCurrentMenuDataType, setselectCurrentMenuDataType] =
     useState<string>('')
@@ -128,6 +132,8 @@ export default function AccountContextProvider({
         setUser,
         next,
         setNext,
+        updateDataNode,
+        setUpdateDataNode,
         nextFromScratch,
         setNextFromScratch,
         reviewYourBuild,
