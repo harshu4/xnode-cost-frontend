@@ -80,6 +80,9 @@ interface CreateUserContextProps {
   changeNodes: any
   setChangeNodes: (value: any) => void
 
+  removeNodes: any
+  setRemoveNodes: (value: any) => void
+
   user: UserProps | undefined
   setUser: (user: UserProps | undefined) => void
 }
@@ -91,6 +94,7 @@ export default function AccountContextProvider({
 }: CreateContextProps) {
   const [user, setUser] = useState<UserProps>()
   const [changeNodes, setChangeNodes] = useState()
+  const [removeNodes, setRemoveNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
     useState<string>('Start here')
   const [xnodeType, setXnodeType] = useState<string>()
@@ -152,6 +156,8 @@ export default function AccountContextProvider({
         connections,
         changeNodes,
         setChangeNodes,
+        removeNodes,
+        setRemoveNodes,
       }}
     >
       {children}
