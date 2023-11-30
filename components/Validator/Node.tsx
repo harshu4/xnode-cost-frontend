@@ -58,7 +58,7 @@ const Node = ({ ...data }: ModalProps) => {
             <div className="flex items-center">
               <div>
                 <div className="h-fit text-[8px] font-bold md:text-[10px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
-                  Validator Node #${data.node.id}
+                  Validator Node #{data.node.id}
                 </div>
                 <div className="mt-[4px] h-fit text-[7px] font-normal md:text-[8px] lg:text-[10px] xl:text-[11px] 2xl:text-[14px]">
                   {' '}
