@@ -700,66 +700,68 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   }, [])
 
   useEffect(() => {
-    if (removeNodes[1] === 'dataStreaming') {
-      const existingNodeIndex = nodes.findIndex(
-        (node) =>
-          node.type === 'dataStreaming' &&
-          node.data.lists &&
-          node.data.lists.length > 0,
-      )
-      if (existingNodeIndex !== -1) {
-        const existingNode = nodes[existingNodeIndex]
-        const filteredLists = existingNode.data.lists.filter(
-          (data) => data.title !== removeNodes[0],
+    if (removeNodes && removeNodes.length > 0) {
+      if (removeNodes[1] === 'dataStreaming') {
+        const existingNodeIndex = nodes.findIndex(
+          (node) =>
+            node.type === 'dataStreaming' &&
+            node.data.lists &&
+            node.data.lists.length > 0,
         )
-        if (filteredLists.length === existingNode.data.lists.length) {
-          return
+        if (existingNodeIndex !== -1) {
+          const existingNode = nodes[existingNodeIndex]
+          const filteredLists = existingNode.data.lists.filter(
+            (data) => data.title !== removeNodes[0],
+          )
+          if (filteredLists.length === existingNode.data.lists.length) {
+            return
+          }
+          const updatedNode = {
+            ...existingNode,
+            data: {
+              ...existingNode.data,
+              lists: filteredLists,
+            },
+          }
+          const updatedNodes = nodes.map((node, index) =>
+            index === existingNodeIndex ? updatedNode : node,
+          )
+          setNodes(updatedNodes)
         }
-        const updatedNode = {
-          ...existingNode,
-          data: {
-            ...existingNode.data,
-            lists: filteredLists,
-          },
-        }
-        const updatedNodes = nodes.map((node, index) =>
-          index === existingNodeIndex ? updatedNode : node,
-        )
-        setNodes(updatedNodes)
       }
-    }
-    if (removeNodes[1] === 'dataHistorical') {
-      const existingNodeIndex = nodes.findIndex(
-        (node) =>
-          node.type === 'dataHistorical' &&
-          node.data.lists &&
-          node.data.lists.length > 0,
-      )
-
-      if (existingNodeIndex !== -1) {
-        const existingNode = nodes[existingNodeIndex]
-
-        const filteredLists = existingNode.data.lists.filter(
-          (data) => data.title !== removeNodes[0],
+      if (removeNodes[1] === 'dataHistorical') {
+        const existingNodeIndex = nodes.findIndex(
+          (node) =>
+            node.type === 'dataHistorical' &&
+            node.data.lists &&
+            node.data.lists.length > 0,
         )
 
-        if (filteredLists.length === existingNode.data.lists.length) {
-          return
+        if (existingNodeIndex !== -1) {
+          const existingNode = nodes[existingNodeIndex]
+
+          const filteredLists = existingNode.data.lists.filter(
+            (data) => data.title !== removeNodes[0],
+          )
+
+          if (filteredLists.length === existingNode.data.lists.length) {
+            return
+          }
+
+          const updatedNode = {
+            ...existingNode,
+            data: {
+              ...existingNode.data,
+              lists: filteredLists,
+            },
+          }
+
+          const updatedNodes = nodes.map((node, index) =>
+            index === existingNodeIndex ? updatedNode : node,
+          )
+
+          setNodes(updatedNodes)
         }
-
-        const updatedNode = {
-          ...existingNode,
-          data: {
-            ...existingNode.data,
-            lists: filteredLists,
-          },
-        }
-
-        const updatedNodes = nodes.map((node, index) =>
-          index === existingNodeIndex ? updatedNode : node,
-        )
-
-        setNodes(updatedNodes)
       }
     }
   }, [removeNodes])
