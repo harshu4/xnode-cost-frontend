@@ -63,8 +63,8 @@ const SubBarData = ({ onValueChange }) => {
               <a
                 href={`${
                   process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? `/xnode/data-products`
-                    : `/data-products`
+                    ? `/xnode${dataOption.href}`
+                    : `${dataOption.href}`
                 }`}
               >
                 <div className="cursor-pointer text-[7.5px] font-light text-[#0354EC] underline underline-offset-[2.5px] hover:font-normal md:text-[8.5px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
