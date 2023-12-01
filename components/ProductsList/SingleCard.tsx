@@ -56,6 +56,14 @@ const SingleCard = ({
 
   const serverOptions = ['Equinix', 'AWS']
   const rpcOptions = ['Validationcloud', 'NodeReal']
+  const dataOptions = [
+    'Binance',
+    'Coinbase',
+    'Bybit',
+    'Bitfinex',
+    'Kraken',
+    'Ethereum',
+  ]
 
   // Implement workflwo to add a product into the workspace, first check if already has a localstorage with savedNodes, then add the new node
   function handleAddProduct(title: string) {
@@ -131,6 +139,14 @@ const SingleCard = ({
       } else {
         toast.error('You already have this product in your x-node')
       }
+    } else if (dataOptions.includes(title)) {
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/workspace`
+            : `/workspace`
+        }`,
+      )
     } else {
       const nodeExists = finalNodes.some((node) => node.data.name === title)
 
