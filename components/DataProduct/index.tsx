@@ -228,6 +228,18 @@ const DataProduct = (id: any) => {
     }
   }
 
+  const dataHelpDynamic = {
+    'Developer Docs': data?.linkDevelopersDocs,
+    Products: data?.linkProducts,
+    Careers: data?.linkCareers,
+    Twitter: data?.linkTwitter,
+    Contact: data?.linkContact,
+    'About Us': data?.linkAboutUs,
+    Medium: data?.linkMedium,
+    Linkedin: data?.linkLinkedin,
+    Github: data?.linkGithub,
+  }
+
   if (isLoading) {
     return (
       <section className=" pl-[30px] pr-[30px] pt-[46px] pb-[50px] text-[#000] md:pl-[90px]  md:pr-[130px] lg:min-w-[800px] xl:min-w-[1200px] 2xl:min-w-[1200px]">
@@ -711,42 +723,22 @@ const DataProduct = (id: any) => {
           <div className="mt-[32px] pl-[15px] text-[8px] text-[#000] md:mx-auto md:mt-[44px] md:w-fit md:pl-[14px] md:text-[10px] lg:mt-[50px]  lg:pl-[16px] lg:text-[11px] lg:!leading-[200%] xl:text-[13px] 2xl:mt-[63px] 2xl:pl-[20px] 2xl:text-[16px]">
             <div className="font-bold ">Help</div>
             <div className="mt-[5px] grid gap-y-[12px] font-normal">
-              {Object.entries(dataHelp).map(([key, value], index, array) =>
-                key === 'Overview' ? (
-                  <a
-                    href={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `/xnode/${data?.relevantDocs}`
-                        : `${data?.relevantDocs}`
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={index}
-                  >
-                    <div
-                      className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:border-[#0354EC] hover:text-[#0354EC] lg:!leading-tight`}
+              {Object.entries(dataHelpDynamic).map(
+                ([key, value], index, array) =>
+                  value && (
+                    <a
+                      href={`${`${value}`}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={index}
                     >
-                      {data?.name} Openmesh
-                    </div>
-                  </a>
-                ) : (
-                  <a
-                    href={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `/xnode/${value}`
-                        : `${value}`
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={index}
-                  >
-                    <div
-                      className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:border-[#0354EC] hover:text-[#0354EC] lg:!leading-tight`}
-                    >
-                      {key}
-                    </div>
-                  </a>
-                ),
+                      <div
+                        className={`w-fit cursor-pointer border-b-[1px] border-[#000] hover:border-[#0354EC] hover:text-[#0354EC] lg:!leading-tight`}
+                      >
+                        {key}
+                      </div>
+                    </a>
+                  ),
               )}
             </div>
           </div>

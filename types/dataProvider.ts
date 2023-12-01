@@ -30,4 +30,13 @@ export type DataProvider = {
   company?: string
   popularity?: number
   sql?: string
+  linkDevelopersDocs?: string
+  linkProducts?: string
+  linkCareers?: string
+  linkTwitter?: string
+  linkContact?: string
+  linkAboutUs?: string
+  linkMedium?: string
+  linkLinkedin?: string
+  linkGithub?: string
 }
