@@ -16,6 +16,7 @@ export type Xnode = {
   createdAt: string
   location: string
   updatedAt: string
+  validatorSignature: string
 }
 
 type Stats = {

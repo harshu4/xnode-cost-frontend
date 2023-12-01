@@ -2,6 +2,7 @@
 import React, { createContext, useState } from 'react'
 
 export interface UserProps {
+  id: string
   firstName: string
   lastName: string
   email: string

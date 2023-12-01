@@ -6,6 +6,25 @@ import { Xnode } from '@/types/node'
 import { formatAddress } from '@/utils/functions'
 import { formatDistanceToNow, format } from 'date-fns'
 import { File, SmileySad, Info } from 'phosphor-react'
+import { useEffect, useState, useContext } from 'react'
+import {
+  useWeb3ModalTheme,
+  Web3NetworkSwitch,
+  Web3Button,
+} from '@web3modal/react'
+import { useNetwork, useAccount } from 'wagmi'
+import {
+  readContract,
+  writeContract,
+  prepareWriteContract,
+  waitForTransaction,
+  watchContractEvent,
+  signMessage,
+} from '@wagmi/core'
+import axios from 'axios'
+import { AccountContext } from '@/contexts/AccountContext'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface ModalProps {
   totalValidators: number
@@ -17,6 +36,18 @@ interface ModalProps {
 }
 
 const Node = ({ ...data }: ModalProps) => {
+  const { theme, setTheme } = useWeb3ModalTheme()
+  const { address } = useAccount()
+  const { chain, chains } = useNetwork()
+  const [isChainWrong, setIsChainWrong] = useState(false)
+
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const [showTooltipCloudProvider, setShowTooltipCloudProvider] =
+    useState<boolean>(false)
+
+  const { user } = useContext(AccountContext)
+
   function formatDeadline(dateReceived: string) {
     if (dateReceived) {
       const date = new Date(dateReceived)
@@ -41,6 +72,68 @@ const Node = ({ ...data }: ModalProps) => {
     }
   }
 
+  async function signMessageValidator() {
+    setIsLoading(true)
+    console.log('initiating')
+
+    let signature
+    try {
+      signature = await signMessage({
+        message: 'I want to participate in the Validator beta',
+      })
+    } catch (err) {
+      toast.error('Error during the message signing')
+      setIsLoading(false)
+      return
+    }
+
+    try {
+      await sendMessage({
+        xnodeId: data.node.id,
+        signedMessage: signature,
+      })
+      toast.success('Success')
+      window.location.reload()
+    } catch (err) {
+      toast.error('Error during the message signing backend')
+      setIsLoading(false)
+    }
+  }
+
+  async function sendMessage(data: any) {
+    const config = {
+      method: 'post' as 'post',
+      url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/xnodes/functions/storeXnodeSigningMessage`,
+      headers: {
+        'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,
+        'X-Parse-Session-Token': user.sessionToken,
+        'Content-Type': 'application/json',
+      },
+      data,
+    }
+
+    let dado
+
+    await axios(config).then(function (response) {
+      if (response.data) {
+        dado = response.data
+        // console.log(dado)
+      }
+    })
+
+    return dado
+  }
+
+  useEffect(() => {
+    setIsChainWrong(false)
+    setTheme({
+      themeVariables: {
+        '--w3m-accent-color': '#000000',
+        // ...
+      },
+    })
+  }, [chain, isChainWrong, setTheme, address])
+
   return (
     <section className="mx-auto w-full font-normal text-[#000]">
       <div className="mx-auto flex w-full justify-between gap-x-[20px] xl:w-[1050.4px] 2xl:w-[1313px]">
@@ -58,7 +151,7 @@ const Node = ({ ...data }: ModalProps) => {
             <div className="flex items-center">
               <div>
                 <div className="h-fit text-[8px] font-bold md:text-[10px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
-                  Validator Node #${data.node.id}
+                  Validator Node #{data.node.id}
                 </div>
                 <div className="mt-[4px] h-fit text-[7px] font-normal md:text-[8px] lg:text-[10px] xl:text-[11px] 2xl:text-[14px]">
                   {' '}
@@ -67,7 +160,13 @@ const Node = ({ ...data }: ModalProps) => {
               </div>
             </div>
           </div>
-          <div className="mt-[25px] w-full text-[7px] font-medium text-[#959595] md:mt-[30px] lg:mt-[35px] lg:text-[10px] xl:mt-[40px] xl:max-w-[565px] xl:text-[11.2px] 2xl:mt-[50px] 2xl:max-w-[706px] 2xl:text-[14px]">
+          <div
+            onClick={() => {
+              console.log(user.id)
+              console.log(data.node.openmeshExpertUserId)
+            }}
+            className="mt-[25px] w-full text-[7px] font-medium text-[#959595] md:mt-[30px] lg:mt-[35px] lg:text-[10px] xl:mt-[40px] xl:max-w-[565px] xl:text-[11.2px] 2xl:mt-[50px] 2xl:max-w-[706px] 2xl:text-[14px]"
+          >
             Congratulations! Your validator node is now active, marking a
             significant step towards empowering the Openmesh Network. You have
             become a committed member of a pioneering community dedicated to
@@ -77,25 +176,67 @@ const Node = ({ ...data }: ModalProps) => {
             information asymmetry.
           </div>
         </div>
-        <div className="rounded-[10px]  bg-[#fff] py-[20px] px-[25px] text-center md:py-[24px] md:px-[30px] lg:py-[28px] lg:px-[35px] xl:py-[32px] xl:px-[40px] 2xl:py-[40px] 2xl:px-[50px]">
-          <div className="mx-auto rounded-[5px] border-[1px] border-[#D7D7D7] bg-[#FAFAFA] px-[10px] py-[2px] text-[13px] font-light shadow-[2px_2px_10px_2px_rgba(0,0,0,0.04)] md:text-[16px]  lg:text-[18px]  xl:text-[21px] 2xl:w-[171px] 2xl:text-[26px]">
-            0
-          </div>
-          <div className="mt-[7.5px] text-[6px] md:mt-[9px] md:text-[7.2px] lg:mt-[10.5px] lg:text-[8.4px] xl:mt-[12px] xl:text-[9.6px] 2xl:mt-[15px] 2xl:text-[12px]">
-            Your validator rewards
-          </div>
-          <div className="mt-[22.5px] md:mt-[27px] lg:mt-[31px] xl:mt-[36px] xl:max-w-[149px] 2xl:mt-[45px] 2xl:max-w-[186px]">
-            <div className="text-[5.5px] md:text-[6.6px] lg:text-[7.7px] xl:text-[8.8px] 2xl:text-[11px]">
-              Check if you have the Validator Pass
+        {user && user.id === data.node.openmeshExpertUserId && (
+          <div className="rounded-[10px]  bg-[#fff] py-[20px] px-[25px] text-center md:py-[24px] md:px-[30px] lg:py-[28px] lg:px-[35px] xl:py-[32px] xl:px-[40px] 2xl:py-[40px] 2xl:px-[50px]">
+            <div className="mx-auto rounded-[5px] border-[1px] border-[#D7D7D7] bg-[#FAFAFA] px-[10px] py-[2px] text-[13px] font-light shadow-[2px_2px_10px_2px_rgba(0,0,0,0.04)] md:text-[16px]  lg:text-[18px]  xl:text-[21px] 2xl:w-[171px] 2xl:text-[26px]">
+              0
             </div>
-            <div className="mt-[6px] text-[5px] underline underline-offset-2 md:text-[6px] lg:text-[7px] xl:text-[8px] 2xl:mt-[8px] 2xl:text-[10px]">
-              What is this
+            <div className="mt-[7.5px] text-[6px] md:mt-[9px] md:text-[7.2px] lg:mt-[10.5px] lg:text-[8.4px] xl:mt-[12px] xl:text-[9.6px] 2xl:mt-[15px] 2xl:text-[12px]">
+              Your validator rewards
             </div>
+            <div className="mt-[22.5px] md:mt-[27px] lg:mt-[31px] xl:mt-[36px] xl:max-w-[149px] 2xl:mt-[45px] 2xl:max-w-[186px]">
+              <div className="text-[5.5px] md:text-[6.6px] lg:text-[7.7px] xl:text-[8.8px] 2xl:text-[11px]">
+                Check if you have the Validator Pass
+              </div>
+              <div className="mt-[6px] text-[5px] underline underline-offset-2 md:text-[6px] lg:text-[7px] xl:text-[8px] 2xl:mt-[8px] 2xl:text-[10px]">
+                What is this
+              </div>
+            </div>
+            <div className="mt-[19px] xl:mt-[28px] 2xl:mt-[34px]">
+              <Web3Button />
+            </div>
+            {address && !data.node.validatorSignature && (
+              <div className="relative mt-[17px]  flex gap-x-[8px] md:mt-[20.4px]  lg:mt-[24px] xl:mt-[27.2px] 2xl:mt-[34px]">
+                <div
+                  onClick={() => {
+                    if (!isLoading) {
+                      signMessageValidator()
+                    }
+                  }}
+                  className={`cursor-pointer ${
+                    isLoading
+                      ? 'bg-[#3b7cf5]'
+                      : 'bg-[#0354EC] hover:bg-[#022f81]'
+                  } rounded-[5px]   py-[4.5px] px-[18px] text-[7px] text-[#fff]   md:py-[5.4px] md:px-[22.2px] md:text-[8.4px]  lg:py-[6.3px] lg:px-[26px] lg:text-[10px] xl:py-[7.2px] xl:px-[29.5px] xl:text-[11.2px] 2xl:py-[9px] 2xl:px-[37px] 2xl:text-[14px]`}
+                >
+                  Assign your wallet
+                </div>
+                <img
+                  src={`${
+                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                      ? process.env.NEXT_PUBLIC_BASE_PATH
+                      : ''
+                  }/images/firstStep/question-mark.svg`}
+                  alt="image"
+                  className="absolute top-0 -right-[25px] h-[9px] w-[9px] transform cursor-pointer transition-transform hover:scale-105 md:h-[11px] md:w-[11px] lg:h-[12px]  lg:w-[12px] xl:h-[14px] xl:w-[14px] 2xl:-right-[30px] 2xl:h-[18px] 2xl:w-[18px]"
+                  onMouseEnter={() => setShowTooltipCloudProvider(true)}
+                  onMouseLeave={() => setShowTooltipCloudProvider(false)}
+                />
+                {showTooltipCloudProvider && (
+                  <div className="absolute top-[50px] w-[370px] rounded-[10px] bg-[#000] px-[13px]  py-[10px]  text-[8px] font-medium text-[#fff] md:px-[15px] md:py-[12px] md:text-[9px] lg:px-[17px] lg:py-[14px] lg:text-[11px] lg:!leading-[19px] xl:px-[20px] xl:py-[16px] xl:text-[13px] 2xl:px-[25px] 2xl:py-[20px] 2xl:text-[16px]">
+                    <div>
+                      You will sign a message certifying that your wallet will
+                      be the recipient of the staked tokens.{' '}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+            {data.node.validatorSignature && (
+              <div className="mt-[20px]">Wallet assigned</div>
+            )}
           </div>
-          <div className="mt-[17px] rounded-[5px] bg-[#5B5D61] py-[4.5px] px-[18px] text-[7px] text-[#fff] md:mt-[20.4px] md:py-[5.4px] md:px-[22.2px] md:text-[8.4px] lg:mt-[24px] lg:py-[6.3px] lg:px-[26px] lg:text-[10px] xl:mt-[27.2px] xl:py-[7.2px] xl:px-[29.5px] xl:text-[11.2px] 2xl:mt-[34px] 2xl:py-[9px] 2xl:px-[37px] 2xl:text-[14px]">
-            Connect Wallet
-          </div>
-        </div>
+        )}
       </div>
       <div className="mx-auto  w-full  xl:w-[1050.4px] 2xl:w-[1313px]">
         <div className="mt-[90px] text-left md:mt-[108px] lg:mt-[126px] xl:mt-[144px] 2xl:mt-[180px]">
