@@ -31,6 +31,13 @@ import { XnodeValidatorsStats, XnodeWithValidatorsStats } from '@/types/node'
 import Congratulations from './Congratulations'
 import Stats from './Stats'
 import Node from './Node'
+import {
+  colorScale,
+  countries,
+  missingCountries,
+} from '../Validators/Countries'
+import { VectorMap } from '@react-jvectormap/core'
+import { worldMill } from '@react-jvectormap/world'
 
 const Validator = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -69,6 +76,37 @@ const Validator = (id: any) => {
       )
     }
   }, [id])
+
+  const MapChart = () => (
+    <div style={{ margin: 'auto', width: '700px', height: '600px' }}>
+      <VectorMap
+        map={worldMill}
+        backgroundColor="#000"
+        markers={missingCountries}
+        markerStyle={{
+          initial: {
+            fill: 'red',
+          },
+        }}
+        series={{
+          regions: [
+            {
+              scale: colorScale,
+              values: countries,
+              attribute: 'fill', // Adicione esta linha
+            },
+          ],
+        }}
+        onRegionTipShow={function reginalTip(event, label: any, code) {
+          // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
+          if (countries[code]) {
+            label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
+          }
+        }}
+        onMarkerTipShow={function markerTip(event, label, code) {}}
+      />
+    </div>
+  )
 
   if (isLoading) {
     return (
@@ -130,6 +168,9 @@ const Validator = (id: any) => {
             totalStakeAmount={data.stats.totalStakeAmount}
             totalValidators={data.stats.totalValidators}
           />
+        </div>
+        <div className="mt-[15px] md:mt-[25px] lg:mt-[50px] xl:mt-[90px] 2xl:mt-[150px]">
+          <MapChart />
         </div>
       </section>
     )

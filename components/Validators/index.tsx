@@ -70,7 +70,7 @@ const Validators = () => {
       <div style={{ margin: 'auto', width: '700px', height: '600px' }}>
         <VectorMap
           map={worldMill}
-          backgroundColor="#F9F9F9"
+          backgroundColor="#000"
           markers={missingCountries}
           markerStyle={{
             initial: {
