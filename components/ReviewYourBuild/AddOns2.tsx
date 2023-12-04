@@ -14,13 +14,13 @@ const YourCore = ({ ...data }: ModalProps) => {
     return
   }
   return (
-    <div className="pb-[20]px relative flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] xl:pb-[40px] 2xl:px-[20px] 2xl:py-[15px] 2xl:pb-[50px]">
+    <div className="relative flex rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[12px] xl:pb-[40px] 2xl:px-[20px] 2xl:py-[15px] 2xl:pb-[50px]">
       <div className="relative flex gap-x-[10px]">
         <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
           Add-ons
         </div>
       </div>
-      <div className="ml-[47.5px]  gap-x-[25px] md:ml-[57px]  md:gap-x-[30px] lg:ml-[66.5px] lg:gap-x-[35px] xl:ml-[136px] xl:gap-x-[40px] 2xl:ml-[170px] 2xl:gap-x-[50px]">
+      <div className="ml-[47.5px] mb-[15px] gap-x-[25px] md:ml-[57px]  md:gap-x-[30px] lg:ml-[66.5px] lg:gap-x-[35px] xl:ml-[136px] xl:gap-x-[40px] 2xl:ml-[170px] 2xl:gap-x-[50px]">
         <div className="flex items-center gap-x-[7px] lg:gap-x-[15px]">
           <div
             className={`h-[10px] w-[10px] rounded-[5px] bg-transparent md:h-[12px] md:w-[12px] lg:h-[14px] lg:w-[14px] xl:h-[16px] xl:w-[16px] 2xl:h-[20px] 2xl:w-[20px] `}
