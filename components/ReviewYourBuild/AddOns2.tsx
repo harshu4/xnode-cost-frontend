@@ -59,7 +59,7 @@ const YourCore = ({ ...data }: ModalProps) => {
                           : ''
                       }/images/reviewYourBuild/third.svg`}
                       alt="image"
-                      className="base:w-[29px] absolute -top-[7.5px] -right-[40px]  md:-top-[9px]  md:-right-[48px]  md:w-[34px]  lg:-top-[10.5px] lg:-right-[56px] lg:w-[40px] xl:-top-[12px] xl:-right-[64px] xl:w-[46px] 2xl:-top-[15px] 2xl:-right-[80px] 2xl:-right-[80px] 2xl:w-[58px]"
+                      className="absolute -top-[7.5px] -right-[40px] w-[29px]  md:-top-[9px]  md:-right-[48px]  md:w-[34px]  lg:-top-[10.5px] lg:-right-[56px] lg:w-[40px] xl:-top-[12px] xl:-right-[64px] xl:w-[46px] 2xl:-top-[15px] 2xl:-right-[80px] 2xl:-right-[80px] 2xl:w-[58px]"
                     />
                   </div>
                   <img
