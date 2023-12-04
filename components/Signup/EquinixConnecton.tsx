@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { EyeSlash, Eye } from 'phosphor-react'
 
 type EquinixAPIForm = {
   apiKey: string
@@ -19,6 +20,7 @@ const EquinixConnection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const { user, setUser } = useContext(AccountContext)
+  const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
 
   const validSchema = Yup.object().shape({
     apiKey: Yup.string().max(500).required('Email is required'),
@@ -227,14 +229,31 @@ const EquinixConnection = () => {
               {errors.apiKey?.message}
             </p>
           </span>
-          <input
-            disabled={isLoading}
-            className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
-            type="text"
-            maxLength={500}
-            placeholder=""
-            {...register('apiKey')}
-          />
+          <div className="flex gap-x-[20px]">
+            <input
+              disabled={isLoading}
+              className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+              type={passwordVisibility ? 'password' : 'text'}
+              maxLength={500}
+              placeholder=""
+              {...register('apiKey')}
+            />
+            {passwordVisibility ? (
+              <div
+                onClick={() => setPasswordVisibility(false)}
+                className="flex cursor-pointer items-center text-center"
+              >
+                <EyeSlash className="cursor-pointer" />
+              </div>
+            ) : (
+              <div
+                onClick={() => setPasswordVisibility(true)}
+                className="flex cursor-pointer items-center text-center"
+              >
+                <Eye className="cursor-pointer" />
+              </div>
+            )}
+          </div>
         </div>
         {!isLoading && (
           <div
