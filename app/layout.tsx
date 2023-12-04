@@ -26,7 +26,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex">
             <LateralNav onValueChange={console.log('')} />
-            <div className="mx-auto">
+            <div className="mx-auto w-full">
               <Header />
               {children}
             </div>

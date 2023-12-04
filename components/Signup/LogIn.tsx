@@ -145,8 +145,8 @@ const LogIn = () => {
           </div>
         )}
       </div>
-      <div className="flex gap-x-[240px] 2xl:gap-x-[200px]">
-        <div className="mt-[56px] ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
+      <div className="grid gap-y-[20px] md:flex md:gap-x-[30px] lg:gap-x-[60px] xl:gap-x-[120px] 2xl:gap-x-[200px]">
+        <div className="mt-[30px] md:mt-[35px] md:ml-[50px] lg:mt-[40px] lg:ml-[70px] xl:mt-[56px] xl:ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div>
@@ -160,7 +160,7 @@ const LogIn = () => {
                     </span>
                     <input
                       disabled={isLoading}
-                      className="mt-[10px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                      className="mt-[10px] h-[25px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 md:h-[30px] md:w-[250px] lg:h-[35px] lg:w-[350px] xl:h-[40px] xl:w-[400px] 2xl:h-[50px] 2xl:w-[500px]"
                       type="text"
                       maxLength={500}
                       placeholder=""
@@ -177,7 +177,7 @@ const LogIn = () => {
                     <div className="flex">
                       <input
                         disabled={isLoading}
-                        className="mt-[10px] mr-[20px] h-[50px] w-[280px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 lg:w-[500px]"
+                        className="mt-[10px] h-[25px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 md:h-[30px] md:w-[250px] lg:h-[35px] lg:w-[350px] xl:h-[40px] xl:w-[400px] 2xl:h-[50px] 2xl:w-[500px]"
                         type={passwordVisibility ? 'password' : 'text'}
                         maxLength={500}
                         placeholder=""
@@ -186,7 +186,7 @@ const LogIn = () => {
                       {passwordVisibility ? (
                         <div
                           onClick={() => setPasswordVisibility(false)}
-                          className="flex cursor-pointer items-center text-center"
+                          className="ml-[10px] flex cursor-pointer items-center text-center"
                         >
                           <EyeSlash className="cursor-pointer" />
                         </div>
@@ -195,7 +195,7 @@ const LogIn = () => {
                           onClick={() => setPasswordVisibility(true)}
                           className="flex cursor-pointer items-center text-center"
                         >
-                          <Eye className="cursor-pointer" />
+                          <Eye className="ml-[10px] cursor-pointer" />
                         </div>
                       )}
                     </div>
@@ -203,7 +203,7 @@ const LogIn = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-x-[35px]">
+            <div className="mb-[20px] flex gap-x-[35px] xl:mb-0">
               {!isLoading && (
                 <div
                   onClick={handleSubmit(onSubmit)}
@@ -230,25 +230,28 @@ const LogIn = () => {
             </div>
           </form>
         </div>
-        <a
-          href="https://www.openmesh.network/oec/register"
-          target="_blank"
-          rel="noreferrer"
-          className="my-auto"
-        >
-          <div className="my-auto flex h-fit w-[125px] cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#0e2e69] md:w-[150px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:w-[175px] lg:py-[8.75px] lg:px-[42px] lg:text-[10px]  xl:w-[200px] xl:py-[10px]  xl:px-[48px]  xl:text-[11.2px]  2xl:w-[250px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]">
-            <img
-              src={`${
-                process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                  ? process.env.NEXT_PUBLIC_BASE_PATH
-                  : ''
-              }/images/header/storm.svg`}
-              alt="image"
-              className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
-            />
-            <div onClick={() => {}}>Sign up</div>
-          </div>
-        </a>
+        <div className="my-auto">
+          {' '}
+          <a
+            href="https://www.openmesh.network/oec/register"
+            target="_blank"
+            rel="noreferrer"
+            className="my-auto"
+          >
+            <div className="my-auto flex h-fit w-[125px] cursor-pointer justify-center gap-x-[8px] rounded-[5px] bg-[#0354EC] py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff] hover:bg-[#0e2e69] md:w-[150px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:w-[175px] lg:py-[8.75px] lg:px-[42px] lg:text-[10px]  xl:w-[200px] xl:py-[10px]  xl:px-[48px]  xl:text-[11.2px]  2xl:w-[250px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]">
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/header/storm.svg`}
+                alt="image"
+                className={`w-[5px] md:w-[6px] lg:w-[7px] xl:w-[8px] 2xl:w-[10px]`}
+              />
+              <div onClick={() => {}}>Sign up</div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   )
