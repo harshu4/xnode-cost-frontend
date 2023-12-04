@@ -122,7 +122,7 @@ const Validator = (id: any) => {
 
   if (newDeploy === 'true' && data && !nextCongrats) {
     return (
-      <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
+      <section className="base:pt-[78px] mx-auto w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
         {' '}
         <Congratulations
           createdAt={data.node.createdAt}
@@ -146,7 +146,7 @@ const Validator = (id: any) => {
 
   if (data) {
     return (
-      <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
+      <section className="base:pt-[78px] mx-auto mb-[100px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[50px] md:pt-[93px] md:pb-[100px] lg:pt-[109px] lg:pb-[120px] xl:w-[1379px] xl:pt-[124px] xl:pb-[140px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[155px]">
         {' '}
         <Node
           averagePayoutPeriod={data.stats.averagePayoutPeriod}
