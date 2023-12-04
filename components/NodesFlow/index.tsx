@@ -767,7 +767,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   }, [removeNodes])
 
   return (
-    <div className="relative h-[1500px] w-[750px] md:w-[900px] lg:w-[1050px] xl:w-[1200px] 2xl:w-[1500px]">
+    <div className="relative h-full w-full">
       <ReactFlow
         nodes={nodesAmounts}
         edges={edgesWithUpdatedTypes}
