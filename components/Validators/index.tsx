@@ -28,30 +28,25 @@ import {
   getXnodeWithNodesValidatorsStats,
 } from '@/utils/xnode'
 import { XnodeValidatorsStats, XnodeWithValidatorsStats } from '@/types/node'
-import Congratulations from './Congratulations'
 import Stats from './Stats'
-import Node from './Node'
-import {
-  colorScale,
-  countries,
-  missingCountries,
-} from '../Validators/Countries'
+
 import { VectorMap } from '@react-jvectormap/core'
 import { worldMill } from '@react-jvectormap/world'
+import { colorScale, countries, missingCountries } from './Countries'
 
-const Validator = (id: any) => {
+const Validators = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [nextCongrats, setNextCongrats] = useState<boolean>(false)
-  const [data, setData] = useState<XnodeWithValidatorsStats>()
+  const [data, setData] = useState<XnodeValidatorsStats>()
 
   const { push } = useRouter()
 
   const searchParams = useSearchParams()
   const newDeploy = searchParams.get('newDeploy')
 
-  async function getData(id: any) {
+  async function getData() {
     try {
-      const res = await getXnodeWithNodesValidatorsStats(id)
+      const res = await getDataXnodeValidatorsInfo()
       setData(res)
       console.log(res)
     } catch (err) {
@@ -67,49 +62,43 @@ const Validator = (id: any) => {
       top: 0,
       behavior: 'smooth',
     })
-    if (id) {
-      getData(id.id)
-    } else {
-      push('/')
-      push(
-        `${process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD' ? `/xnode/` : `/`}`,
-      )
-    }
-  }, [id])
+    getData()
+  }, [])
 
-  const MapChart = () => (
-    <div className="mx-auto h-[500px] max-w-[300px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px]">
-      <div className="-ml-[12px] mt-[30px] text-[10px] text-[#000] md:mt-[36px] md:text-[12px] lg:mt-[42px] lg:text-[14px] xl:mb-[48px] xl:text-[16px] 2xl:-ml-[15px] 2xl:mb-[60px] 2xl:text-[20px]">
-        Map of active validators
-      </div>
-      <VectorMap
-        map={worldMill}
-        backgroundColor="#d3e2ff"
-        markers={missingCountries}
-        markerStyle={{
-          initial: {
-            fill: 'red',
-          },
-        }}
-        series={{
-          regions: [
-            {
-              scale: colorScale,
-              values: countries,
-              attribute: 'fill', // Adicione esta linha
+  const MapChart = () => {
+    return (
+      <div style={{ margin: 'auto', width: '700px', height: '600px' }}>
+        <VectorMap
+          map={worldMill}
+          backgroundColor="#000"
+          markers={missingCountries}
+          markerStyle={{
+            initial: {
+              fill: 'red',
             },
-          ],
-        }}
-        onRegionTipShow={function reginalTip(event, label: any, code) {
-          // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
-          if (countries[code]) {
-            label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
-          }
-        }}
-        onMarkerTipShow={function markerTip(event, label, code) {}}
-      />
-    </div>
-  )
+          }}
+          series={{
+            regions: [
+              {
+                scale: colorScale,
+                values: countries,
+                attribute: 'fill', // Adicione esta linha
+              },
+            ],
+          }}
+          onRegionTipShow={function reginalTip(event, label: any, code) {
+            // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
+            if (countries[code]) {
+              label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
+            }
+          }}
+          onMarkerTipShow={function markerTip(event, label, code) {
+            return <div> oi</div>
+          }}
+        />
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (
@@ -127,42 +116,10 @@ const Validator = (id: any) => {
     )
   }
 
-  if (newDeploy === 'true' && data && !nextCongrats) {
-    return (
-      <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
-        {' '}
-        <Congratulations
-          createdAt={data.node.createdAt}
-          nodeId={data.node.id}
-          onValueChange={() => {
-            setNextCongrats(true)
-          }}
-        />
-        <div className="mt-[130px] md:mt-[156px] lg:mt-[182px] xl:mt-[208px] 2xl:mt-[260px]">
-          <Stats
-            averagePayoutPeriod={data.stats.averagePayoutPeriod}
-            nodes={data.nodes}
-            totalAverageReward={data.stats.totalAverageReward}
-            totalStakeAmount={data.stats.totalStakeAmount}
-            totalValidators={data.stats.totalValidators}
-          />
-        </div>
-      </section>
-    )
-  }
-
   if (data) {
     return (
       <section className="base:pt-[78px] w-full rounded-[10px] bg-[#F9F9F9] px-[20px] pb-[150px] md:pt-[93px] md:pb-[180px] lg:pt-[109px] lg:pb-[210px] xl:w-[1379px] xl:pt-[124px] xl:pb-[240px] 2xl:w-[1724px] 2xl:pt-[155px] 2xl:pb-[300px]">
         {' '}
-        <Node
-          averagePayoutPeriod={data.stats.averagePayoutPeriod}
-          nodes={data.nodes}
-          totalAverageReward={data.stats.totalAverageReward}
-          totalStakeAmount={data.stats.totalStakeAmount}
-          totalValidators={data.stats.totalValidators}
-          node={data.node}
-        />
         <div className="mt-[130px] md:mt-[156px] lg:mt-[182px] xl:mt-[208px] 2xl:mt-[260px]">
           <Stats
             averagePayoutPeriod={data.stats.averagePayoutPeriod}
@@ -171,8 +128,6 @@ const Validator = (id: any) => {
             totalStakeAmount={data.stats.totalStakeAmount}
             totalValidators={data.stats.totalValidators}
           />
-        </div>
-        <div className="mt-[15px] md:mt-[25px] lg:mt-[50px] xl:mt-[90px] 2xl:mt-[150px]">
           <MapChart />
         </div>
       </section>
@@ -180,4 +135,4 @@ const Validator = (id: any) => {
   }
 }
 
-export default Validator
+export default Validators
