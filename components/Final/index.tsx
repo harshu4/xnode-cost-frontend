@@ -217,7 +217,7 @@ const Final = () => {
   if (finalBuild) {
     return (
       <>
-        <div className="rounded-[10px] xl:w-[1200px] 2xl:w-[1500px] ">
+        <div className="mx-auto rounded-[10px] xl:w-[1200px] 2xl:w-[1500px] ">
           <FinalBuild />
         </div>
       </>
