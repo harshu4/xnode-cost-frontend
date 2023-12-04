@@ -332,7 +332,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="w-[750px] rounded-[10px] bg-[#F9F9F9] px-[50px]  pt-[30px] pb-[172px] shadow-[1px_1px_6px_0px_rgba(124,124,124,0.20)] md:w-[900px] md:px-[60px] md:pt-[36px] md:pb-[213px] lg:w-[1050px] lg:px-[70px]  lg:pt-[42px] lg:pb-[248px]  xl:w-[1200px] xl:px-[80px]  xl:pt-[48px] xl:pb-[284px] 2xl:w-[1500px] 2xl:px-[100px] 2xl:pt-[60px] 2xl:pb-[355px]  ">
+      <div className="mx-auto mb-[100px] w-[750px] rounded-[10px] bg-[#F9F9F9]  px-[50px] pt-[30px] pb-[70px] shadow-[1px_1px_6px_0px_rgba(124,124,124,0.20)] md:w-[900px] md:px-[60px] md:pt-[36px] md:pb-[90px] lg:w-[1050px]  lg:px-[70px] lg:pt-[42px]  lg:pb-[110px] xl:w-[1200px]  xl:px-[80px] xl:pt-[48px] xl:pb-[144px] 2xl:w-[1500px] 2xl:px-[100px] 2xl:pt-[60px]  2xl:pb-[155px]">
         <div className="text-[10px] font-bold text-[#313131] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
           Your deployments
         </div>
