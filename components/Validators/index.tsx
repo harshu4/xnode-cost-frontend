@@ -29,7 +29,10 @@ import {
 } from '@/utils/xnode'
 import { XnodeValidatorsStats, XnodeWithValidatorsStats } from '@/types/node'
 import Stats from './Stats'
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
+
+import { VectorMap } from '@react-jvectormap/core'
+import { worldMill } from '@react-jvectormap/world'
+import { colorScale, countries, missingCountries } from './Countries'
 
 const Validators = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -64,13 +67,36 @@ const Validators = () => {
 
   const MapChart = () => {
     return (
-      <Geographies geography={'...'}>
-        {({ geographies }) =>
-          geographies.map((geography) => (
-            <Geography key={geography.rsmKey} geography={geography} />
-          ))
-        }
-      </Geographies>
+      <div style={{ margin: 'auto', width: '700px', height: '600px' }}>
+        <VectorMap
+          map={worldMill}
+          backgroundColor="#F9F9F9"
+          markers={missingCountries}
+          markerStyle={{
+            initial: {
+              fill: 'red',
+            },
+          }}
+          series={{
+            regions: [
+              {
+                scale: colorScale,
+                values: countries,
+                attribute: 'fill', // Adicione esta linha
+              },
+            ],
+          }}
+          onRegionTipShow={function reginalTip(event, label: any, code) {
+            // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
+            if (countries[code]) {
+              label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
+            }
+          }}
+          onMarkerTipShow={function markerTip(event, label, code) {
+            return <div> oi</div>
+          }}
+        />
+      </div>
     )
   }
 
