@@ -31,13 +31,6 @@ import { XnodeValidatorsStats, XnodeWithValidatorsStats } from '@/types/node'
 import Congratulations from './Congratulations'
 import Stats from './Stats'
 import Node from './Node'
-import {
-  colorScale,
-  countries,
-  missingCountries,
-} from '../Validators/Countries'
-import { VectorMap } from '@react-jvectormap/core'
-import { worldMill } from '@react-jvectormap/world'
 
 const Validator = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -77,39 +70,39 @@ const Validator = (id: any) => {
     }
   }, [id])
 
-  const MapChart = () => (
-    <div className="mx-auto h-[500px] max-w-[300px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px]">
-      <div className="-ml-[12px] mt-[30px] text-[10px] text-[#000] md:mt-[36px] md:text-[12px] lg:mt-[42px] lg:text-[14px] xl:mb-[48px] xl:text-[16px] 2xl:-ml-[15px] 2xl:mb-[60px] 2xl:text-[20px]">
-        Map of active validators
-      </div>
-      <VectorMap
-        map={worldMill}
-        backgroundColor="#d3e2ff"
-        markers={missingCountries}
-        markerStyle={{
-          initial: {
-            fill: 'red',
-          },
-        }}
-        series={{
-          regions: [
-            {
-              scale: colorScale,
-              values: countries,
-              attribute: 'fill', // Adicione esta linha
-            },
-          ],
-        }}
-        onRegionTipShow={function reginalTip(event, label: any, code) {
-          // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
-          if (countries[code]) {
-            label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
-          }
-        }}
-        onMarkerTipShow={function markerTip(event, label, code) {}}
-      />
-    </div>
-  )
+  // const MapChart = () => (
+  //   <div className="mx-auto h-[500px] max-w-[300px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px]">
+  //     <div className="-ml-[12px] mt-[30px] text-[10px] text-[#000] md:mt-[36px] md:text-[12px] lg:mt-[42px] lg:text-[14px] xl:mb-[48px] xl:text-[16px] 2xl:-ml-[15px] 2xl:mb-[60px] 2xl:text-[20px]">
+  //       Map of active validators
+  //     </div>
+  //     <VectorMap
+  //       map={worldMill}
+  //       backgroundColor="#d3e2ff"
+  //       markers={missingCountries}
+  //       markerStyle={{
+  //         initial: {
+  //           fill: 'red',
+  //         },
+  //       }}
+  //       series={{
+  //         regions: [
+  //           {
+  //             scale: colorScale,
+  //             values: countries,
+  //             attribute: 'fill', // Adicione esta linha
+  //           },
+  //         ],
+  //       }}
+  //       onRegionTipShow={function reginalTip(event, label: any, code) {
+  //         // Verifica se o país tem uma contagem de Xnodes e atualiza o texto do tooltip
+  //         if (countries[code]) {
+  //           label.html(`${label.html()}<br>Xnodes: ${countries[code]}`)
+  //         }
+  //       }}
+  //       onMarkerTipShow={function markerTip(event, label, code) {}}
+  //     />
+  //   </div>
+  // )
 
   if (isLoading) {
     return (
@@ -172,9 +165,9 @@ const Validator = (id: any) => {
             totalValidators={data.stats.totalValidators}
           />
         </div>
-        <div className="mt-[15px] md:mt-[25px] lg:mt-[50px] xl:mt-[90px] 2xl:mt-[150px]">
+        {/* <div className="mt-[15px] md:mt-[25px] lg:mt-[50px] xl:mt-[90px] 2xl:mt-[150px]">
           <MapChart />
-        </div>
+        </div> */}
       </section>
     )
   }
