@@ -276,7 +276,7 @@ const StartHere = ({ onValueChange }) => {
 
   return (
     <>
-      <div className="w-full max-w-[1800px] rounded-[10px] bg-[#F9F9F9] pl-[85px] pr-[132px] pt-[45px] pb-[172px] md:pl-[102px] md:pr-[158px] md:pt-[54px] md:pb-[213px] lg:pl-[119px] lg:pr-[184px] lg:pt-[63px] lg:pb-[248px] xl:pl-[136px] xl:pr-[211px] xl:pt-[72px] xl:pb-[284px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[90px] 2xl:pb-[355px]  ">
+      <div className="mx-auto mb-[50px] w-full max-w-[1600px] rounded-[10px] bg-[#F9F9F9] pl-[85px] pr-[132px] pt-[45px] pb-[50px] md:pl-[102px] md:pr-[158px] md:pt-[54px] md:pb-[90px] lg:pl-[119px] lg:pr-[184px] lg:pt-[63px] lg:pb-[110px] xl:pl-[136px] xl:pr-[211px] xl:pt-[72px] xl:pb-[140px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[90px] 2xl:pb-[155px]  ">
         <div className="flex justify-between gap-x-[20px]">
           <div
             className={`w-full max-w-[180px] rounded-[5px] border-[1px] border-[#0354EC] px-[21px] pt-[12px] pb-[17px]  md:max-w-[216px] md:px-[25px] md:pt-[14px] md:pb-[20px]  lg:max-w-[252px] lg:px-[29px] lg:pt-[17px] lg:pb-[23px] xl:max-w-[288px] xl:px-[33px] xl:pt-[19px] xl:pb-[27px] 2xl:max-w-[360px] 2xl:px-[42px] 2xl:pt-[24px] 2xl:pb-[34px]`}
