@@ -78,10 +78,13 @@ const Validator = (id: any) => {
   }, [id])
 
   const MapChart = () => (
-    <div style={{ margin: 'auto', width: '700px', height: '600px' }}>
+    <div className="mx-auto h-[500px] max-w-[300px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px]">
+      <div className="-ml-[12px] mt-[30px] text-[10px] text-[#000] md:mt-[36px] md:text-[12px] lg:mt-[42px] lg:text-[14px] xl:mb-[48px] xl:text-[16px] 2xl:-ml-[15px] 2xl:mb-[60px] 2xl:text-[20px]">
+        Map of active validators
+      </div>
       <VectorMap
         map={worldMill}
-        backgroundColor="#000"
+        backgroundColor="#d3e2ff"
         markers={missingCountries}
         markerStyle={{
           initial: {
