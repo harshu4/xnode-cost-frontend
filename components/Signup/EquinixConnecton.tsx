@@ -155,15 +155,15 @@ const EquinixConnection = () => {
           )}
 
           {!isEditing && (
-            <div className="mt-[25px] flex gap-x-[20px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
-              <div className="base:text-[8px] text-[#12AD50] md:text-[9.6px] lg:text-[11.2px] xl:text-[12.8px] 2xl:text-[16px]">
+            <div className="mt-[25px] grid gap-y-[20px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
+              <div className="text-[12px] text-[#12AD50] md:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px]">
                 Connected
               </div>
               <div
                 onClick={() => {
                   setIsEditing(true)
                 }}
-                className="cursor-pointer font-medium text-[#0354EC] underline underline-offset-1 hover:text-[#276ff7]"
+                className="cursor-pointer text-[9px] font-medium text-[#0354EC] underline underline-offset-1 hover:text-[#276ff7] lg:text-[10px] xl:text-[12px] 2xl:text-[16px]"
               >
                 Edit
               </div>
