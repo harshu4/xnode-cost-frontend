@@ -336,14 +336,14 @@ const Dashboard = () => {
         <div className="text-[10px] font-bold text-[#313131] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
           Your deployments
         </div>
-        <div className="mt-[22.5px] md:mt-[27px] lg:mt-[31.5px] xl:mt-[36px] 2xl:mt-[45px]">
+        <div className="mt-[22.5px] overflow-x-auto md:mt-[27px] lg:mt-[31.5px] xl:mt-[36px] 2xl:mt-[45px]">
           {' '}
           {renderTable()}
         </div>
         <div className="mt-[40px] text-[10px] font-bold text-[#313131] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
           Dashboards to display{' '}
         </div>
-        <div className="mt-[50px]">
+        <div className="mt-[50px] hidden md:flex">
           <h2 className="ml-[50px] mb-[20px] text-lg font-semibold text-[#000]">
             Xnode Uptime
           </h2>
