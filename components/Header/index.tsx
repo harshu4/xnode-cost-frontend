@@ -760,14 +760,7 @@ const Header = () => {
               </div> */}
               <div className="flex items-center gap-x-[15px] font-medium text-[#000] md:gap-x-[18px] lg:gap-x-[21px] xl:gap-x-[24px] 2xl:gap-x-[30px]">
                 {headerItens.map((option, index) => (
-                  <a
-                    key={index}
-                    href={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? `/xnode${option.href}`
-                        : `${option.href}`
-                    }`}
-                  >
+                  <a key={index} href={`${option.href}`}>
                     <div className="hover:text-[#313131]">{option.label}</div>
                   </a>
                 ))}
