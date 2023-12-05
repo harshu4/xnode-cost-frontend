@@ -43,7 +43,7 @@ const SubBarServers = ({ onValueChange }) => {
       title: 'Equinix (Decentralized)',
       enabled: true,
       src: '/images/subNavBarServers/equinix.svg',
-      pageRef: '/data-product/93508535-ba9c-453e-af19-aa331e1d36f7',
+      pageRef: '/data-product/30e53394-407d-44fc-ae23-c45951b77024',
       style:
         '2xl:w-[31px] xl:w-[25px] lg:w-[22px]  md:w-[19px] w-[16px] !-left-[10px]',
     },
