@@ -113,7 +113,11 @@ const EquinixConnection = () => {
               alt="image"
               className="w-[145px] md:w-[174px] lg:w-[203px] xl:w-[232px] 2xl:w-[290px]"
             />{' '}
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+            <a
+              href="https://deploy.equinix.com/developers/docs/metal/accounts/api-keys/#:~:text=Your%20API%20keys%20are%20listed,user%2Fapi%2Dkeys%20endpoint."
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="cursor-pointer text-[10px] text-[#0354EC] hover:text-[#0243bb] xl:text-[12px]">
                 How to get my API key?
               </div>
