@@ -20,11 +20,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -41,11 +41,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -62,11 +62,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -83,11 +83,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -104,11 +104,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -125,11 +125,11 @@ export default function Tasks() {
       listItem: [
         {
           title: 'Step-by-step guide xNode.',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title: 'Step-by-step guide to deploying an xNode',
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
         {
           title:
@@ -152,12 +152,12 @@ export default function Tasks() {
             className="mt-[17px] ml-[5px] font-inter text-[16px] font-bold leading-[18px]"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
           >
             Understanding Xnode
           </a>
           <a
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[5px] mt-[4px] text-justify font-inter text-[14px] font-medium leading-[24px]"
@@ -170,12 +170,12 @@ export default function Tasks() {
             className="mt-[50px] ml-[5px] font-inter text-[16px] font-bold leading-[18px]"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
           >
             Setting Up
           </a>
           <a
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[5px] mt-[1px] text-justify font-inter text-[14px] font-medium leading-[24px]"
@@ -183,7 +183,7 @@ export default function Tasks() {
             Step-by-step guide to deploying an xNode.
           </a>
           <a
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[5px] mt-[1px] text-justify font-inter text-[14px] font-medium leading-[24px]"
@@ -191,7 +191,7 @@ export default function Tasks() {
             Technical design
           </a>
           <a
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[5px] mt-[22px] text-justify font-inter text-[14px] font-medium leading-[24px]"
@@ -199,7 +199,7 @@ export default function Tasks() {
             Developer support and resources
           </a>
           <a
-            href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+            href="https://docs.openmesh.network/products/xnode"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[5px] mt-[1px] text-justify font-inter text-[14px] font-medium leading-[24px]"
