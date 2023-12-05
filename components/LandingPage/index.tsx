@@ -73,8 +73,7 @@ const LandingPage = () => {
             </div>
           </div>
           <CostSaving></CostSaving>
-          <div></div>
-          <div className="mt-[100px] flex flex-col  items-center  md:w-[250px]  lg:w-[290px]  xl:w-[333px] 2xl:w-[417px]">
+          <div className="mt-[300px] flex flex-col items-center  md:mt-[100px]  md:w-[250px]  lg:w-[290px]  xl:w-[333px] 2xl:w-[417px]">
             <h2 className="text-[20px] font-normal leading-[110px] text-[#000] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[40px]">
               Play around it now
             </h2>
