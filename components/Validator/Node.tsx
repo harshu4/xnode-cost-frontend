@@ -136,7 +136,7 @@ const Node = ({ ...data }: ModalProps) => {
 
   return (
     <section className="mx-auto w-full font-normal text-[#000]">
-      <div className="mx-auto flex w-full justify-between gap-x-[20px] xl:w-[1050.4px] 2xl:w-[1313px]">
+      <div className="mx-auto grid w-full justify-between gap-x-[20px] gap-y-[20px] md:flex xl:w-[1050.4px] 2xl:w-[1313px]">
         <div className="mt-[14px] md:mt-[17px] lg:mt-[19.6px] xl:mt-[22.4px] 2xl:mt-[28px]">
           <div className="flex gap-x-[10px] md:gap-x-[12px] lg:gap-x-[14px] xl:gap-x-[16px] 2xl:gap-x-[20px]">
             <img
