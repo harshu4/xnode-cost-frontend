@@ -533,14 +533,7 @@ const Header = () => {
               <div className=" grid gap-y-[15px] text-[12px]  font-medium !leading-[19px]">
                 <div className="my-auto grid gap-y-[20px] text-center md:justify-center">
                   {headerItens.map((option, index) => (
-                    <a
-                      key={index}
-                      href={`${
-                        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                          ? `/xnode${option.href}`
-                          : `${option.href}`
-                      }`}
-                    >
+                    <a key={index} href={`${option.href}`}>
                       <div className="text-[#313131]">{option.label}</div>
                     </a>
                   ))}
