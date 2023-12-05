@@ -455,7 +455,7 @@ const LateralNav = ({ onValueChange }) => {
           ))}
         </div>
         {hoveredIcon === 'Data' && (
-          <div className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[249px] 2xl:top-[105px] 2xl:-right-[300px]">
+          <div className="absolute top-[80px] -right-[260px] md:-right-[188px] lg:-right-[238px] xl:-right-[289px] 2xl:top-[105px] 2xl:-right-[300px]">
             <SubBarData onValueChange={console.log('')} />
           </div>
         )}
