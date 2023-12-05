@@ -96,11 +96,11 @@ const LandingPage = () => {
               Data Cloud Management
             </h1>
             <p className="mt-[25px] text-start text-[10px] font-normal leading-[24.2px] text-[#5A5A5A] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
-              Cryptocurrency arbitrage detection, DeFi yield forecasting, GameFi
-              engagement analytics, metaverse asset valuation, medical research
-              data sharing, financial trend analysis, weather pattern trading
-              strategies, cross-disciplinary scientific data management, cancer
-              research outcome predictions.
+              Create your infrastructure quickly with our drag-and-drop design
+              framework. Instead of spending weeks coding and integrating
+              services and applications, you can now build your infrastructure
+              in the region of your choice, with the workloads and applications
+              you need, all in just minutes.
             </p>
           </div>
           <div className="flex flex-col items-center gap-y-5 md:gap-y-16 xl:gap-y-16 2xl:gap-y-20">
@@ -143,7 +143,7 @@ const LandingPage = () => {
                 <div className="ml-[5px] flex flex-col gap-y-5 md:ml-[24px] lg:ml-[28px] xl:ml-[32px] 2xl:ml-[40px]">
                   <div className=" flex flex-row items-center ">
                     <h1 className="text-[8px] font-bold  text-black  md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
-                      27X
+                      6X
                     </h1>
                     <p className="ml-[7px] text-[6px] font-normal text-black md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]">
                       Cost Saving
@@ -199,11 +199,12 @@ const LandingPage = () => {
               Explore possibilites
             </h1>
             <p className="mt-[25px] text-start text-[10px] font-normal leading-[24.2px] text-[#5A5A5A] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px]">
-              Cryptocurrency arbitrage detection, DeFi yield forecasting, GameFi
-              engagement analytics, metaverse asset valuation, medical research
-              data sharing, financial trend analysis, weather pattern trading
-              strategies, cross-disciplinary scientific data management, cancer
-              research outcome predictions.
+              Our modularized design allows you to quickly design, combine, and
+              provision web2 and web3 infrastructure products. This includes
+              connecting to data feeds, building APIs, linking to blockchains
+              (RPC nodes), and accessing compute, storage, databases, analytics,
+              and developer tools. Deploy in seconds and only pay for compute
+              and storage, saving thousands.
             </p>
           </div>
           <div className="grid w-full grid-cols-1 pt-[30px] md:grid-cols-3 lg:grid-cols-3 ">
@@ -221,7 +222,7 @@ const LandingPage = () => {
                 Blockchain and Smart Contracts
               </p>
               <h1 className="text-[12px] font-bold leading-[30px] text-black md:text-[14.4px] lg:text-[17px] xl:text-[19.2px] 2xl:text-[24px]">
-                On-chain Query Execution for Blockchain Applications.
+                Democratizing Data: Free Immutable Data to the World
               </h1>
             </div>
             <div className="mt-[30px] flex flex-col  gap-y-[10px] md:mt-0 md:w-[204px] md:p-[12px]  lg:w-[238px] lg:p-[14px]  xl:w-[272px] xl:p-[20px] 2xl:w-[340px] 2xl:p-[16px]">
@@ -235,10 +236,10 @@ const LandingPage = () => {
                 }/images/landingPage/cube.svg`}
               ></img>
               <p className="text-[9px] font-normal leading-[30px] text-black md:text-[10.8px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
-                Blockchain and Smart Contracts
+                Many Integrations. Endless Possibilities
               </p>
               <h1 className="text-[12px] font-bold leading-[30px] text-black md:text-[14.4px] lg:text-[17px] xl:text-[19.2px] 2xl:text-[24px]">
-                On-chain Query Execution for Blockchain Applications.
+                Xnode's modularized design and SDKs{' '}
               </h1>
             </div>
             <div className="mt-[30px] flex flex-col  items-start  text-[#0354EC]  md:mt-0  md:w-[204px] lg:w-[238px] xl:w-[272px]   2xl:w-[340px]">
