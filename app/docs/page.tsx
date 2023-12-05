@@ -29,7 +29,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/cubo.svg',
@@ -50,7 +50,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/server.svg',
@@ -71,7 +71,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/database.svg',
@@ -92,7 +92,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/node.svg',
@@ -113,7 +113,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/bolas.svg',
@@ -134,7 +134,7 @@ export default function Tasks() {
         {
           title:
             "An introduction to xNode's role in decentralizing data infrastructure.",
-          href: 'https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview',
+          href: 'https://docs.openmesh.network/products/xnode',
         },
       ],
       icon: '/images/lateralNavBar/ml.svg',
