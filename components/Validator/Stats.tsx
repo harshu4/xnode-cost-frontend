@@ -140,7 +140,7 @@ const Stats = ({ ...data }: ModalProps) => {
   }
 
   return (
-    <section className="mx-auto w-full font-normal text-[#000]">
+    <section className="mx-auto w-full overflow-x-auto font-normal text-[#000]">
       <div className="mx-auto flex w-full justify-between xl:w-[992px] 2xl:w-[1240px] 2xl:gap-x-[10px]">
         <div>
           <div className="text-[9px] md:text-[10.8px] lg:text-[12.6px] xl:text-[14.4px] 2xl:text-[18px]">
