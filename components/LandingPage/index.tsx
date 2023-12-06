@@ -247,12 +247,12 @@ const LandingPage = () => {
                 className="font-inter text-[9px] font-bold leading-[18px] md:ml-[5px] md:text-[10px] lg:text-[11.2px] xl:text-[13px] 2xl:text-[16px]"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
               >
                 Understanding Xnode
               </a>
               <a
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-[4px] text-justify font-inter text-[8px] font-medium leading-[24px] md:ml-[5px] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
@@ -265,12 +265,12 @@ const LandingPage = () => {
                 className="mt-[15px] font-inter text-[9px] font-bold leading-[18px] md:ml-[5px] md:mt-[30px] md:text-[10px] lg:mt-[35px] lg:text-[11.2px] xl:mt-[40px] xl:text-[13px] 2xl:mt-[50px] 2xl:text-[16px]"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
               >
                 Setting Up
               </a>
               <a
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-[1px] text-justify font-inter text-[8px] font-medium leading-[24px] md:ml-[5px] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
@@ -278,7 +278,7 @@ const LandingPage = () => {
                 Step-by-step guide to deploying an xNode.
               </a>
               <a
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-[1px] text-justify font-inter text-[8px] font-medium  leading-[24px] md:ml-[5px] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
@@ -286,7 +286,7 @@ const LandingPage = () => {
                 Technical design
               </a>
               <a
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-[15px] text-justify font-inter text-[8px] font-medium leading-[24px] md:ml-[5px] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
@@ -294,7 +294,7 @@ const LandingPage = () => {
                 Developer support and resources
               </a>
               <a
-                href="https://open-mesh.gitbook.io/l3a-v3-documentation-2.0/openmesh/openmesh-overview"
+                href="https://docs.openmesh.network/products/xnode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-[1px] text-justify font-inter text-[8px] font-medium leading-[24px] md:ml-[5px] md:text-[8.4px] lg:text-[10px] xl:text-[11.2px] 2xl:text-[14px]"
