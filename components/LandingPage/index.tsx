@@ -29,7 +29,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="flex w-full flex-col items-center rounded-[10px] bg-[#F9F9F9] p-[20px] pt-[45px] pb-[20px] md:pl-[102px] md:pr-[158px] md:pt-[54px] md:pb-[213px] lg:pl-[119px] lg:pr-[184px] lg:pt-[63px] lg:pb-[248px] xl:max-w-[1800px] xl:pl-[136px] xl:pr-[211px] xl:pt-[72px] xl:pb-[284px] 2xl:pl-[170px] 2xl:pr-[264px] 2xl:pt-[90px] 2xl:pb-[355px]">
-        <div className="flex flex-col items-center  ">
+        <div className="flex flex-col items-center">
           <div className="mt-[30px] md:w-[564px] lg:w-[658px] xl:mt-[48px] xl:w-[752px] 2xl:mt-[60px] 2xl:w-[939px]">
             <h1 className="text-center text-[35px] font-bold tracking-[-5%] text-[#000000] md:text-[66px] lg:text-[77px] xl:text-[88px] xl:leading-[100px] 2xl:text-[110px]">
               Revolution Has Started!
