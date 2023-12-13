@@ -14,7 +14,7 @@ import FinalBuild from '../FinalBuild'
 const Workspace = () => {
   return (
     <>
-      <div className="mx-auto mb-[50px] h-[1300px] w-[300px] rounded-[10px] bg-[#F9F9F9] md:w-[600px] lg:w-[850px] xl:w-[1000px] 2xl:mb-[100px] 2xl:w-[1500px]">
+      <div className="mx-auto mb-[50px] h-[1300px] w-[300px] rounded-[10px] bg-[#F9F9F9] md:w-[600px] lg:w-[950px] xl:w-[1200px] 2xl:mb-[100px] 2xl:w-[1500px]">
         <NodesFlow fromScratch={false} />
       </div>
     </>
