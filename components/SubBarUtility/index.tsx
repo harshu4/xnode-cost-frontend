@@ -110,7 +110,7 @@ const SubBarUtility = ({ onValueChange }) => {
 
   function renderOptions(type: string) {
     return (
-      <div className="mt-[28px] grid min-w-[220px] gap-y-[35px] md:mt-[33px] md:gap-y-[48px] lg:mt-[40px] lg:gap-y-[40px] xl:mt-[45px] xl:gap-y-[47px] 2xl:mt-[56px] 2xl:min-w-[260px] 2xl:gap-y-[58px]">
+      <div className="mt-[28px] grid min-w-[220px] gap-y-[35px] md:mt-[33px] md:gap-y-[48px] lg:mt-[40px] lg:gap-y-[40px] xl:mt-[45px] xl:gap-y-[47px] 2xl:mt-[56px] 2xl:min-w-[290px] 2xl:gap-y-[58px]">
         {categoriesOptions
           .filter((option) => option.type === type)
           .map((option, index) => (
