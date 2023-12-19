@@ -8,6 +8,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { EyeSlash, Eye } from 'phosphor-react'
+import GetEquinixAPIKey from './GetEquinixAPIKey'
 
 type EquinixAPIForm = {
   apiKey: string
@@ -21,6 +22,7 @@ const EquinixConnection = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const { user, setUser } = useContext(AccountContext)
   const [passwordVisibility, setPasswordVisibility] = useState<boolean>(true)
+  const [isCreatingNewChannel, setIsCreatingNewChannel] = useState(false)
 
   const validSchema = Yup.object().shape({
     apiKey: Yup.string().max(500).required('Email is required'),
@@ -35,6 +37,10 @@ const EquinixConnection = () => {
   } = useForm<EquinixAPIForm>({
     resolver: yupResolver<any>(validSchema),
   })
+
+  const closeModal = () => {
+    setIsCreatingNewChannel(false)
+  }
 
   async function connectEquinix(data: any) {
     const config = {
@@ -113,15 +119,14 @@ const EquinixConnection = () => {
               alt="image"
               className="w-[145px] md:w-[174px] lg:w-[203px] xl:w-[232px] 2xl:w-[290px]"
             />{' '}
-            <a
-              href="https://deploy.equinix.com/developers/docs/metal/accounts/api-keys/#:~:text=Your%20API%20keys%20are%20listed,user%2Fapi%2Dkeys%20endpoint."
-              target="_blank"
-              rel="noreferrer"
+            <div
+              onClick={() => {
+                setIsCreatingNewChannel(true)
+              }}
+              className="cursor-pointer text-[10px] text-[#0354EC] hover:text-[#0243bb] xl:text-[12px]"
             >
-              <div className="cursor-pointer text-[10px] text-[#0354EC] hover:text-[#0243bb] xl:text-[12px]">
-                How to get my API key?
-              </div>
-            </a>
+              How to get my API key?
+            </div>
           </div>
 
           {isEditing && (
@@ -186,6 +191,7 @@ const EquinixConnection = () => {
             </div>
           )}
         </div>
+        <GetEquinixAPIKey isOpen={isCreatingNewChannel} onClose={closeModal} />
       </div>
     )
   }
@@ -215,7 +221,7 @@ const EquinixConnection = () => {
         )}
       </div>
       <div className="mt-[25px] md:mt-[35px] md:ml-[70px]  lg:mt-[42px] lg:ml-[90px] xl:mt-[56px] xl:ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
-        <div>
+        <div className="flex gap-x-[50px]">
           <img
             src={`${
               process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
@@ -225,6 +231,14 @@ const EquinixConnection = () => {
             alt="image"
             className="w-[145px] md:w-[174px] lg:w-[203px] xl:w-[232px] 2xl:w-[290px]"
           />{' '}
+          <div
+            onClick={() => {
+              setIsCreatingNewChannel(true)
+            }}
+            className="cursor-pointer text-[10px] text-[#0354EC] hover:text-[#0243bb] xl:text-[12px]"
+          >
+            How to get my API key?
+          </div>
         </div>
         <div className="mt-[25px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
           <span className="flex flex-row">
@@ -273,6 +287,7 @@ const EquinixConnection = () => {
           </div>
         )}
       </div>
+      <GetEquinixAPIKey isOpen={isCreatingNewChannel} onClose={closeModal} />
     </div>
   )
 }
