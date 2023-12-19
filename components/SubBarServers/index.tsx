@@ -186,7 +186,7 @@ const SubBarServers = ({ onValueChange }) => {
 
   function renderChooseYourServerOptions() {
     return (
-      <div className="mt-[11px] grid gap-y-[22px] md:mt-[13px] md:gap-y-[27px] lg:mt-[15.5px] lg:gap-y-[31px] xl:mt-[17.5px] xl:gap-y-[35px] 2xl:mt-[22px]  2xl:min-w-[260px]  2xl:gap-y-[44px] ">
+      <div className="mt-[11px] grid gap-y-[22px] md:mt-[13px] md:gap-y-[27px] lg:mt-[15.5px] lg:gap-y-[31px] xl:mt-[17.5px] xl:gap-y-[35px] 2xl:mt-[22px]  2xl:min-w-[290px]  2xl:gap-y-[44px] ">
         {chooseYourServerOptions.map((option, index) => (
           <div key={index} className="relative">
             <div className="relative flex gap-x-[8px] text-[#000] md:gap-x-[9.6px] lg:gap-x-[11.2px] xl:gap-x-[13px] 2xl:gap-x-[16px]">

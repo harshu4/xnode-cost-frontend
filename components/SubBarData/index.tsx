@@ -105,7 +105,7 @@ const SubBarData = ({ onValueChange }) => {
   }, [currentDataMenuSelect])
   return (
     <>
-      <div className="z-100 relative min-w-[300px] bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:min-w-[350px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
+      <div className="z-100 relative min-w-[300px] bg-[#fff] px-[18px] py-[29px] pr-[33px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:px-[20px] md:py-[34.5px] md:pr-[40px] lg:px-[23px] lg:py-[40px] lg:pr-[47px] xl:px-[27px] xl:py-[45.5px] xl:pr-[54px] 2xl:min-w-[370px] 2xl:py-[57px] 2xl:pl-[33px] 2xl:pr-[67px]">
         {/* <div className="text-[9px] font-bold md:text-[11px] lg:text-[12.5px] xl:text-[14.5px] 2xl:text-[18px]">
           Categories
         </div> */}
