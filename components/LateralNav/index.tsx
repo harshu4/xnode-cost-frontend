@@ -453,26 +453,27 @@ const LateralNav = ({ onValueChange }) => {
               />
             </div>
           ))}
+          {hoveredIcon === 'Data' && (
+            <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
+              <SubBarData onValueChange={console.log('')} />
+            </div>
+          )}
         </div>
-        {hoveredIcon === 'Data' && (
-          <div className="absolute top-[80px] -right-[260px] md:-right-[188px] lg:-right-[238px] xl:-right-[329px] 2xl:top-[105px] 2xl:-right-[300px]">
-            <SubBarData onValueChange={console.log('')} />
-          </div>
-        )}
+
         {hoveredIcon === 'Servers' && (
-          <div className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]">
+          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
             <SubBarServers onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'APIs' && (
-          <div className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]">
+          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
             <SubBarAPIs onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Analytics' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarAnalytics onValueChange={console.log('')} />
           </div>
@@ -480,7 +481,7 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'RPC' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarRPC onValueChange={console.log('')} />
           </div>
@@ -488,7 +489,7 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'ML/LLMs' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarML onValueChange={console.log('')} />
           </div>
@@ -496,7 +497,7 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'Storage' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarStorage onValueChange={console.log('')} />
           </div>
@@ -504,7 +505,7 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'Data management' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarDataManagement onValueChange={console.log('')} />
           </div>
@@ -512,7 +513,7 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'Compute' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%] transform"
           >
             <SubBarCompute onValueChange={console.log('')} />
           </div>
@@ -520,13 +521,13 @@ const LateralNav = ({ onValueChange }) => {
         {hoveredIcon === 'Trading' && (
           <div
             onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]"
+            className="absolute top-[80px] right-0 translate-x-[100%]"
           >
             <SubBarTrading onValueChange={console.log('')} />
           </div>
         )}
         {hoveredIcon === 'Utility' ? (
-          <div className="absolute top-[80px] -right-[260px] md:-right-[158px] lg:-right-[208px] xl:-right-[259px] 2xl:top-[105px] 2xl:-right-[300px]">
+          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
             <SubBarUtility onValueChange={console.log('')} />
           </div>
         ) : null}
