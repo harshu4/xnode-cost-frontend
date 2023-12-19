@@ -137,7 +137,7 @@ const SubBarAPIs = ({ onValueChange }) => {
 
   return (
     <>
-      <div className="z-100 relative min-w-[230px] bg-[#fff] py-[21px] px-[16px] text-[#000]  shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)] md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:py-[43px] 2xl:px-[33px]">
+      <div className="z-100 relative min-w-[260px] bg-[#fff] py-[21px] px-[16px] text-[#000] shadow-[0_0px_5px_0px_rgba(0,0,0,0.12)]  md:py-[26px] md:px-[20px] lg:py-[30px] lg:px-[23px] xl:py-[35px] xl:px-[26.5px] 2xl:min-w-[300px] 2xl:py-[43px] 2xl:px-[33px]">
         <img
           src={`${
             process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
