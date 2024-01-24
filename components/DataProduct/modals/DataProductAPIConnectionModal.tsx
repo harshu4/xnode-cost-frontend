@@ -99,7 +99,7 @@ const DataProductAPIConnection = ({
 
   return (
     <div className="relative rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] pb-[20px] pr-[100px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[20px]  xl:pr-[192px] 2xl:px-[20px] 2xl:py-[25px] 2xl:pb-[40px] 2xl:pr-[240px]">
-      <div className="relative flex gap-x-[10px]">
+      <div className="relative flex w-fit gap-x-[10px]">
         <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
           {title}
         </div>
@@ -115,12 +115,15 @@ const DataProductAPIConnection = ({
           onMouseLeave={() => setShowTooltipCloudProvider(false)}
         />
         {showTooltipCloudProvider && (
-          <div className="absolute left-[130px] top-[0px] w-full max-w-[270px]  rounded-[10px] bg-[#000] px-[13px] py-[10px] text-[8px] font-medium text-[#fff] md:left-[162px] md:px-[15px] md:py-[12px] md:text-[9px] lg:left-[189px] lg:px-[17px] lg:py-[14px] lg:text-[11px] lg:!leading-[19px] xl:left-[216px] xl:px-[20px] xl:py-[16px] xl:text-[13px] 2xl:left-[270px] 2xl:px-[25px] 2xl:py-[20px] 2xl:text-[16px]">
-            <div>If you have any third party that needs connection</div>
+          <div className="absolute right-0 w-full  max-w-[270px] translate-x-[105%]  rounded-[10px] bg-[#000] px-[11px] py-[8px] text-[12px] font-medium  text-[#fff] lg:!leading-[19px]  2xl:px-[15px] 2xl:py-[10px] 2xl:text-[14px]">
+            <div>
+              Utilize the Validation Cloud data in your Xnode by connecting it
+              with your API key.
+            </div>
           </div>
         )}
       </div>
-      <div className="ml-[20px] mt-[20px] 2xl:mt-[40px]">
+      <div className="ml-[20px] mt-[20px] 2xl:mt-[30px]">
         <div className="flex gap-x-[50px]">
           {/* <img
             //   src={`${
@@ -151,16 +154,16 @@ const DataProductAPIConnection = ({
           <div>
             {isEditing ? (
               <div>
-                <div className="mt-[10px] 2xl:mt-[20px]">
+                <div className="mt-[10px]">
                   <span className="flex flex-row">
-                    Project API Key
+                    API Key
                     <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
                       {errors.apiKey?.message}
                     </p>
                   </span>
                   <input
                     disabled={isLoading}
-                    className="mt-[10px] h-[25px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 md:h-[30px] md:w-[250px] lg:h-[35px] lg:w-[350px] xl:h-[40px] xl:w-[400px] 2xl:h-[50px] 2xl:w-[500px]"
+                    className="mt-[10px] h-[30px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0  md:w-[250px]  lg:w-[350px]  xl:w-[400px] 2xl:h-[40px] 2xl:w-[500px]"
                     type="text"
                     maxLength={500}
                     placeholder=""
@@ -174,7 +177,7 @@ const DataProductAPIConnection = ({
                     isLoading
                       ? 'bg-[#4b83ec]'
                       : 'bg-[#0354EC] hover:bg-[#0e2e69]'
-                  } mt-[21px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[32px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[40px] lg:py-[8.75px] lg:px-[42px]  lg:text-[10px] xl:mb-0   xl:mt-[65px] xl:py-[10px]    xl:px-[48px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]`}
+                  } mt-[25px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[5px] px-[20px] text-center text-[12px] font-medium text-[#fff]    2xl:mt-[40px] 2xl:gap-x-[10px]  2xl:py-[6px] 2xl:px-[30px] 2xl:text-[14px]`}
                 >
                   <div>Connect</div>
                 </div>
@@ -207,7 +210,7 @@ const DataProductAPIConnection = ({
           </div>
         ) : (
           <div>
-            <div className="mt-[10px]  2xl:mt-[20px]">
+            <div className="mt-[10px]">
               <span className="flex flex-row">
                 API Key
                 <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
@@ -217,7 +220,7 @@ const DataProductAPIConnection = ({
               <div className="flex gap-x-[20px]">
                 <input
                   disabled={isLoading}
-                  className="mt-[10px] h-[25px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0 md:h-[30px] md:w-[250px] lg:h-[35px] lg:w-[350px] xl:h-[40px] xl:w-[400px] 2xl:h-[50px] 2xl:w-[500px]"
+                  className="mt-[10px] h-[30px] w-[200px] rounded-[10px] border border-[#D4D4D4] bg-white px-[12px] text-[17px] font-normal outline-0  md:w-[250px]  lg:w-[350px]  xl:w-[400px] 2xl:h-[40px] 2xl:w-[500px]"
                   type={passwordVisibility ? 'password' : 'text'}
                   maxLength={500}
                   placeholder=""
@@ -245,7 +248,7 @@ const DataProductAPIConnection = ({
               onClick={handleSubmit(onSubmit)}
               className={`${
                 isLoading ? 'bg-[#4b83ec]' : 'bg-[#0354EC] hover:bg-[#0e2e69]'
-              } mt-[25px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[32px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px]  lg:py-[8.75px] lg:px-[42px]  lg:text-[10px] xl:mb-0    xl:py-[10px]    xl:px-[48px]  xl:text-[11.2px]  2xl:mt-[40px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]`}
+              } mt-[25px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[5px] px-[20px] text-center text-[12px] font-medium text-[#fff]    2xl:mt-[40px] 2xl:gap-x-[10px]  2xl:py-[6px] 2xl:px-[30px] 2xl:text-[14px]`}
             >
               <div>Connect</div>
             </div>
