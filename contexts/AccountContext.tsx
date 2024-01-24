@@ -7,6 +7,8 @@ export interface UserProps {
   lastName: string
   email: string
   equinixAPIKey: string
+  validationCloudAPIKeyEthereum: string
+  validationCloudAPIKeyPolygon: string
   companyName: string
   foundingYear: number
   location: string
