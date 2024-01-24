@@ -25,7 +25,7 @@ const EquinixConnection = () => {
   const [isCreatingNewChannel, setIsCreatingNewChannel] = useState(false)
 
   const validSchema = Yup.object().shape({
-    apiKey: Yup.string().max(500).required('Email is required'),
+    apiKey: Yup.string().max(500).required('Key is required'),
   })
   const {
     register,
