@@ -78,7 +78,7 @@ const EquinixConnection = () => {
       setIsEditing(false)
       setIsLoading(false)
     } catch (err) {
-      toast.error(`Error happened: ${err.response.data.message}`)
+      toast.error(`Error: ${err.response.data.message}`)
       setIsLoading(false)
     }
   }

@@ -92,7 +92,7 @@ const DataProductAPIConnection = ({
       setIsEditing(false)
       setIsLoading(false)
     } catch (err) {
-      toast.error(`Error happened: ${err.response.data.message}`)
+      toast.error(`Error: ${err.response.data.message}`)
       setIsLoading(false)
     }
   }
@@ -194,7 +194,7 @@ const DataProductAPIConnection = ({
               </div>
             ) : (
               <div className="mt-[25px] mb-[10px] grid gap-y-[20px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
-                <div className="text-[12px] text-[#12AD50] md:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px]">
+                <div className="text-[16px] text-[#12AD50] 2xl:text-[21px]">
                   Connected
                 </div>
                 <div
