@@ -109,7 +109,7 @@ const ReviewYourBuild = () => {
   }
 
   function findFeatures(array) {
-    const dataObject = array.find((item) => item.type === 'data')
+    const dataObject = array.find((item) => item.type === 'dataStreaming')
     const finalFeatures = []
     for (let i = 0; i < dataObject?.data?.lists?.length; i++) {
       // eslint-disable-next-line prettier/prettier
