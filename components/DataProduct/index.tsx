@@ -23,11 +23,14 @@ import { format } from 'sql-formatter'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
 import { formatDistanceToNow, differenceInDays } from 'date-fns'
+import { AccountContext } from '@/contexts/AccountContext'
+import DataProductAPIConnectionMain from './modals/DataProductAPIConnectionMain'
 
 const DataProduct = (id: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [data, setData] = useState<DataProvider>()
   const [tasksSearchBar, setTasksSearchBar] = useState('')
+  const { user, setUser } = useContext(AccountContext)
 
   const { push } = useRouter()
 
@@ -373,6 +376,16 @@ const DataProduct = (id: any) => {
                   </div>
                 ))}
             </div>
+            {user && (
+              <div>
+                <div className="mt-[20px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">
+                  API connection
+                </div>
+                <div className="mt-[10px]">
+                  <DataProductAPIConnectionMain dataProductId={data?.id} />
+                </div>
+              </div>
+            )}
             {data?.specification && (
               <>
                 <div className="mt-[26px] text-[8px] font-bold  text-[#959595]  md:mt-[36px]  md:text-[10px] lg:mt-[42px] lg:text-[12px] lg:!leading-[19px] 2xl:mt-[52px]  2xl:text-[16px]">

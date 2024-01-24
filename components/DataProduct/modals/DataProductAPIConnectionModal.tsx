@@ -39,7 +39,7 @@ const DataProductAPIConnection = ({
   const [isCreatingNewChannel, setIsCreatingNewChannel] = useState(false)
 
   const validSchema = Yup.object().shape({
-    apiKey: Yup.string().max(500).required('Email is required'),
+    apiKey: Yup.string().max(500).required('Key is required'),
   })
   const {
     register,
@@ -98,7 +98,7 @@ const DataProductAPIConnection = ({
   }
 
   return (
-    <div className="relative rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] pb-[60px] pr-[100px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[20px] xl:pb-[80px] xl:pr-[192px] 2xl:px-[20px] 2xl:py-[25px] 2xl:pb-[100px] 2xl:pr-[240px]">
+    <div className="relative rounded-[10px] bg-[#F9F9F9] px-[10px] py-[8px] pb-[20px] pr-[100px] text-[#000] md:px-[12px] md:py-[9px] lg:px-[14px] lg:py-[11px] xl:px-[16px] xl:py-[20px]  xl:pr-[192px] 2xl:px-[20px] 2xl:py-[25px] 2xl:pb-[40px] 2xl:pr-[240px]">
       <div className="relative flex gap-x-[10px]">
         <div className="text-[10px] font-bold md:text-[12px] lg:text-[14px] lg:!leading-[24px] xl:pl-[5px] xl:text-[16px] 2xl:text-[20px]">
           {title}
@@ -120,9 +120,9 @@ const DataProductAPIConnection = ({
           </div>
         )}
       </div>
-      <div className="mt-[25px] md:mt-[35px] md:ml-[70px]  lg:mt-[42px] lg:ml-[90px] xl:mt-[56px] xl:ml-[112px] 2xl:mt-[70px] 2xl:ml-[140px]">
+      <div className="ml-[20px] mt-[20px] 2xl:mt-[40px]">
         <div className="flex gap-x-[50px]">
-          <img
+          {/* <img
             //   src={`${
             //     process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
             //       ? process.env.NEXT_PUBLIC_BASE_PATH
@@ -135,7 +135,7 @@ const DataProductAPIConnection = ({
             }${imageSrc}`}
             alt="image"
             className="w-[145px] md:w-[174px] lg:w-[203px] xl:w-[232px] 2xl:w-[290px]"
-          />{' '}
+          />{' '} */}
           <a href={helpLink} target="_blank" rel="noreferrer">
             <div
               //   onClick={() => {
@@ -151,7 +151,7 @@ const DataProductAPIConnection = ({
           <div>
             {isEditing ? (
               <div>
-                <div className="mt-[25px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
+                <div className="mt-[10px] 2xl:mt-[20px]">
                   <span className="flex flex-row">
                     Project API Key
                     <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
@@ -207,7 +207,7 @@ const DataProductAPIConnection = ({
           </div>
         ) : (
           <div>
-            <div className="mt-[25px] md:mt-[30px] lg:mt-[35px] xl:mt-[40px] 2xl:mt-[50px]">
+            <div className="mt-[10px]  2xl:mt-[20px]">
               <span className="flex flex-row">
                 API Key
                 <p className="ml-[8px] text-[10px] font-normal text-[#ff0000] ">
@@ -245,7 +245,7 @@ const DataProductAPIConnection = ({
               onClick={handleSubmit(onSubmit)}
               className={`${
                 isLoading ? 'bg-[#4b83ec]' : 'bg-[#0354EC] hover:bg-[#0e2e69]'
-              } mt-[21px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[32px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px] lg:mt-[40px] lg:py-[8.75px] lg:px-[42px]  lg:text-[10px] xl:mb-0   xl:mt-[65px] xl:py-[10px]    xl:px-[48px]  xl:text-[11.2px]  2xl:mt-[82px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]`}
+              } mt-[25px] mb-[20px] flex h-fit w-fit cursor-pointer justify-center gap-x-[8px] rounded-[5px]  py-[6.2px] px-[11px] text-center text-[7px] font-medium text-[#fff]  md:mt-[32px] md:py-[7.5px] md:px-[12.5px] md:text-[8.4px]  lg:py-[8.75px] lg:px-[42px]  lg:text-[10px] xl:mb-0    xl:py-[10px]    xl:px-[48px]  xl:text-[11.2px]  2xl:mt-[40px] 2xl:gap-x-[10px]  2xl:py-[12.5px] 2xl:px-[60px] 2xl:text-[14px]`}
             >
               <div>Connect</div>
             </div>
