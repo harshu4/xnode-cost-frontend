@@ -135,8 +135,8 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
   // this could also be done with a custom edge for example
   const edgesWithUpdatedTypes = edges.map((edge) => {
     if (edge.sourceHandle) {
-      const edgeType = nodes.find((node) => node.type === 'server').data
-        .selects[edge.sourceHandle]
+      const edgeType = nodes.find((node) => node.type === 'server')?.data
+        ?.selects?.edge?.sourceHandle
       edge.type = edgeType
     }
 
@@ -188,6 +188,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
             },
             name: changeNodes?.name,
             icon: changeNodes?.icon,
+            chain: changeNodes?.chain,
           },
         }
         setNodes((prevNodes) => [...prevNodes, newNode])
