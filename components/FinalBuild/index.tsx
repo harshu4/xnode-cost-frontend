@@ -29,16 +29,12 @@ import {
 } from '@/utils/constants'
 
 export function findServerDefaultType(array) {
-  console.log('o server aqui')
   const serverObject = array.find((item) => item.type === 'server')
-  console.log(serverObject)
   return serverObject?.data?.defaultValueServerType || null
 }
 
 export function findServerDefaultValueLocation(array) {
-  console.log('o server aqui')
   const serverObject = array.find((item) => item.type === 'server')
-  console.log(serverObject)
   return serverObject?.data?.defaultValueLocation || null
 }
 
@@ -125,10 +121,6 @@ const ReviewYourBuild = () => {
     const savedNodes = localStorage.getItem('nodes')
     const savedEdges = localStorage.getItem('edges')
 
-    console.log('o service region')
-    console.log(serviceRegion)
-    console.log(optionsServerLocationToValue)
-
     const serverLoc =
       optionsServerLocationToValue[
         findServerDefaultValueLocation(JSON.parse(savedNodes))
@@ -137,9 +129,6 @@ const ReviewYourBuild = () => {
       optionsServerNumberToValue[findServerDefaultType(JSON.parse(savedNodes))]
 
     const features = findFeatures(JSON.parse(savedNodes))
-
-    console.log('o retorno do server loc')
-    console.log(serverLoc)
 
     const websocketEnabled = findAPIisWebsocket(JSON.parse(savedNodes))
     const finalData = {
