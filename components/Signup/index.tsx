@@ -19,6 +19,17 @@ import nookies, { parseCookies, setCookie, destroyCookie } from 'nookies'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import EquinixConnection from './EquinixConnecton'
+import {
+  optionsServerLocationToValue,
+  optionsServerNumberToValue,
+} from '@/utils/constants'
+import {
+  findAPIisWebsocket,
+  findFeatures,
+  findServerDefaultType,
+  findServerDefaultValueLocation,
+} from '../FinalBuild'
+import { CoreServices } from '@/types/node'
 
 /* eslint-disable react/no-unescaped-entities */
 const Signup = () => {
@@ -32,9 +43,47 @@ const Signup = () => {
     setFinalBuild,
     finalNodes,
     setSignup,
+    tagXnode,
     user,
+    projectName,
+    xnodeType,
     setUser,
   } = useContext(AccountContext)
+
+  function logPayload() {
+    const savedNodes = localStorage.getItem('nodes')
+    const savedEdges = localStorage.getItem('edges')
+
+    const serverLoc =
+      optionsServerLocationToValue[
+        findServerDefaultValueLocation(JSON.parse(savedNodes))
+      ]
+    const serverNumber =
+      optionsServerNumberToValue[findServerDefaultType(JSON.parse(savedNodes))]
+
+    const features = findFeatures(JSON.parse(savedNodes))
+
+    console.log('o retorno do server loc')
+    console.log(serverLoc)
+
+    const websocketEnabled = findAPIisWebsocket(JSON.parse(savedNodes))
+    const finalData = {
+      name: projectName,
+      description: 'This is my xnode',
+      useCase: tagXnode,
+      status: 'Running',
+      location: findServerDefaultValueLocation(JSON.parse(savedNodes)),
+      consoleNodes: savedNodes,
+      consoleEdges: savedEdges,
+      type: xnodeType,
+      serverLoc,
+      serverNumber,
+      websocketEnabled,
+      features,
+    }
+    console.log('final payload')
+    console.log(finalData)
+  }
 
   function handleFinalBuild() {
     if (!user) {
@@ -121,6 +170,14 @@ const Signup = () => {
               />
               <div>Finalize the deployment</div>
             </div>
+          </div>
+          <div
+            onClick={() => {
+              logPayload()
+            }}
+            className="mt-[20px] bg-[#787d86] p-[20px] text-[14px]"
+          >
+            Log the payload
           </div>
         </div>
       </section>
