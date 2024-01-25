@@ -172,7 +172,7 @@ const Signup = () => {
             onClick={() => {
               logPayload()
             }}
-            className="mt-[20px] w-fit cursor-pointer rounded-md bg-[#787d86] p-[20px] text-[14px]"
+            className="mt-[20px] w-fit cursor-pointer rounded-md bg-[#787d86] p-[5px] text-[12px]"
           >
             Log the payload
           </div>
