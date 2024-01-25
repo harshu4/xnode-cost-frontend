@@ -63,9 +63,6 @@ const Signup = () => {
 
     const features = findFeatures(JSON.parse(savedNodes))
 
-    console.log('o retorno do server loc')
-    console.log(serverLoc)
-
     const websocketEnabled = findAPIisWebsocket(JSON.parse(savedNodes))
     const finalData = {
       name: projectName,
@@ -175,7 +172,7 @@ const Signup = () => {
             onClick={() => {
               logPayload()
             }}
-            className="mt-[20px] bg-[#787d86] p-[20px] text-[14px]"
+            className="mt-[20px] w-fit cursor-pointer rounded-md bg-[#787d86] p-[20px] text-[14px]"
           >
             Log the payload
           </div>
