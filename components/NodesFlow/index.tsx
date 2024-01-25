@@ -188,6 +188,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
             },
             name: changeNodes?.name,
             icon: changeNodes?.icon,
+            chain: changeNodes?.chain,
           },
         }
         setNodes((prevNodes) => [...prevNodes, newNode])

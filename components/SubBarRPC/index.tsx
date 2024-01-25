@@ -154,11 +154,18 @@ const SubBarRPC = ({ onValueChange }) => {
                 )}
                 <div
                   onClick={() => {
-                    setChangeNodes({
-                      type: 'rpc',
-                      name: option.title,
-                      icon: option.src,
-                    })
+                    option.title === 'ValidationCloud'
+                      ? setChangeNodes({
+                          type: 'rpc',
+                          name: option.title,
+                          icon: option.src,
+                          chain: 'Ethereum',
+                        })
+                      : setChangeNodes({
+                          type: 'rpc',
+                          name: option.title,
+                          icon: option.src,
+                        })
                   }}
                   className={`absolute ${
                     option.enabled
