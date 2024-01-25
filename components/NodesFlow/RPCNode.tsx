@@ -92,7 +92,7 @@ function Options({ handleId, optionsSelection, nodeId }) {
   return (
     <div className="">
       <select
-        className="nodrag min-w-[85px] rounded-[6px] bg-[#D9D9D9] font-normal md:min-w-[104px] lg:min-w-[120px] xl:min-w-[138px] 2xl:min-w-[172px]"
+        className="nodrag mt-[15px] min-w-[85px] rounded-[6px] bg-[#D9D9D9] font-normal md:min-w-[104px] lg:min-w-[120px] xl:min-w-[138px] 2xl:min-w-[172px]"
         onChange={(option) => handleSelection(option.target.value)}
         value={selected}
       >
