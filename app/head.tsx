@@ -1,9 +1,9 @@
 export default function Head() {
   return (
     <>
-      <title>Openmesh Xnode</title>
+      <title>Openmesh Pythia</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="Openmesh Xnode" />
+      <meta name="description" content="Openmesh Pythia" />
       <link
         rel="icon"
         href={`${
