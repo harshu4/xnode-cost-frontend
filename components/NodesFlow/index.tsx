@@ -677,6 +677,7 @@ const NodesFlow = ({ ...dataM }: ModalProps) => {
     setFinalBuild(false)
     setIsWorkspace(true)
     const savedNodes = localStorage.getItem('nodes')
+    const savedNodes2 = localStorage.getItem('pythiaChat')
     const savedEdges = localStorage.getItem('edges')
     const savedXnodeType = localStorage.getItem('xnodeType')
 
