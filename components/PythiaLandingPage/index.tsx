@@ -32,7 +32,7 @@ const PythiaLandingPage = () => {
               value={newMessageHtml}
               onChange={handleChangeNewMessage}
               // disabled={isLoading}
-              className="my-quill mx-auto mt-2 w-full max-w-[900px] rounded-md bg-[#787ca536] text-base font-normal text-[#fff] outline-0 2xl:max-w-[1200px]"
+              className="my-quill mx-auto mt-2 w-full max-w-[900px] rounded-md bg-[#fff] bg-[#787ca536] text-base font-normal text-[#fff] outline-0 2xl:max-w-[1000px]"
               placeholder="Type here"
             />
           </div>
