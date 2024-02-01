@@ -19,7 +19,7 @@ import SubBarCompute from '../SubBarCompute'
 import SubBarTrading from '../SubBarTrading'
 
 /* eslint-disable react/no-unescaped-entities */
-const LateralNav = ({ onValueChange }) => {
+const Sidebar = ({ onValueChange }) => {
   const [categoriesOptions, setCategoriesOptions] = useState([])
   const [presetId, setPresetId] = useState(0)
   const {
@@ -46,83 +46,6 @@ const LateralNav = ({ onValueChange }) => {
       title: 'Home',
     },
     {
-      icon: '/images/lateralNavBar/workspace.svg',
-      iconStyle: 'w-[12px] md:w-[14.5px] lg:w-[17px] xl:w-[20px] 2xl:w-[20px]',
-      title: 'Workspace',
-    },
-    {
-      icon: '/images/lateralNavBar/new-dashboard.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Dashboard',
-    },
-    {
-      icon: '/images/lateralNavBar/new-servers.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Servers',
-    },
-    {
-      icon: '/images/lateralNavBar/new-data.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data',
-    },
-    {
-      icon: '/images/lateralNavBar/new-apis.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'APIs',
-    },
-    {
-      icon: '/images/lateralNavBar/new-rpc.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'RPC',
-    },
-    {
-      icon: '/images/lateralNavBar/new-analytics.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Analytics',
-    },
-    {
-      icon: '/images/lateralNavBar/new-data-management.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data management',
-    },
-    {
-      icon: '/images/lateralNavBar/new-storage.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Storage',
-    },
-    {
-      icon: '/images/lateralNavBar/new-compute.svg',
-      iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
-      title: 'Compute',
-    },
-    {
-      icon: '/images/lateralNavBar/new-trading.svg',
-      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]',
-      title: 'Trading',
-    },
-    {
-      icon: '/images/lateralNavBar/new-ai.svg',
-      iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]',
-      title: 'ML/LLMs',
-    },
-    {
-      icon: '/images/lateralNavBar/new-apps.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Apps',
-    },
-    {
-      icon: '/images/lateralNavBar/new-utility.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Utility',
-    },
-    {
-      icon: '/images/lateralNavBar/new-docs.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Docs',
-    },
-    {
       icon: '/images/lateralNavBar/new-profile.png',
       iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Profile',
@@ -134,78 +57,6 @@ const LateralNav = ({ onValueChange }) => {
       icon: '/images/lateralNavBar/new-home.png',
       iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
       title: 'Home',
-    },
-    {
-      icon: '/images/lateralNavBar/workspace.svg',
-      iconStyle: 'w-[12px] md:w-[14.5px] lg:w-[17px] xl:w-[20px] 2xl:w-[20px]',
-      title: 'Workspace',
-    },
-    {
-      icon: '/images/lateralNavBar/new-servers.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Servers',
-    },
-    {
-      icon: '/images/lateralNavBar/new-data.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data',
-    },
-    {
-      icon: '/images/lateralNavBar/new-apis.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'APIs',
-    },
-    {
-      icon: '/images/lateralNavBar/new-rpc.png',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'RPC',
-    },
-    {
-      icon: '/images/lateralNavBar/new-analytics.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Analytics',
-    },
-    {
-      icon: '/images/lateralNavBar/new-data-management.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Data management',
-    },
-    {
-      icon: '/images/lateralNavBar/new-storage.svg',
-      iconStyle: 'w-[10px] md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Storage',
-    },
-    {
-      icon: '/images/lateralNavBar/new-compute.svg',
-      iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[18px] 2xl:w-[22px]',
-      title: 'Compute',
-    },
-    {
-      icon: '/images/lateralNavBar/new-trading.svg',
-      iconStyle: 'w-[9px] md:w-[11px] lg:w-[12.6px] xl:w-[14.4px] 2xl:w-[18px]',
-      title: 'Trading',
-    },
-    {
-      icon: '/images/lateralNavBar/new-ai.svg',
-      iconStyle:
-        'w-[11px] md:w-[13.2px] lg:w-[15.5px] xl:w-[17.6px] 2xl:w-[22px]',
-      title: 'ML/LLMs',
-    },
-    {
-      icon: '/images/lateralNavBar/new-apps.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Apps',
-    },
-    {
-      icon: '/images/lateralNavBar/new-utility.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Utility',
-    },
-    {
-      icon: '/images/lateralNavBar/new-docs.svg',
-      iconStyle: 'w-[10px]  md:w-[12px] lg:w-[14px] xl:w-[16px] 2xl:w-[20px]',
-      title: 'Docs',
     },
   ]
 
@@ -308,7 +159,7 @@ const LateralNav = ({ onValueChange }) => {
           onMouseEnter={() => setIsOpen(true)}
           className="z-50 h-full shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
-          <div className="flex w-[42px]  flex-col items-center justify-center px-[15px] pb-[45px] pt-[49px] md:w-[51px] md:px-[11.5px] md:pb-[54px] md:pt-[58.8px] lg:w-[60px] lg:px-[13.5px] lg:pb-[63px] lg:pt-[68.5px] xl:w-[68px] xl:px-[15px] xl:pb-[72px] xl:pt-[78.4px] 2xl:w-[85px] 2xl:px-[15px] 2xl:pb-[90px] 2xl:pt-[98px]">
+          <div className="flex w-[42px]  flex-col items-center justify-center px-[15px] pb-[45px] pt-[49px]  lg:w-[85px] lg:px-[15px] lg:pb-[90px] lg:pt-[98px]">
             <div
               className={`absolute top-[14px] mb-[29px] w-[10.5px] md:top-[16.8px] md:mb-[35px] md:w-[12.9px] lg:top-[19.6px] lg:mb-[40px]  lg:w-[15.05px] xl:top-[22.4px] xl:mb-[47px] xl:w-[17.2px] 2xl:top-[28px] 2xl:mb-[58px] 2xl:w-[21.5px] `}
             >
@@ -536,4 +387,4 @@ const LateralNav = ({ onValueChange }) => {
   )
 }
 
-export default LateralNav
+export default Sidebar
