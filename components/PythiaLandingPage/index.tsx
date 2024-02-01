@@ -35,6 +35,13 @@ const PythiaLandingPage = () => {
               className="my-quill mt-2 w-full rounded-md bg-[#787ca536] text-base font-normal text-[#fff] outline-0"
               placeholder="Type here"
             />
+            <QuillNoSSRWrapper
+              value={newMessageHtml}
+              onChange={handleChangeNewMessage}
+              // disabled={isLoading}
+              className="my-quill mt-2 w-full rounded-md bg-[#787ca536] text-base font-normal text-[#fff] outline-0"
+              placeholder="Type here"
+            />
           </div>
         </div>
       </div>

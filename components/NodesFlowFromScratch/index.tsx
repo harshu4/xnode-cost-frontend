@@ -105,7 +105,7 @@ const NodesFlow = (fromScratch: boolean) => {
         const newNode = {
           id: uuidv4(),
           type: 'api',
-          position: { x: 670, y: 550 },
+          position: { x: 670, y: 12250 },
           data: {
             selects: {
               'handle-0': 'smoothstep',
