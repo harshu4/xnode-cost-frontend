@@ -160,9 +160,7 @@ const Sidebar = ({ onValueChange }) => {
           className="z-50 h-full shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
         >
           <div className="flex w-[42px]  flex-col items-center justify-center px-[15px] pb-[45px] pt-[49px]  lg:w-[85px] lg:px-[15px] lg:pb-[90px] lg:pt-[98px]">
-            <div
-              className={`absolute top-[14px] mb-[29px] w-[10.5px] md:top-[16.8px] md:mb-[35px] md:w-[12.9px] lg:top-[19.6px] lg:mb-[40px]  lg:w-[15.05px] xl:top-[22.4px] xl:mb-[47px] xl:w-[17.2px] 2xl:top-[28px] 2xl:mb-[58px] 2xl:w-[21.5px] `}
-            >
+            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[38px] lg:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(true)}
                 src={`${
@@ -213,11 +211,11 @@ const Sidebar = ({ onValueChange }) => {
     <>
       <div
         onMouseLeave={() => setIsOpen(false)}
-        className="relative z-50 h-full max-w-[109px] pb-[200px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] md:w-full md:max-w-[130px]  md:pb-[600px] lg:max-w-[152px] xl:max-w-[180px] 2xl:max-w-[230px]"
+        className="relative z-50 h-full shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)]"
       >
-        <div className="flex  flex-col items-start">
-          <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between md:mt-[29.4px] md:mb-[17.4px] md:ml-[19.2px] lg:mt-[34.3px] lg:mb-[20.3px] lg:ml-[22.4px] xl:mt-[39.2px] xl:mb-[21.2px] xl:ml-[25.6px] 2xl:mt-[49px] 2xl:mb-[29px] 2xl:ml-[32px]">
-            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center md:top-[16.8px] md:w-[12.9px] lg:top-[19.6px] lg:w-[15.05px] xl:top-[22.4px]  xl:w-[17.2px] 2xl:top-[28px] 2xl:w-[21.5px]">
+        <div className="flex w-[220px] flex-col items-start">
+          <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between lg:mt-[49px] lg:mb-[29px] lg:ml-[32px]">
+            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[38px] lg:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(false)}
                 src={`${
@@ -233,16 +231,16 @@ const Sidebar = ({ onValueChange }) => {
                     ? `/xnode/`
                     : '/'
                 }`}
-                className="absolute -top-[8px] left-[15px] flex w-[50px] cursor-pointer flex-col items-center md:-top-[9.6px] md:left-[30px] md:w-[60px] lg:-top-[11.2px]  lg:left-[35px] lg:w-[70px] xl:-top-[12.8px] xl:left-[40px] xl:w-[80px] 2xl:-top-[16px] 2xl:left-[50px] 2xl:w-[100px] "
+                className="absolute -top-[8px] left-[15px] flex w-[50px] cursor-pointer flex-col items-center lg:-top-[22px] lg:left-[50px] lg:w-[100px] "
               >
                 <img
                   src={`${
                     process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
                       ? process.env.NEXT_PUBLIC_BASE_PATH
                       : ''
-                  }/images/logo/xnode-logo.svg`}
+                  }/images/logo/pythia.svg`}
                   alt="image"
-                  className="w-[40px] md:w-[80px] lg:w-[120px] xl:w-[160px] 2xl:w-[200px]"
+                  className="w-[40px] lg:w-[300px]"
                 />
               </a>
             </div>
@@ -310,78 +308,6 @@ const Sidebar = ({ onValueChange }) => {
             </div>
           )}
         </div>
-
-        {hoveredIcon === 'Servers' && (
-          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
-            <SubBarServers onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'APIs' && (
-          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
-            <SubBarAPIs onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Analytics' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarAnalytics onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'RPC' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarRPC onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'ML/LLMs' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarML onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Storage' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarStorage onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Data management' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarDataManagement onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Compute' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%] transform"
-          >
-            <SubBarCompute onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Trading' && (
-          <div
-            onMouseLeave={() => setHoveredIcon(null)}
-            className="absolute top-[80px] right-0 translate-x-[100%]"
-          >
-            <SubBarTrading onValueChange={console.log('')} />
-          </div>
-        )}
-        {hoveredIcon === 'Utility' ? (
-          <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
-            <SubBarUtility onValueChange={console.log('')} />
-          </div>
-        ) : null}
       </div>
     </>
   )
