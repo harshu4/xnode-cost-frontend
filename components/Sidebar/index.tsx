@@ -171,36 +171,16 @@ const Sidebar = ({ onValueChange }) => {
                 alt="image"
               />
             </div>
-            <ul className="flex flex-col items-center gap-[20px] md:gap-[24px] lg:gap-[28px] xl:gap-[32px] 2xl:gap-[40px]">
-              {sideBarOptions.map((option, index) => (
-                <li className="relative" key={index}>
-                  <img
-                    src={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? process.env.NEXT_PUBLIC_BASE_PATH
-                        : ''
-                    }${option.icon}`}
-                    alt="image"
-                    className={`${option.iconStyle}`}
-                  />
-                  <img
-                    src={`${
-                      process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                        ? process.env.NEXT_PUBLIC_BASE_PATH
-                        : ''
-                    }/images/lateralNavBar/new-arrow.svg`}
-                    alt="image"
-                    className={` ${
-                      option.title === 'Home' ||
-                      option.title === 'Dashboard' ||
-                      option.title === 'Workspace'
-                        ? 'hidden'
-                        : ''
-                    } absolute top-[2.5px] right-[14px] w-[4px] md:top-[3px] md:right-[16.8px] md:w-[4.8px] lg:top-[3.5px] lg:right-[19.6px] lg:w-[5.6px] xl:top-[4px] xl:right-[22.4px] xl:w-[6.4px] 2xl:top-[5px] 2xl:right-[28px] 2xl:w-[8px]`}
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="absolute top-[46px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[92px] lg:w-[21.5px]">
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/logo/search.svg`}
+                alt="image"
+              />
+            </div>
           </div>
         </div>
       </>
@@ -215,7 +195,7 @@ const Sidebar = ({ onValueChange }) => {
       >
         <div className="flex w-[220px] flex-col items-start">
           <div className="mb-[14.5px] mt-[24.5px] ml-[16px]  flex flex-row items-center  justify-between lg:mt-[49px] lg:mb-[29px] lg:ml-[32px]">
-            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[38px] lg:w-[21.5px]">
+            <div className="absolute top-[46px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[38px] lg:w-[21.5px]">
               <img
                 onClick={() => setIsOpen(false)}
                 src={`${
@@ -244,69 +224,17 @@ const Sidebar = ({ onValueChange }) => {
                 />
               </a>
             </div>
+            <div className="absolute top-[14px] flex w-[10.5px] cursor-pointer flex-col items-center lg:top-[92px] lg:w-[21.5px]">
+              <img
+                src={`${
+                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                    ? process.env.NEXT_PUBLIC_BASE_PATH
+                    : ''
+                }/images/logo/search.svg`}
+                alt="image"
+              />
+            </div>
           </div>
-          {sideBarOptions.map((option, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => handleButtonHover(option.title)}
-              onClick={() => {
-                handleButtonClick(option.title)
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
-              className={`relative flex w-full flex-row items-center justify-between gap-[7.5px] px-[13px] py-[10px] md:gap-[9px] md:px-[20px]  md:py-[12px]  lg:gap-[10.5px] lg:px-[23px] lg:py-[14px] xl:gap-[12px] xl:px-[26.4px] xl:py-[16px] 2xl:gap-[15px] 2xl:px-[33px]  2xl:py-[20px] ${
-                // !next &&
-                // !nextFromScratch &&
-                // option.title !== 'Home' && option.title !== 'Workspace' && !user
-                //   ? 'w-full opacity-50 hover:bg-[#fff]':
-                'cursor-pointer hover:bg-[#F4F4F4]'
-              } ${selectionSideNavBar === option.title ? 'bg-[#F4F4F4]' : ''}`}
-            >
-              <img
-                src={`${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? process.env.NEXT_PUBLIC_BASE_PATH
-                    : ''
-                }${option.icon}`}
-                alt="image"
-                className={`${option.iconStyle}  mx-auto`}
-              />
-              {option.title === 'Home' && (
-                <img
-                  src={`${
-                    process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                      ? process.env.NEXT_PUBLIC_BASE_PATH
-                      : ''
-                  }/images/lateralNavBar/green-ellipse.svg`}
-                  alt="green dot"
-                  style={{ opacity: greenDotOpacity }}
-                  className="absolute top-2 right-2 h-3 w-3 transition-opacity duration-500"
-                />
-              )}
-              <div className=" flex w-full items-center text-start font-inter text-[9px] font-medium !-tracking-[2%] text-[#000]  md:text-[8.4px] lg:text-[10px] xl:text-[11.2px]  2xl:text-[14px] 2xl:!leading-[19px]">
-                {option.title}
-              </div>
-              <img
-                src={`${
-                  process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                    ? process.env.NEXT_PUBLIC_BASE_PATH
-                    : ''
-                }/images/lateralNavBar/new-arrow.svg`}
-                alt="image"
-                className={` ${
-                  option.title === 'Home' ||
-                  option.title === 'Dashboard' ||
-                  option.title === 'Workspace'
-                    ? 'hidden'
-                    : ''
-                } absolute top-[12.5px] left-[7px] w-[4px] md:top-[15px] md:left-[10.2px] md:w-[4.8px] lg:top-[17.5px] lg:left-[12px] lg:w-[5.6px] xl:top-[20px] xl:left-[13.6px] xl:w-[6.4px] 2xl:top-[25px] 2xl:left-[17px] 2xl:w-[8px]`}
-              />
-            </div>
-          ))}
-          {hoveredIcon === 'Data' && (
-            <div className="absolute top-[80px] right-0 translate-x-[100%] transform">
-              <SubBarData onValueChange={console.log('')} />
-            </div>
-          )}
         </div>
       </div>
     </>
