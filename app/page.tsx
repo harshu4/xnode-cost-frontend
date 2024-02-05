@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-      <div className="h-[calc(100vh-6rem)] w-full">
+      <div className="h-full w-full">
         <PythiaLandingPage />
       </div>
     </>

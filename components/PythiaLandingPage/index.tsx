@@ -13,8 +13,15 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   loading: () => <p>Loading ...</p>,
 })
 
-const PythiaLandingPage = () => {
+const CostLandingPage = () => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
+  const [selectionOptionSelected, setSelectionOptionSelected] = useState({
+    name: 'RPC',
+  })
+  const [subSelectionOptionSelected, setSubSelectionOptionSelected] = useState({
+    name: 'Running a Ethereum full archive node',
+    desc: 'Running an Ethereum full archive node...',
+  })
 
   function handleChangeNewMessage(value) {
     if (newMessageHtml.length < 5000) {
@@ -22,19 +29,94 @@ const PythiaLandingPage = () => {
     }
   }
 
+  const selectionOptions = [
+    {
+      name: 'RPC',
+    },
+    {
+      name: 'Data Clouds',
+    },
+    {
+      name: 'Data Streaming',
+    },
+    {
+      name: 'Infrastructure',
+    },
+    {
+      name: 'Analytics',
+    },
+  ]
+
+  const subSelectionOptions = [
+    {
+      name: 'Running a Ethereum full archive node',
+      desc: 'Running an Ethereum full archive node...',
+    },
+    {
+      name: 'Running a Solana full archive node',
+      desc: 'Running an Ethereum full archive node...',
+    },
+    {
+      name: 'Running a Fantom full archive node',
+      desc: 'Running an Ethereum full archive node...',
+    },
+    {
+      name: 'Running a Polygon full archive node',
+      desc: 'Running an Ethereum full archive node...',
+    },
+  ]
+
   return (
     <>
-      <div className="flex h-full max-h-[calc(100vh-6rem)] flex-1 flex-col justify-between px-[50px]  pb-16 text-[16px] text-[#C5C4C4] md:pb-20  lg:pb-8  2xl:text-[18px]">
-        <div className="mt-auto flex h-full w-full rounded-xl bg-[#F9F9F9] px-[40px] pb-[50px] shadow-md">
-          <div className="mt-auto w-full  px-[40px]">
-            {' '}
-            <QuillNoSSRWrapper
-              value={newMessageHtml}
-              onChange={handleChangeNewMessage}
-              // disabled={isLoading}
-              className="my-quill mx-auto mt-2 w-full max-w-[900px] rounded-md border-[1px] border-[#EAEAEA] bg-[#fff] bg-[#787ca536] text-base font-normal text-[#fff] outline-0 2xl:max-w-[1000px]"
-              placeholder="Type your query"
-            />
+      <div className="flex h-full px-[50px]  text-[16px] font-normal  text-[#000]  lg:text-[20px]">
+        <div className="flex h-full w-full rounded-xl bg-[#F9F9F9] px-[45px] py-[75px] shadow-md">
+          <div>
+            <div className="text-[18px] lg:text-[26px]">
+              Selection function & use case
+            </div>
+            <div className="mt-[54px] flex gap-x-[50px]">
+              {selectionOptions.map((option, index) => (
+                <div
+                  onClick={() => {
+                    setSelectionOptionSelected(option)
+                  }}
+                  key={index}
+                  className={`h-fit cursor-pointer text-[14px] font-bold text-[#AEAEAE] hover:text-[#000] lg:text-[20px] ${
+                    selectionOptionSelected?.name === option.name &&
+                    '!text-[#000000]'
+                  }`}
+                >
+                  {option.name}
+                </div>
+              ))}
+            </div>
+            <div className="mt-[66px] grid gap-y-[43px]">
+              {subSelectionOptions.map((subOption, index) => (
+                <div
+                  onClick={() => {
+                    setSubSelectionOptionSelected(subOption)
+                  }}
+                  key={index}
+                  className={`h-fit max-w-[590px] cursor-pointer rounded-[10px] border-[1px] border-[#A4A4A4] py-[18px] px-[20px] text-[14px] font-bold text-[#000]  hover:bg-[#e9e9e949] lg:text-[20px]`}
+                >
+                  <div className="flex justify-between gap-x-[20px]">
+                    <div>
+                      {' '}
+                      <div>{subOption.name}</div>
+                      <div className="text-[12px] font-normal lg:text-[16px]">
+                        {subOption.desc}
+                      </div>
+                    </div>
+                    <div
+                      className={`my-auto h-[22px] w-[22px] rounded-full border-[1px] border-[#939191] ${
+                        subSelectionOptionSelected?.name === subOption.name &&
+                        '!border-[#0354EC] bg-[#0354EC]'
+                      }`}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -42,4 +124,4 @@ const PythiaLandingPage = () => {
   )
 }
 
-export default PythiaLandingPage
+export default CostLandingPage

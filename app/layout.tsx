@@ -6,7 +6,6 @@ import 'node_modules/react-modal-video/css/modal-video.css'
 import '../styles/index.css'
 import { Providers } from './providers'
 import Header from '@/components/Header'
-import Sidebar from '@/components/Sidebar'
 
 export default function RootLayout({
   children,
@@ -25,9 +24,9 @@ export default function RootLayout({
       <body className="max-w-screen w-full bg-white">
         <Providers>
           <div className="flex">
-            <div className="z-50 flex-shrink-0">
+            {/* <div className="z-50 flex-shrink-0">
               <Sidebar onValueChange={console.log('')} />
-            </div>
+            </div> */}
             <div className="mx-auto flex-grow">
               <Header />
               {children}
