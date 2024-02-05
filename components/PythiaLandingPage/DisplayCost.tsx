@@ -8,6 +8,20 @@ import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css' // import styles
 import './react-quill.css'
 
+type provider = {
+  name: string
+  list?: string[]
+}
+
+type subSelectionOption = {
+    name: string
+    desc: string
+  }  
+
+interface ModalI {
+  providers: provider[]
+  subSelectionOption: 
+}
 const CostLandingPage = () => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
