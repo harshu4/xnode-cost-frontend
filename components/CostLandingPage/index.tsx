@@ -14,6 +14,53 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   loading: () => <p>Loading ...</p>,
 })
 
+const dataOptions = {
+  RPC: [
+    {
+      name: 'Solana (RPC)',
+      specs: {
+        RAM: '512GB',
+        CPU: '16 Cores',
+        Storage: '500GB + 1 TB',
+        Network: '1GBPS',
+      },
+      plataform: {
+        AZURE: '$3,111 E64-16ads V5',
+        GCP: '$1848 N2d-high-mem-64',
+        AWS: '>2776$ R6a.16x.large',
+      },
+    },
+    {
+      name: 'Solana verifier',
+      specs: {
+        RAM: '256GB',
+        CPU: '16 Cores',
+        Storage: '500GB + 1 TB',
+        Network: '-',
+      },
+      plataform: {
+        AZURE: '$1619 E32-16ads V5',
+        GCP: '$1160 n2d-high-mem-64 ',
+        AWS: '$1452$ r6a.8x.large',
+      },
+    },
+    {
+      name: 'Fantom (API Node)',
+      specs: {
+        RAM: '32GB',
+        CPU: '4 Cores',
+        Storage: '13 TB',
+        Network: '10GBPS',
+      },
+      plataform: {
+        AZURE: '$1476.55 B8ps-v2',
+        GCP: '$2500$ n2-standard-8',
+        AWS: '$1611 m6i.2xlarge',
+      },
+    },
+  ],
+}
+
 const CostLandingPage = () => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
@@ -44,38 +91,11 @@ const CostLandingPage = () => {
     {
       name: 'RPC',
     },
-    {
-      name: 'Data Clouds',
-    },
-    {
-      name: 'Data Streaming',
-    },
-    {
-      name: 'Infrastructure',
-    },
-    {
-      name: 'Analytics',
-    },
   ]
 
-  const subSelectionOptions = [
-    {
-      name: 'Running a Ethereum full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Solana full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Fantom full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Polygon full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-  ]
+  const selectionOptionsTosubSelectionOptions = {
+    RPC: dataOptions.RPC,
+  }
 
   const providersSelectionOptions = [
     {
@@ -86,9 +106,6 @@ const CostLandingPage = () => {
     },
     {
       name: 'GCP',
-    },
-    {
-      name: 'Equinix',
     },
   ]
 
@@ -140,7 +157,9 @@ const CostLandingPage = () => {
               <div>
                 <div className="mt-[66px] flex gap-x-[100px]">
                   <div className="grid gap-y-[43px] ">
-                    {subSelectionOptions.map((subOption, index) => (
+                    {selectionOptionsTosubSelectionOptions[
+                      selectionOptionSelected.name
+                    ].map((subOption, index) => (
                       <div
                         onClick={() => {
                           setSubSelectionOptionSelected(subOption)

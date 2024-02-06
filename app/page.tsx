@@ -9,7 +9,7 @@ import FirstStep from '@/components/FirstStep'
 import Footer from '@/components/Footer'
 import Console from '@/components/Console'
 import LandingPage from '@/components/LandingPage'
-import PythiaLandingPage from '@/components/PythiaLandingPage'
+import CostLandingPage from '@/components/CostLandingPage'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <ScrollUp />
       <div className="h-full w-full">
-        <PythiaLandingPage />
+        <CostLandingPage />
       </div>
     </>
   )
