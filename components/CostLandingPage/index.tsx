@@ -120,9 +120,7 @@ const CostLandingPage = () => {
       <div className="flex h-full px-[50px]  pb-[40px] text-[16px]  font-normal  text-[#000] lg:text-[20px]">
         <div className="flex h-full w-full rounded-xl bg-[#F9F9F9] px-[45px] pt-[75px] shadow-md">
           <div>
-            <div className="text-[18px] lg:text-[26px]">
-              Selection function & use case
-            </div>
+            <div className="text-[18px] lg:text-[26px]">Price comparison</div>
             <div className="mt-[54px] flex gap-x-[50px]">
               {selectionOptions.map((option, index) => (
                 <div
@@ -150,6 +148,9 @@ const CostLandingPage = () => {
                   }
                   providers={providerSelectionOptionSelected}
                   subSelectionOption={subSelectionOptionSelected}
+                  onBack={() => {
+                    setNextStep(false)
+                  }}
                 />
               </div>
             ) : (

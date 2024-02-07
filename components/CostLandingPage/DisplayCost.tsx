@@ -20,11 +20,17 @@ type subSelectionOption = {
 
 interface ModalI {
   providers: provider[]
+  onBack(): void
   subSelectionOption: subSelectionOption
   data: any
 }
 
-const DisplayCost = ({ providers, subSelectionOption, data }: ModalI) => {
+const DisplayCost = ({
+  providers,
+  subSelectionOption,
+  data,
+  onBack,
+}: ModalI) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
 
@@ -56,7 +62,7 @@ const DisplayCost = ({ providers, subSelectionOption, data }: ModalI) => {
   return (
     <>
       <div className="">
-        <div className="mb-[25px]">
+        {/* <div className="mb-[25px]">
           Specs:{' '}
           <div className="ml-[5px] flex gap-x-[20px] text-[16px] text-[#6e6e6e]">
             {findItemProvider(data)?.specs?.map((spec, index) => (
@@ -65,7 +71,7 @@ const DisplayCost = ({ providers, subSelectionOption, data }: ModalI) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         <div
           className={`h-fit max-w-[590px] cursor-pointer rounded-[10px] border-[1px] border-[#A4A4A4] py-[18px] px-[20px] text-[14px] font-bold text-[#000]  hover:bg-[#e9e9e949] lg:text-[20px]`}
         >
@@ -103,6 +109,16 @@ const DisplayCost = ({ providers, subSelectionOption, data }: ModalI) => {
               )}
             </div>
           ))}
+        </div>
+        <div className="mt-[170px] ml-[30px]">
+          <div
+            onClick={() => {
+              onBack()
+            }}
+            className="w-fit cursor-pointer rounded-[5px] bg-[#0354EC] px-[40px] py-[12px] text-[14px] font-bold text-[#FFFFFF] hover:bg-[#023ca7] lg:text-[20px]"
+          >
+            Compare more
+          </div>
         </div>
       </div>
     </>
