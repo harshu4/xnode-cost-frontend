@@ -328,9 +328,9 @@ const CostLandingPage = () => {
                           >
                             <div className="flex items-center gap-x-[12px]">
                               <div
-                                className={`my-auto h-[47px]   w-[47px] cursor-pointer rounded-[5px]  border-[1px] border-[#939191] hover:border-[#0354EC] hover:bg-[#023ca7] hover:bg-[#0354EC] ${
+                                className={`my-auto h-[47px]   w-[47px] cursor-pointer rounded-[5px]  border-[1px] border-[#939191] hover:bg-[#93919159] ${
                                   findItemProvider(providerOption.name) &&
-                                  '!border-[#0354EC] bg-[#0354EC]'
+                                  '!border-[#0354EC] !bg-[#0354EC]'
                                 }`}
                               ></div>
                               <div>
