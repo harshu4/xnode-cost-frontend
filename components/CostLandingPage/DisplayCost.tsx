@@ -21,70 +21,12 @@ type subSelectionOption = {
 interface ModalI {
   providers: provider[]
   subSelectionOption: subSelectionOption
+  data: any
 }
 
-const DisplayCost = ({ providers, subSelectionOption }: ModalI) => {
+const DisplayCost = ({ providers, subSelectionOption, data }: ModalI) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
-  const [selectionOptionSelected, setSelectionOptionSelected] = useState({
-    name: 'RPC',
-  })
-  const [subSelectionOptionSelected, setSubSelectionOptionSelected] = useState({
-    name: 'Running a Ethereum full archive node',
-    desc: 'Running an Ethereum full archive node...',
-  })
-  const [providerSelectionOptionSelected, setProviderSelectionOptionSelected] =
-    useState([
-      {
-        name: 'Openmesh',
-      },
-      {
-        name: 'AWS',
-      },
-    ])
-
-  function handleChangeNewMessage(value) {
-    if (newMessageHtml.length < 5000) {
-      setNewMessageHtml(value)
-    }
-  }
-
-  const selectionOptions = [
-    {
-      name: 'RPC',
-    },
-    {
-      name: 'Data Clouds',
-    },
-    {
-      name: 'Data Streaming',
-    },
-    {
-      name: 'Infrastructure',
-    },
-    {
-      name: 'Analytics',
-    },
-  ]
-
-  const subSelectionOptions = [
-    {
-      name: 'Running a Ethereum full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Solana full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Fantom full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-    {
-      name: 'Running a Polygon full archive node',
-      desc: 'Running an Ethereum full archive node...',
-    },
-  ]
 
   const providersSelectionOptions = [
     {
@@ -101,21 +43,29 @@ const DisplayCost = ({ providers, subSelectionOption }: ModalI) => {
     },
   ]
 
-  function findItemProvider(itemName: string) {
-    const exists = providerSelectionOptionSelected.findIndex(
-      (provider) => provider.name === itemName,
-    )
-
-    if (exists === -1) {
-      return false
-    } else {
-      return true
+  function findItemProvider(data: any) {
+    for (let i = 0; i < data.length; i++) {
+      console.log('the data')
+      console.log(data)
+      if (data[i].name === subSelectionOption.name) {
+        return data[i]
+      }
     }
   }
 
   return (
     <>
       <div className="">
+        <div className="mb-[25px]">
+          Specs:{' '}
+          <div className="ml-[5px] flex gap-x-[20px] text-[16px] text-[#6e6e6e]">
+            {findItemProvider(data)?.specs?.map((spec, index) => (
+              <div key={index}>
+                {spec.name}: {spec.value}
+              </div>
+            ))}
+          </div>
+        </div>
         <div
           className={`h-fit max-w-[590px] cursor-pointer rounded-[10px] border-[1px] border-[#A4A4A4] py-[18px] px-[20px] text-[14px] font-bold text-[#000]  hover:bg-[#e9e9e949] lg:text-[20px]`}
         >
@@ -138,8 +88,14 @@ const DisplayCost = ({ providers, subSelectionOption }: ModalI) => {
               <div className="flex items-center gap-x-[12px]">
                 <div>
                   {' '}
-                  <div>{provider.name}</div>
+                  <div className="mb-[10px]">{provider.name}</div>
+                  <div>
+                    {findItemProvider(data)?.plataform[provider.name] ||
+                      '$0.00'}{' '}
+                  </div>
                 </div>
+
+                {}
               </div>
 
               {index !== providers.length - 1 && (

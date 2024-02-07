@@ -17,13 +17,13 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
 const dataOptions = {
   RPC: [
     {
-      name: 'Solana (RPC)',
-      specs: {
-        RAM: '512GB',
-        CPU: '16 Cores',
-        Storage: '500GB + 1 TB',
-        Network: '1GBPS',
-      },
+      name: 'Running a Solana RPC',
+      specs: [
+        { name: 'RAM', value: '512GB' },
+        { name: 'CPU', value: '16 Cores' },
+        { name: 'Storage', value: '500GB + 1 TB' },
+        { name: 'Network', value: '1GBPS' },
+      ],
       plataform: {
         AZURE: '$3,111 E64-16ads V5',
         GCP: '$1848 N2d-high-mem-64',
@@ -31,13 +31,13 @@ const dataOptions = {
       },
     },
     {
-      name: 'Solana verifier',
-      specs: {
-        RAM: '256GB',
-        CPU: '16 Cores',
-        Storage: '500GB + 1 TB',
-        Network: '-',
-      },
+      name: 'Running a Solana verifier',
+      specs: [
+        { name: 'RAM', value: '256GB' },
+        { name: 'CPU', value: '16 Cores' },
+        { name: 'Storage', value: '500GB + 1 TB' },
+        { name: 'Network', value: '-' },
+      ],
       plataform: {
         AZURE: '$1619 E32-16ads V5',
         GCP: '$1160 n2d-high-mem-64 ',
@@ -45,13 +45,13 @@ const dataOptions = {
       },
     },
     {
-      name: 'Fantom (API Node)',
-      specs: {
-        RAM: '32GB',
-        CPU: '4 Cores',
-        Storage: '13 TB',
-        Network: '10GBPS',
-      },
+      name: 'Running a Fantom API Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
       plataform: {
         AZURE: '$1476.55 B8ps-v2',
         GCP: '$2500$ n2-standard-8',
@@ -80,12 +80,6 @@ const CostLandingPage = () => {
         name: 'AWS',
       },
     ])
-
-  function handleChangeNewMessage(value) {
-    if (newMessageHtml.length < 5000) {
-      setNewMessageHtml(value)
-    }
-  }
 
   const selectionOptions = [
     {
@@ -147,8 +141,13 @@ const CostLandingPage = () => {
               ))}
             </div>
             {nextStep ? (
-              <div className="mt-[66px]">
+              <div className="mt-[30px]">
                 <DisplayCost
+                  data={
+                    selectionOptionsTosubSelectionOptions[
+                      selectionOptionSelected.name
+                    ]
+                  }
                   providers={providerSelectionOptionSelected}
                   subSelectionOption={subSelectionOptionSelected}
                 />
