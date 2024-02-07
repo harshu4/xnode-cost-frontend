@@ -87,7 +87,7 @@ const dataOptions = {
       },
     },
     {
-      name: 'Running a Ethereum full node',
+      name: 'Running an Ethereum full node',
       specs: [
         { name: 'RAM', value: '32GB' },
         { name: 'CPU', value: '4 Cores' },
@@ -101,7 +101,7 @@ const dataOptions = {
       },
     },
     {
-      name: 'Running a Ethereum Archive Node',
+      name: 'Running an Ethereum Archive Node',
       specs: [
         { name: 'RAM', value: '32GB' },
         { name: 'CPU', value: '4 Cores' },
@@ -111,11 +111,11 @@ const dataOptions = {
       plataform: {
         AZURE: '$467 B4as-v2 ',
         GCP: '$621.79 n1-standard-4',
-        AWS: '$1611 m6i.2xlarge',
+        AWS: '$507.71 t4g.xlarge',
       },
     },
     {
-      name: 'Running a Fantom API Node',
+      name: 'Running a Near Validator',
       specs: [
         { name: 'RAM', value: '32GB' },
         { name: 'CPU', value: '4 Cores' },
@@ -123,13 +123,13 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: '$1476.55 B8ps-v2',
-        GCP: '$2500$ n2-standard-8',
-        AWS: '$1611 m6i.2xlarge',
+        AZURE: '$263.09 B8-pls',
+        GCP: '$336 n1-standard-8',
+        AWS: '$247 t4g.2xlarge',
       },
     },
     {
-      name: 'Running a Fantom API Node',
+      name: 'Running a Near RPC Node',
       specs: [
         { name: 'RAM', value: '32GB' },
         { name: 'CPU', value: '4 Cores' },
@@ -137,13 +137,13 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: '$1476.55 B8ps-v2',
-        GCP: '$2500$ n2-standard-8',
-        AWS: '$1611 m6i.2xlarge',
+        AZURE: '$961.17 B8-pls',
+        GCP: '$1080 n1-standard-8',
+        AWS: '$1117.82 t4g.2xlarge',
       },
     },
     {
-      name: 'Running a Fantom API Node',
+      name: 'Running an Avalanche Node',
       specs: [
         { name: 'RAM', value: '32GB' },
         { name: 'CPU', value: '4 Cores' },
@@ -151,9 +151,23 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: '$1476.55 B8ps-v2',
-        GCP: '$2500$ n2-standard-8',
-        AWS: '$1611 m6i.2xlarge',
+        AZURE: '$301 B8-pls',
+        GCP: '$421 n1-standard-8',
+        AWS: '$298.62 t4g.2xlarge',
+      },
+    },
+    {
+      name: 'Running a Tron Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$747 B16-als',
+        GCP: '$725 n1-standard-16',
+        AWS: '$653.12 c6g.4xlarge',
       },
     },
   ],
