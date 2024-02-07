@@ -58,6 +58,104 @@ const dataOptions = {
         AWS: '$1611 m6i.2xlarge',
       },
     },
+    {
+      name: 'Running a Fantom Validator Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$554.95 B8ps-v2',
+        GCP: '$542.17 n2d-high-mem-8',
+        AWS: '$536.2 m6i.2x.large',
+      },
+    },
+    {
+      name: 'Running a Fantom Read Only',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$554.95 B8ps-v2',
+        GCP: '$542.17 n2d-high-mem-8',
+        AWS: '$536.2 m6i.2x.large',
+      },
+    },
+    {
+      name: 'Running a Ethereum full node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$314.05 B4as-v2',
+        GCP: '$321.79 n1-standard-4',
+        AWS: '$302 t4g.xlarge',
+      },
+    },
+    {
+      name: 'Running a Ethereum Archive Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$467 B4as-v2 ',
+        GCP: '$621.79 n1-standard-4',
+        AWS: '$1611 m6i.2xlarge',
+      },
+    },
+    {
+      name: 'Running a Fantom API Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$1476.55 B8ps-v2',
+        GCP: '$2500$ n2-standard-8',
+        AWS: '$1611 m6i.2xlarge',
+      },
+    },
+    {
+      name: 'Running a Fantom API Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$1476.55 B8ps-v2',
+        GCP: '$2500$ n2-standard-8',
+        AWS: '$1611 m6i.2xlarge',
+      },
+    },
+    {
+      name: 'Running a Fantom API Node',
+      specs: [
+        { name: 'RAM', value: '32GB' },
+        { name: 'CPU', value: '4 Cores' },
+        { name: 'Storage', value: '13 TB' },
+        { name: 'Network', value: '10GBPS' },
+      ],
+      plataform: {
+        AZURE: '$1476.55 B8ps-v2',
+        GCP: '$2500$ n2-standard-8',
+        AWS: '$1611 m6i.2xlarge',
+      },
+    },
   ],
 }
 
@@ -155,8 +253,8 @@ const CostLandingPage = () => {
               </div>
             ) : (
               <div>
-                <div className="mt-[66px] flex gap-x-[100px]">
-                  <div className="grid gap-y-[43px] ">
+                <div className="mt-[66px] flex gap-x-[50px]">
+                  <div className="grid max-h-[500px] gap-y-[43px] overflow-y-auto pr-[30px] scrollbar-thin scrollbar-track-[#11132470] scrollbar-thumb-[#0e101f91] scrollbar-track-rounded-full scrollbar-thumb-rounded-md">
                     {selectionOptionsTosubSelectionOptions[
                       selectionOptionSelected.name
                     ].map((subOption, index) => (
