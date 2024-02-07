@@ -6,38 +6,22 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import LatencySelector from '../LatencySelector'
 import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
-import SubBarData from '../SubBarData'
-import SubBarServers from '../SubBarServers'
-import SubBarAPIs from '../SubBarAPIs'
-import SubBarAnalytics from '../SubBarAnalytics'
-import SubBarRPC from '../SubBarRPC'
-import SubBarUtility from '../SubBarUtility'
-import SubBarML from '../SubBarML'
-import SubBarStorage from '../SubBarStorage'
-import SubBarDataManagement from '../SubBarDataManagement'
-import SubBarCompute from '../SubBarCompute'
-import SubBarTrading from '../SubBarTrading'
+import nookies, { parseCookies, setCookie } from 'nookies'
+import { getUserChats } from '@/utils/api-pythia'
+import { PythiaChatProps } from '@/types/pythia'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 /* eslint-disable react/no-unescaped-entities */
 const Sidebar = ({ onValueChange }) => {
   const [categoriesOptions, setCategoriesOptions] = useState([])
   const [presetId, setPresetId] = useState(0)
-  const {
-    selectionSideNavBar,
-    setSelectionSideNavBar,
-    next,
-    setNext,
-    nextFromScratch,
-    setNextFromScratch,
-    setReviewYourBuild,
-    setFinalBuild,
-    setSignup,
-    user,
-  } = useContext(AccountContext)
+  const { user } = useContext(AccountContext)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [greenDotOpacity, setGreenDotOpacity] = useState(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [pythiaChats, setPythiaChats] = useState<PythiaChatProps[]>()
+
   const { push } = useRouter()
-  const [hoveredIcon, setHoveredIcon] = useState(null)
 
   const preSetsOptionsUser = [
     {
@@ -60,95 +44,23 @@ const Sidebar = ({ onValueChange }) => {
     },
   ]
 
-  const [sideBarOptions, setSideBarOptions] = useState<any>(preSetsOptions)
+  async function getData() {
+    setIsLoading(true)
+    const { userSessionToken } = parseCookies()
 
-  function handleButtonClick(title: string) {
-    if (title === 'Workspace') {
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/workspace`
-            : `/workspace`
-        }`,
-      )
-      setNext(true)
-      setReviewYourBuild(false)
-      setFinalBuild(false)
-      setSignup(false)
-      setSelectionSideNavBar('Workspace')
-      return
+    try {
+      const res = await getUserChats(userSessionToken)
+      setPythiaChats(res)
+    } catch (err) {
+      console.log(err)
+      toast.error(`Error: ${err.response.data.message}`)
     }
-    if (title === 'Docs') {
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/docs`
-            : `/docs`
-        }`,
-      )
-      setSelectionSideNavBar('Docs')
-    }
-    if (title === 'Profile') {
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/profile`
-            : `/profile`
-        }`,
-      )
-      setSelectionSideNavBar('Profile')
-    }
-    if (title === 'Dashboard') {
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/dashboard`
-            : `/dashboard`
-        }`,
-      )
-      setSelectionSideNavBar('Dashboard')
-    }
-    if (title === 'Home') {
-      setNextFromScratch(false)
-      console.log('set next false yes')
-      setNext(false)
-      setReviewYourBuild(false)
-      setSelectionSideNavBar('Home')
-      setFinalBuild(false)
-      setSignup(false)
-      push(
-        `${
-          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-            ? `/xnode/start-here`
-            : `/start-here`
-        }`,
-      )
-      return
-    }
-    // if (!next && !nextFromScratch && title !== 'Home' && !user) {
-    //   setGreenDotOpacity(1) // Mostrar a bolinha verde com opacidade total
-    //   setTimeout(() => setGreenDotOpacity(0), 1000) // Esconder a bolinha verde após 5 segundos
-    // } else {
-    //   setSelectionSideNavBar(title)
-    // }
-    setSelectionSideNavBar(title)
-    setHoveredIcon(title)
-  }
-
-  function handleButtonHover(title: string) {
-    // if (!next && !nextFromScratch && title !== 'Home' && !user) {
-    //   return
-    // } else {
-    //   setHoveredIcon(title)
-    // }
-    setHoveredIcon(title)
+    setIsLoading(false)
   }
 
   useEffect(() => {
     if (user) {
-      setSideBarOptions(preSetsOptionsUser)
-    } else {
-      setSideBarOptions(preSetsOptions)
+      getData()
     }
   }, [user])
 
@@ -234,6 +146,12 @@ const Sidebar = ({ onValueChange }) => {
                 alt="image"
               />
             </div>
+          </div>
+          <div className="grid gap-y-[10px]">
+            {pythiaChats &&
+              pythiaChats.map((chat, index) => (
+                <div key={index}>{chat.id}</div>
+              ))}
           </div>
         </div>
       </div>
