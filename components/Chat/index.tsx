@@ -3,10 +3,15 @@
 /* eslint-disable no-unused-vars */
 
 import Footer from '../Footer'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css' // import styles
 import './react-quill.css'
+import nookies, { parseCookies, setCookie } from 'nookies'
+import { getUserChat } from '@/utils/api-pythia'
+import { AccountContext } from '@/contexts/AccountContext'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false,
@@ -15,12 +20,33 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
 
 const ChatPage = (id: any) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
+  const { user, setPythiaChat } = useContext(AccountContext)
 
   function handleChangeNewMessage(value) {
     if (newMessageHtml.length < 5000) {
       setNewMessageHtml(value)
     }
   }
+
+  async function getData() {
+    const { userSessionToken } = parseCookies()
+
+    const data = {
+      id: id.id,
+    }
+
+    try {
+      const res = await getUserChat(data, userSessionToken)
+      setPythiaChat(res)
+    } catch (err) {
+      console.log(err)
+      toast.error(`Error: ${err.response.data.message}`)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [id])
 
   return (
     <>

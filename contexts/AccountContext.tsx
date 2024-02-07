@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { PythiaChatProps } from '@/types/pythia'
 import React, { createContext, useState } from 'react'
 
 export interface UserProps {
@@ -86,6 +87,9 @@ interface CreateUserContextProps {
   removeNodes: any
   setRemoveNodes: (value: any) => void
 
+  pythiaChat: PythiaChatProps | undefined
+  setPythiaChat: (pythiaChat: PythiaChatProps | undefined) => void
+
   user: UserProps | undefined
   setUser: (user: UserProps | undefined) => void
 }
@@ -96,6 +100,7 @@ export default function AccountContextProvider({
   children,
 }: CreateContextProps) {
   const [user, setUser] = useState<UserProps>()
+  const [pythiaChat, setPythiaChat] = useState<PythiaChatProps>()
   const [changeNodes, setChangeNodes] = useState()
   const [removeNodes, setRemoveNodes] = useState()
   const [selectionSideNavBar, setSelectionSideNavBar] =
@@ -137,6 +142,8 @@ export default function AccountContextProvider({
         setXnodeType,
         user,
         setUser,
+        pythiaChat,
+        setPythiaChat,
         next,
         setNext,
         updateDataNode,

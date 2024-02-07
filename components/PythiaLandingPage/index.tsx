@@ -10,6 +10,9 @@ import './react-quill.css'
 import { AccountContext } from '../../contexts/AccountContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import nookies, { parseCookies, setCookie } from 'nookies'
+import { createUserChat } from '@/utils/api-pythia'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false,
@@ -21,9 +24,33 @@ const PythiaLandingPage = () => {
 
   const { user } = useContext(AccountContext)
 
+  const { push } = useRouter()
+
   function handleChangeNewMessage(value) {
     if (newMessageHtml.length < 5000) {
       setNewMessageHtml(value)
+    }
+  }
+
+  async function handleCreateChat() {
+    const { userSessionToken } = parseCookies()
+    const data = {
+      userInput: newMessageHtml,
+    }
+
+    try {
+      setNewMessageHtml('')
+      const res = await createUserChat(data, userSessionToken)
+      push(
+        `${
+          process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+            ? `/xnode/chat/${res.id}`
+            : `/chat/${res.id}`
+        }`,
+      )
+    } catch (err) {
+      console.log(err)
+      toast.error(`Error: ${err.response.data.message}`)
     }
   }
 
@@ -31,10 +58,9 @@ const PythiaLandingPage = () => {
     if (!user) {
       setNewMessageHtml('')
       toast.error('Login to chat with Pythia')
-      return
+    } else {
+      handleCreateChat()
     }
-    setNewMessageHtml('')
-    toast.success('success')
   }
 
   const handleKeyPress = (event) => {

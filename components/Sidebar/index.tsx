@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const Sidebar = ({ onValueChange }) => {
   const [categoriesOptions, setCategoriesOptions] = useState([])
   const [presetId, setPresetId] = useState(0)
-  const { user } = useContext(AccountContext)
+  const { user, pythiaChat } = useContext(AccountContext)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [pythiaChats, setPythiaChats] = useState<PythiaChatProps[]>()
@@ -43,6 +43,16 @@ const Sidebar = ({ onValueChange }) => {
       title: 'Home',
     },
   ]
+
+  function sendToChat(id: string) {
+    push(
+      `${
+        process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+          ? `/xnode/chat/${id}`
+          : `/chat/${id}`
+      }`,
+    )
+  }
 
   async function getData() {
     setIsLoading(true)
@@ -147,10 +157,22 @@ const Sidebar = ({ onValueChange }) => {
               />
             </div>
           </div>
-          <div className="grid gap-y-[10px]">
+          <div className="mt-[100px] grid gap-y-[10px] px-[22px] text-[13px] text-[#000]">
             {pythiaChats &&
               pythiaChats.map((chat, index) => (
-                <div key={index}>{chat.id}</div>
+                <div
+                  key={index}
+                  onClick={() => {
+                    sendToChat(chat.id)
+                  }}
+                  className={`${
+                    pythiaChat && pythiaChat.id === chat.id
+                      ? 'bg-[#e2e2e25d]'
+                      : ''
+                  } cursor-pointer overflow-hidden truncate text-ellipsis whitespace-nowrap rounded-md p-[10px] hover:bg-[#e2e2e25d]`}
+                >
+                  {chat.id}
+                </div>
               ))}
           </div>
         </div>
