@@ -76,20 +76,18 @@ const DisplayCost = ({
     return objNormalizado
   }
   function calcularGradiente(percentual) {
-    // Garante que a transição para o vermelho comece mais tarde e de forma mais abrupta para valores menores que 100
-    const inicioVermelho = Math.max(0, (percentual - 50) * 2) // Começa a transição para vermelho mais perto do fim
+    const inicioVermelho = Math.max(0, (percentual - 50) * 2)
 
     console.log('o percentuallll ' + percentual)
-    // Cria um gradiente que começa em verde, transiciona lentamente para uma cor intermediária e rapidamente para vermelho no final
     if (percentual >= 0.9) {
       console.log('passou aqui')
-      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
     } else if (percentual >= 0.7) {
-      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
     } else if (percentual >= 0.5) {
-      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 107, 59) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 107, 59) 100%)`
     } else {
-      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
     }
   }
 
