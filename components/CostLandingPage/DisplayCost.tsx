@@ -81,13 +81,13 @@ const DisplayCost = ({
     console.log('o percentuallll ' + percentual)
     if (percentual >= 0.9) {
       console.log('passou aqui')
-      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
     } else if (percentual >= 0.7) {
-      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
     } else if (percentual >= 0.5) {
-      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 107, 59) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(204, 107, 59) 100%)`
     } else {
-      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
+      return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
     }
   }
 
