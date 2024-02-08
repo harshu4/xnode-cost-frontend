@@ -34,15 +34,16 @@ const DisplayCost = ({
 }: ModalI) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
+  const [isHRVisible, setHRVisible] = useState(false)
 
   function findItemProvider(data: any) {
     for (let i = 0; i < data.length; i++) {
-      console.log('the data')
-      console.log(data)
-      console.log('the providers')
-      console.log(providers)
-      console.log('the subSelectionOption')
-      console.log(subSelectionOption)
+      // console.log('the data')
+      // console.log(data)
+      // console.log('the providers')
+      // console.log(providers)
+      // console.log('the subSelectionOption')
+      // console.log(subSelectionOption)
 
       if (data[i].name === subSelectionOption.name) {
         return data[i]
@@ -50,15 +51,21 @@ const DisplayCost = ({
     }
   }
 
+  function getProviderValue(provider) {
+    return findItemProvider(data)?.plataform[provider.name]?.at(1) || 0
+  }
+
+  // Antes de renderizar os provedores, ordene-os:
+  const sortedProviders = providers.sort((a, b) => {
+    return getProviderValue(a) - getProviderValue(b)
+  })
+
   function calculateTaxForBars() {
     const valueFinal = {}
     for (let i = 0; i < providers.length; i++) {
       valueFinal[providers[i]?.name] =
         subSelectionOption?.plataform?.[providers[i]?.name]?.at(1) || 0
     }
-
-    console.log('the final values')
-    console.log(valueFinal)
 
     return normalizeValues(valueFinal)
   }
@@ -68,6 +75,7 @@ const DisplayCost = ({
     const values = Object.values(obj) as number[]
 
     const maxValue = Math.max(...values)
+
     const objNormalizado: { [key: string]: number } = {}
     for (const chave in obj) {
       objNormalizado[chave] = Number(((obj[chave] / maxValue) * 100).toFixed(2))
@@ -78,9 +86,7 @@ const DisplayCost = ({
   function calcularGradiente(percentual) {
     const inicioVermelho = Math.max(0, (percentual - 50) * 2)
 
-    console.log('o percentuallll ' + percentual)
     if (percentual >= 0.9) {
-      console.log('passou aqui')
       return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
     } else if (percentual >= 0.7) {
       return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
@@ -90,6 +96,10 @@ const DisplayCost = ({
       return `linear-gradient(to right, rgb(18, 173, 80) 0%, rgb(18, 173, 80) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
     }
   }
+
+  useEffect(() => {
+    setHRVisible(true)
+  }, [])
 
   return (
     <>
@@ -118,7 +128,7 @@ const DisplayCost = ({
           </div>
         </div>
         <div className="mt-[56px] grid gap-x-[100px]">
-          {providers.map((provider, index) => (
+          {sortedProviders.map((provider, index) => (
             <div
               key={index}
               className={`flex justify-between text-[14px] font-bold text-[#AEAEAE] lg:text-[20px]`}
@@ -132,7 +142,11 @@ const DisplayCost = ({
                       '$0.00'}{' '}
                   </div> */}
                 </div>
-                <div className="flex w-[300px] gap-x-[20px] 2xl:w-[500px]">
+                <div
+                  className={`origin-left transform transition-transform duration-[1200ms] ease-out ${
+                    isHRVisible ? 'scale-x-100' : 'scale-x-0'
+                  } flex w-[300px] gap-x-[20px] 2xl:w-[500px]`}
+                >
                   <div
                     style={{
                       width: `${calculateTaxForBars()?.[provider.name]}%`,

@@ -25,9 +25,9 @@ const dataOptions = {
         { name: 'Network', value: '1GBPS' },
       ],
       plataform: {
-        AZURE: ['$3,111 E64-16ads V5', 3111],
         GCP: ['$1848 N2d-high-mem-64', 1848],
         AWS: ['>2776$ R6a.16x.large', 2776],
+        AZURE: ['$3,111 E64-16ads V5', 3111],
       },
     },
     {
@@ -39,9 +39,9 @@ const dataOptions = {
         { name: 'Network', value: '-' },
       ],
       plataform: {
-        AZURE: ['$1619 E32-16ads V5', 1619],
         GCP: ['$1160 n2d-high-mem-64', 1160],
         AWS: ['$1452$ r6a.8x.large', 1452],
+        AZURE: ['$1619 E32-16ads V5', 1619],
       },
     },
     {
@@ -54,8 +54,8 @@ const dataOptions = {
       ],
       plataform: {
         AZURE: ['$1476.55 B8ps-v2', 1476.55],
-        GCP: ['$2500$ n2-standard-8', 2500],
         AWS: ['$1611 m6i.2xlarge', 1611],
+        GCP: ['$2500$ n2-standard-8', 2500],
       },
     },
     {
@@ -67,9 +67,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: ['$554.95 B8ps-v2', 554.95],
-        GCP: ['$542.17 n2d-high-mem-8', 542.17],
         AWS: ['$536.2 m6i.2x.large', 536.2],
+        GCP: ['$542.17 n2d-high-mem-8', 542.17],
+        AZURE: ['$554.95 B8ps-v2', 554.95],
       },
     },
     {
@@ -81,9 +81,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: ['$554.95 B8ps-v2', 554.95],
-        GCP: ['$542.17 n2d-high-mem-8', 542.17],
         AWS: ['$536.2 m6i.2x.large', 536.2],
+        GCP: ['$542.17 n2d-high-mem-8', 542.17],
+        AZURE: ['$554.95 B8ps-v2', 554.95],
       },
     },
     {
@@ -95,9 +95,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
+        AWS: ['$302 t4g.xlarge', 302],
         AZURE: ['$314.05 B4as-v2', 314.05],
         GCP: ['$321.79 n1-standard-4', 321.79],
-        AWS: ['$302 t4g.xlarge', 302],
       },
     },
     {
@@ -110,8 +110,8 @@ const dataOptions = {
       ],
       plataform: {
         AZURE: ['$467 B4as-v2', 467],
-        GCP: ['$621.79 n1-standard-4', 621.79],
         AWS: ['$507.71 t4g.xlarge', 507.71],
+        GCP: ['$621.79 n1-standard-4', 621.79],
       },
     },
     {
@@ -123,9 +123,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
+        AWS: ['$247 t4g.2xlarge', 247],
         AZURE: ['$263.09 B8-pls', 263.09],
         GCP: ['$336 n1-standard-8', 336],
-        AWS: ['$247 t4g.2xlarge', 247],
       },
     },
     {
@@ -151,9 +151,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
+        AWS: ['$298.62 t4g.2xlarge', 298.62],
         AZURE: ['$301 B8-pls', 301],
         GCP: ['$421 n1-standard-8', 421],
-        AWS: ['$298.62 t4g.2xlarge', 298.62],
       },
     },
     {
@@ -165,9 +165,9 @@ const dataOptions = {
         { name: 'Network', value: '10GBPS' },
       ],
       plataform: {
-        AZURE: ['$747 B16-als', 747],
-        GCP: ['$725 n1-standard-16', 725],
         AWS: ['$653.12 c6g.4xlarge', 653.12],
+        GCP: ['$725 n1-standard-16', 725],
+        AZURE: ['$747 B16-als', 747],
       },
     },
   ],
