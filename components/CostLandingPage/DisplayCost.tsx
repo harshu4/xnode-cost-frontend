@@ -134,7 +134,7 @@ const DisplayCost = ({
                       '$0.00'}{' '}
                   </div> */}
                 </div>
-                <div className="flex w-[500px] gap-x-[20px]">
+                <div className="flex w-[300px] gap-x-[20px] 2xl:w-[500px]">
                   <div
                     style={{
                       width: `${calculateTaxForBars()?.[provider.name]}%`,
@@ -144,7 +144,11 @@ const DisplayCost = ({
                       ),
                     }}
                   ></div>
-                  <div>{calculateTaxForBars()?.[provider.name]}%</div>
+                  <div className="text-[18px] font-normal text-[#000]">
+                    {findItemProvider(data)?.plataform[provider.name]?.at(1) ||
+                      '0.00'}
+                    $
+                  </div>
                 </div>
                 {}
               </div>

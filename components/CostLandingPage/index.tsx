@@ -282,7 +282,7 @@ const CostLandingPage = () => {
                         key={index}
                         className={`h-fit max-w-[590px] cursor-pointer rounded-[10px] border-[1px] border-[#A4A4A4] py-[18px] px-[20px] text-[14px] font-bold text-[#000]  hover:bg-[#e9e9e949] lg:text-[20px]`}
                       >
-                        <div className="flex justify-between gap-x-[110px]">
+                        <div className="flex justify-between gap-x-[20px] xl:gap-x-[110px]">
                           <div>
                             {' '}
                             <div>{subOption.name}</div>
@@ -291,7 +291,7 @@ const CostLandingPage = () => {
                             </div>
                           </div>
                           <div
-                            className={`my-auto h-[22px] w-[22px] rounded-full border-[1px] border-[#939191] ${
+                            className={`my-auto h-[22px] w-[22px] flex-shrink-0 rounded-full border-[1px] border-[#939191] ${
                               subSelectionOptionSelected?.name ===
                                 subOption.name &&
                               '!border-[#0354EC] bg-[#0354EC]'
