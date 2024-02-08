@@ -16,6 +16,7 @@ type provider = {
 type subSelectionOption = {
   name: string
   desc: string
+  plataform?: any
 }
 
 interface ModalI {
@@ -34,28 +35,61 @@ const DisplayCost = ({
   const [newMessageHtml, setNewMessageHtml] = useState('')
   const [nextStep, setNextStep] = useState<boolean>(false)
 
-  const providersSelectionOptions = [
-    {
-      name: 'Openmesh',
-    },
-    {
-      name: 'AWS',
-    },
-    {
-      name: 'GCP',
-    },
-    {
-      name: 'Equinix',
-    },
-  ]
-
   function findItemProvider(data: any) {
     for (let i = 0; i < data.length; i++) {
       console.log('the data')
       console.log(data)
+      console.log('the providers')
+      console.log(providers)
+      console.log('the subSelectionOption')
+      console.log(subSelectionOption)
+
       if (data[i].name === subSelectionOption.name) {
         return data[i]
       }
+    }
+  }
+
+  function calculateTaxForBars() {
+    const valueFinal = {}
+    for (let i = 0; i < providers.length; i++) {
+      valueFinal[providers[i]?.name] =
+        subSelectionOption?.plataform?.[providers[i]?.name]?.at(1) || 0
+    }
+
+    console.log('the final values')
+    console.log(valueFinal)
+
+    return normalizeValues(valueFinal)
+  }
+
+  // normalize 0 to 100
+  function normalizeValues(obj: { [key: string]: number }) {
+    const values = Object.values(obj) as number[]
+
+    const maxValue = Math.max(...values)
+    const objNormalizado: { [key: string]: number } = {}
+    for (const chave in obj) {
+      objNormalizado[chave] = Number(((obj[chave] / maxValue) * 100).toFixed(2))
+    }
+
+    return objNormalizado
+  }
+  function calcularGradiente(percentual) {
+    // Garante que a transição para o vermelho comece mais tarde e de forma mais abrupta para valores menores que 100
+    const inicioVermelho = Math.max(0, (percentual - 50) * 2) // Começa a transição para vermelho mais perto do fim
+
+    console.log('o percentuallll ' + percentual)
+    // Cria um gradiente que começa em verde, transiciona lentamente para uma cor intermediária e rapidamente para vermelho no final
+    if (percentual >= 0.9) {
+      console.log('passou aqui')
+      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(255, 0, 0) 100%)`
+    } else if (percentual >= 0.7) {
+      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 59, 59) 100%)`
+    } else if (percentual >= 0.5) {
+      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(204, 107, 59) 100%)`
+    } else {
+      return `linear-gradient(to right, rgb(0, 255, 0) 0%, rgb(0, 255, 0) ${inicioVermelho}%, rgb(125, 191, 75) 100%)`
     }
   }
 
@@ -85,28 +119,35 @@ const DisplayCost = ({
             </div>
           </div>
         </div>
-        <div className="mt-[56px] flex gap-x-[100px]">
+        <div className="mt-[56px] grid gap-x-[100px]">
           {providers.map((provider, index) => (
             <div
               key={index}
               className={`flex justify-between text-[14px] font-bold text-[#AEAEAE] lg:text-[20px]`}
             >
-              <div className="flex items-center gap-x-[12px]">
-                <div>
-                  {' '}
-                  <div className="mb-[10px]">{provider.name}</div>
-                  <div>
-                    {findItemProvider(data)?.plataform[provider.name] ||
+              <div className="mb-[10px] flex items-center gap-x-[12px]">
+                {' '}
+                <div className="w-[150px]">
+                  <div className="">{provider.name}</div>
+                  {/* <div>
+                    {findItemProvider(data)?.plataform[provider.name]?.at(0) ||
                       '$0.00'}{' '}
-                  </div>
+                  </div> */}
                 </div>
-
+                <div className="flex w-[500px] gap-x-[20px]">
+                  <div
+                    style={{
+                      width: `${calculateTaxForBars()?.[provider.name]}%`,
+                      height: '25px',
+                      background: calcularGradiente(
+                        calculateTaxForBars()?.[provider.name] / 100,
+                      ),
+                    }}
+                  ></div>
+                  <div>{calculateTaxForBars()?.[provider.name]}%</div>
+                </div>
                 {}
               </div>
-
-              {index !== providers.length - 1 && (
-                <div className=" ml-[90px] flex min-h-[100%] w-[1px] bg-[#000]"></div>
-              )}
             </div>
           ))}
         </div>
