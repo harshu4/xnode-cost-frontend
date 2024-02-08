@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 import ScrollUp from '@/components/Common/ScrollUp'
-import Console from '@/components/Console'
-import Dashboard from '@/components/Dashboard'
-import DataProducts from '@/components/DataProducts'
 import Profile from '@/components/Profile'
-import Testing from '@/components/Testing'
 import { Inter } from '@next/font/google'
 // import NewTask from '@/components/NewTask'
 

@@ -1,10 +1,7 @@
 /* eslint-disable no-useless-return */
 /* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from 'react'
-import Dropdown from '../Dropdown'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import LatencySelector from '../LatencySelector'
-import { title } from 'process'
 import { AccountContext } from '@/contexts/AccountContext'
 import nookies, { parseCookies, setCookie } from 'nookies'
 import { getUserChats } from '@/utils/api-pythia'

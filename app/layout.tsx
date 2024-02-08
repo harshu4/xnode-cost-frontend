@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="max-w-screen w-full bg-white">
         <Providers>
           <div className="flex">
-            <div className="z-50 flex-shrink-0">
+            <div className="z-50 h-[calc(100vh)] flex-shrink-0">
               <Sidebar onValueChange={console.log('')} />
             </div>
             <div className="mx-auto flex-grow">
