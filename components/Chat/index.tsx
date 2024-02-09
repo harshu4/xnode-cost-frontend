@@ -21,6 +21,7 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
 
 const ChatPage = (id: any) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const { user, setPythiaChat, pythiaChat } = useContext(AccountContext)
 
   function handleChangeNewMessage(value) {
@@ -44,6 +45,55 @@ const ChatPage = (id: any) => {
       toast.error(`Error: ${err.response.data.message}`)
     }
   }
+
+  // async function handleCreateNewInput() {
+  //   const { userSessionToken } = parseCookies()
+  //   const data = {
+  //     userInput: newMessageHtml,
+  //   }
+
+  //   try {
+  //     setNewMessageHtml('')
+  //     const res = await createUserChat(data, userSessionToken)
+  //     push(
+  //       `${
+  //         process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+  //           ? `/xnode/chat/${res.id}`
+  //           : `/chat/${res.id}`
+  //       }`,
+  //     )
+  //   } catch (err) {
+  //     console.log(err)
+  //     toast.error(`Error: ${err.response.data.message}`)
+  //   }
+  // }
+
+  // function newMessageSave() {
+  //   if (!isLoading) {
+  //     handleCreateNewInput()
+  //   }
+  // }
+
+  // const handleKeyPress = (event) => {
+  //   if (
+  //     event.key === 'Enter' &&
+  //     !event.ctrlKey &&
+  //     !event.shiftKey &&
+  //     !event.altKey
+  //   ) {
+  //     newMessageSave()
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   // Adiciona o event listener
+  //   document.addEventListener('keydown', handleKeyPress)
+
+  //   // Remove o event listener quando o componente é desmontado
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyPress)
+  //   }
+  // }, [newMessageHtml])
 
   useEffect(() => {
     getData()
