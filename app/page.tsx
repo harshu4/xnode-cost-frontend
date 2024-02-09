@@ -5,10 +5,6 @@ import ScrollUp from '@/components/Common/ScrollUp'
 import Hero from '@/components/Hero'
 import { Inter } from '@next/font/google'
 import { useRef } from 'react'
-import FirstStep from '@/components/FirstStep'
-import Footer from '@/components/Footer'
-import Console from '@/components/Console'
-import LandingPage from '@/components/LandingPage'
 import PythiaLandingPage from '@/components/PythiaLandingPage'
 
 const inter = Inter({ subsets: ['latin'] })
