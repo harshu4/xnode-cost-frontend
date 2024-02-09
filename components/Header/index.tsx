@@ -423,7 +423,7 @@ const Header = () => {
                       <a
                         href={`${
                           process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-                            ? `/xnode/login`
+                            ? `/pythia/login`
                             : `${'/login'}`
                         }`}
                         className=" my-auto mx-auto mt-[10px] h-fit w-fit cursor-pointer items-center   border-b  border-[#000] bg-transparent text-[16px]  font-bold !leading-[19px] text-[#000] hover:text-[#3b3a3a]"
