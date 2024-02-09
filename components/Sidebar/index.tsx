@@ -168,7 +168,7 @@ const Sidebar = ({ onValueChange }) => {
                       : ''
                   } cursor-pointer overflow-hidden truncate text-ellipsis whitespace-nowrap rounded-md p-[10px] hover:bg-[#e2e2e25d]`}
                 >
-                  {chat.id}
+                  Chat {chat.id}
                 </div>
               ))}
           </div>

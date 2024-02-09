@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export async function getUserChats(userSessionToken: string) {
   const config = {
-    method: 'post' as 'post',
+    method: 'get' as 'get',
     url: `${process.env.NEXT_PUBLIC_API_BACKEND_BASE_URL}/pythia/functions/getUserChats`,
     headers: {
       'x-parse-application-id': `${process.env.NEXT_PUBLIC_API_BACKEND_KEY}`,

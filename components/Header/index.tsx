@@ -567,9 +567,9 @@ const Header = () => {
                     className={`my-auto mr-[15px] w-[15px] cursor-pointer xl:w-[20px] 2xl:mr-[15px] 2xl:w-[25px]`}
                   />
                   <nav
-                    className={`navbar absolute right-[100px] z-50 flex w-[150px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[19px] pr-1 pl-[15px] pb-[30px] text-[13px] text-[#fff] duration-300  ${
+                    className={`navbar absolute right-[10px] z-50 flex w-[150px] rounded-[8px] border-[.5px] bg-[#e6e4e4] pt-[5px] pr-1 pl-[15px] pb-[20px] text-[13px] text-[#fff] duration-300  ${
                       userNavbarOpen
-                        ? 'visibility top-20 -right-[50px] opacity-100'
+                        ? 'visibility top-10 -right-[50px] opacity-100'
                         : 'invisible top-20 opacity-0'
                     }`}
                   >

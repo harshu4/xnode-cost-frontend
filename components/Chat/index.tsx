@@ -12,6 +12,7 @@ import { getUserChat } from '@/utils/api-pythia'
 import { AccountContext } from '@/contexts/AccountContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { getSanitizeText } from '@/utils/functions-chat'
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
   ssr: false,
@@ -20,7 +21,7 @@ const QuillNoSSRWrapper = dynamic(import('react-quill'), {
 
 const ChatPage = (id: any) => {
   const [newMessageHtml, setNewMessageHtml] = useState('')
-  const { user, setPythiaChat } = useContext(AccountContext)
+  const { user, setPythiaChat, pythiaChat } = useContext(AccountContext)
 
   function handleChangeNewMessage(value) {
     if (newMessageHtml.length < 5000) {
@@ -48,10 +49,53 @@ const ChatPage = (id: any) => {
     getData()
   }, [id])
 
+  // Render chat messages
+  const renderChatMessages = () => {
+    return pythiaChat?.PythiaInputs.map((input, index) => (
+      <div
+        key={index}
+        className="mx-auto mb-4 grid gap-y-[40px] text-[16px] text-[#000]"
+      >
+        <div className="flex items-start gap-x-[10px] text-left">
+          <img
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/lateralNavBar/profile2.svg`}
+            alt="image"
+            className="mt-[2px]  w-[15px] xl:w-[20px]"
+          />
+          <div>
+            <div className="text-[15px] font-semibold">You</div>
+            <div>{getSanitizeText(input.userMessage)}</div>
+          </div>
+        </div>
+        <div className="flex items-start gap-x-[10px] text-left">
+          <img
+            src={`${
+              process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
+                ? process.env.NEXT_PUBLIC_BASE_PATH
+                : ''
+            }/images/pythia/pythia-cube-logo.svg`}
+            alt="image"
+            className="mt-[2px]  w-[20px] xl:w-[25px]"
+          />
+          <div>
+            <div className="text-[15px] font-semibold">Pythia</div>
+            <div>{input.response}</div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+
   return (
     <>
       <div className="flex h-full max-h-[calc(100vh-6rem)] flex-1 flex-col justify-between px-[50px]  pb-16 text-[16px] text-[#C5C4C4] md:pb-20  lg:pb-8  2xl:text-[18px]">
-        <div className="mt-auto flex h-full w-full rounded-xl bg-[#F9F9F9] px-[40px] pb-[50px] shadow-md">
+        <div className="mt-auto flex h-full w-full flex-col rounded-xl bg-[#F9F9F9] px-[40px] pb-[50px] pt-[40px] shadow-md">
+          {renderChatMessages()}
+
           <div className="mt-auto w-full  px-[40px]">
             {' '}
             <QuillNoSSRWrapper
