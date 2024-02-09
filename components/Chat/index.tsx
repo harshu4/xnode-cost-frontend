@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css' // import styles
 import './react-quill.css'
 import nookies, { parseCookies, setCookie } from 'nookies'
-import { getUserChat } from '@/utils/api-pythia'
+import { getUserChat, inputUserChatMessage } from '@/utils/api-pythia'
 import { AccountContext } from '@/contexts/AccountContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -46,54 +46,48 @@ const ChatPage = (id: any) => {
     }
   }
 
-  // async function handleCreateNewInput() {
-  //   const { userSessionToken } = parseCookies()
-  //   const data = {
-  //     userInput: newMessageHtml,
-  //   }
+  async function handleCreateNewInput() {
+    const { userSessionToken } = parseCookies()
+    const data = {
+      id: id.id,
+      userInput: newMessageHtml,
+    }
 
-  //   try {
-  //     setNewMessageHtml('')
-  //     const res = await createUserChat(data, userSessionToken)
-  //     push(
-  //       `${
-  //         process.env.NEXT_PUBLIC_ENVIRONMENT === 'PROD'
-  //           ? `/xnode/chat/${res.id}`
-  //           : `/chat/${res.id}`
-  //       }`,
-  //     )
-  //   } catch (err) {
-  //     console.log(err)
-  //     toast.error(`Error: ${err.response.data.message}`)
-  //   }
-  // }
+    try {
+      setNewMessageHtml('')
+      const res = await inputUserChatMessage(data, userSessionToken)
+    } catch (err) {
+      console.log(err)
+      toast.error(`Error: ${err.response.data.message}`)
+    }
+  }
 
-  // function newMessageSave() {
-  //   if (!isLoading) {
-  //     handleCreateNewInput()
-  //   }
-  // }
+  function newMessageSave() {
+    if (!isLoading) {
+      handleCreateNewInput()
+    }
+  }
 
-  // const handleKeyPress = (event) => {
-  //   if (
-  //     event.key === 'Enter' &&
-  //     !event.ctrlKey &&
-  //     !event.shiftKey &&
-  //     !event.altKey
-  //   ) {
-  //     newMessageSave()
-  //   }
-  // }
+  const handleKeyPress = (event) => {
+    if (
+      event.key === 'Enter' &&
+      !event.ctrlKey &&
+      !event.shiftKey &&
+      !event.altKey
+    ) {
+      newMessageSave()
+    }
+  }
 
-  // useEffect(() => {
-  //   // Adiciona o event listener
-  //   document.addEventListener('keydown', handleKeyPress)
+  useEffect(() => {
+    // Adiciona o event listener
+    document.addEventListener('keydown', handleKeyPress)
 
-  //   // Remove o event listener quando o componente é desmontado
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress)
-  //   }
-  // }, [newMessageHtml])
+    // Remove o event listener quando o componente é desmontado
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [newMessageHtml])
 
   useEffect(() => {
     getData()
@@ -104,7 +98,9 @@ const ChatPage = (id: any) => {
     return pythiaChat?.PythiaInputs.map((input, index) => (
       <div
         key={index}
-        className="mx-auto mb-4 grid gap-y-[40px] text-[16px] text-[#000]"
+        className={`mx-auto mb-4 grid w-[1000px] max-w-[1000px] gap-y-[40px] text-[16px] text-[#000] ${
+          index > 0 && 'mt-[30px]'
+        }`}
       >
         <div className="flex items-start gap-x-[10px] text-left">
           <img
@@ -118,7 +114,7 @@ const ChatPage = (id: any) => {
           />
           <div>
             <div className="text-[15px] font-semibold">You</div>
-            <div>{getSanitizeText(input.userMessage)}</div>
+            <div className="">{getSanitizeText(input.userMessage)}</div>
           </div>
         </div>
         <div className="flex items-start gap-x-[10px] text-left">
